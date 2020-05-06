@@ -6,7 +6,6 @@ import { getAnswerCardField } from './library';
 export default function Card({ card, answer, }) {
 
   if (answer === null) {
-
     return (
       <div className="card">
         <h3>{card.name}</h3>

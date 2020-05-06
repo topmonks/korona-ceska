@@ -7,7 +7,7 @@ const App = Client({
   game: KoronaCeska,
 
   // The number of players.
-  // numPlayers: 2,
+  numPlayers: 1,
 
   // Your React component representing the game board.
   // The props that this component receives are listed below.
