@@ -7,8 +7,8 @@ export default function Card({ card, answer }) {
     return (
       <div className="card">
         <h3>{card.name}</h3>
-        <Illustration img={card.img} />
         <p>{card.text}</p>
+        <Illustration img={card.img} />
       </div>
     );
   }
