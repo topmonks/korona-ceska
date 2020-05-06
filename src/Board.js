@@ -6,7 +6,6 @@ import { getAnswerCardField } from './library';
 
 export default function Board({ G, ctx, moves, events }) {
   const { values, card, answer } = G
-  console.warn('Not yet implemented.', { ctx, moves, card })
 
   const handleAnswer = (answer = false) => () => {
     moves.answer(answer);
@@ -30,13 +29,13 @@ export default function Board({ G, ctx, moves, events }) {
       <div className="board__card">
         <Card {...{ card, answer }} />
       </div>
-      {!answer && (
+      {answer === null && (
         <div className="board__buttons">
           {answerButton(true)}
           {answerButton(false)}
         </div>
       )}
-      {answer && (
+      {answer !== null && (
         <div className="board__buttons">
           <button onClick={handleContinue}>Pokračovat</button>
         </div>
