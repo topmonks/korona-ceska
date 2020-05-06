@@ -1,26 +1,60 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Client } from 'boardgame.io/react';
+import { KoronaCeska } from './Game';
+import LoadingComponent from './LoadingComponent';
+import Board from './Board';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = Client({
+  // A game object.
+  game: KoronaCeska,
+
+  // The number of players.
+  // numPlayers: 2,
+
+  // Your React component representing the game board.
+  // The props that this component receives are listed below.
+  board: Board,
+
+  // Optional: React component to display while the client
+  // is in the "loading" state prior to the initial sync
+  // with the game master. Relevant only in multiplayer mode.
+  // If this is not provided, the client displays "connecting...".
+  loading: LoadingComponent,
+
+  // Set this to one of the following to enable multiplayer:
+  //
+  // SocketIO
+  //   Implementation that talks to a remote server using socket.io.
+  //
+  //   How to import:
+  //     import { SocketIO } from 'boardgame.io/multiplayer'
+  //
+  //   Arguments:
+  //     Object with 2 parameters
+  //        1. 'socketOpts' options to pass directly to socket.io client.
+  //        2. 'server' specifies the server location in the format: [http[s]://]hostname[:port];
+  //            defaults to current page host.
+  //
+  // Local
+  //   Special local mode that uses an in-memory game master. Useful
+  //   for testing multiplayer interactions locally without having to
+  //   connect to a server.
+  //
+  //   How to import:
+  //     import { Local } from 'boardgame.io/multiplayer'
+  //
+  // Additionally, you can write your own transport implementation.
+  // See `src/client/client.js` for details.
+  multiplayer: false,
+
+  // Set to false to disable the Debug UI.
+  debug: window.location.href.includes('localhost'), // This allow us to debug even on the production
+
+  // An optional Redux store enhancer.
+  // This is useful for augmenting the Redux store
+  // for purposes of debugging or simply intercepting
+  // events in order to kick off other side-effects in
+  // response to moves.
+  // enhancer: applyMiddleware(your_middleware),
+});
 
 export default App;
