@@ -11,6 +11,15 @@ body {
 .board {
  padding: 16px;
 }
+.board--neutral {
+  background-color: gray;
+}
+.board--positive {
+  background-color: green;
+}
+.board--negative {
+  background-color: red;
+}
 
 .board__card {
   background-color: #c4c4c4;

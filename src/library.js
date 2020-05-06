@@ -1,8 +1,8 @@
 
 export function calculateMood([epidemie]) {
-  if (epidemie > 80) {
+  if (epidemie >= 80) {
     return 'negative';
-  } else if (epidemie > 20) {
+  } else if (epidemie >= 20) {
     return 'neutral';
   } else {
     return 'positive';

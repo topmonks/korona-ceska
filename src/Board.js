@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import Card from './Card';
-import { getAnswerCardField } from './library';
+import { getAnswerCardField, calculateMood } from './library';
 
 
 
 export default function Board({ G, ctx, moves, events }) {
-  const { values, card, answer } = G
+  const { values, card, answer } = G;
+  const mood = useMemo(() => calculateMood(values), [values]);
+
 
   const handleAnswer = (answer = false) => () => {
     moves.answer(answer);
@@ -23,7 +25,7 @@ export default function Board({ G, ctx, moves, events }) {
   );
 
   return (
-    <div className="board">
+    <div className={`board board--${mood}`}>
       <p>{JSON.stringify(values)}</p>
 
       <div className="board__card">
