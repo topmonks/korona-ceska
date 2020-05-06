@@ -1,6 +1,5 @@
 import { TurnOrder } from 'boardgame.io/core';
 
-
 export const KoronaCeska = {
   // The name of the game.
   name: 'korona-ceska',
@@ -13,15 +12,23 @@ export const KoronaCeska = {
     zdravi: 50,
     ekonomika: 50,
     duvera: 50,
+    // FIXME: fetch and then start the game
+    decks: require('./events.json').cards,
+    mood: 'neutral', // 'positive', 'negative',
+    card: null, // card in hand
   }),
 
   moves: {
     // short-form move.
     YES: (G, ctx) => {
-      G.zdravi += 10;
+      const card = G.card = G.decks[G.mood].pop();
+      console.log(card)
+
     },
     NAH: (G, ctx) => {
-      G.zdravi += -10;
+      const card = G.card = G.decks[G.mood].pop();
+
+      console.log(card)
     },
 
     // long-form move.

@@ -1,6 +1,5 @@
 import { Client } from 'boardgame.io/react';
 import { KoronaCeska } from './Game';
-import LoadingComponent from './LoadingComponent';
 import Board from './Board';
 
 const App = Client({
@@ -18,7 +17,7 @@ const App = Client({
   // is in the "loading" state prior to the initial sync
   // with the game master. Relevant only in multiplayer mode.
   // If this is not provided, the client displays "connecting...".
-  loading: LoadingComponent,
+  // loading: LoadingComponent,
 
   // Set this to one of the following to enable multiplayer:
   //
