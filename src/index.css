@@ -1,18 +1,26 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  max-width: 480px;
 }
-
 
 .board {
- padding: 16px;
+  padding: 16px;
+  text-align: center;
+  font-size: 24px;
+  color: white;
 }
 .board--neutral {
-  background-color: gray;
+  background: rgb(73, 71, 124);
+  background: linear-gradient(
+    180deg,
+    rgba(73, 71, 124, 1) 0%,
+    rgba(77, 100, 138, 1) 100%
+  );
 }
 .board--positive {
   background-color: green;
@@ -22,14 +30,52 @@ body {
 }
 
 .board__card {
-  background-color: #c4c4c4;
+  background-color: #fff;
+  min-height: 320px;
+  box-shadow: 0px 8px 16px -10px rgba(61, 61, 82, 1);
+
+  color: #333;
+  font-size: 18px;
+
+  border-radius: 4px;
   padding: 16px;
-  margin: 16px;
+  margin: 64px 16px;
+  text-align: center;
 }
 .board__buttons {
-  background-color: #c2c2c2;
+  display: flex;
+  flex-direction: column;
+  margin: 0px 16px;
+}
+
+.button__answer {
+  height: 44px;
+  margin-bottom: 16px;
+  background-color: rgba(0, 0, 0, 0.5);
+  border: none;
+  color: #fff;
+  font-size: 16px;
+  border-radius: 4px;
+}
+
+.button__answer:hover {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.button__default {
+  height: 44px;
+  margin-bottom: 16px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: #fff;
+  font-size: 16px;
+  border-radius: 4px;
+}
+
+.button__default:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+  color: #fff;
 }
 
 .card {
-  background-color: pink;
 }

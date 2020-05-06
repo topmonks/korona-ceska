@@ -1,26 +1,23 @@
-import React, { useMemo } from 'react';
-import Card from './Card';
-import { getAnswerCardField, calculateMood } from './library';
-
-
+import React, { useMemo } from "react";
+import Card from "./Card";
+import { getAnswerCardField, calculateMood } from "./library";
 
 export default function Board({ G, ctx, moves, events }) {
   const { values, card, answer } = G;
   const mood = useMemo(() => calculateMood(values), [values]);
 
-
   const handleAnswer = (answer = false) => () => {
     moves.answer(answer);
-  }
+  };
 
   const handleContinue = () => {
     moves.continue();
     events.endTurn();
-  }
+  };
 
-  const answerButton = answer => (
-    <button onClick={handleAnswer(answer)}>
-      {getAnswerCardField(card, answer, 'answer')}
+  const answerButton = (answer) => (
+    <button class="button__answer" onClick={handleAnswer(answer)}>
+      {getAnswerCardField(card, answer, "answer")}
     </button>
   );
 
@@ -39,9 +36,11 @@ export default function Board({ G, ctx, moves, events }) {
       )}
       {answer !== null && (
         <div className="board__buttons">
-          <button onClick={handleContinue}>Pokračovat</button>
+          <button class="button__default" onClick={handleContinue}>
+            Pokračovat
+          </button>
         </div>
       )}
     </div>
-  )
+  );
 }
