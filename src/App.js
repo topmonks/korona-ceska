@@ -47,7 +47,7 @@ const App = Client({
   multiplayer: false,
 
   // Set to false to disable the Debug UI.
-  debug: window.location.href.search('localhost') > -1, // This allow us to debug even on the production
+  debug: true
 
   // An optional Redux store enhancer.
   // This is useful for augmenting the Redux store
