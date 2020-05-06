@@ -588,16 +588,24 @@
       {
         "name": "Bureš",
         "text": "Hello Bures",
-        "yes": "ANO!",
-        "no": "NE!"
+        "yesanswer": "ANO!",
+        "noanswer": "NE!",
+        "yeseffect": "n-a",
+        "noeffect": "n-a",
+        "yesvalues": "-10,-10,-10,-10",
+        "novalues": "10,10,10,10"
       }
     ],
     "negative": [
       {
         "name": "Bureš",
         "text": "Hello Bures",
-        "yes": "ANO!",
-        "no": "NE!"
+        "yesanswer": "ANO!",
+        "noanswer": "NE!",
+        "yeseffect": "n-a",
+        "noeffect": "n-a",
+        "yesvalues": "-10,-10,-10,-10",
+        "novalues": "10,10,10,10"
       }
     ]
   }

@@ -54,6 +54,13 @@ export const KoronaCeska = {
     // },
   },
 
+  endIf: (G, ctx) => {
+    const [epidemie, zdravi, ekonomika, duvera] = G.values;
+    console.log(G.values[0])
+    if (!epidemie) return { win: true };
+    if (epidemie >= 100 || !zdravi || !ekonomika || !duvera) return { win: false };
+  },
+
   // Everything below is OPTIONAL.
 
   // Function that allows you to tailor the game state to a specific player.

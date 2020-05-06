@@ -21,6 +21,8 @@ export default function Board({ G, ctx, moves, events }) {
     </button>
   );
 
+  console.log('win?', ctx.gameover);
+
   return (
     <div className={`board board--${mood}`}>
       <p>{JSON.stringify(values)}</p>
