@@ -15,9 +15,13 @@ export const KoronaCeska = {
     const values = [50, 50, 50, 50]
 
     // FIXME: fetch and then start the game
-    const decks = require('./events.json').cards
+    const tmp = require('./events.json').cards
+    const decks = {
+      neutral: ctx.random.Shuffle(tmp.neutral),
+      positive: ctx.random.Shuffle(tmp.positive),
+      negative: ctx.random.Shuffle(tmp.negative),
+    }
 
-    // Get first card
     const card = decks[calculateMood(values)].pop();
 
     return {
@@ -56,17 +60,14 @@ export const KoronaCeska = {
   // playerView: (G, ctx, playerID) => G,
 
   // The seed used by the pseudo-random number generator.
-  seed: 'random-string',
+  seed: Math.random().toString(),
 
   turn: {
     // The turn order.
     order: TurnOrder.DEFAULT,
 
     // Called at the beginning of a turn.
-    onBegin: (G, ctx) => {
-
-      // G.decks = ctx.random.Shuffle(G.decks);
-    },
+    onBegin: (G, ctx) => G,
 
     // Called at the end of a turn.
     onEnd: (G, ctx) => G,
@@ -99,7 +100,37 @@ export const KoronaCeska = {
   },
 
   // phases: {
-  //   neutral: {
+  //   answer: {
+  //     start: true,
+  //     next: 'continue',
+
+  //     // Called at the beginning of a phase.
+  //     onBegin: (G, ctx) => {
+  //       G.decks.neutral = ctx.random.Shuffle(G.decks.neutral);
+  //       G.decks.negative = ctx.random.Shuffle(G.decks.negative)
+  //       G.decks.positive = ctx.random.Shuffle(G.decks.positive)
+
+  //       G.card = G.decks[calculateMood(G.values)].pop();
+
+  //       return G;
+  //     },
+
+  //     // Called at the end of a phase.
+  //     onEnd: (G, ctx) => G,
+
+  //     // Ends the phase if this returns true.
+  //     endIf: (G, ctx) => G.answer !== null,
+
+  //     // Overrides `moves` for the duration of this phase.
+  //     // moves: {  },
+
+  //     // Overrides `turn` for the duration of this phase.
+  //     // turn: { ... },
+  //   },
+  //   continue: {
+
+  //     next: 'answer',
+
   //     // Called at the beginning of a phase.
   //     onBegin: (G, ctx) => G,
 
@@ -107,20 +138,14 @@ export const KoronaCeska = {
   //     onEnd: (G, ctx) => G,
 
   //     // Ends the phase if this returns true.
-  //     endIf: (G, ctx) => true,
+  //     // endIf: (G, ctx) => true,
 
   //     // Overrides `moves` for the duration of this phase.
-  //     // moves: { ... },
+  //     // moves: {  },
 
   //     // Overrides `turn` for the duration of this phase.
   //     // turn: { ... },
   //   },
-  //   positive: {
-
-  //   },
-  //   negative: {
-
-  //   }
   // },
 
   // Ends the game if this returns anything.
