@@ -1,4 +1,7 @@
 import { TurnOrder } from 'boardgame.io/core';
+import { calculateMood, calculateValues } from './library';
+
+
 
 export const KoronaCeska = {
   // The name of the game.
@@ -7,28 +10,34 @@ export const KoronaCeska = {
   // Function that returns the initial value of G.
   // setupData is an optional custom object that is
   // passed through the Game Creation API.
-  setup: (ctx, setupData) => ({
-    epidemie: 50,
-    zdravi: 50,
-    ekonomika: 50,
-    duvera: 50,
+  setup: (ctx, setupData) => {
+    // Initial values
+    const values = [50, 50, 50, 50]
+
     // FIXME: fetch and then start the game
-    decks: require('./events.json').cards,
-    mood: 'neutral', // 'positive', 'negative',
-    card: null, // card in hand
-  }),
+    const decks = require('./events.json').cards
+
+    // Get first card
+    const card = decks[calculateMood(values)].pop();
+
+    return {
+      values,
+      decks,
+      card,
+      answer: null,
+    }
+  },
 
   moves: {
     // short-form move.
-    YES: (G, ctx) => {
-      const card = G.card = G.decks[G.mood].pop();
-      console.log(card)
-
+    answer: (G, ctx, answer) => {
+      G.answer = answer;
+      G.values = calculateValues(G.values, G.card, answer);
     },
-    NAH: (G, ctx) => {
-      const card = G.card = G.decks[G.mood].pop();
-
-      console.log(card)
+    continue: (G, ctx) => {
+      const mood = calculateMood(G.values);
+      G.answer = null;
+      G.card = G.decks[mood].pop();
     },
 
     // long-form move.
@@ -54,7 +63,10 @@ export const KoronaCeska = {
     order: TurnOrder.DEFAULT,
 
     // Called at the beginning of a turn.
-    onBegin: (G, ctx) => G,
+    onBegin: (G, ctx) => {
+
+      // G.decks = ctx.random.Shuffle(G.decks);
+    },
 
     // Called at the end of a turn.
     onEnd: (G, ctx) => G,
@@ -66,7 +78,7 @@ export const KoronaCeska = {
     onMove: (G, ctx) => G,
 
     // Ends the turn automatically after a number of moves.
-    moveLimit: 1,
+    moveLimit: 2,
 
     // Calls setActivePlayers with this as argument at the
     // beginning of the turn.
@@ -87,7 +99,7 @@ export const KoronaCeska = {
   },
 
   // phases: {
-  //   A: {
+  //   neutral: {
   //     // Called at the beginning of a phase.
   //     onBegin: (G, ctx) => G,
 
@@ -98,13 +110,17 @@ export const KoronaCeska = {
   //     endIf: (G, ctx) => true,
 
   //     // Overrides `moves` for the duration of this phase.
-  //     moves: { ... },
+  //     // moves: { ... },
 
   //     // Overrides `turn` for the duration of this phase.
-  //     turn: { ... },
+  //     // turn: { ... },
   //   },
+  //   positive: {
 
-  //   ...
+  //   },
+  //   negative: {
+
+  //   }
   // },
 
   // Ends the game if this returns anything.
