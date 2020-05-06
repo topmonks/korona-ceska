@@ -16,7 +16,7 @@ export default function Board({ G, ctx, moves, events }) {
   };
 
   const answerButton = (answer) => (
-    <button class="button__answer" onClick={handleAnswer(answer)}>
+    <button className="button__answer" onClick={handleAnswer(answer)}>
       {getAnswerCardField(card, answer, "answer")}
     </button>
   );
@@ -38,7 +38,7 @@ export default function Board({ G, ctx, moves, events }) {
       )}
       {answer !== null && (
         <div className="board__buttons">
-          <button class="button__default" onClick={handleContinue}>
+          <button className="button__default" onClick={handleContinue}>
             Pokračovat
           </button>
         </div>
