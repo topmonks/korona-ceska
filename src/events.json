@@ -26,7 +26,7 @@
     {
         "name": "Alfons Vojtík",
         "img": "vojtik",
-        "text": "Naučil jsem se stepovat. Chceš vidět?",
+        "text": "TEST Naučil jsem se stepovat. Chceš vidět?",
         "yesanswer": "Ano",
         "noanswer": "Ne",
         "yeseffect": "Nemůžeš to vydržet a při Vojtíkově vystoupení vyskočíš z okna. Naštěstí máš kancelář v přízemí.",
@@ -235,7 +235,7 @@
     {
         "name": "Josef Čupránek",
         "img": "cupranek",
-        "text": "Neriskujte cestu do supermarketu, v našem e-shopu preclik.cz (http://houska.cz/) jsme přišli s konceptem bezkontaktního předání.",
+        "text": "Neriskujte cestu do supermarketu, v našem e-shopu preclik.cz jsme přišli s konceptem bezkontaktního předání.",
         "yesanswer": "OK",
         "noanswer": "OK",
         "yeseffect": "n-a",
@@ -477,6 +477,17 @@
         "noeffect": "Novináři se ptají, kde jsou v těžkých dobách státníci.",
         "yesvalues": "0,25,0,-25",
         "novalues": "0,10,0,-10"
+    },
+    {
+        "name": "Andrej Bakšiš",
+        "img": "bures",
+        "text": "Státní rozpočet má hroznou sekeru. Asi zvýším DPH na 30 %.",
+        "yesanswer": "OK",
+        "noanswer": "Snižte výdaje na zbytečnosti!",
+        "yeseffect": "Lidé omezili nákupy, stát má ještě nižší příjmy a vyšší sekeru.",
+        "noeffect": "Bakšiš snížil důchody. Dotace velkým holdingům zůstaly netknuty.",
+        "yesvalues": "0,0,-20,-20",
+        "novalues": "0,0,-15,-15"
     },
     {
         "name": "Andrej Bakšiš",
