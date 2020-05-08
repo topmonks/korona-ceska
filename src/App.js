@@ -1,25 +1,46 @@
-import { Client } from 'boardgame.io/react';
-import { KoronaCeska } from './Game';
-import Board from './Board';
+import React from 'react';
+import { mount, route, } from 'navi'
+import { Router, View, NotFoundBoundary, Link, } from 'react-navi'
 
-const App = Client({
-  // A game object.
-  game: KoronaCeska,
-  numPlayers: 1,
+const screen = name => require(`./Screen${name}`).default;
 
-  // Your React component representing the game board.
-  // The props that this component receives are listed below.
-  board: Board,
+const routes = mount({
+  '/': route({
+    title: "Menu",
+    view: screen('Menu'),
+  }),
+  '/hra': route({
+    title: "Hra",
+    view: screen('Game'),
+  }),
+  '/help': route({
+    title: "Help",
+    view: screen('Help'),
+  }),
+  '/story': route({
+    title: "Příběh",
+    view: screen('Story'),
+  }),
+  '/credits': route({
+    title: "Credits",
+    view: screen('Credits'),
+  }),
+})
 
-  // multiplayer: false, ALERT: this broked turrn orders
-  debug: true
+const renderNotFound = () => (
+  <div>
+    <h1>404</h1>
+    <Link href="/">Zpet na menu</Link>
+  </div>
+)
 
-  // An optional Redux store enhancer.
-  // This is useful for augmenting the Redux store
-  // for purposes of debugging or simply intercepting
-  // events in order to kick off other side-effects in
-  // response to moves.
-  // enhancer: applyMiddleware(your_middleware),
-});
+export default function Applicaiton() {
 
-export default App;
+  return (
+    <Router routes={routes}>
+      <NotFoundBoundary render={renderNotFound}>
+        <View />
+      </NotFoundBoundary>
+    </Router>
+  );
+};

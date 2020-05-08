@@ -42,3 +42,11 @@ export function hasAnswerCardField(card, answer, field) {
   return value && value !== 'n-a';
 }
 
+
+
+export function persistedPlayerSeed(v = 'v0') {
+  const name = `player-seed-${v}`;
+  const value = (localStorage.getItem(name) || Math.random()).toString();
+  localStorage.setItem(name, value)
+  return value
+}

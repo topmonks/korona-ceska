@@ -4,8 +4,10 @@ import { calculateMood, calculateValues, hasAnswerCardField } from './library';
 const { cards: CARD_DECKS } = require('./events.json');
 
 
+
 export const KoronaCeska = {
   name: 'korona-ceska',
+  // seed: persistedPlayerSeed('v0'),
 
   // Function that returns the initial value of G.
   // setupData is an optional custom object that is

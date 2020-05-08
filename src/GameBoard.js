@@ -1,8 +1,9 @@
 import React, { useMemo } from "react";
 import Card from "./Card";
 import { getAnswerCardField, calculateMood } from "./library";
+import { Link } from "react-navi";
 
-export default function Board({ G, ctx, moves, events, reset }) {
+export default function GameBoard({ G, ctx, moves, events, reset }) {
   const { values, card, answer } = G;
   const mood = useMemo(() => calculateMood(values), [values]);
 
@@ -62,6 +63,7 @@ export default function Board({ G, ctx, moves, events, reset }) {
           <button className="button__default" onClick={handleNewGame}>
             Nový hra
           </button>
+          <Link href="/">Zpet na menu</Link>
         </div>
       )}
     </div>
