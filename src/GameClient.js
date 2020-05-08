@@ -1,5 +1,5 @@
 import { Client } from 'boardgame.io/react';
-import { KoronaCeska } from './Game';
+import KoronaCeska from './GameKorona';
 import Board from './GameBoard';
 
 

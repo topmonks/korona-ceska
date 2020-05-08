@@ -5,7 +5,7 @@ const { cards: CARD_DECKS } = require('./events.json');
 
 
 
-export const KoronaCeska = {
+export default {
   name: 'korona-ceska',
   // seed: persistedPlayerSeed('v0'),
 
