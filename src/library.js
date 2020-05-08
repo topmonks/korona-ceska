@@ -51,5 +51,6 @@ export function getAnswerCardField(card, answer, field) {
 
 export function hasAnswerCardField(card, answer, field) {
   const value = getAnswerCardField(card, answer, field);
+
   return value && value !== 'n-a';
 }

@@ -56,7 +56,6 @@ export default {
       G.card = G.decks[mood].pop();
       G.answer = null;
     },
-    moveLimit: 1,
   },
 
   endIf: (G, ctx) => {
