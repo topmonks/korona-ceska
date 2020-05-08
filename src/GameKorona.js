@@ -86,7 +86,7 @@ export default {
       if (G.answer === null && G.card) {
         moves.push({ move: 'answer', args: [true] });
         moves.push({ move: 'answer', args: [false] });
-      } else {
+      } else if (!ctx.gameover) {
         moves.push({ event: 'endTurn' });
       }
 
