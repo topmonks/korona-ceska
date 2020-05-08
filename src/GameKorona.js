@@ -1,5 +1,5 @@
 import { TurnOrder } from 'boardgame.io/core';
-import { calculateMood, calculateValues, hasAnswerCardField } from './library';
+import { calculateMood, calculateValues, hasAnswerCardField, persistedPlayerSeed } from './library';
 
 const { cards: CARD_DECKS } = require('./events.json');
 
@@ -7,7 +7,7 @@ const { cards: CARD_DECKS } = require('./events.json');
 
 export default {
   name: 'korona-ceska',
-  // seed: persistedPlayerSeed('v0'),
+  seed: persistedPlayerSeed('v0'),
 
   // Function that returns the initial value of G.
   // setupData is an optional custom object that is
@@ -34,8 +34,9 @@ export default {
     }
   },
 
+
   moves: {
-    // short-form move.
+    // the only move player can actually do
     answer: (G, ctx, answer) => {
       G.values = calculateValues(G.values, G.card, answer);
 
@@ -55,6 +56,7 @@ export default {
       G.card = G.decks[mood].pop();
       G.answer = null;
     },
+    moveLimit: 1,
   },
 
   endIf: (G, ctx) => {
@@ -76,5 +78,20 @@ export default {
   onEnd: (G) => {
     G.card = null;
   },
+
+  ai: {
+    enumerate: (G, ctx) => {
+      const moves = [];
+
+      if (G.answer === null && G.card) {
+        moves.push({ move: 'answer', args: [true] });
+        moves.push({ move: 'answer', args: [false] });
+      } else {
+        moves.push({ event: 'endTurn' });
+      }
+
+      return moves;
+    },
+  }
 
 }

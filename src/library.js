@@ -30,6 +30,18 @@ export function calculateValues(values, card, answer) {
   })
 }
 
+export function calculateCardsCounts({ neutral = [], positive = [], negative = [] } = {}) {
+  // C
+  const sum = (total, deck) => total + deck.length;
+  return [neutral, positive, negative].reduce(sum, 0);
+
+  // B
+  // return neutral.length + positive.length + negative.length;
+
+  // A
+  // return [...neutral, ...positive, ...negative].length;
+}
+
 export function getAnswerCardField(card, answer, field) {
   const value = card[(answer ? 'yes' : 'no') + field]
   if (!value) return null;
