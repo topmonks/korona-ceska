@@ -1,5 +1,5 @@
 import { TurnOrder } from 'boardgame.io/core';
-import { calculateMood, calculateValues, hasAnswerCardField, persistedPlayerSeed } from './library';
+import { calculateMood, calculateValues, hasAnswerCardField, } from './library';
 
 const { cards: CARD_DECKS } = require('./events.json');
 
@@ -7,7 +7,7 @@ const { cards: CARD_DECKS } = require('./events.json');
 
 export default {
   name: 'korona-ceska',
-  seed: persistedPlayerSeed('v0'),
+  seed: Math.random().toString(),
 
   // Function that returns the initial value of G.
   // setupData is an optional custom object that is
