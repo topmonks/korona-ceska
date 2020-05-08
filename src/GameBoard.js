@@ -30,7 +30,10 @@ export default function GameBoard({ G, ctx, moves, events, reset }) {
 
   return (
     <div className={`board board--${mood}`}>
-      <p>{JSON.stringify(values)}</p>
+      <p>
+        <small>{ctx.turn}. kolo</small> = {JSON.stringify(values)}
+      </p>
+
 
       {ctx.gameover && (
         <div className="board__gameover">
