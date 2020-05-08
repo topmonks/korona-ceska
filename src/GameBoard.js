@@ -36,7 +36,7 @@ export default function GameBoard({ G, ctx, moves, events, reset }) {
         <div className="board__gameover">
           {win && <h1>Si vyhral</h1>}
           {loose && <h1>Si prohral na {loose}. hodnote</h1>}
-          {draw && <h1>Ti dosli karty z {mood} balicku</h1>}
+          {draw && <h1>Ti dosly karty z {mood} balicku</h1>}
         </div>
       )}
 
