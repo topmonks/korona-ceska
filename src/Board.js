@@ -46,10 +46,10 @@ export default function Board({ G, ctx, moves, events, reset }) {
       )}
       {!ctx.gameover && (
         <div className="board__buttons">
-          {answer === null && [
-            answerButton(true),
-            answerButton(false)
-          ]}
+          {answer === null && <>
+            {answerButton(true)}
+            {answerButton(false)}
+          </>}
           {answer !== null && (
             <button className="button__default" onClick={handleContinue}>
               Pokračovat
