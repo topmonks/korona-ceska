@@ -1,8 +1,9 @@
 import React from "react";
 import { getAnswerCardField } from "./library";
 import Illustration from "./Illustration";
+import IncidentEvent from "./IncidentEvent";
 
-export default function Card({ card, answer }) {
+export default function Card({ card, answer, incident }) {
 
   if (answer === null) {
     return (
@@ -10,6 +11,7 @@ export default function Card({ card, answer }) {
         <h3>{card.name}</h3>
         <p>{card.text}</p>
         <Illustration img={card.img} />
+        {incident && <IncidentEvent {...incident} />}
       </div>
     );
   }

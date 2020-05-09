@@ -4,7 +4,7 @@ import { getAnswerCardField, calculateMood } from "./library";
 import { Link } from "react-navi";
 
 export default function GameBoard({ G, ctx, moves, events, reset }) {
-  const { values, card, answer } = G;
+  const { values, card, answer, incident } = G;
   const mood = useMemo(() => calculateMood(values), [values]);
 
   const { loose, win, draw } = ctx.gameover || {};
@@ -44,10 +44,11 @@ export default function GameBoard({ G, ctx, moves, events, reset }) {
       )}
 
       {card && (
-        <div className="board__card">
-          <Card {...{ card, answer }} />
+        <div className={`board__card ${incident ? 'board__card--incident' : ''}`}>
+          <Card {...{ card, answer, incident }} />
         </div>
       )}
+
       {!ctx.gameover && (
         <div className="board__buttons">
           {answer === null && <>

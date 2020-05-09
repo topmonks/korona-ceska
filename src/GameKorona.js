@@ -1,13 +1,13 @@
 import { TurnOrder } from 'boardgame.io/core';
-import { calculateMood, calculateValues, hasAnswerCardField, } from './library';
+import { calculateMood, calculateValues, hasAnswerCardField, calculateIncidentEvent, } from './library';
 
-const { cards: CARD_DECKS } = require('./events.json');
+const { cards: CARD_DECKS, events: EVENT_CARDS } = require('./events.json');
 
 
 
 export default {
   name: 'korona-ceska',
-  seed: Math.random().toString(),
+  seed: Math.random().toString(), // TODO: Persist till game reset occur (not just page refresh like now)
 
   // Function that returns the initial value of G.
   // setupData is an optional custom object that is
@@ -22,15 +22,13 @@ export default {
       negative: ctx.random.Shuffle(CARD_DECKS.negative),
     }
 
-    // Pop first card from the proper deck
-    const card = decks[calculateMood(values)].pop();
-
     return {
       // player,
       values,
       decks,
-      card,
+      card: null,
       answer: null,
+      incident: null,
     }
   },
 
@@ -38,7 +36,7 @@ export default {
   moves: {
     // the only move player can actually do
     answer: (G, ctx, answer) => {
-      G.values = calculateValues(G.values, G.card, answer);
+      G.values = calculateValues(G.values, G.card, answer, G.incident);
 
       if (hasAnswerCardField(G.card, answer, 'effect')) {
         G.answer = answer;
@@ -51,10 +49,18 @@ export default {
 
   turn: {
     order: TurnOrder.CONTINUE,
+    onBegin: (G, ctx) => { // for some reason is it called twioce fot the very first turn
+      G.incident = calculateIncidentEvent(EVENT_CARDS, ctx.turn);
+
+      if (!G.card) {
+        const mood = calculateMood(G.values);
+        G.card = G.decks[mood].pop();
+      }
+    },
     onEnd: (G, ctx) => {
-      const mood = calculateMood(G.values);
-      G.card = G.decks[mood].pop();
+      G.card = null;
       G.answer = null;
+      G.incident = null;
     },
   },
 
@@ -74,7 +80,7 @@ export default {
     }
   },
 
-  onEnd: (G) => {
+  onEnd: (G, ctx) => {
     G.card = null;
   },
 
