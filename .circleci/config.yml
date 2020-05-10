@@ -136,15 +136,13 @@ jobs:
   test_pwa:
     executor: nodejs
     steps:
-      - checkout:
-          path: ~/project
+      - checkout
       - install_dependencies
       - run: npm test
   build_pwa:
     executor: nodejs
     steps:
-      - checkout:
-          path: ~/project
+      - checkout
       - install_dependencies
       - run: npm run build
       - persist_to_workspace:
