@@ -27,6 +27,7 @@ commands:
     parameters:
       path:
         type: string
+        default: .
       before_save_cache:
         type: steps
         default: []
