@@ -23,7 +23,7 @@ commands:
           command: |
             aws configure set preview.cloudfront true
             aws cloudfront create-invalidation --distribution-id=<< parameters.distribution_id >> --paths=<< parameters.paths >>
- install_dependencies:
+  install_dependencies:
     parameters:
       path:
         type: string
