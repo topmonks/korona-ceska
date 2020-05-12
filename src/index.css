@@ -21,8 +21,16 @@ body {
   min-height: 100vh;
 }
 
+.container {
+  display: flex;
+  flex: 1;
+  max-width: 640px;
+  flex-direction: column;
+}
+
 .mainMenu {
   display: flex;
+  flex: 1;
   flex-direction: column;
 }
 

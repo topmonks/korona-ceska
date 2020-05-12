@@ -3,7 +3,7 @@ import { Link } from "react-navi";
 
 export default function ScreenCredits({ route }) {
   return (
-    <div>
+    <div className="container">
       <h1>{route.title}</h1>
 
       <Link className="navi__link" href="/">

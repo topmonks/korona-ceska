@@ -3,7 +3,7 @@ import { Link } from "react-navi";
 
 export default function ScreenMenu({ route }) {
   return (
-    <div>
+    <div className="container">
       <h1>Korona Česká</h1>
       <div className="mainMenu">
         <Link className="mainMenu__link" href="/hra">

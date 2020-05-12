@@ -3,7 +3,7 @@ import { Link } from "react-navi";
 
 export default function ScreenHelp({ route }) {
   return (
-    <div>
+    <div className="container">
       <h1>Nápověda</h1>
 
       <Link className="navi__link" href="/">
