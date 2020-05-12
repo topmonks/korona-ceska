@@ -1,46 +1,47 @@
-import React from 'react';
-import { mount, route, } from 'navi'
-import { Router, View, NotFoundBoundary, Link, } from 'react-navi'
+import React from "react";
+import { mount, route } from "navi";
+import { Router, View, NotFoundBoundary, Link } from "react-navi";
 
-const screen = name => require(`./Screen${name}`).default;
+const screen = (name) => require(`./Screen${name}`).default;
 
 const routes = mount({
-  '/': route({
+  "/": route({
     title: "Menu",
-    view: screen('Menu'),
+    view: screen("Menu"),
   }),
-  '/hra': route({
+  "/hra": route({
     title: "Hra",
-    view: screen('Game'),
+    view: screen("Game"),
   }),
-  '/help': route({
+  "/help": route({
     title: "Help",
-    view: screen('Help'),
+    view: screen("Help"),
   }),
-  '/story': route({
+  "/story": route({
     title: "Příběh",
-    view: screen('Story'),
+    view: screen("Story"),
   }),
-  '/credits': route({
+  "/credits": route({
     title: "Credits",
-    view: screen('Credits'),
+    view: screen("Credits"),
   }),
-})
+});
 
 const renderNotFound = () => (
   <div>
     <h1>404</h1>
     <Link href="/">Zpet na menu</Link>
   </div>
-)
+);
 
 export default function Applicaiton() {
-
   return (
     <Router routes={routes}>
       <NotFoundBoundary render={renderNotFound}>
-        <View />
+        <div className="app">
+          <View />
+        </div>
       </NotFoundBoundary>
     </Router>
   );
-};
+}
