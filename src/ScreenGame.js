@@ -4,7 +4,7 @@ import { Link } from "react-navi";
 
 export default function ScreenGame() {
   return (
-    <div className="container">
+    <div style={{ flex: "1" }}>
       <Link href="/"> Menu</Link>
       <GameClient />
     </div>
