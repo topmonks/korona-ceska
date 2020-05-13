@@ -177,3 +177,26 @@ a {
   color: white;
   line-height: 24px;
 }
+
+.autori__logo {
+  margin-bottom: 64px;
+  margin-top: 32px;
+  color: white;
+}
+
+.autori__logo a {
+  text-decoration: underline;
+}
+
+.autori__row {
+  color: white;
+  margin-bottom: 24px;
+}
+
+.autori__row h3 {
+  margin: 0px;
+}
+
+.autori__button {
+  margin-top: 64px;
+}
