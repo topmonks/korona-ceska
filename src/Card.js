@@ -4,7 +4,6 @@ import Illustration from "./Illustration";
 import IncidentEvent from "./IncidentEvent";
 
 export default function Card({ card, answer, incident }) {
-
   if (answer === null) {
     return (
       <div className="card">
@@ -22,7 +21,9 @@ export default function Card({ card, answer, incident }) {
 
   return (
     <div className="card">
-      <p>{getAnswerCardField(card, answer, "effect")}</p>
+      <p className="eventAnswer">
+        "{getAnswerCardField(card, answer, "effect")}"
+      </p>
     </div>
   );
 }
