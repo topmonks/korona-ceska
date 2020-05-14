@@ -15,17 +15,6 @@
             {
                 "name": "Alfons Vojtík",
                 "img": "vojtik",
-                "text": "Koukej jakou jsem si ušil sexy roušku!",
-                "yesanswer": "Nádhera!",
-                "noanswer": "Odpal!",
-                "yeseffect": "n-a",
-                "noeffect": "n-a",
-                "yesvalues": "-5,0,0,0",
-                "novalues": "0,0,0,5"
-            },
-            {
-                "name": "Alfons Vojtík",
-                "img": "vojtik",
                 "text": "Naučil jsem se stepovat. Chceš vidět?",
                 "yesanswer": "Ano",
                 "noanswer": "Ne",
@@ -93,34 +82,12 @@
                 "name": "Eman",
                 "img": "eman",
                 "text": "Lidi nám chodí na procházky k hranicím a koukají, kudy do německých Lidlů.",
-                "yesanswer": "Posilme pohraničníky jak za mladejch let",
+                "yesanswer": "Posilme pohraničníky jak za mladejch",
                 "noanswer": "Přihmouříme oči",
                 "yeseffect": "Věra Pohlová pěje chvalozpěvy.",
                 "noeffect": "Věra Pohlová je velmi nespokojená.",
                 "yesvalues": "-10,-10,-10,-15",
                 "novalues": "10,10,10,10"
-            },
-            {
-                "name": "Honza Nguyen",
-                "img": "nguyen",
-                "text": "Naše komunita nabízí v obchodech občerstvení zdravotníkům zdarma a domovům důchodců věnujeme roušky, dezinfekce a rukavice.",
-                "yesanswer": "Věnujte prosím i léčebnám.",
-                "noanswer": "Nemáte nějak podezřele moc peněz? Bakšiši, mrkneš na to?",
-                "yeseffect": "n-a",
-                "noeffect": "n-a",
-                "yesvalues": "-5,5,5,0",
-                "novalues": "10,0,-10,-15"
-            },
-            {
-                "name": "Honza Nguyen",
-                "img": "nguyen",
-                "text": "Vietnamská komunita šije zdarma roušky pro nemocnice.",
-                "yesanswer": "Pošta je může zdarma rozesílat.",
-                "noanswer": "Fajn!",
-                "yeseffect": "n-a",
-                "noeffect": "n-a",
-                "yesvalues": "-5,0,0,5",
-                "novalues": "-5,0,0,0"
             },
             {
                 "name": "Jan Tiskař",
@@ -137,7 +104,7 @@
                 "name": "Jan Tiskař",
                 "img": "tiskar",
                 "text": "Tiskneme polomasku BUT-H2 s vyměnitelnými filtry, levná a efektivní ochrana.",
-                "yesanswer": "Propojím vás s Rýmulou a domluvíme spolupráci.",
+                "yesanswer": "Domluvíme spolupráci s Rýmulou.",
                 "noanswer": "A máte na to licenci?",
                 "yeseffect": "n-a",
                 "noeffect": "Licenci měli a ty teď vypadáš jako kokot.",
@@ -191,20 +158,9 @@
             {
                 "name": "Jarda Netáhlo",
                 "img": "netahlo",
-                "text": "Měl bych se objednat k zubařovi na další prohlídku.",
-                "yesanswer": "Hned zítra tam zavolej, dokud to platí pojišťovna! ",
-                "noanswer": "Vrtačka a zubař s Covidem? Ani omylem! To počká!",
-                "yeseffect": "n-a",
-                "noeffect": "n-a",
-                "yesvalues": "15,10,5,0",
-                "novalues": "-5,-15,0,0"
-            },
-            {
-                "name": "Jarda Netáhlo",
-                "img": "netahlo",
                 "text": "Na trhu se objevily roušky s aktivním stříbrem! Není potřeba prát ani vyvařovat, stříbro to jistí!",
-                "yesanswer": "Nakup do zásob a pak prodej ještě dráž s příměsí aktivního prachu z jednorožců!",
-                "noanswer": "Máte k tomu certifikát? A mohl bych ho vidět? ",
+                "yesanswer": "To zní dobře!",
+                "noanswer": "To bude podvod.",
                 "yeseffect": "Samozřejmě to byl podvod.",
                 "noeffect": "n-a",
                 "yesvalues": "10,-10,0,-10",
@@ -215,9 +171,9 @@
                 "img": "netahlo",
                 "text": "Venku se probouzí jaro. Celej den jsem zavřenej doma, půjdu si zaběhat.",
                 "yesanswer": "Letos můžeš běhat pravidelně a budeš mít imunitu a ještě zhubneš!",
-                "noanswer": "Ven? Do nebezpečné zóny? To neriskuj! Radši si doma něco upeč, ať si tu karanténu zpříjemníš. ",
+                "noanswer": "Radši si doma něco upeč, ať si tu karanténu zpříjemníš. ",
                 "yeseffect": "n-a",
-                "noeffect": "Pepa strávil dvě hodiny obcházením obchodů a hledáním droždí.",
+                "noeffect": "Jarda strávil dvě hodiny obcházením obchodů a hledáním droždí.",
                 "yesvalues": "5,15,0,0",
                 "novalues": "-3,-15,-10,0"
             },
@@ -253,6 +209,28 @@
                 "noeffect": "Všecko jde zdanit, když se chce. A mně se chce.",
                 "yesvalues": "-5,5,5,5",
                 "novalues": "10,-10,-15,-15"
+            },
+            {
+                "name": "Maruška Nguyenová",
+                "img": "nguyen",
+                "text": "Naše komunita nabízí v obchodech občerstvení zdravotníkům zdarma a domovům důchodců věnujeme roušky, dezinfekce a rukavice.",
+                "yesanswer": "Věnujte prosím i léčebnám.",
+                "noanswer": "Nemáte nějak moc peněz? Bakšiši, mrkneš na to?",
+                "yeseffect": "n-a",
+                "noeffect": "n-a",
+                "yesvalues": "-5,5,5,0",
+                "novalues": "10,0,-10,-15"
+            },
+            {
+                "name": "Maruška Nguyenová",
+                "img": "nguyen",
+                "text": "Vietnamská komunita šije zdarma roušky pro nemocnice.",
+                "yesanswer": "Pošta je může zdarma rozesílat.",
+                "noanswer": "Fajn!",
+                "yeseffect": "n-a",
+                "noeffect": "n-a",
+                "yesvalues": "-5,0,0,5",
+                "novalues": "-5,0,0,0"
             },
             {
                 "name": "MUDr. Rýmula",
@@ -402,9 +380,9 @@
             {
                 "name": "Jana Zdravá",
                 "img": "zdrava",
-                "text": "Mohli bysme s kolegy v naší nemocnici zatancovat Corona virus dance, nasdílet to na Facebook a připomenout lidem, co je potřeba dodržovat.",
-                "yesanswer": "Jasně, zatancujem, zazpíváme, nasdílíme a za pár let se z nás třeba taky stanou ministři!",
-                "noanswer": "To je trapas, nic se točit nebude. Zpátky k pacientům!",
+                "text": "Mohli bysme s kolegy v naší nemocnici zatancovat Coronavirus dance a připomenout lidem, co je potřeba dodržovat.",
+                "yesanswer": "Jen do toho, třeba se z vás taky jednou stanou ministři.",
+                "noanswer": "Trapárna. Zpátky k pacientům!",
                 "yeseffect": "n-a",
                 "noeffect": "n-a",
                 "yesvalues": "0,0,0,5",
@@ -420,6 +398,17 @@
                 "noeffect": "n-a",
                 "yesvalues": "10,5,10,10",
                 "novalues": "-5,-10,5,-10"
+            },
+            {
+                "name": "MUDr. Rýmula",
+                "img": "rymula",
+                "text": "Lidé by měli žít v malých komunitách. Styk v rámci maximálně tří rodin.",
+                "yesanswer": "Můžeme to zkusit",
+                "noanswer": "Ne, to je hrozná blbost",
+                "yeseffect": "Týden se stýkáš jen s Vojtíkem a Rýmulou. Rychle měníš názor.",
+                "noeffect": "n-a",
+                "yesvalues": "-5,-20,0,-20",
+                "novalues": "0,0,0,20"
             },
             {
                 "name": "MUDr. Rýmula",
@@ -470,6 +459,17 @@
             {
                 "name": "Alfons Vojtík",
                 "img": "vojtik",
+                "text": "Koukej jakou jsem si ušil sexy roušku!",
+                "yesanswer": "Nádhera!",
+                "noanswer": "Odpal!",
+                "yeseffect": "n-a",
+                "noeffect": "n-a",
+                "yesvalues": "-5,0,0,0",
+                "novalues": "0,0,0,5"
+            },
+            {
+                "name": "Alfons Vojtík",
+                "img": "vojtik",
                 "text": "Situace je kritická, musím přednést motivační projev k národu.",
                 "yesanswer": "Chystejte kamery!",
                 "noanswer": "Ježiš jen to ne",
@@ -477,17 +477,6 @@
                 "noeffect": "Novináři se ptají, kde jsou v těžkých dobách státníci.",
                 "yesvalues": "0,25,0,-25",
                 "novalues": "0,10,0,-10"
-            },
-            {
-                "name": "Andrej Bakšiš",
-                "img": "bures",
-                "text": "Státní rozpočet má hroznou sekeru. Asi zvýším DPH na 30 %.",
-                "yesanswer": "OK",
-                "noanswer": "Snižte výdaje na zbytečnosti!",
-                "yeseffect": "Lidé omezili nákupy, stát má ještě nižší příjmy a vyšší sekeru.",
-                "noeffect": "Bakšiš snížil důchody. Dotace velkým holdingům zůstaly netknuty.",
-                "yesvalues": "0,0,-20,-20",
-                "novalues": "0,0,-15,-15"
             },
             {
                 "name": "Andrej Bakšiš",
@@ -512,6 +501,17 @@
                 "novalues": "0,-25,0,10"
             },
             {
+                "name": "Andrej Bakšiš",
+                "img": "bures",
+                "text": "Státní rozpočet má hroznou sekeru. Asi zvýším DPH na 30 %.",
+                "yesanswer": "OK",
+                "noanswer": "Snižte výdaje na zbytečnosti!",
+                "yeseffect": "Lidé omezili nákupy, stát má ještě nižší příjmy a vyšší sekeru.",
+                "noeffect": "Bakšiš snížil důchody. Dotace velkým holdingům zůstaly netknuty.",
+                "yesvalues": "0,0,-20,-20",
+                "novalues": "0,0,-15,-15"
+            },
+            {
                 "name": "Eman",
                 "img": "eman",
                 "text": "Brbly žbluňk bum milý pane redaktore.",
@@ -521,17 +521,6 @@
                 "noeffect": "n-a",
                 "yesvalues": "0,0,5,0",
                 "novalues": "0,5,0,0"
-            },
-            {
-                "name": "Honza Nguyen",
-                "img": "nguyen",
-                "text": "Z Vietnamu jsme přinesli super hack - plexisklo oddělující prodavače a zákazníka.",
-                "yesanswer": "Skvělý nápad, volejte ČT ať se to popularizuje!",
-                "noanswer": "To mi přijde už moc paranoidní.",
-                "yeseffect": "n-a",
-                "noeffect": "n-a",
-                "yesvalues": "-10,0,0,0",
-                "novalues": "-5,0,0,-10"
             },
             {
                 "name": "Jana Zdravá",
@@ -558,12 +547,23 @@
                 "name": "Josef Čupránek",
                 "img": "cupranek",
                 "text": "Hospodští potřebují vytočit sudy. Navrhujeme, že si lidé můžou přijít s petkami a vlastními sklenicemi.",
-                "yesanswer": "Táto, vezmi sklenici a jdeme! Na zdraví!",
-                "noanswer": "Ještě máme zásoby v plechovkách, venku je nebezpečno",
+                "yesanswer": "Na zdraví!",
+                "noanswer": "Ne",
                 "yeseffect": "n-a",
                 "noeffect": "n-a",
                 "yesvalues": "15,5,5,5",
                 "novalues": "-5,-15,-15,-15"
+            },
+            {
+                "name": "Maruška Nguyenová",
+                "img": "nguyen",
+                "text": "Z Vietnamu jsme přinesli super hack - plexisklo oddělující prodavače a zákazníka.",
+                "yesanswer": "Skvělý nápad, volejte ČT ať se to popularizuje!",
+                "noanswer": "To mi přijde už moc paranoidní.",
+                "yeseffect": "n-a",
+                "noeffect": "n-a",
+                "yesvalues": "-10,0,0,0",
+                "novalues": "-5,0,0,-10"
             },
             {
                 "name": "MUDr. Rýmula",
@@ -603,32 +603,32 @@
     "events": [
         {
             "turn": 4,
-            "values": "5,0,0,5",
-            "name": "1. special event",
+            "values": "5,0,0,-5",
+            "name": "Tik ťak",
             "img": "netahlo",
-            "text": "Special, special, special, special."
+            "text": "Uběhl měsíc. Šíření viru se zatím nepodařilo zastavit, lidé začínají být neklidní."
         },
         {
             "turn": 8,
-            "values": "5,0,0,5",
-            "name": "2. specialek",
+            "values": "5,0,0,-5",
+            "name": "Tik ťak II",
             "img": "netahlo",
-            "text": "popisk"
+            "text": "Od začátku epidemie uběhly již dva měsíce. Tiskoví mluvčí uklidňují lid tím, že jinde je hůř."
         },
         {
             "turn": 12,
-            "values": "5,7,-7,5",
-            "name": "3. specialek",
+            "values": "5,-7,-7,-5",
+            "name": "Tik ťak III",
             "img": "netahlo",
-            "text": "Tady uz to hejbe s vicema hodnotama"
+            "text": "Tři měsíce od začátku epidemie! Lidé jsou již unavení a ztrácí disciplínu v protiepidemických opatřeních. Do Vltavy se vrátili delfíni."
         },
         {
             "turn": 16,
             "everyNextTurn": true,
             "values": "5,-5,-5,-5",
-            "name": "16.+ special",
+            "name": "Tik ťak IV",
             "img": "netahlo",
-            "text": "Jde do tuhyho, takhle se to zacne srat kazdy kolo"
+            "text": "Před čtyřmi měsíci začala epidemie. Lid si zvyká na nový normál, staré pořádky se převrací. Děti se bez školy lépe učí. Na Václaváku přestávají prodávat klobásy. Stropnický jásá, že nikdo nejel na letní dovolenou. Nad Prahou létá v noci UFO (anebo lidi jen moc chlastaj?)."
         }
     ]
 }
