@@ -7,7 +7,6 @@ export default function ScreenStory({ route }) {
       <h1>{route.title}</h1>
 
       <Link className="navi__link" href="/">
-        {" "}
         Zpět do menu
       </Link>
     </div>

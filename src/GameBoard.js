@@ -70,7 +70,7 @@ export default function GameBoard({ G, ctx, moves, events, reset }) {
         {ctx.gameover && (
           <div className="board__buttons">
             <button className="button__default" onClick={handleNewGame}>
-              Nový hra
+              Nová hra
             </button>
             <Link href="/">Zpet na menu</Link>
           </div>
