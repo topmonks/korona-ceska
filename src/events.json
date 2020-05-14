@@ -15,17 +15,6 @@
     {
         "name": "Alfons Vojtík",
         "img": "vojtik",
-        "text": "Koukej jakou jsem si ušil sexy roušku!",
-        "yesanswer": "Nádhera!",
-        "noanswer": "Odpal!",
-        "yeseffect": "n-a",
-        "noeffect": "n-a",
-        "yesvalues": "-5,0,0,0",
-        "novalues": "0,0,0,5"
-    },
-    {
-        "name": "Alfons Vojtík",
-        "img": "vojtik",
         "text": "TEST Naučil jsem se stepovat. Chceš vidět?",
         "yesanswer": "Ano",
         "noanswer": "Ne",
@@ -467,7 +456,18 @@
     }
     ],
     "negative": [
-      {
+        {
+            "name": "Alfons Vojtík",
+            "img": "vojtik",
+            "text": "Koukej jakou jsem si ušil sexy roušku!",
+            "yesanswer": "Nádhera!",
+            "noanswer": "Odpal!",
+            "yeseffect": "n-a",
+            "noeffect": "n-a",
+            "yesvalues": "-5,0,0,0",
+            "novalues": "0,0,0,5"
+        },
+        {
         "name": "Alfons Vojtík",
         "img": "vojtik",
         "text": "Situace je kritická, musím přednést motivační projev k národu.",
