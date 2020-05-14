@@ -1,59 +1,47 @@
-import { Client } from 'boardgame.io/react';
-import { KoronaCeska } from './Game';
-import Board from './Board';
+import React from "react";
+import { mount, route } from "navi";
+import { Router, View, NotFoundBoundary, Link } from "react-navi";
 
-const App = Client({
-  // A game object.
-  game: KoronaCeska,
+const screen = (name) => require(`./Screen${name}`).default;
 
-  // The number of players.
-  numPlayers: 1,
-
-  // Your React component representing the game board.
-  // The props that this component receives are listed below.
-  board: Board,
-
-  // Optional: React component to display while the client
-  // is in the "loading" state prior to the initial sync
-  // with the game master. Relevant only in multiplayer mode.
-  // If this is not provided, the client displays "connecting...".
-  // loading: LoadingComponent,
-
-  // Set this to one of the following to enable multiplayer:
-  //
-  // SocketIO
-  //   Implementation that talks to a remote server using socket.io.
-  //
-  //   How to import:
-  //     import { SocketIO } from 'boardgame.io/multiplayer'
-  //
-  //   Arguments:
-  //     Object with 2 parameters
-  //        1. 'socketOpts' options to pass directly to socket.io client.
-  //        2. 'server' specifies the server location in the format: [http[s]://]hostname[:port];
-  //            defaults to current page host.
-  //
-  // Local
-  //   Special local mode that uses an in-memory game master. Useful
-  //   for testing multiplayer interactions locally without having to
-  //   connect to a server.
-  //
-  //   How to import:
-  //     import { Local } from 'boardgame.io/multiplayer'
-  //
-  // Additionally, you can write your own transport implementation.
-  // See `src/client/client.js` for details.
-  multiplayer: false,
-
-  // Set to false to disable the Debug UI.
-  debug: true
-
-  // An optional Redux store enhancer.
-  // This is useful for augmenting the Redux store
-  // for purposes of debugging or simply intercepting
-  // events in order to kick off other side-effects in
-  // response to moves.
-  // enhancer: applyMiddleware(your_middleware),
+const routes = mount({
+  "/": route({
+    title: "Menu",
+    view: screen("Menu"),
+  }),
+  "/hra": route({
+    title: "Hra",
+    view: screen("Game"),
+  }),
+  "/help": route({
+    title: "Help",
+    view: screen("Help"),
+  }),
+  "/story": route({
+    title: "Příběh",
+    view: screen("Story"),
+  }),
+  "/credits": route({
+    title: "Credits",
+    view: screen("Credits"),
+  }),
 });
 
-export default App;
+const renderNotFound = () => (
+  <div>
+    <h1>404</h1>
+    <Link href="/">Zpet na menu</Link>
+  </div>
+);
+
+export default function Applicaiton() {
+  return (
+    <Router routes={routes}>
+      <NotFoundBoundary render={renderNotFound}>
+        <div className="app">
+          <View />
+        </div>
+      </NotFoundBoundary>
+    </Router>
+  );
+}

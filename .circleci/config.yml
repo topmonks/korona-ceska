@@ -1,79 +1,185 @@
 version: 2.1
 
 orbs:
-  aws-s3: circleci/aws-s3@1.0.11
+  aws-cli: circleci/aws-cli@0.1.19
+  aws-s3: circleci/aws-s3@1.0.12
+  pulumi: pulumi/pulumi@2.0.0
 
-base: &base
-  docker:
-    - image: circleci/node:12
-jobs:
-  install_dependencies:
-    <<: *base
-    working_directory: ~/project
+executors:
+  nodejs:
+    docker:
+      - image: circleci/node:12
+
+commands:
+  invalidate_cloudfront:
+    parameters:
+      distribution_id:
+        type: string
+      paths:
+        type: string
     steps:
-      - checkout:
-          path: ~/project
-      - attach_workspace:
-          at: ~/project
+      - run:
+          name: Invalidate Cloudfront distribution
+          command: |
+            aws configure set preview.cloudfront true
+            aws cloudfront create-invalidation --distribution-id=<< parameters.distribution_id >> --paths=<< parameters.paths >>
+  install_dependencies:
+    parameters:
+      path:
+        type: string
+        default: .
+      before_save_cache:
+        type: steps
+        default: []
+      production:
+        type: boolean
+        default: false
+    steps:
       - restore_cache:
-          key: 'dependency-cache-{{ checksum "package-lock.json" }}'
-      - run: 'npm install'
+          keys:
+            - v2-dependencies-<< parameters.path >>-{{ checksum "<< parameters.path >>/package-lock.json" }}
+      - run:
+          name: Install npm deps [<< parameters.path >>]
+          working_directory: ./<< parameters.path >>
+          command: npm install <<# parameters.production >>--production<</ parameters.production >> --no-progress
+      - steps: << parameters.before_save_cache >>
       - save_cache:
-          key: 'dependency-cache-{{ checksum "package-lock.json" }}'
           paths:
             - node_modules
-      - persist_to_workspace:
-          root: ~/project
-          paths: node_modules
+          key: v2-dependencies-<< parameters.path >>-{{ checksum "<< parameters.path >>/package-lock.json" }}
+  provision_stack:
+    parameters:
+      stack_name:
+        type: string
+      path:
+        type: string
+    steps:
+      - pulumi/login:
+          cloud-url: s3://pulumi.tmcloud.io
+      - install_dependencies:
+          path: << parameters.path >>
+          production: true
+      - pulumi/update:
+          stack: << parameters.stack_name >>
+          working_directory: ./<< parameters.path >>
+  pre_provision_stack:
+    parameters:
+      stack_name:
+        type: string
+      path:
+        type: string
+    steps:
+      - pulumi/login:
+          cloud-url: s3://pulumi.tmcloud.io
+      - install_dependencies:
+          path: << parameters.path >>
+          production: true
+      - pulumi/preview:
+          stack: << parameters.stack_name >>
+          working_directory: ./<< parameters.path >>
+  read_deployment_envs:
+    parameters:
+      stack:
+        type: string
+      working_directory:
+        type: string
+        default: .
+    steps:
+      - pulumi/login:
+          cloud-url: s3://pulumi.tmcloud.io
+      - pulumi/stack_output:
+          stack: << parameters.stack >>
+          property_name: s3BucketUri
+          env_var: AWS_S3_BUCKET
+          working_directory: << parameters.working_directory >>
+      - pulumi/stack_output:
+          stack: << parameters.stack >>
+          property_name: cloudFrontId
+          env_var: AWS_CLOUDFRONT_DISTRIBUTION_ID
+          working_directory: << parameters.working_directory >>
+  deploy_website:
+    parameters:
+      site_dist:
+        type: string
+      bucket_uri:
+        type: string
+        default: "${AWS_S3_BUCKET}"
+      distribution_id:
+        type: string
+        default: "${AWS_CLOUDFRONT_DISTRIBUTION_ID}"
+      paths:
+        type: string
+        default: "/*"
+    steps:
+      - aws-s3/sync:
+          from: << parameters.site_dist >>
+          to: << parameters.bucket_uri >>
+      - invalidate_cloudfront:
+          distribution_id: << parameters.distribution_id >>
+          paths: << parameters.paths >>
+jobs:
+  provisioning_test:
+    executor: nodejs
+    steps:
+      - checkout
+      - pre_provision_stack:
+          stack_name: korona-ceska-prod
+          path: infra
+  provisioning:
+    executor: nodejs
+    steps:
+      - checkout
+      - provision_stack:
+          stack_name: korona-ceska-prod
+          path: infra
+
   test_pwa:
-    <<: *base
-    working_directory: ~/project
+    executor: nodejs
     steps:
-      - checkout:
-          path: ~/project
-      - attach_workspace:
-          at: ~/project
-      - run: 'npm test'
+      - checkout
+      - install_dependencies
+      - run: npm test
   build_pwa:
-    <<: *base
-    working_directory: ~/project
+    executor: nodejs
     steps:
-      - checkout:
-          path: ~/project
-      - attach_workspace:
-          at: ~/project
-      - run: 'npm run build'
+      - checkout
+      - install_dependencies
+      - run: npm run build
       - persist_to_workspace:
           root: ~/project
           paths: build
   deploy_pwa:
-    docker:
-      - image: 'circleci/python:2.7'
-    working_directory: ~/project
+    executor: aws-cli/default
     steps:
       - checkout
       - attach_workspace:
           at: ~/project
-      - aws-s3/sync:
-          from: build
-          to: 's3://koronaceska'
-          arguments: "--acl public-read \\\n--cache-control \"max-age=86400\"\n"
-          overwrite: true
+      - read_deployment_envs:
+          stack: korona-ceska-prod
+          working_directory: infra
+      - deploy_website:
+          site_dist: build
 workflows:
   version: 2
   build_and_test_and_deploy:
     jobs:
-      - install_dependencies
-      - test_pwa:
-          requires:
-            - install_dependencies
-      - build_pwa:
-          requires:
-            - install_dependencies
+      - provisioning_test:
+          context: org-global
+          filters:
+            branches:
+              ignore: master
+      - provisioning:
+          context: org-global
+          filters:
+            branches:
+              only:
+                - master
+      - test_pwa
+      - build_pwa
       - deploy_pwa:
           context: org-global
           requires:
-            - install_dependencies
+            - provisioning
             - build_pwa
             - test_pwa
           filters:
