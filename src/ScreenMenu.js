@@ -3,19 +3,19 @@ import { Link } from "react-navi";
 
 export default function ScreenMenu({ route }) {
   return (
-    <div className="container">
+    <div className="screen screen--menu">
       <h1>Korona Česká</h1>
-      <div className="mainMenu">
-        <Link className="mainMenu__link" href="/hra">
+      <div className="main-menu">
+        <Link className="main-menu__link" href="/hra">
           <b>Nová hra</b>
         </Link>
-        <Link className="mainMenu__link" href="/story">
+        <Link className="main-menu__link" href="/story">
           Příběh
         </Link>
-        <Link className="mainMenu__link" href="/help">
+        <Link className="main-menu__link" href="/help">
           Nápověda
         </Link>
-        <Link className="mainMenu__link" href="/credits">
+        <Link className="main-menu__link" href="/credits">
           O autorech
         </Link>
       </div>

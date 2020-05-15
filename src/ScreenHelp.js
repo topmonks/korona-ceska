@@ -7,7 +7,7 @@ import iconTrust from "./icons/trust.svg";
 
 export default function ScreenHelp({ route }) {
   return (
-    <div className="container">
+    <div className="screen screen--help">
       <h1>Nápověda</h1>
       <p className="help__text">
         Cílem hry je dostat epidemii pod kontrolu, aniž by došlo k devastaci

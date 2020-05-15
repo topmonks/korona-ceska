@@ -11,6 +11,7 @@ const getIll = (img) => {
 export default function Illustration({ img }) {
   return (
     <img
+      className="illustration"
       style={{ height: "320px" }}
       alt="person"
       src={getIll(img)}

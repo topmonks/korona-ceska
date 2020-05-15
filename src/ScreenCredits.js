@@ -4,9 +4,9 @@ import logo from "./icons/tm-logo.svg";
 
 export default function ScreenCredits({ route }) {
   return (
-    <div className="container">
+    <div className="screen screen--credits">
       <h1>O autorech</h1>
-      <div className="autori__logo">
+      <div className="screen--credits__logo">
         Hru vytvořila společnost{" "}
         <a
           href="https://www.topmonks.com"
@@ -14,7 +14,7 @@ export default function ScreenCredits({ route }) {
           rel="noopener noreferrer"
         >
           TopMonks s.r.o.
-        </a>{" "}
+        </a>
         <div>
           <a
             href="https://www.topmonks.com"
@@ -25,25 +25,24 @@ export default function ScreenCredits({ route }) {
           </a>
         </div>
       </div>
-      <div className="autori__row">
+      <div className="screen--credits__row">
         <h3>Dan Hromada</h3>
         <p>Programování</p>
       </div>
-      <div className="autori__row">
+      <div className="screen--credits__row">
         <h3>Radek Jakl</h3>
         <p>Ilustrace, grafika a herní design</p>
       </div>
-      <div className="autori__row">
+      <div className="screen--credits__row">
         <h3>Josef Tětek</h3>
         <p>Herní design a texty</p>
       </div>
-      <div className="autori__row">
+      <div className="screen--credits__row">
         <h3>Lea Petrášová</h3>
         <p>Projekt, texty</p>
       </div>
 
-      <Link className="navi__link autori__button" href="/">
-        {" "}
+      <Link className="navi__link screen--credits__button" href="/">
         Zpět do menu
       </Link>
     </div>

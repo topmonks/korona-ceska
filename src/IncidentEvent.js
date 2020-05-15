@@ -10,7 +10,7 @@ const getIll = (img) => {
 
 export default function IncidentEvent({ name, img, text }) {
   return (
-    <div className="incident">
+    <div className="incident-event">
       <h4>{name}</h4>
       <p>{text}</p>
       <img style={{ height: 72, width: 72 }} alt="person" src={getIll(img)} />

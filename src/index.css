@@ -7,39 +7,58 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* https://twitter.com/AllThingsSmitty/status/1254151507412496384 */
+html, body, #root {
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
+  height: 100%;
+}
+
+body {
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-color: rgb(73, 71, 124);
+}
+
+body.game-phase-neutral {
+  background-image: linear-gradient(
+      -180deg,
+      rgba(73, 71, 124, 1) 0%,
+      rgba(77, 100, 138, 1) 100%
+    );
+}
+body.game-phase-positive {
+  background-image: linear-gradient(
+      -180deg,
+      rgba(73, 71, 124, 1) 0%,
+      #ADCEE1 100%
+    );
+}
+body.game-phase-negative {
+  background-image: linear-gradient(
+      -180deg,
+      rgba(73, 71, 124, 1) 0%,
+      #CD2500 100%
+    );
+}
+
+
 .app {
-  background: rgb(73, 71, 124);
-  background: linear-gradient(
-    180deg,
-    rgba(73, 71, 124, 1) 0%,
-    rgba(77, 100, 138, 1) 100%
-  );
+  overflow-y: auto;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
-  min-height: 100vh;
+  height: 100%;
 }
 
-.container {
-  display: flex;
-  flex: 1;
-  max-width: 640px;
-  flex-direction: column;
-  padding: 32px 0px;
-}
-
-.gameContainer {
-  max-width: 640px;
-}
-
-.mainMenu {
+.main-menu {
   display: flex;
   flex: 1;
   flex-direction: column;
 }
 
-.mainMenu__link {
+.main-menu__link {
   background-color: rgb(210, 1, 1);
   flex: 1;
   padding: 16px;
@@ -48,7 +67,7 @@ body {
   margin-bottom: 16px;
 }
 
-.mainMenu__link:hover {
+.main-menu__link:hover {
   background-color: #ff0000;
   box-shadow: 0px 8px 16px -10px rgb(255, 0, 0);
 }
@@ -76,33 +95,30 @@ a {
   text-decoration: none;
 }
 
-.board {
+.card {
+  /*  */
+}
+.card__event-answer {
+  font-style: italic;
+  color: #555;
+  font-size: 18px;
+  line-height: 27px;
+}
+
+.game-board {
   text-align: center;
   font-size: 24px;
   color: white;
   display: flex;
+  flex-direction: column;
   justify-content: center;
 }
-.board--neutral {
-  background: rgb(73, 71, 124);
-  background: linear-gradient(
-    180deg,
-    rgba(73, 71, 124, 1) 0%,
-    rgba(77, 100, 138, 1) 100%
-  );
-}
-.board--positive {
-  background-color: green;
-}
-.board--negative {
-  background-color: red;
-}
 
-.board__attributes {
+.game-board__attributes {
   flex: 0 1 auto;
 }
 
-.board__card {
+.game-board__card {
   background-color: #fff;
   box-shadow: 0px 8px 16px -10px rgba(61, 61, 82, 1);
 
@@ -116,7 +132,7 @@ a {
   flex: 1 1 auto;
 }
 
-.board__buttons {
+.game-board__buttons {
   display: flex;
   flex: 0 1 200px;
   flex-direction: column;
@@ -154,49 +170,42 @@ a {
   color: #fff;
 }
 
-.eventAnswer {
-  font-style: italic;
-  color: #555;
-  font-size: 18px;
-  line-height: 27px;
-}
-
-.help__grid {
+.screen--help__grid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   padding-top: 32px;
   padding-bottom: 32px;
 }
 
-.help__grid div {
+.screen--help__grid div {
   padding: 32px;
   color: white;
 }
 
-.help__text {
+.screen--help__text {
   color: white;
   line-height: 24px;
 }
 
-.autori__logo {
+.screen--credits__logo {
   margin-bottom: 64px;
   margin-top: 32px;
   color: white;
 }
 
-.autori__logo a {
+.screen--credits__logo a {
   text-decoration: underline;
 }
 
-.autori__row {
+.screen--credits__row {
   color: white;
   margin-bottom: 24px;
 }
 
-.autori__row h3 {
+.screen--credits__row h3 {
   margin: 0px;
 }
 
-.autori__button {
+.screen--credits__button {
   margin-top: 64px;
 }

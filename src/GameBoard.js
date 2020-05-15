@@ -28,54 +28,50 @@ export default function GameBoard({ G, ctx, moves, events, reset }) {
   );
 
   return (
-    <div className={`board board--${mood}`}>
-      <div className="gameContainer">
-        <div className="board__attributes">
-          <p>
-            <small>{ctx.turn}. kolo</small> = {JSON.stringify(values)}
-          </p>
-        </div>
-
-        {ctx.gameover && (
-          <div className="board__gameover">
-            {win && <h1>Si vyhral</h1>}
-            {loose && <h1>Si prohral na {loose}. hodnote</h1>}
-            {draw && <h1>Ti dosly karty z {mood} balicku</h1>}
-          </div>
-        )}
-
-        {card && (
-          <div
-            className={`board__card ${incident ? "board__card--incident" : ""}`}
-          >
-            <Card {...{ card, answer, incident }} />
-          </div>
-        )}
-
-        {!ctx.gameover && (
-          <div className="board__buttons">
-            {answer === null && (
-              <>
-                {answerButton(true)}
-                {answerButton(false)}
-              </>
-            )}
-            {answer !== null && (
-              <button className="button__default" onClick={handleContinue}>
-                Pokračovat
-              </button>
-            )}
-          </div>
-        )}
-        {ctx.gameover && (
-          <div className="board__buttons">
-            <button className="button__default" onClick={handleNewGame}>
-              Nová hra
-            </button>
-            <Link href="/">Zpet na menu</Link>
-          </div>
-        )}
+    <div className={`game-board game-board--${mood}`}>
+      <div className="game-board__attributes">
+        <p>
+          <small>{ctx.turn}. kolo</small> = {JSON.stringify(values)}
+        </p>
       </div>
+
+      {ctx.gameover && (
+        <div className="game-board__gameover">
+          {win && <h1>Si vyhral</h1>}
+          {loose && <h1>Si prohral na {loose}. hodnote</h1>}
+          {draw && <h1>Ti dosly karty z {mood} balicku</h1>}
+        </div>
+      )}
+
+      {card && (
+        <div className={`game-board__card ${incident ? "game-board__card--incident" : ""}`}>
+          <Card {...{ card, answer, incident }} />
+        </div>
+      )}
+
+      {!ctx.gameover && (
+        <div className="game-board__buttons">
+          {answer === null && (
+            <>
+              {answerButton(true)}
+              {answerButton(false)}
+            </>
+          )}
+          {answer !== null && (
+            <button className="button__default" onClick={handleContinue}>
+              Pokračovat
+            </button>
+          )}
+        </div>
+      )}
+      {ctx.gameover && (
+        <div className="game-board__buttons">
+          <button className="button__default" onClick={handleNewGame}>
+            Nová hra
+            </button>
+          <Link href="/">Zpet na menu</Link>
+        </div>
+      )}
     </div>
   );
 }
