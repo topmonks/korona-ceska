@@ -2,6 +2,8 @@ import React, { useMemo } from "react";
 import Card from "./Card";
 import { getAnswerCardField, calculateMood } from "./library";
 import { Link } from "react-navi";
+import GameStory from "./GameStory";
+import GameIncident from "./GameIncident";
 
 export default function GameBoard({ G, ctx, moves, events, reset }) {
   const { values, card, answer, incident } = G;
@@ -10,7 +12,7 @@ export default function GameBoard({ G, ctx, moves, events, reset }) {
   const { loose, win, draw } = ctx.gameover || {};
 
   const handleAnswer = (answer = false) => () => {
-    moves.answer(answer);
+    moves.MakeAnswer(answer);
   };
 
   const handleContinue = () => {
@@ -34,6 +36,21 @@ export default function GameBoard({ G, ctx, moves, events, reset }) {
           <small>{ctx.turn}. kolo</small> = {JSON.stringify(values)}
         </p>
       </div>
+
+      {ctx.phase === 'newbie' && (
+        <GameStory
+          onFinish={moves.FinishTutorial}
+        />
+      )}
+
+
+      {ctx.phase === 'incident' && (
+        <GameIncident
+          {...incident}
+          onConfirm={moves.MakeAcknowledge}
+        />
+      )}
+
 
       {ctx.gameover && (
         <div className="game-board__gameover">
@@ -114,12 +131,8 @@ export default function GameBoard({ G, ctx, moves, events, reset }) {
       )}
 
       {card && (
-        <div
-          className={`game-board__card ${
-            incident ? "game-board__card--incident" : ""
-          }`}
-        >
-          <Card {...{ card, answer, incident }} />
+        <div className="game-board__card">
+          <Card {...{ card, answer }} />
         </div>
       )}
 
@@ -138,11 +151,10 @@ export default function GameBoard({ G, ctx, moves, events, reset }) {
           )}
         </div>
       )}
+
       {ctx.gameover && (
         <div className="game-board__buttons">
-          <button className="button__default" onClick={handleNewGame}>
-            Nová hra
-          </button>
+          <button className="button__default" onClick={handleNewGame}>Nová hra</button>
           <Link href="/">Zpet na menu</Link>
         </div>
       )}

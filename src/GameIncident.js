@@ -8,12 +8,17 @@ const getIll = (img) => {
   }
 };
 
-export default function IncidentEvent({ name, img, text }) {
+export default function IncidentEvent({ name, img, text, onConfirm }) {
+  const handleConfirm = event => {
+    event.preventDefault();
+    setImmediate(onConfirm);
+  }
   return (
-    <div className="incident-event">
+    <div className="game-incident">
       <h4>{name}</h4>
       <p>{text}</p>
       <img style={{ height: 72, width: 72 }} alt="person" src={getIll(img)} />
+      <button onClick={handleConfirm}>OK, co se da delat</button>
     </div>
   );
 }

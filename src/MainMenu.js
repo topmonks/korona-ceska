@@ -1,8 +1,6 @@
 import React from "react";
 import { Link } from "react-navi";
 
-
-
 export default function MainMenu() {
   return (
     <div className="main-menu">

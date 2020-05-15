@@ -211,3 +211,19 @@ a {
 .screen--credits__button {
   margin-top: 64px;
 }
+
+
+.game-story,
+.game-incident {
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+}
+.game-story .react-swipeable-view-container {
+  height: 100%;
+}
+
+.game-incident {
+  background-color: #ADCEE1;
+}

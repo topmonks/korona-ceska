@@ -33,24 +33,16 @@ export default {
   },
 
 
-  moves: {
-    // the only move player can actually do
-    answer: (G, ctx, answer) => {
-      G.values = calculateValues(G.values, G.card, answer, G.incident);
-
-      if (hasAnswerCardField(G.card, answer, 'effect')) {
-        G.answer = answer;
-        // turn will be ended in the Board
-      } else {
-        ctx.events.endTurn();
-      }
-    }
-  },
+  moves: { MakeAnswer },
 
   turn: {
-    order: TurnOrder.CONTINUE,
+    order: TurnOrder.RESET,
     onBegin: (G, ctx) => { // for some reason is it called twioce fot the very first turn
-      G.incident = calculateIncidentEvent(EVENT_CARDS, ctx.turn);
+      const incident = calculateIncidentEvent(EVENT_CARDS, ctx.turn);
+      if (incident) {
+        ctx.events.setPhase('incident');
+        G.incident = incident;
+      }
 
       if (!G.card) {
         const mood = calculateMood(G.values);
@@ -60,7 +52,21 @@ export default {
     onEnd: (G, ctx) => {
       G.card = null;
       G.answer = null;
-      G.incident = null;
+    },
+  },
+
+  phases: {
+    newbie: {
+      start: true,
+      next: 'play',
+      moves: { FinishTutorial }
+    },
+    play: {
+      moves: { MakeAnswer }
+    },
+    incident: {
+      moves: { MakeAcknowledge },
+      next: 'play',
     },
   },
 
@@ -73,11 +79,6 @@ export default {
     if (!zdravi) return { loose: 2 };
     if (!ekonomika) return { loose: 3 };
     if (!duvera) return { loose: 4 };
-
-    const mood = calculateMood(G.values);
-    if (G.decks[mood].length === 0) {
-      return { draw: true };
-    }
   },
 
   onEnd: (G, ctx) => {
@@ -88,15 +89,51 @@ export default {
     enumerate: (G, ctx) => {
       const moves = [];
 
-      if (G.answer === null && G.card) {
-        moves.push({ move: 'answer', args: [true] });
-        moves.push({ move: 'answer', args: [false] });
-      } else if (!ctx.gameover) {
-        moves.push({ event: 'endTurn' });
+      switch (ctx.phase) {
+        case 'newbie': {
+          moves.push({ move: 'FinishTutorial' });
+          break;
+        }
+        case 'play': {
+          if (G.answer === null) {
+            moves.push({ move: 'MakeAnswer', args: [true] });
+            moves.push({ move: 'MakeAnswer', args: [false] });
+          } else {
+            moves.push({ move: 'endTurn' });
+
+          }
+          break;
+        }
+        case 'incident': {
+          moves.push({ move: 'MakeAcknowledge' });
+          break;
+        }
+        default: {
+        }
       }
 
       return moves;
-    },
+    }
   }
-
 }
+
+function FinishTutorial(G, ctx) {
+  ctx.events.endPhase();
+  console.log(ctx)
+}
+
+function MakeAnswer(G, ctx, answer) {
+  G.values = calculateValues(G.values, G.card, answer, G.incident);
+
+  if (hasAnswerCardField(G.card, answer, 'effect')) {
+    G.answer = answer;
+    // turn will be ended in the Board
+  } else {
+    ctx.events.endTurn();
+  }
+}
+
+function MakeAcknowledge(G, ctx) {
+  ctx.events.endPhase();
+}
+
