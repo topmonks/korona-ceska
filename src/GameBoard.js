@@ -53,13 +53,13 @@ export default function GameBoard({ G, ctx, moves, events, reset }) {
             <div>
               <h1>Epidemie se vymkla z rukou</h1>
               <p>
-                Počty nakažených a zesnulých rostou exponenciálním tempem (tj.
-                kurevsky rychle). Vojtík rezignoval, Rýmula někam zmizel, Jana
-                Zdravá už dva týdny nevystrčila nos z nemocnice, Věra Pohlová se
-                taky už podezřele dlouho neukázala v Albertu. Možná přijde
-                kolektivní imunita, možná vědci vyvinou vakcínu či levný a
-                rychlý způsob léčby; možná nastává éra jak z filmu Dvanáct opic.
-                Jisté je pouze to, že jsi selhal.{" "}
+                Počty nakažených a zesnulých rostou exponenciálním tempem.
+                Vojtík rezignoval, Rýmula někam zmizel, Jana Zdravá už dva týdny
+                nevystrčila nos z nemocnice, Věra Pohlová se taky už podezřele
+                dlouho neukázala v Albertu. Možná přijde kolektivní imunita,
+                možná vědci vyvinou vakcínu či levný a rychlý způsob léčby;
+                možná nastává éra jak z filmu Dvanáct opic. Jisté je pouze to,
+                že jsi selhal.{" "}
               </p>
             </div>
           )}
