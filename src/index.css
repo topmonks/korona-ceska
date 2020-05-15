@@ -8,7 +8,7 @@ body {
 }
 
 /* https://twitter.com/AllThingsSmitty/status/1254151507412496384 */
-html, body, #root {
+html, body, #root, .app {
   min-height: 100vh;
   min-height: -webkit-fill-available;
   height: 100%;
@@ -42,14 +42,10 @@ body.game-phase-negative {
     );
 }
 
-
 .app {
   overflow-y: auto;
   display: flex;
   justify-content: center;
-  align-items: center;
-  text-align: center;
-  height: 100%;
 }
 
 .main-menu {
@@ -97,6 +93,7 @@ a {
 
 .card {
   /*  */
+  max-width: 90vw;
 }
 .card__event-answer {
   font-style: italic;
@@ -104,6 +101,10 @@ a {
   font-size: 18px;
   line-height: 27px;
 }
+
+
+/* boardgame.io game board container */
+.bgio-client, .game-board { height: 100%; }
 
 .game-board {
   text-align: center;
