@@ -238,7 +238,7 @@ export function getCertificate(domain: string) {
   });
 
   const certificate = new aws.acm.Certificate(
-    "certificate",
+    `${parentDomain}-certifikate`,
     {
       domainName: `*.${parentDomain}`,
       subjectAlternativeNames: [parentDomain],
@@ -266,7 +266,7 @@ export function getCertificate(domain: string) {
   );
 
   const certificateValidation = new aws.acm.CertificateValidation(
-    "certificateValidation",
+    `${parentDomain}-certificate-validation`,
     {
       certificateArn: certificate.arn,
       validationRecordFqdns: [certificateValidationDomain.fqdn],
@@ -385,6 +385,33 @@ export class WebSite extends pulumi.ComponentResource {
     website.registerOutputs(outputs);
     return website;
   }
+
+  static createRedirect(
+    domain: string,
+    settings: RedirectWebSiteSettings,
+    opts?: pulumi.ComponentResourceOptions
+  ): WebSite {
+    const bucketSettings = {
+      website: {
+        redirectAllRequestsTo: settings.target
+      }
+    };
+    const website = new WebSite(domain, { bucket: bucketSettings }, opts);
+    const bucket = (website.contentBucket = createBucket(
+      website,
+      domain,
+      bucketSettings
+    ));
+    website.contentBucketPolicy = createBucketPolicy(website, domain, bucket);
+    const cdn = website.cdn = createCloudFront(website, domain, bucket, false);
+    website.dnsRecord = createAliasRecord(
+      website,
+      domain,
+      cdn,
+      bucket.bucketDomainName
+    );
+    return website;
+  }
 }
 
 interface WebSiteSettings {
@@ -393,6 +420,10 @@ interface WebSiteSettings {
   cdn?: DisableSetting;
   dns?: DisableSetting;
   "lh-token"?: string;
+}
+
+interface RedirectWebSiteSettings {
+  target: string
 }
 
 interface DisableSetting {
