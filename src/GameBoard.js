@@ -29,7 +29,7 @@ export default function GameBoard({ G, ctx, moves, events, reset, stage }) {
 
   const answerButton = (answer, title) => (
     <button className="button__answer" onClick={handleAnswer(answer)}>
-      {getAnswerCardField(card, answer, "answer") || title}
+      {answer === Answers.CONTINUE ? title : getAnswerCardField(card, answer, "answer") || title}
     </button>
   );
 
