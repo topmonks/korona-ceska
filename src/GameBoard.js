@@ -4,6 +4,7 @@ import { getAnswerCardField, calculateMood, isIncidentCard, hasYesNoAnswer } fro
 import { Link } from "react-navi";
 import GameOver from "./GameOver";
 import { Answers } from "./GameKorona";
+import GameValues from "./GameValues";
 
 
 export default function GameBoard({ G, ctx, moves, events, reset, stage }) {
@@ -37,9 +38,7 @@ export default function GameBoard({ G, ctx, moves, events, reset, stage }) {
   return (
     <div className={`game-board game-board--${mood}`}>
       <div className="game-board__header">
-        <p>
-          <small>{ctx.turn}. kolo</small> = {JSON.stringify(values)}
-        </p>
+        <GameValues turn={ctx.turn} values={values} />
       </div>
 
       {ctx.gameover && (
