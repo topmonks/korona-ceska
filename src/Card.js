@@ -8,7 +8,9 @@ export default function Card({ card, answer }) {
       <div className="card">
         <h3 className="card__name">{card.name}</h3>
         <p className="card__text">{card.text}</p>
-        <Illustration img={card.img} />
+        <div className="card__img">
+          <Illustration img={card.img} />
+        </div>
       </div>
     );
   }

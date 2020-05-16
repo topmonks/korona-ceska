@@ -29,14 +29,14 @@ export default function GameBoard({ G, ctx, moves, events, reset, stage }) {
 
   const answerButton = (answer, title) => (
     <button className="button__answer" onClick={handleAnswer(answer)}>
-      {title || getAnswerCardField(card, answer, "answer")}
+      {getAnswerCardField(card, answer, "answer") || title}
     </button>
   );
 
 
   return (
     <div className={`game-board game-board--${mood}`}>
-      <div className="game-board__attributes">
+      <div className="game-board__header">
         <p>
           <small>{ctx.turn}. kolo</small> = {JSON.stringify(values)}
         </p>
@@ -57,8 +57,8 @@ export default function GameBoard({ G, ctx, moves, events, reset, stage }) {
         {isIncidentCard(card) && answerButton(Answers.OK, "OK")}
         {answer === null && hasYesNoAnswer(card) && (
           <>
-            {answerButton(Answers.YES)}
-            {answerButton(Answers.NO)}
+            {answerButton(Answers.YES, "Ano")}
+            {answerButton(Answers.NO, "Ne")}
           </>
         )}
         {effect && answerButton(Answers.CONTINUE, 'Pokračovat')}

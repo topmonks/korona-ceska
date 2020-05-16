@@ -92,52 +92,38 @@ a {
   text-decoration: none;
 }
 
-.card {
-  width: 480px;
-}
-.card__event-answer {
-  font-style: italic;
-  color: #555;
-  font-size: 18px;
-  line-height: 27px;
-}
 
 
 /* boardgame.io game board container */
-.bgio-client, .game-board { height: 100%; }
+.bgio-client {  }
 
 .game-board {
+  height: 100vh;
+  width: 480px;
+  max-width: 94vw;
+  box-sizing: border-box;
+
   text-align: center;
   font-size: 24px;
   color: white;
   display: flex;
   flex-direction: column;
-  justify-content: center;
 }
 
-.game-board__attributes {
-  flex: 0 1 auto;
+.game-board__header {
+  max-height: 76px
 }
 
 .game-board__card {
-  background-color: #fff;
-  box-shadow: 0px 8px 16px -10px rgba(61, 61, 82, 1);
-
-  color: #333;
-  font-size: 18px;
-
-  border-radius: 4px;
-  padding: 16px;
-  margin: 64px 0px;
-  text-align: center;
-  flex: 1 1 auto;
+  flex: 1;
+  display: flex;
+  align-items: center;
 }
 
 .game-board__buttons {
   display: flex;
-  flex: 0 1 200px;
   flex-direction: column;
-  margin: 0px 16px;
+  margin-top: 16px;
 }
 
 .button__answer {
@@ -212,17 +198,57 @@ a {
 }
 
 
-.game-story,
-.game-incident {
-  position: absolute;
-  top: 0; right: 0; bottom: 0; left: 0;
-  width: 100vw;
-  height: 100vh;
+
+
+/*
+ * src/Card.js
+ */
+.card {
+  width: 100%;
+  background-color: #fff;
+  box-shadow: 0px 8px 16px -10px rgba(61, 61, 82, 1);
+
+  color: #333;
+  font-size: 18px;
+
+  border-radius: 4px;
+  padding: 16px;
+  text-align: center;
 }
-.game-story .react-swipeable-view-container {
-  height: 100%;
+.card__img {
+position: relative;
+}
+.card__event-answer {
+  font-style: italic;
+  color: #555;
+  font-size: 18px;
+  line-height: 27px;
 }
 
-.game-incident {
-  background-color: #ADCEE1;
+/*
+ * src/Illustration.js
+ */
+.illustration {
+  max-width: 100%;
+  height: 162px;
+}
+@media screen and (min-height: 667px) {
+  .illustration {
+    height: 222px;
+  }
+}
+@media screen and (min-height: 736px) {
+  .illustration {
+    height: 262px;
+  }
+}
+@media screen and (min-height: 812px) {
+  .illustration {
+    height: 360px;
+  }
+}
+@media screen and (min-height: 1024px) {
+  .illustration {
+    height: 420px;
+  }
 }
