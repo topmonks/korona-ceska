@@ -1,5 +1,5 @@
 import React from "react";
-import { mount, route } from "navi";
+import { mount, route, redirect } from "navi";
 import { Router, View, NotFoundBoundary, Link } from "react-navi";
 
 const screen = (name) => require(`./Screen${name}`).default;
@@ -21,6 +21,7 @@ const routes = mount({
     title: "Credits",
     view: screen("Credits"),
   }),
+  "index.html": redirect("/")
 });
 
 const renderNotFound = () => (
