@@ -22,7 +22,6 @@ export default {
   setup: (ctx, setupData) => {
     const values = [50, 50, 50, 50]; // Initial values
     // const player = { id: 0, name: 'Player' }
-
     const decks = {
       neutral: ctx.random.Shuffle(CARD_DECKS.neutral),
       positive: ctx.random.Shuffle(CARD_DECKS.positive),
@@ -39,6 +38,16 @@ export default {
     }
   },
 
+
+  phases: {
+    // newbie: {
+    //   start: true,
+    //   next: 'play',
+    // },
+    play: {
+      start: true
+    },
+  },
 
   moves: { MakeAnswer },
 
@@ -65,16 +74,7 @@ export default {
       G.answer = null;
       G.effect = null;
     },
-  },
 
-  phases: {
-    // newbie: {
-    //   start: true,
-    //   next: 'play',
-    // },
-    play: {
-      start: true
-    },
   },
 
   endIf: (G, ctx) => {

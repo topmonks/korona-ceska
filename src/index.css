@@ -20,21 +20,21 @@ body {
   background-color: rgb(73, 71, 124);
 }
 
-body.game-phase-neutral {
+body.game-mood-neutral {
   background-image: linear-gradient(
       -180deg,
       rgba(73, 71, 124, 1) 0%,
       rgba(77, 100, 138, 1) 100%
     );
 }
-body.game-phase-positive {
+body.game-mood-positive {
   background-image: linear-gradient(
       -180deg,
       rgba(73, 71, 124, 1) 0%,
       #ADCEE1 100%
     );
 }
-body.game-phase-negative {
+body.game-mood-negative {
   background-image: linear-gradient(
       -180deg,
       rgba(73, 71, 124, 1) 0%,
