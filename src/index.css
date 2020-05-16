@@ -8,10 +8,9 @@ body {
 }
 
 /* https://twitter.com/AllThingsSmitty/status/1254151507412496384 */
-html, body, #root, .app {
-  min-height: 100vh;
-  min-height: -webkit-fill-available;
-  height: 100%;
+html, body, #root, .app, .bgio-client {
+  max-height: 100vh;
+  max-height: -webkit-fill-available;
 }
 
 body {
@@ -99,6 +98,7 @@ a {
 
 .game-board {
   height: 100vh;
+  height: -webkit-fill-available;
   width: 480px;
   max-width: 94vw;
   box-sizing: border-box;
