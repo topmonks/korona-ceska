@@ -624,7 +624,7 @@
         },
         {
             "turn": 16,
-            "everyNextTurn": true,
+            "last": true,
             "values": "5,-5,-5,-5",
             "name": "Tik ťak IV",
             "img": "netahlo",

@@ -93,8 +93,7 @@ a {
 }
 
 .card {
-  /*  */
-  max-width: 90vw;
+  width: 480px;
 }
 .card__event-answer {
   font-style: italic;

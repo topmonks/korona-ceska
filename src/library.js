@@ -8,16 +8,25 @@ export function calculateMood([epidemie]) {
   }
 }
 
-export function calculateIncidentEvent(cards = [], turn = 0) {
+export function getIncidentCard(cards = [], turn = 0) {
   if (typeof turn === "string") turn = parseInt(turn, 10);
   const card = cards.find(
-    (event) =>
-      event.turn === turn || (event.everyNextTurn && turn >= event.turn)
+    (event) => event.turn === turn || (event.last && turn >= event.turn)
   );
-  return card || null;
+  return card
 }
 
-export function calculateValues(values, card, answer, incident) {
+export function hasYesNoAnswer(card) {
+  if (!card) return false;
+  return card.yesvalues && card.novalues;
+}
+
+export function isIncidentCard(card) {
+  if (!card) return false;
+  return card.values && !hasYesNoAnswer(hasYesNoAnswer);
+}
+
+export function calculateValues(values, card, answer) {
   const applicate = (value, index) => values[index] + value;
   const calculate = (updates) => updates.split(",").map(Number).map(applicate);
 
@@ -32,11 +41,6 @@ export function calculateValues(values, card, answer, incident) {
   } else {
     throw new Error("Nečekaná odpověď.");
   }
-
-  if (incident) {
-    results = calculateValues(results, incident);
-  }
-
   return results.map((value) => {
     if (value > 100) return 100;
     if (value < 0) return 0;
@@ -62,11 +66,11 @@ export function calculateCardsCounts({
 
 export function getAnswerCardField(card, answer, field) {
   const value = (card || {})[(answer ? "yes" : "no") + field];
-  if (!value) return null;
+  if (!value || value === 'n-a') return undefined;
   return value;
 }
 
 export function hasAnswerCardField(card, answer, field) {
   const value = getAnswerCardField(card, answer, field);
-  return value && value !== "n-a";
+  return value && true;
 }

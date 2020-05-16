@@ -17,10 +17,6 @@ const routes = mount({
     title: "Help",
     view: screen("Help"),
   }),
-  "/story": route({
-    title: "Příběh",
-    view: screen("Story"),
-  }),
   "/credits": route({
     title: "Credits",
     view: screen("Credits"),

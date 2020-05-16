@@ -1,30 +1,27 @@
 import React, { useMemo } from "react";
 import Card from "./Card";
-import { getAnswerCardField, calculateMood } from "./library";
+import { getAnswerCardField, calculateMood, isIncidentCard, hasYesNoAnswer } from "./library";
 import { Link } from "react-navi";
-import GameStory from "./GameStory";
-import GameIncident from "./GameIncident";
 import GameOver from "./GameOver";
+import { Answers } from "./GameKorona";
+
 
 export default function GameBoard({ G, ctx, moves, events, reset }) {
-  const { values, card, answer, incident } = G;
+  const { values, card, answer, effect } = G;
   const mood = useMemo(() => calculateMood(values), [values]);
 
-  const handleAnswer = (answer = false) => () => {
+  const handleAnswer = (answer) => (event) => {
+    event.preventDefault();
     moves.MakeAnswer(answer);
-  };
-
-  const handleContinue = () => {
-    events.endTurn();
   };
 
   const handleNewGame = () => {
     reset();
   };
 
-  const answerButton = (answer) => (
+  const answerButton = (answer, title) => (
     <button className="button__answer" onClick={handleAnswer(answer)}>
-      {getAnswerCardField(card, answer, "answer")}
+      {title || getAnswerCardField(card, answer, "answer")}
     </button>
   );
 
@@ -35,21 +32,6 @@ export default function GameBoard({ G, ctx, moves, events, reset }) {
           <small>{ctx.turn}. kolo</small> = {JSON.stringify(values)}
         </p>
       </div>
-
-      {ctx.phase === 'newbie' && (
-        <GameStory
-          onFinish={moves.FinishTutorial}
-        />
-      )}
-
-
-      {ctx.phase === 'incident' && (
-        <GameIncident
-          {...incident}
-          onConfirm={moves.MakeAcknowledge}
-        />
-      )}
-
 
       {ctx.gameover && (
         <div className="game-board__gameover">
@@ -62,22 +44,18 @@ export default function GameBoard({ G, ctx, moves, events, reset }) {
           <Card {...{ card, answer }} />
         </div>
       )}
+      <div className="game-board__buttons">
+        {isIncidentCard(card) && answerButton(Answers.OK, "OK")}
+        {answer === null && hasYesNoAnswer(card) && (
+          <>
+            {answerButton(Answers.YES)}
+            {answerButton(Answers.NO)}
+          </>
+        )}
+        {effect && answerButton(Answers.CONTINUE, 'Pokračovat')}
+      </div>
 
-      {!ctx.gameover && (
-        <div className="game-board__buttons">
-          {answer === null && (
-            <>
-              {answerButton(true)}
-              {answerButton(false)}
-            </>
-          )}
-          {answer !== null && (
-            <button className="button__default" onClick={handleContinue}>
-              Pokračovat
-            </button>
-          )}
-        </div>
-      )}
+
 
       {ctx.gameover && (
         <div className="game-board__buttons">

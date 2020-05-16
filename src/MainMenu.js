@@ -7,11 +7,8 @@ export default function MainMenu() {
       <Link className="main-menu__link" href="/hra">
         <b>Nová hra</b>
       </Link>
-      <Link className="main-menu__link" href="/story">
-        Příběh
-      </Link>
       <Link className="main-menu__link" href="/help">
-        pověda
+        Nápověda
       </Link>
       <Link className="main-menu__link" href="/credits">
         O autorech

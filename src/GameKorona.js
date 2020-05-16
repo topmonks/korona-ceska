@@ -1,9 +1,16 @@
 import { TurnOrder } from 'boardgame.io/core';
-import { calculateMood, calculateValues, hasAnswerCardField, calculateIncidentEvent, } from './library';
+import { calculateMood, calculateValues, getIncidentCard, hasYesNoAnswer, isIncidentCard, getAnswerCardField, } from './library';
 
 const { cards: CARD_DECKS, events: EVENT_CARDS } = require('./events.json');
 
-
+export const Answers = {
+  YES: true,
+  NO: false,
+  OK: 'OK',
+  CONTINUE: 'CONTINUE',
+  NEXT: 'NEXT',
+  SKIP: 'SKIP',
+}
 
 export default {
   name: 'korona-ceska',
@@ -28,7 +35,7 @@ export default {
       decks,
       card: null,
       answer: null,
-      incident: null,
+      effect: null,
     }
   },
 
@@ -36,12 +43,16 @@ export default {
   moves: { MakeAnswer },
 
   turn: {
-    order: TurnOrder.RESET,
-    onBegin: (G, ctx) => { // for some reason is it called twioce fot the very first turn
-      const incident = calculateIncidentEvent(EVENT_CARDS, ctx.turn);
-      if (incident) {
-        ctx.events.setPhase('incident');
-        G.incident = incident;
+    order: TurnOrder.CONTINUE,
+    onBegin: (G, ctx) => {
+      if (G.card) return; // for some reason is it called twioce fot the very first turn
+
+      const incident = getIncidentCard(EVENT_CARDS, ctx.turn);
+
+      if (incident?.last && incident.turn < ctx.turn) {
+        G.values = calculateValues(G.values, incident)
+      } else if (incident) {
+        G.card = incident;
       }
 
       if (!G.card) {
@@ -52,21 +63,17 @@ export default {
     onEnd: (G, ctx) => {
       G.card = null;
       G.answer = null;
+      G.effect = null;
     },
   },
 
   phases: {
-    newbie: {
-      start: true,
-      next: 'play',
-      moves: { FinishTutorial }
-    },
+    // newbie: {
+    //   start: true,
+    //   next: 'play',
+    // },
     play: {
-      moves: { MakeAnswer }
-    },
-    incident: {
-      moves: { MakeAcknowledge },
-      next: 'play',
+      start: true
     },
   },
 
@@ -83,33 +90,26 @@ export default {
 
   onEnd: (G, ctx) => {
     G.card = null;
+    G.answer = null;
+    G.effect = null;
   },
 
   ai: {
     enumerate: (G, ctx) => {
       const moves = [];
 
-      switch (ctx.phase) {
-        case 'newbie': {
-          moves.push({ move: 'FinishTutorial' });
-          break;
-        }
-        case 'play': {
-          if (G.answer === null) {
-            moves.push({ move: 'MakeAnswer', args: [true] });
-            moves.push({ move: 'MakeAnswer', args: [false] });
-          } else {
-            moves.push({ move: 'endTurn' });
-
-          }
-          break;
-        }
-        case 'incident': {
-          moves.push({ move: 'MakeAcknowledge' });
-          break;
-        }
-        default: {
-        }
+      if (ctx.phase === 'newbie') {
+        moves.push({ move: 'MakeAnswer', args: [Answers.NEXT] });
+        moves.push({ move: 'MakeAnswer', args: [Answers.SKIP] });
+      } else if (G.answer === null && hasYesNoAnswer(G.card)) {
+        moves.push({ move: 'MakeAnswer', args: [true] });
+        moves.push({ move: 'MakeAnswer', args: [false] });
+      } else if (G.effect) {
+        moves.push({ move: 'MakeAnswer', args: [Answers.CONTINUE] });
+      } else if (isIncidentCard(G.card)) {
+        moves.push({ move: 'MakeAnswer', args: [Answers.OK] });
+      } else {
+        moves.push({ move: 'endTurn' });
       }
 
       return moves;
@@ -117,23 +117,22 @@ export default {
   }
 }
 
-function FinishTutorial(G, ctx) {
-  ctx.events.endPhase();
-  console.log(ctx)
-}
-
 function MakeAnswer(G, ctx, answer) {
-  G.values = calculateValues(G.values, G.card, answer, G.incident);
 
-  if (hasAnswerCardField(G.card, answer, 'effect')) {
-    G.answer = answer;
-    // turn will be ended in the Board
-  } else {
+  if (answer === Answers.CONTINUE) {
+    ctx.events.endTurn();
+    return;
+  }
+
+
+  if (hasYesNoAnswer(G.card) || isIncidentCard(G.card)) {
+    G.values = calculateValues(G.values, G.card, answer);
+  }
+
+  G.answer = answer;
+  G.effect = getAnswerCardField(G.card, answer, 'effect') || null;
+
+  if (!G.effect) {
     ctx.events.endTurn();
   }
 }
-
-function MakeAcknowledge(G, ctx) {
-  ctx.events.endPhase();
-}
-
