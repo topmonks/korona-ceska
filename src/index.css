@@ -8,7 +8,8 @@ body {
 }
 
 /* https://twitter.com/AllThingsSmitty/status/1254151507412496384 */
-html, body, #root, .app, .bgio-client {
+html, body, #root, .app {
+  height: 100vh;
   max-height: 100vh;
   max-height: -webkit-fill-available;
 }
