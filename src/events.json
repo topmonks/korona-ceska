@@ -609,21 +609,21 @@
             "text": "Uběhl měsíc. Šíření viru se zatím nepodařilo zastavit, lidé začínají být neklidní."
         },
         {
-            "turn": 8,
+            "turn": 9,
             "values": "5,0,0,-5",
             "name": "Tik ťak II",
             "img": "netahlo",
             "text": "Od začátku epidemie uběhly již dva měsíce. Tiskoví mluvčí uklidňují lid tím, že jinde je hůř."
         },
         {
-            "turn": 12,
+            "turn": 13,
             "values": "5,-7,-7,-5",
             "name": "Tik ťak III",
             "img": "netahlo",
             "text": "Tři měsíce od začátku epidemie! Lidé jsou již unavení a ztrácí disciplínu v protiepidemických opatřeních. Do Vltavy se vrátili delfíni."
         },
         {
-            "turn": 16,
+            "turn": 17,
             "last": true,
             "values": "5,-5,-5,-5",
             "name": "Tik ťak IV",
