@@ -13,7 +13,7 @@ export default Client({
   board: Board,
 
   // multiplayer: false, ALERT: this broked turrn orders
-  debug: true,
+  debug: false,
 
   // An optional Redux store enhancer.
   // This is useful for augmenting the Redux store
