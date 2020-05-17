@@ -269,3 +269,16 @@ position: relative;
     height: 420px;
   }
 }
+
+
+/*
+ * src/ValueIcon.js
+ */
+svg.value-icon {
+  margin: 8px;
+}
+@media screen and (min-height: 736px) {
+  svg.value-icon {
+    margin: 16px;
+  }
+}

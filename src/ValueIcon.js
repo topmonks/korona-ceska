@@ -23,8 +23,7 @@ export default function ValueIcon({ value, type, large = false, small = false, c
       version="1.1"
       x="0px" y="0px" viewBox="0 0 24 24"
       width={size} height={size}
-      className={className}
-      style={{ margin: 16 }}
+      className={`value-icon ${className}`}
     >
       <g>
         <defs>
