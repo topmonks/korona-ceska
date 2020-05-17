@@ -12,7 +12,7 @@ export default function Card({ card, answer }) {
         <p className="card__text">{card.text}</p>
         {!isIncident && (
           <div className="card__img">
-            <Illustration img={card.img} />
+            <Illustration key={card.text} img={card.img} />
           </div>
         )}
       </div>
