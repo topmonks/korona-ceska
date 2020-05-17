@@ -44,7 +44,6 @@ body.game-mood-negative {
 }
 
 .app {
-  overflow-y: auto;
   display: flex;
   justify-content: center;
 }
@@ -86,6 +85,23 @@ body.game-mood-negative {
 
 h1 {
   color: white;
+  font-size: 24px;
+}
+body, p {
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+@media screen and (min-height: 736px) {
+
+  h1 {
+    color: white;
+    font-size: 28px;
+  }
+  body, p {
+    font-size: 18px;
+    line-height: 1.4;
+  }
 }
 
 a {
@@ -106,20 +122,19 @@ a {
   box-sizing: border-box;
 
   text-align: center;
-  font-size: 24px;
+
   color: white;
   display: flex;
   flex-direction: column;
 }
 
 .game-board__header {
-
+  min-height: 14vh;
 }
 
 .game-board__card {
   flex: 1;
   display: flex;
-  margin: 16px 0;
 }
 
 .game-board__buttons {
@@ -128,11 +143,14 @@ a {
   margin-top: 16px;
   min-height: 16vh;
 }
+.game-board__buttons button {
+ white-space: normal;
+}
 
 .button__answer {
-  height: 44px;
+  height: auto;
   margin-bottom: 16px;
-  padding: 0px 16px;
+  padding: 4px 16px;
   background-color: rgba(0, 0, 0, 0.5);
   border: none;
   color: #fff;
@@ -143,6 +161,9 @@ a {
 
 .button__answer:hover {
   background-color: rgba(0, 0, 0, 0.3);
+}
+.button__answer:active {
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .button__default {
@@ -226,21 +247,40 @@ a {
   box-shadow: 0px 8px 16px -10px rgba(61, 61, 82, 1);
 
   color: #333;
-  font-size: 18px;
 
   border-radius: 4px;
-  padding: 16px;
+  padding: 18px;
   text-align: center;
+
+  display: flex;
+  flex-direction: column;
+}
+.card--incident,
+.card--effect {
+  align-self: center;
 }
 .card__img {
-position: relative;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.card__event-answer {
+.card__text--effect {
   font-style: italic;
   color: #555;
-  font-size: 18px;
-  line-height: 27px;
 }
+
+.card__name { margin: 0 0 8px 0; font-size: 16px; }
+.card__text { margin: 0; font-size: 14px; }
+@media screen and (min-height: 667px) {
+  .card__name { font-size: 18px; }
+  .card__text { font-size: 16px; }
+}
+@media screen and (min-height: 812px) {
+  .card__name { margin: 8px 0 16px; font-size: 22px; }
+  .card__text { font-size: 18px; }
+}
+
 
 /*
  * src/Illustration.js
@@ -276,9 +316,11 @@ position: relative;
  */
 svg.value-icon {
   margin: 8px;
+  transform: scale(.8);
 }
 @media screen and (min-height: 736px) {
   svg.value-icon {
     margin: 16px;
+    transform: unset;
   }
 }
