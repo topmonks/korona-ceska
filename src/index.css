@@ -162,9 +162,6 @@ a {
 .button__answer:hover {
   background-color: rgba(0, 0, 0, 0.3);
 }
-.button__answer:active {
-  background-color: rgba(0, 0, 0, 0.5);
-}
 
 .button__default {
   height: 44px;
