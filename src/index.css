@@ -113,19 +113,20 @@ a {
 }
 
 .game-board__header {
-  max-height: 76px
+
 }
 
 .game-board__card {
   flex: 1;
   display: flex;
-  align-items: center;
+  margin: 16px 0;
 }
 
 .game-board__buttons {
   display: flex;
   flex-direction: column;
   margin-top: 16px;
+  min-height: 16vh;
 }
 
 .button__answer {
@@ -200,6 +201,20 @@ a {
 }
 
 
+/*
+ * src/GameValues.js
+ */
+.game-values {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+.game-values__virus {
+}
+.game-values__rest {
+  flex: 1;
+  text-align: end;
+}
 
 
 /*
