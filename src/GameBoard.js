@@ -53,24 +53,25 @@ export default function GameBoard({ G, ctx, moves, events, reset, stage }) {
           <Card {...{ card, answer, effect }} week={ctx.turn - 1} />
         </div>
       )}
-      <div className="game-board__buttons">
-        {isIncidentCard(card) && answerButton(Answers.OK, "OK")}
-        {answer === null && hasYesNoAnswer(card) && (
-          <>
-            {answerButton(Answers.YES, "Ano")}
-            {answerButton(Answers.NO, "Ne")}
-          </>
-        )}
-        {effect && answerButton(Answers.CONTINUE, 'Pokračovat')}
-        {ctx.phase === 'newbie' && (
-          <>
-            {answerButton(Answers.NEXT, "Pokračovat")}
-            {answerButton(Answers.SKIP, "Přeskočit příběh", true)}
-          </>
-        )}
-      </div>
 
-
+      {!ctx.gameover && (
+        <div className="game-board__buttons">
+          {isIncidentCard(card) && answerButton(Answers.OK, "OK")}
+          {answer === null && hasYesNoAnswer(card) && (
+            <>
+              {answerButton(Answers.YES, "Ano")}
+              {answerButton(Answers.NO, "Ne")}
+            </>
+          )}
+          {effect && answerButton(Answers.CONTINUE, 'Pokračovat')}
+          {ctx.phase === 'newbie' && (
+            <>
+              {answerButton(Answers.NEXT, "Pokračovat")}
+              {answerButton(Answers.SKIP, "Přeskočit příběh", true)}
+            </>
+          )}
+        </div>
+      )}
 
       {ctx.gameover && (
         <div className="game-board__buttons">

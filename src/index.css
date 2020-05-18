@@ -179,6 +179,7 @@ a {
   flex-direction: column;
   margin-top: 16px;
   min-height: 16vh;
+
 }
 .game-board__buttons button {
   white-space: normal;
