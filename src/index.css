@@ -222,6 +222,10 @@ a {
   color: #fff;
 }
 
+.game-over img {
+  width: 100%;
+}
+
 .screen--help {
   display: flex;
   flex-direction: column;
