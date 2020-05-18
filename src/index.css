@@ -1,12 +1,15 @@
 body {
   margin: 0;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 /* https://twitter.com/AllThingsSmitty/status/1254151507412496384 */
-html, body, #root, .app {
+html,
+body,
+#root,
+.app {
   height: 100vh;
   height: -webkit-fill-available;
   max-height: 100vh;
@@ -21,58 +24,71 @@ body {
 
 body.game-mood-neutral {
   background-image: linear-gradient(
-      -180deg,
-      rgba(73, 71, 124, 1) 0%,
-      rgba(77, 100, 138, 1) 100%
-    );
+    -180deg,
+    rgba(73, 71, 124, 1) 0%,
+    rgba(77, 100, 138, 1) 100%
+  );
 }
 body.game-mood-positive {
   background-image: linear-gradient(
-      -180deg,
-      rgba(73, 71, 124, 1) 0%,
-      #ADCEE1 100%
-    );
+    -180deg,
+    rgba(73, 71, 124, 1) 0%,
+    #adcee1 100%
+  );
 }
 body.game-mood-negative {
   background-image: linear-gradient(
-      -180deg,
-      rgba(73, 71, 124, 1) 0%,
-      #CD2500 100%
-    );
+    -180deg,
+    rgba(73, 71, 124, 1) 0%,
+    #cd2500 100%
+  );
 }
 
-.virus-bg  {
+.virus-bg {
   background: url(/virus-bg.png) no-repeat;
   background-size: cover;
   position: fixed;
   z-index: -1;
 }
 .virus-bg--middle-left {
- width: 78px; height: 78px;
- left: -24px; top: 40vh;
+  width: 78px;
+  height: 78px;
+  left: -24px;
+  top: 40vh;
 }
 .virus-bg--middle-right {
- width: 78px; height: 78px;
- right: -24px; top: 43vh;
+  width: 78px;
+  height: 78px;
+  right: -24px;
+  top: 43vh;
 }
 .virus-bg--bottom-left {
- width: 78px; height: 78px;
- left: -24px; bottom: 10vh;
+  width: 78px;
+  height: 78px;
+  left: -24px;
+  bottom: 10vh;
 }
 .virus-bg--bottom-right {
- width: 148px; height: 148px;
- right: -32px; bottom: -24px;
+  width: 148px;
+  height: 148px;
+  right: -32px;
+  bottom: -24px;
 }
 
 .app {
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 .main-menu {
   display: flex;
   flex: 1;
   flex-direction: column;
+}
+
+.screen--menu {
+  margin: auto;
 }
 
 .main-menu__link {
@@ -108,18 +124,19 @@ h1 {
   color: white;
   font-size: 24px;
 }
-body, p {
+body,
+p {
   font-size: 16px;
   line-height: 1.4;
 }
 
 @media screen and (min-height: 736px) {
-
   h1 {
     color: white;
     font-size: 28px;
   }
-  body, p {
+  body,
+  p {
     font-size: 18px;
     line-height: 1.4;
   }
@@ -130,10 +147,9 @@ a {
   text-decoration: none;
 }
 
-
-
 /* boardgame.io game board container */
-.bgio-client {  }
+.bgio-client {
+}
 
 .game-board {
   height: 100vh;
@@ -165,7 +181,7 @@ a {
   min-height: 16vh;
 }
 .game-board__buttons button {
- white-space: normal;
+  white-space: normal;
 }
 
 .button__answer {
@@ -206,8 +222,16 @@ a {
   color: #fff;
 }
 
+.screen--help {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 .screen--help__grid {
   display: grid;
+  text-align: center;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   padding-top: 32px;
   padding-bottom: 32px;
@@ -221,6 +245,9 @@ a {
 .screen--help__text {
   color: white;
   line-height: 24px;
+  margin: 0px 32px;
+  flex: 1;
+  max-width: 768px;
 }
 
 .screen--credits__logo {
@@ -246,6 +273,13 @@ a {
   margin-top: 64px;
 }
 
+.screen--help__grid {
+  display: grid;
+  text-align: center;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  padding-top: 32px;
+  padding-bottom: 32px;
+}
 
 /*
  * src/GameValues.js
@@ -262,7 +296,16 @@ a {
   text-align: end;
 }
 
-
+/*
+ * src/ScreenHelp.js
+ */
+@media screen and (max-width: 768px) {
+  .screen--help__grid {
+    display: grid;
+    grid-template-columns: 2fr 2fr;
+    padding: 16px;
+  }
+}
 /*
  * src/Card.js
  */
@@ -291,13 +334,15 @@ a {
   justify-content: center;
   align-items: center;
 }
-.card__text { padding: 4px 0 16px }
+.card__text {
+  padding: 4px 0 16px;
+}
 .card__text--effect {
   font-style: italic;
   color: #555;
 }
 
-.card__text--story  {
+.card__text--story {
   color: #555;
   text-align: left;
 }
@@ -310,20 +355,35 @@ a {
   font-size: 14px;
   font-weight: normal;
   position: absolute;
-  top: 0; right: 0;
+  top: 0;
+  right: 0;
 }
 
-.card__name { margin: 0 0 8px 0; font-size: 16px; }
-.card__text { margin: 0; font-size: 14px; }
+.card__name {
+  margin: 0 0 8px 0;
+  font-size: 16px;
+}
+.card__text {
+  margin: 0;
+  font-size: 14px;
+}
 @media screen and (min-height: 667px) and (min-width: 360px) {
-  .card__name { font-size: 18px; }
-  .card__text { font-size: 16px; }
+  .card__name {
+    font-size: 18px;
+  }
+  .card__text {
+    font-size: 16px;
+  }
 }
-@media screen and (min-height: 812px) and (min-width: 360px)  {
-  .card__name { margin: 8px 0 16px; font-size: 22px; }
-  .card__text { font-size: 18px; }
+@media screen and (min-height: 812px) and (min-width: 360px) {
+  .card__name {
+    margin: 8px 0 16px;
+    font-size: 22px;
+  }
+  .card__text {
+    font-size: 18px;
+  }
 }
-
 
 /*
  * src/Illustration.js
@@ -353,15 +413,14 @@ a {
   }
 }
 
-
 /*
  * src/ValueIcon.js
  */
 svg.value-icon {
   margin: 8px;
-  transform: scale(.8);
+  transform: scale(0.8);
 }
-@media screen and (min-width: 480px)  {
+@media screen and (min-width: 480px) {
   svg.value-icon {
     margin: 16px;
     transform: unset;
