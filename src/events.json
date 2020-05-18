@@ -150,7 +150,7 @@
             "text": "Bojim se, že přijdu o práci.",
             "yesanswer": "Neboj, vláda odpustí odvody zaměstnavatelům.",
             "noanswer": "Se stim smiř. ",
-            "yeseffect": "Později vyšlo najevo, že vláda nic neodpustila, firmy musí zaplatit penále za pozdě placené odvody.",
+            "yeseffect": "Později vyšlo najevo, že vláda nic neodpustila, firmy musí zaplatit penále za pozdě placené odvody. Jardu vyhodili z práce a začal si vydělávat jako pouliční polykač ohně.",
             "noeffect": "Jarda si našel novou práci jako zdravotní klaun.",
             "yesvalues": "0,0,-15,-25",
             "novalues": "0,0,5,-15"
