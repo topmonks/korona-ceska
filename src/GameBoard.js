@@ -75,7 +75,7 @@ export default function GameBoard({ G, ctx, moves, events, reset, stage }) {
       {ctx.gameover && (
         <div className="game-board__buttons">
           <button className="button__default" onClick={handleNewGame}>Nová hra</button>
-          <Link href="/">Zpet na menu</Link>
+          <Link href="/">Zpět na menu</Link>
         </div>
       )}
     </div>
