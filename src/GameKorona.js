@@ -144,6 +144,8 @@ function MakeAnswer(G, ctx, answer) {
   if (answer === Answers.OK) {
     const mood = calculateMood(G.values);
     G.card = G.decks[mood].pop();
+    G.answer = null;
+    return;
   }
 
   if (answer === Answers.CONTINUE || !G.effect) {
