@@ -14,7 +14,7 @@ export const Answers = {
 
 export default {
   name: 'korona-ceska',
-  seed: Math.random().toString(), // TODO: Persist till game reset occur (not just page refresh like now)
+  // seed: Math.random().toString(), // TODO: Persist till game reset occur (not just page refresh like now)
 
   // Function that returns the initial value of G.
   // setupData is an optional custom object that is
@@ -29,10 +29,7 @@ export default {
       story: [...STORY_CARDS].reverse()
     }
 
-    // TODO: If yo want to skip for good, add localStorage.setItem to the end of newbie phase
-    if (localStorage.getItem('newbie')) {
-      ctx.events.endPhase();
-    }
+    localStorage.removeItem('newbie'); // fixme
 
     return {
       // player,
@@ -48,7 +45,10 @@ export default {
   phases: {
     newbie: {
       start: true,
-      next: 'play'
+      next: 'play',
+      onBegin: (G, ctx) => {
+        G.card = G.decks.story.pop();
+      },
     },
     play: {
     },
@@ -57,27 +57,21 @@ export default {
   moves: { MakeAnswer },
 
   turn: {
-    order: TurnOrder.CONTINUE,
+    order: TurnOrder.DEFAULT,
     onBegin: (G, ctx) => {
-      if (G.card) return; // for some reason is it called twioce fot the very first turn
-
-      if (ctx.phase === 'newbie') {
-        G.card = G.decks.story.pop();
-        if (!G.card) ctx.events.endPhase();
-        return;
-      }
+      if (ctx.phase === 'newbie') return; // handle in the MakeAnswer
 
       const incident = getIncidentCard(EVENT_CARDS, ctx.turn);
-
       if (incident?.last && incident.turn < ctx.turn) {
         G.values = calculateValues(G.values, incident)
       } else if (incident) {
         G.card = incident;
-      }
-
-      if (!G.card) {
+        G.values = calculateValues(G.values, incident);
+        G.answer = null;
+      } else {
         const mood = calculateMood(G.values);
         G.card = G.decks[mood].pop();
+        G.answer = null;
       }
     },
     onEnd: (G, ctx) => {
@@ -85,7 +79,6 @@ export default {
       G.answer = null;
       G.effect = null;
     },
-
   },
 
   endIf: (G, ctx) => {
@@ -129,26 +122,39 @@ export default {
 }
 
 function MakeAnswer(G, ctx, answer) {
+  G.answer = answer;
+  G.effect = getAnswerCardField(G.card, answer, 'effect') || null;
 
-  if (answer === Answers.CONTINUE) {
+  if (ctx.phase === 'newbie') {
+    if (answer === Answers.NEXT) {
+      if (!G.decks.story.length) {
+        ctx.events.endPhase();
+      } else {
+        G.card = G.decks.story.pop();
+      }
+    }
+    if (answer === Answers.SKIP) {
+      ctx.events.endPhase();
+    }
+    return;
+  }
+
+  if (answer === Answers.OK) {
+    const mood = calculateMood(G.values);
+    G.card = G.decks[mood].pop();
+    G.answer = null;
+    return;
+  }
+
+  if (answer === Answers.CONTINUE || !G.effect) {
     ctx.events.endTurn();
     return;
   }
-
-  if (answer === Answers.SKIP) {
-    ctx.events.endPhase();
-    return;
-  }
-
 
   if (hasYesNoAnswer(G.card) || isIncidentCard(G.card)) {
     G.values = calculateValues(G.values, G.card, answer);
   }
 
-  G.answer = answer;
-  G.effect = getAnswerCardField(G.card, answer, 'effect') || null;
-
-  if (!G.effect) {
-    ctx.events.endTurn();
-  }
 }
+
+

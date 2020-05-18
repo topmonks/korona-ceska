@@ -23,6 +23,7 @@ export default function GameBoard({ G, ctx, moves, events, reset, stage }) {
 
   const handleNewGame = () => {
     reset();
+    setImmediate(events.endPhase)
   };
 
   const answerButton = (answer, title, secondary = false) => (
@@ -50,32 +51,33 @@ export default function GameBoard({ G, ctx, moves, events, reset, stage }) {
 
       {card && (
         <div className="game-board__card">
-          <Card {...{ card, answer }} />
+          <Card {...{ card, answer, effect }} week={ctx.turn - 1} />
         </div>
       )}
-      <div className="game-board__buttons">
-        {isIncidentCard(card) && answerButton(Answers.OK, "OK")}
-        {answer === null && hasYesNoAnswer(card) && (
-          <>
-            {answerButton(Answers.YES, "Ano")}
-            {answerButton(Answers.NO, "Ne")}
-          </>
-        )}
-        {effect && answerButton(Answers.CONTINUE, 'Pokračovat')}
-        {ctx.phase === 'newbie' && (
-          <>
-            {answerButton(Answers.CONTINUE, "Pokračovat")}
-            {answerButton(Answers.SKIP, "Přeskočit příběh", true)}
-          </>
-        )}
-      </div>
 
-
+      {!ctx.gameover && (
+        <div className="game-board__buttons">
+          {isIncidentCard(card) && answerButton(Answers.OK, "OK")}
+          {answer === null && hasYesNoAnswer(card) && (
+            <>
+              {answerButton(Answers.YES, "Ano")}
+              {answerButton(Answers.NO, "Ne")}
+            </>
+          )}
+          {effect && answerButton(Answers.CONTINUE, 'Pokračovat')}
+          {ctx.phase === 'newbie' && (
+            <>
+              {answerButton(Answers.NEXT, "Pokračovat")}
+              {answerButton(Answers.SKIP, "Přeskočit příběh", true)}
+            </>
+          )}
+        </div>
+      )}
 
       {ctx.gameover && (
         <div className="game-board__buttons">
           <button className="button__default" onClick={handleNewGame}>Nová hra</button>
-          <Link href="/">Zpet na menu</Link>
+          <Link href="/">Zpět na menu</Link>
         </div>
       )}
     </div>

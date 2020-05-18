@@ -27,7 +27,7 @@ const routes = mount({
 const renderNotFound = () => (
   <div>
     <h1>404</h1>
-    <Link href="/">Zpet na menu</Link>
+    <Link href="/">Zpět na menu</Link>
   </div>
 );
 

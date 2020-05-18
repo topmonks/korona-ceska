@@ -5,13 +5,15 @@ import ValueIcon from "./ValueIcon";
 export default function ScreenHelp({ route }) {
   return (
     <div className="screen screen--help">
-      <h1>Nápověda</h1>
-      <p className="screen--help__text">
-        Cílem hry je dostat epidemii pod kontrolu, aniž by došlo k devastaci
-        ekonomiky, podlomení zdraví lidu či propadu důvěry ve veřejné instituce
-        na nulu. Hráč musí stlačit ukazatel epidemie na nulovou úroveň a zároveň
-        udržet ostatní ukazatele nad nulou.
-      </p>
+      <div className="screen--help__text">
+        <h1>Nápověda</h1>
+        <p>
+          Cílem hry je dostat epidemii pod kontrolu, aniž by došlo k devastaci
+          ekonomiky, podlomení zdraví lidu či propadu důvěry ve veřejné
+          instituce na nulu. Hráč musí stlačit ukazatel epidemie na nulovou
+          úroveň a zároveň udržet ostatní ukazatele nad nulou.
+        </p>
+      </div>
       <div className="screen--help__grid">
         <div>
           <ValueIcon type="virus" value={72} />

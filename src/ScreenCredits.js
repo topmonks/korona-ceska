@@ -26,16 +26,16 @@ export default function ScreenCredits({ route }) {
         </div>
       </div>
       <div className="screen--credits__row">
-        <h3>Dan Hromada</h3>
-        <p>Programování</p>
-      </div>
-      <div className="screen--credits__row">
         <h3>Radek Jakl</h3>
         <p>Ilustrace, grafika a herní design</p>
       </div>
       <div className="screen--credits__row">
         <h3>Josef Tětek</h3>
         <p>Herní design a texty</p>
+      </div>
+      <div className="screen--credits__row">
+        <h3>Dan Hromada</h3>
+        <p>Programování</p>
       </div>
       <div className="screen--credits__row">
         <h3>Lea Petrášová</h3>
