@@ -178,15 +178,14 @@ a {
   display: flex;
   flex-direction: column;
   margin-top: 16px;
-  min-height: 16vh;
-
+  max-height: 20vh;
 }
 .game-board__buttons button {
   white-space: normal;
 }
 
 .button__answer {
-  height: auto;
+  min-height: 48px;
   margin-bottom: 16px;
   padding: 4px 16px;
   background-color: rgba(0, 0, 0, 0.5);
@@ -305,6 +304,7 @@ a {
   display: flex;
   align-items: center;
   flex-direction: row;
+  max-height: 20vh;
 }
 .game-values__virus {
 }
