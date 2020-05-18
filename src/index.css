@@ -250,6 +250,10 @@ a {
   max-width: 768px;
 }
 
+.screen--credits {
+  text-align: center;
+}
+
 .screen--credits__logo {
   margin-bottom: 64px;
   margin-top: 32px;
@@ -263,14 +267,22 @@ a {
 .screen--credits__row {
   color: white;
   margin-bottom: 24px;
+  font-size: 14px;
 }
 
 .screen--credits__row h3 {
   margin: 0px;
+  font-size: 18px;
+}
+
+.screen--credits__row p {
+  margin: 0px;
+  font-size: 14px;
 }
 
 .screen--credits__button {
   margin-top: 64px;
+  display: block;
 }
 
 .screen--help__grid {
