@@ -14,7 +14,7 @@ export const Answers = {
 
 export default {
   name: 'korona-ceska',
-  seed: Math.random().toString(), // TODO: Persist till game reset occur (not just page refresh like now)
+  // seed: Math.random().toString(), // TODO: Persist till game reset occur (not just page refresh like now)
 
   // Function that returns the initial value of G.
   // setupData is an optional custom object that is
@@ -57,8 +57,9 @@ export default {
   moves: { MakeAnswer },
 
   turn: {
-    order: TurnOrder.CONTINUE,
+    order: TurnOrder.DEFAULT,
     onBegin: (G, ctx) => {
+
       if (G.card) return; // for some reason is it called twioce fot the very first turn
 
       if (ctx.phase === 'newbie') {
@@ -152,3 +153,5 @@ function MakeAnswer(G, ctx, answer) {
     ctx.events.endTurn();
   }
 }
+
+

@@ -35,7 +35,6 @@ export default function GameBoard({ G, ctx, moves, events, reset, stage }) {
     </button>
   );
 
-
   return (
     <div className={`game-board game-board--${mood}`}>
       <div className="game-board__header">
@@ -50,7 +49,7 @@ export default function GameBoard({ G, ctx, moves, events, reset, stage }) {
 
       {card && (
         <div className="game-board__card">
-          <Card {...{ card, answer }} />
+          <Card {...{ card, answer, turn: ctx.turn }} />
         </div>
       )}
       <div className="game-board__buttons">
