@@ -170,9 +170,9 @@
                 "name": "Jarda Netáhlo",
                 "img": "netahlo",
                 "text": "Venku se probouzí jaro. Celej den jsem zavřenej doma, půjdu si zaběhat.",
-                "yesanswer": "Letos můžeš běhat pravidelně a budeš mít imunitu a ještě zhubneš!",
+                "yesanswer": "Jen běž, posílíš imunitu.",
                 "noanswer": "Radši si doma něco upeč, ať si tu karanténu zpříjemníš. ",
-                "yeseffect": "n-a",
+                "yeseffect": "Jarda nešel běhat, ale k venkovnímu výčepu. Pěkně pokecal s kamarády, vyměnili si tipy na seriály a přinesl si domů pěknou opičku s korunkou na hlavě. Příští tři týdny strávil v horečkách a s kašlem.",
                 "noeffect": "Jarda strávil dvě hodiny obcházením obchodů a hledáním droždí.",
                 "yesvalues": "5,15,0,0",
                 "novalues": "-3,-15,-10,0"
