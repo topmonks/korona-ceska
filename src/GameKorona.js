@@ -64,11 +64,13 @@ export default {
         G.values = calculateValues(G.values, incident)
       } else if (incident) {
         G.card = incident;
-        return;
+        G.values = calculateValues(G.values, incident);
+        G.answer = null;
+      } else {
+        const mood = calculateMood(G.values);
+        G.card = G.decks[mood].pop();
+        G.answer = null;
       }
-
-      const mood = calculateMood(G.values);
-      G.card = G.decks[mood].pop();
     },
     onEnd: (G, ctx) => {
       G.card = null;
@@ -133,6 +135,11 @@ function MakeAnswer(G, ctx, answer) {
       ctx.events.endPhase();
     }
     return;
+  }
+
+  if (answer === Answers.OK) {
+    const mood = calculateMood(G.values);
+    G.card = G.decks[mood].pop();
   }
 
   if (answer === Answers.CONTINUE || !G.effect) {

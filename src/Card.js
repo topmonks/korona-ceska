@@ -23,7 +23,7 @@ export default function Card({ card, answer, effect, week }) {
     return null;
   }
 
-  const turnNo = !isStory && !isIncident ? <span>{week}. týden</span> : null;
+  const turnNo = !isStory ? <span>{week}. týden</span> : null;
 
   return (
     <div className={css('card', isIncident && 'card--incident', isStory && 'card--story')}>

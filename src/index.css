@@ -322,6 +322,8 @@ a {
 
   display: flex;
   flex-direction: column;
+
+  position: relative; /* due to absoluted posited week no span  */
 }
 .card--incident,
 .card--effect {
@@ -346,17 +348,16 @@ a {
   color: #555;
   text-align: left;
 }
-
+/*
 .card__name {
-  position: relative;
-}
+} */
 .card__name > span {
-  color: #777;
+  color: #999;
   font-size: 14px;
   font-weight: normal;
   position: absolute;
-  top: 0;
-  right: 0;
+  top: 16px;
+  right: 16px;
 }
 
 .card__name {
