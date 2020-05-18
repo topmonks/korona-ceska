@@ -8,7 +8,6 @@ export default function Card({ card, answer }) {
   const isIncident = useMemo(() => isIncidentCard(card), [card]);
   const isStory = useMemo(() => isStoryCard(card), [card]);
 
-
   if (answer === null) {
     return (
       <div className={css('card', isIncident && 'card--incident', isStory && 'card--story')}>
