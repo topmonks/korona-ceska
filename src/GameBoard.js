@@ -35,6 +35,7 @@ export default function GameBoard({ G, ctx, moves, events, reset, stage }) {
     </button>
   );
 
+
   return (
     <div className={`game-board game-board--${mood}`}>
       <div className="game-board__header">
@@ -49,7 +50,7 @@ export default function GameBoard({ G, ctx, moves, events, reset, stage }) {
 
       {card && (
         <div className="game-board__card">
-          <Card {...{ card, answer, turn: ctx.turn }} />
+          <Card {...{ card, answer, effect }} week={ctx.turn - 1} />
         </div>
       )}
       <div className="game-board__buttons">
@@ -63,7 +64,7 @@ export default function GameBoard({ G, ctx, moves, events, reset, stage }) {
         {effect && answerButton(Answers.CONTINUE, 'Pokračovat')}
         {ctx.phase === 'newbie' && (
           <>
-            {answerButton(Answers.CONTINUE, "Pokračovat")}
+            {answerButton(Answers.NEXT, "Pokračovat")}
             {answerButton(Answers.SKIP, "Přeskočit příběh", true)}
           </>
         )}
