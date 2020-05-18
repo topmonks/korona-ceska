@@ -22,7 +22,9 @@ export default function GameBoard({ G, ctx, moves, events, reset, stage }) {
   };
 
   const handleNewGame = () => {
+    localStorage.setItem('newbie', true);
     reset();
+    window.location.reload(); //  hardcore shorcut, fixme
   };
 
   const answerButton = (answer, title, secondary = false) => (

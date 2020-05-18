@@ -29,6 +29,10 @@ export default {
       story: [...STORY_CARDS].reverse()
     }
 
+    if (localStorage.getItem('newbie')) {
+      ctx.events.endPhase()
+    }
+
     return {
       // player,
       values,
