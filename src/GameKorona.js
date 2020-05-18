@@ -29,9 +29,7 @@ export default {
       story: [...STORY_CARDS].reverse()
     }
 
-    if (localStorage.getItem('newbie')) {
-      ctx.events.endPhase()
-    }
+    localStorage.removeItem('newbie'); // fixme
 
     return {
       // player,
@@ -48,9 +46,9 @@ export default {
     newbie: {
       start: true,
       next: 'play',
-      onBegin: G => {
+      onBegin: (G, ctx) => {
         G.card = G.decks.story.pop();
-      }
+      },
     },
     play: {
     },
