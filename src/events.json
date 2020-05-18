@@ -330,6 +330,17 @@
                 "noeffect": "Věra Pohlová se mračí.",
                 "yesvalues": "20,0,-10,-20",
                 "novalues": "-20,0,5,10"
+            },
+            {
+                "name": "Jana Zdravá",
+                "img": "zdrava",
+                "text": "Nemocnice omezily elektivní procedury. Nemají teď dostatek prostředků na proplácení přesčasů a odměn.",
+                "yesanswer": "Stát hospodařil v předchozích letech s přebytkem, pomůže.",
+                "noanswer": "To je mi líto.",
+                "yeseffect": "Bakšiš na tebe zuřivě mrká. Žádné přebytky přece nejsou!",
+                "noeffect": "n-a",
+                "yesvalues": "0,0,0,-15",
+                "novalues": "0,-15,0,0"
             }
         ],
         "positive": [
@@ -602,17 +613,6 @@
         ]
     },
     "events": [
-        {
-            "name": "Jana Zdravá",
-            "img": "zdrava",
-            "text": "Nemocnice omezily elektivní procedury. Nemají teď dostatek prostředků na proplácení přesčasů a odměn.",
-            "yesanswer": "Stát hospodařil v předchozích letech s přebytkem, pomůže.",
-            "noanswer": "To je mi líto.",
-            "yeseffect": "Bakšiš na tebe zuřivě mrká. Žádné přebytky přece nejsou!",
-            "noeffect": "n-a",
-            "yesvalues": "0,0,0,-15",
-            "novalues": "0,-15,0,0"
-        },
         {
             "name": "Jarda Netáhlo",
             "img": "netahlo",
