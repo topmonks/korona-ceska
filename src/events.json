@@ -634,18 +634,15 @@
     "story": [
         {
             "name": "Korona česká",
-            "img": "intro",
-            "text": "V rozhodnou chvíli se Blaník otevře, rytíři v plné zbroji vyhrnou se z hory a svatý Václav, jeda na bílém koni, je povede na pomoc Čechům. \nJe 1.3.2020 a v českých zemích je ouzko. Šíří se nový vir, v lidu se probouzí obava. Češi jsou schopný národ, ale vládnou mu nemehla. Je zapotřebí, aby zasáhla vyšší moc."
+            "text": "<i>V rozhodnou chvíli se Blaník otevře, rytíři v plné zbroji vyhrnou se z hory a svatý Václav, jeda na bílém koni, je povede na pomoc Čechům.</i><br/><br/>Je 1.3.2020 a v českých zemích je ouzko. Šíří se nový vir, v lidu se probouzí obava. Češi jsou schopný národ, ale vládnou mu nemehla. Je zapotřebí, aby zasáhla vyšší moc."
         },
         {
             "name": "Korona česká",
-            "img": "intro",
-            "text": "Copak se to ozývá zpod Blaníka? Šramot, chrchlot, brblání. \n-Vstávejte chásko jedna, Češi nás potřebují! \n-Ale dej zas pokoj Venco, dyť jsme se tak pěkně zlili medovinkou, teď si ještě pár set let zchrupnem. \n-Tfujtajksl, to jsme se dopracovali. No, uvidím s jakým materiálem tam venku budu pracovat..."
+            "text": "<i>Copak se to ozývá zpod Blaníka? Šramot, chrchlot, brblání.</i> <br/><br/>-Vstávejte chásko jedna, Češi nás potřebují! <br/><br/>-Ale dej zas pokoj Venco, dyť jsme se tak pěkně zlili medovinkou, teď si ještě pár set let zchrupnem. <br/><br/>-Tfujtajksl, to jsme se dopracovali. No, uvidím s jakým materiálem tam venku budu pracovat..."
         },
         {
             "name": "Korona česká",
-            "img": "intro",
-            "text": "Svatý Václav přijíždí národu na pomoc sám. Namísto věrných rytířů se musí spokojit s poradci z řad české vlády a lidu. Ne všichni poradci jsou však nápomocní. Rozhodnutí mají často opačný dopad v různých sektorech. \nLze zvládnout epidemii bez ekonomické devastace, podlomení zdraví lidu a rozkladu důvěry?"
+            "text": "Svatý Václav přijíždí národu na pomoc sám. Namísto věrných rytířů se musí spokojit s poradci z řad české vlády a lidu. Ne všichni poradci jsou však nápomocní. Rozhodnutí mají často opačný dopad v různých sektorech. <br/><br/>Lze zvládnout epidemii bez ekonomické devastace, podlomení zdraví lidu a rozkladu důvěry?"
         }
     ]
 }

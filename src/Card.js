@@ -12,7 +12,7 @@ export default function Card({ card, answer }) {
     return (
       <div className={css('card', isIncident && 'card--incident', isStory && 'card--story')}>
         <h3 className="card__name">{card.name}</h3>
-        <p className={css('card__text', isStory && 'card__text--story')}>{card.text}</p>
+        <p className={css('card__text', isStory && 'card__text--story')} dangerouslySetInnerHTML={{ __html: card.text }} />
         {!isIncident && card.img && (
           <div className="card__img">
             <Illustration key={card.text} img={card.img} />

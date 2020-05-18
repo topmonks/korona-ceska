@@ -293,10 +293,14 @@ a {
   align-items: center;
 }
 .card__text { padding: 4px 0 16px }
-.card__text--effect,
-.card__text--story {
+.card__text--effect {
   font-style: italic;
   color: #555;
+}
+
+.card__text--story  {
+  color: #555;
+  text-align: left;
 }
 
 .card__name { margin: 0 0 8px 0; font-size: 16px; }
