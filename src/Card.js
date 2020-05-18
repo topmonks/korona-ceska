@@ -8,12 +8,12 @@ export default function Card({ card, answer, turn }) {
   const isIncident = useMemo(() => isIncidentCard(card), [card]);
   const isStory = useMemo(() => isStoryCard(card), [card]);
 
-  const turnNo = !isStory && !isIncident ? `${turn}. ` : null;
+  const turnNo = !isStory && !isIncident ? <span>{turn}. týden</span> : null;
 
   if (answer === null) {
     return (
       <div className={css('card', isIncident && 'card--incident', isStory && 'card--story')}>
-        <h3 className="card__name">{turnNo}{card.name}</h3>
+        <h3 className="card__name">{card.name} {turnNo}</h3>
         <p className={css('card__text', isStory && 'card__text--story')} dangerouslySetInnerHTML={{ __html: card.text }} />
         {!isIncident && card.img && (
           <div className="card__img">

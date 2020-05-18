@@ -282,7 +282,8 @@ a {
 }
 .card--incident,
 .card--effect {
-  align-self: center;
+  display: flex;
+  justify-content: center;
 }
 .card__img {
   flex: 1;
@@ -299,6 +300,17 @@ a {
 .card__text--story  {
   color: #555;
   text-align: left;
+}
+
+.card__name {
+  position: relative;
+}
+.card__name > span {
+  color: #777;
+  font-size: 14px;
+  font-weight: normal;
+  position: absolute;
+  top: 0; right: 0;
 }
 
 .card__name { margin: 0 0 8px 0; font-size: 16px; }
