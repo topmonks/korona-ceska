@@ -145,6 +145,17 @@
             "novalues": "-5,0,0,0"
         },
         {
+            "name": "Jana Zdravá",
+            "img": "zdrava",
+            "text": "Nemocnice omezily elektivní procedury. Nemají teď dostatek prostředků na proplácení přesčasů a odměn.",
+            "yesanswer": "Stát hospodařil v předchozích letech s přebytkem, pomůže.",
+            "noanswer": "To je mi líto.",
+            "yeseffect": "Bakšiš na tebe zuřivě mrká. Žádné přebytky přece nejsou!",
+            "noeffect": "n-a",
+            "yesvalues": "0,0,0,-15",
+            "novalues": "0,-15,0,0"
+        },
+        {
             "name": "Jarda Netáhlo",
             "img": "netahlo",
             "text": "Bojim se, že přijdu o práci.",
@@ -154,6 +165,17 @@
             "noeffect": "Jarda si našel novou práci jako zdravotní klaun.",
             "yesvalues": "0,0,-15,-25",
             "novalues": "0,0,5,-15"
+        },
+        {
+            "name": "Jarda Netáhlo",
+            "img": "netahlo",
+            "text": "Dochází nám potraviny, měl bych skočit do supermarketu pro další?",
+            "yesanswer": "Pošli ženu a pak ji zavři do sklepa na 14 dní. Jistota je jistota.",
+            "noanswer": "Nikam nechoď. Z lunchmeatu jsou ty řízky stejně nejlepší!",
+            "yeseffect": "n-a",
+            "noeffect": "n-a",
+            "yesvalues": "5,7,7,-15",
+            "novalues": "-5,-15,0,0"
         },
         {
             "name": "Jarda Netáhlo",
@@ -521,28 +543,6 @@
             "noeffect": "n-a",
             "yesvalues": "0,0,5,0",
             "novalues": "0,5,0,0"
-        },
-        {
-            "name": "Jana Zdravá",
-            "img": "zdrava",
-            "text": "Nemocnice omezily elektivní procedury. Nemají teď dostatek prostředků na proplácení přesčasů a odměn.",
-            "yesanswer": "Stát hospodařil v předchozích letech s přebytkem, pomůže.",
-            "noanswer": "To je mi líto.",
-            "yeseffect": "Bakšiš na tebe zuřivě mrká. Žádné přebytky přece nejsou!",
-            "noeffect": "n-a",
-            "yesvalues": "0,0,0,-15",
-            "novalues": "0,-15,0,0"
-        },
-        {
-            "name": "Jarda Netáhlo",
-            "img": "netahlo",
-            "text": "Dochází nám potraviny, měl bych skočit do supermarketu pro další?",
-            "yesanswer": "Pošli ženu a pak ji zavři do sklepa na 14 dní. Jistota je jistota.",
-            "noanswer": "Nikam nechoď. Z lunchmeatu jsou ty řízky stejně nejlepší!",
-            "yeseffect": "n-a",
-            "noeffect": "n-a",
-            "yesvalues": "5,7,7,-15",
-            "novalues": "-5,-15,0,0"
         },
         {
             "name": "Josef Čupránek",
