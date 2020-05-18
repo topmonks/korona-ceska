@@ -18,7 +18,7 @@ html, body, #root, .app {
 body {
   background-attachment: fixed;
   background-repeat: no-repeat;
-  background-color: rgb(73, 71, 124);
+  background-color: #49477c; /* akkkaa rgb(73, 71, 124); */
 }
 
 body.game-mood-neutral {
