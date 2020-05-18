@@ -152,7 +152,7 @@ a {
 }
 
 .game-board__header {
-  min-height: 14vh;
+  /* min-height: 14vh; */
 }
 
 .game-board__card {
@@ -347,9 +347,16 @@ svg.value-icon {
   margin: 8px;
   transform: scale(.8);
 }
-@media screen and (min-height: 736px) and (min-width: 360px)  {
+@media screen and (min-width: 480px)  {
   svg.value-icon {
     margin: 16px;
     transform: unset;
+  }
+}
+
+@media screen and (min-width: 840px) {
+  svg.value-icon {
+    margin: 24px;
+    transform: scale(1.2);
   }
 }
