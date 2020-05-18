@@ -23,7 +23,11 @@ export function hasYesNoAnswer(card) {
 
 export function isIncidentCard(card) {
   if (!card) return false;
-  return card.values && !hasYesNoAnswer(hasYesNoAnswer);
+  return card.values && !hasYesNoAnswer(card);
+}
+export function isStoryCard(card) {
+  if (!card) return false;
+  return card.text && card.name && !hasYesNoAnswer(card) && !isIncidentCard(card);
 }
 
 export function calculateValues(values, card, answer) {

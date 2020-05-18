@@ -43,6 +43,29 @@ body.game-mood-negative {
     );
 }
 
+.virus-bg  {
+  background: url(/virus-bg.png) no-repeat;
+  background-size: cover;
+  position: fixed;
+  z-index: -1;
+}
+.virus-bg--middle-left {
+ width: 78px; height: 78px;
+ left: -24px; top: 40vh;
+}
+.virus-bg--middle-right {
+ width: 78px; height: 78px;
+ right: -24px; top: 43vh;
+}
+.virus-bg--bottom-left {
+ width: 78px; height: 78px;
+ left: -24px; bottom: 10vh;
+}
+.virus-bg--bottom-right {
+ width: 148px; height: 148px;
+ right: -32px; bottom: -24px;
+}
+
 .app {
   display: flex;
   justify-content: center;
@@ -129,7 +152,7 @@ a {
 }
 
 .game-board__header {
-  min-height: 14vh;
+  /* min-height: 14vh; */
 }
 
 .game-board__card {
@@ -161,6 +184,13 @@ a {
 
 .button__answer:hover {
   background-color: rgba(0, 0, 0, 0.3);
+}
+.button__answer--secondary {
+  background-color: unset;
+}
+.button__answer--secondary:hover {
+  background-color: unset;
+  background-color: rgba(255, 0, 0, 0.2);
 }
 
 .button__default {
@@ -262,18 +292,20 @@ a {
   justify-content: center;
   align-items: center;
 }
-.card__text--effect {
+.card__text { padding: 4px 0 16px }
+.card__text--effect,
+.card__text--story {
   font-style: italic;
   color: #555;
 }
 
 .card__name { margin: 0 0 8px 0; font-size: 16px; }
 .card__text { margin: 0; font-size: 14px; }
-@media screen and (min-height: 667px) {
+@media screen and (min-height: 667px) and (min-width: 360px) {
   .card__name { font-size: 18px; }
   .card__text { font-size: 16px; }
 }
-@media screen and (min-height: 812px) {
+@media screen and (min-height: 812px) and (min-width: 360px)  {
   .card__name { margin: 8px 0 16px; font-size: 22px; }
   .card__text { font-size: 18px; }
 }
@@ -286,19 +318,19 @@ a {
   max-width: 100%;
   height: 162px;
 }
-@media screen and (min-height: 667px) {
+@media screen and (min-height: 667px) and (min-width: 360px) {
   .illustration {
     height: 222px;
   }
 }
-@media screen and (min-height: 736px) {
+@media screen and (min-height: 736px) and (min-width: 360px) {
   .illustration {
     height: 262px;
   }
 }
-@media screen and (min-height: 812px) {
+@media screen and (min-height: 812px) and (min-width: 360px) {
   .illustration {
-    height: 360px;
+    height: 280px;
   }
 }
 @media screen and (min-height: 1024px) {
@@ -315,9 +347,16 @@ svg.value-icon {
   margin: 8px;
   transform: scale(.8);
 }
-@media screen and (min-height: 736px) {
+@media screen and (min-width: 480px)  {
   svg.value-icon {
     margin: 16px;
     transform: unset;
+  }
+}
+
+@media screen and (min-width: 840px) {
+  svg.value-icon {
+    margin: 24px;
+    transform: scale(1.2);
   }
 }

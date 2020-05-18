@@ -28,8 +28,12 @@ export default function GameBoard({ G, ctx, moves, events, reset, stage }) {
     reset();
   };
 
-  const answerButton = (answer, title) => (
-    <button key={`${ctx.turn}-${answer}`} className="button__answer" onClick={handleAnswer(answer)}>
+  const answerButton = (answer, title, secondary = false) => (
+    <button
+      key={`${ctx.turn}-${answer}`}
+      className={`button__answer ${secondary ? 'button__answer--secondary' : ''}`}
+      onClick={handleAnswer(answer)}
+    >
       {answer === Answers.CONTINUE ? title : getAnswerCardField(card, answer, "answer") || title}
     </button>
   );
@@ -61,6 +65,12 @@ export default function GameBoard({ G, ctx, moves, events, reset, stage }) {
           </>
         )}
         {effect && answerButton(Answers.CONTINUE, 'Pokračovat')}
+        {ctx.phase === 'newbie' && (
+          <>
+            {answerButton(Answers.CONTINUE, "Pokračovat")}
+            {answerButton(Answers.SKIP, "Přeskočit příběh", true)}
+          </>
+        )}
       </div>
 
 
