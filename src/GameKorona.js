@@ -1,9 +1,16 @@
 import { TurnOrder } from 'boardgame.io/core';
-import { calculateMood, calculateValues, hasAnswerCardField, calculateIncidentEvent, } from './library';
+import { calculateMood, calculateValues, getIncidentCard, hasYesNoAnswer, isIncidentCard, getAnswerCardField, } from './library';
 
 const { cards: CARD_DECKS, events: EVENT_CARDS } = require('./events.json');
 
-
+export const Answers = {
+  YES: true,
+  NO: false,
+  OK: 'OK',
+  CONTINUE: 'CONTINUE',
+  NEXT: 'NEXT',
+  SKIP: 'SKIP',
+}
 
 export default {
   name: 'korona-ceska',
@@ -15,7 +22,6 @@ export default {
   setup: (ctx, setupData) => {
     const values = [50, 50, 50, 50]; // Initial values
     // const player = { id: 0, name: 'Player' }
-
     const decks = {
       neutral: ctx.random.Shuffle(CARD_DECKS.neutral),
       positive: ctx.random.Shuffle(CARD_DECKS.positive),
@@ -28,29 +34,35 @@ export default {
       decks,
       card: null,
       answer: null,
-      incident: null,
+      effect: null,
     }
   },
 
 
-  moves: {
-    // the only move player can actually do
-    answer: (G, ctx, answer) => {
-      G.values = calculateValues(G.values, G.card, answer, G.incident);
-
-      if (hasAnswerCardField(G.card, answer, 'effect')) {
-        G.answer = answer;
-        // turn will be ended in the Board
-      } else {
-        ctx.events.endTurn();
-      }
-    }
+  phases: {
+    // newbie: {
+    //   start: true,
+    //   next: 'play',
+    // },
+    play: {
+      start: true
+    },
   },
+
+  moves: { MakeAnswer },
 
   turn: {
     order: TurnOrder.CONTINUE,
-    onBegin: (G, ctx) => { // for some reason is it called twioce fot the very first turn
-      G.incident = calculateIncidentEvent(EVENT_CARDS, ctx.turn);
+    onBegin: (G, ctx) => {
+      if (G.card) return; // for some reason is it called twioce fot the very first turn
+
+      const incident = getIncidentCard(EVENT_CARDS, ctx.turn);
+
+      if (incident?.last && incident.turn < ctx.turn) {
+        G.values = calculateValues(G.values, incident)
+      } else if (incident) {
+        G.card = incident;
+      }
 
       if (!G.card) {
         const mood = calculateMood(G.values);
@@ -60,8 +72,9 @@ export default {
     onEnd: (G, ctx) => {
       G.card = null;
       G.answer = null;
-      G.incident = null;
+      G.effect = null;
     },
+
   },
 
   endIf: (G, ctx) => {
@@ -73,30 +86,53 @@ export default {
     if (!zdravi) return { loose: 2 };
     if (!ekonomika) return { loose: 3 };
     if (!duvera) return { loose: 4 };
-
-    const mood = calculateMood(G.values);
-    if (G.decks[mood].length === 0) {
-      return { draw: true };
-    }
   },
 
   onEnd: (G, ctx) => {
     G.card = null;
+    G.answer = null;
+    G.effect = null;
   },
 
   ai: {
     enumerate: (G, ctx) => {
       const moves = [];
 
-      if (G.answer === null && G.card) {
-        moves.push({ move: 'answer', args: [true] });
-        moves.push({ move: 'answer', args: [false] });
-      } else if (!ctx.gameover) {
-        moves.push({ event: 'endTurn' });
+      if (ctx.phase === 'newbie') {
+        moves.push({ move: 'MakeAnswer', args: [Answers.NEXT] });
+        moves.push({ move: 'MakeAnswer', args: [Answers.SKIP] });
+      } else if (G.answer === null && hasYesNoAnswer(G.card)) {
+        moves.push({ move: 'MakeAnswer', args: [true] });
+        moves.push({ move: 'MakeAnswer', args: [false] });
+      } else if (G.effect) {
+        moves.push({ move: 'MakeAnswer', args: [Answers.CONTINUE] });
+      } else if (isIncidentCard(G.card)) {
+        moves.push({ move: 'MakeAnswer', args: [Answers.OK] });
+      } else {
+        moves.push({ move: 'endTurn' });
       }
 
       return moves;
-    },
+    }
+  }
+}
+
+function MakeAnswer(G, ctx, answer) {
+
+  if (answer === Answers.CONTINUE) {
+    ctx.events.endTurn();
+    return;
   }
 
+
+  if (hasYesNoAnswer(G.card) || isIncidentCard(G.card)) {
+    G.values = calculateValues(G.values, G.card, answer);
+  }
+
+  G.answer = answer;
+  G.effect = getAnswerCardField(G.card, answer, 'effect') || null;
+
+  if (!G.effect) {
+    ctx.events.endTurn();
+  }
 }

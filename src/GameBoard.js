@@ -1,81 +1,76 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useEffect } from "react";
 import Card from "./Card";
-import { getAnswerCardField, calculateMood } from "./library";
+import { getAnswerCardField, calculateMood, isIncidentCard, hasYesNoAnswer } from "./library";
 import { Link } from "react-navi";
+import GameOver from "./GameOver";
+import { Answers } from "./GameKorona";
+import GameValues from "./GameValues";
 
-export default function GameBoard({ G, ctx, moves, events, reset }) {
-  const { values, card, answer, incident } = G;
+
+export default function GameBoard({ G, ctx, moves, events, reset, stage }) {
+  const { values, card, answer, effect } = G;
   const mood = useMemo(() => calculateMood(values), [values]);
 
-  const { loose, win, draw } = ctx.gameover || {};
+  useEffect(() => {
+    document.body.classList.remove('game-mood-positive');
+    document.body.classList.remove('game-mood-neutral');
+    document.body.classList.remove('game-mood-negative');
 
-  const handleAnswer = (answer = false) => () => {
-    moves.answer(answer);
-  };
+    document.body.classList.add(`game-mood-${mood}`);
+  }, [mood])
 
-  const handleContinue = () => {
-    events.endTurn();
+  const handleAnswer = (answer) => (event) => {
+    event.preventDefault();
+    moves.MakeAnswer(answer);
   };
 
   const handleNewGame = () => {
     reset();
   };
 
-  const answerButton = (answer) => (
-    <button className="button__answer" onClick={handleAnswer(answer)}>
-      {getAnswerCardField(card, answer, "answer")}
+  const answerButton = (answer, title) => (
+    <button key={`${ctx.turn}-${answer}`} className="button__answer" onClick={handleAnswer(answer)}>
+      {answer === Answers.CONTINUE ? title : getAnswerCardField(card, answer, "answer") || title}
     </button>
   );
 
+
   return (
-    <div className={`board board--${mood}`}>
-      <div className="gameContainer">
-        <div className="board__attributes">
-          <p>
-            <small>{ctx.turn}. kolo</small> = {JSON.stringify(values)}
-          </p>
-        </div>
-
-        {ctx.gameover && (
-          <div className="board__gameover">
-            {win && <h1>Si vyhral</h1>}
-            {loose && <h1>Si prohral na {loose}. hodnote</h1>}
-            {draw && <h1>Ti dosly karty z {mood} balicku</h1>}
-          </div>
-        )}
-
-        {card && (
-          <div
-            className={`board__card ${incident ? "board__card--incident" : ""}`}
-          >
-            <Card {...{ card, answer, incident }} />
-          </div>
-        )}
-
-        {!ctx.gameover && (
-          <div className="board__buttons">
-            {answer === null && (
-              <>
-                {answerButton(true)}
-                {answerButton(false)}
-              </>
-            )}
-            {answer !== null && (
-              <button className="button__default" onClick={handleContinue}>
-                Pokračovat
-              </button>
-            )}
-          </div>
-        )}
-        {ctx.gameover && (
-          <div className="board__buttons">
-            <button className="button__default" onClick={handleNewGame}>
-              Nová hra
-            </button>
-            <Link href="/">Zpet na menu</Link>
-          </div>
-        )}
+    <div className={`game-board game-board--${mood}`}>
+      <div className="game-board__header">
+        <GameValues turn={ctx.turn} values={values} />
       </div>
+
+      {ctx.gameover && (
+        <div className="game-board__gameover">
+          <GameOver {...ctx.gameover} />
+        </div>
+      )}
+
+      {card && (
+        <div className="game-board__card">
+          <Card {...{ card, answer }} />
+        </div>
+      )}
+      <div className="game-board__buttons">
+        {isIncidentCard(card) && answerButton(Answers.OK, "OK")}
+        {answer === null && hasYesNoAnswer(card) && (
+          <>
+            {answerButton(Answers.YES, "Ano")}
+            {answerButton(Answers.NO, "Ne")}
+          </>
+        )}
+        {effect && answerButton(Answers.CONTINUE, 'Pokračovat')}
+      </div>
+
+
+
+      {ctx.gameover && (
+        <div className="game-board__buttons">
+          <button className="button__default" onClick={handleNewGame}>Nová hra</button>
+          <Link href="/">Zpet na menu</Link>
+        </div>
+      )}
     </div>
   );
 }

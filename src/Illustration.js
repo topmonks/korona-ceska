@@ -1,4 +1,5 @@
 import React from "react";
+import FadeIn from "react-fade-in";
 
 const getIll = (img) => {
   try {
@@ -10,10 +11,12 @@ const getIll = (img) => {
 
 export default function Illustration({ img }) {
   return (
-    <img
-      style={{ height: "320px" }}
-      alt="person"
-      src={getIll(img)}
-    />
+    <FadeIn>
+      <img
+        className="illustration"
+        alt="person"
+        src={getIll(img)}
+      />
+    </FadeIn>
   );
 }

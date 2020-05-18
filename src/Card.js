@@ -1,16 +1,20 @@
-import React from "react";
-import { getAnswerCardField } from "./library";
+import React, { useMemo } from "react";
+import { getAnswerCardField, isIncidentCard } from "./library";
 import Illustration from "./Illustration";
-import IncidentEvent from "./IncidentEvent";
 
-export default function Card({ card, answer, incident }) {
+export default function Card({ card, answer }) {
+  const isIncident = useMemo(() => isIncidentCard(card), [card]);
+
   if (answer === null) {
     return (
-      <div className="card">
-        <h3>{card.name}</h3>
-        <p>{card.text}</p>
-        <Illustration img={card.img} />
-        {incident && <IncidentEvent {...incident} />}
+      <div className={`card ${isIncident ? 'card--incident' : ''}`}>
+        <h3 className="card__name">{card.name}</h3>
+        <p className="card__text">{card.text}</p>
+        {!isIncident && (
+          <div className="card__img">
+            <Illustration key={card.text} img={card.img} />
+          </div>
+        )}
       </div>
     );
   }
@@ -20,8 +24,8 @@ export default function Card({ card, answer, incident }) {
   }
 
   return (
-    <div className="card">
-      <p className="eventAnswer">
+    <div className="card card--effect">
+      <p className="card__text card__text--effect">
         "{getAnswerCardField(card, answer, "effect")}"
       </p>
     </div>

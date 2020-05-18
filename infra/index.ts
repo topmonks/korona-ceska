@@ -2,7 +2,13 @@ import * as pulumi from "@pulumi/pulumi";
 import * as aws from "@pulumi/aws";
 import { WebSite } from "./website";
 
-const korona = WebSite.create('korona-ceska.cz', {});
+const korona = WebSite.create('korona-ceska.cz', { isPwa: true });
+
+// FIXME: Diagnostics:
+// aws:acm:Certificate (certificate):
+//   error: Duplicate resource URN 'urn:pulumi:korona-ceska-prod::korona-ceska::aws:acm/certificate:Certificate::certificate'; try giving it a unique name
+
+WebSite.createRedirect('koronaceska.cz', { target: 'korona-ceska.cz' });
 
 export const websiteUrl = korona.url;
 export const cloudFrontId = korona.cloudFrontId;
