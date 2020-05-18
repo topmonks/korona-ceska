@@ -1,7 +1,7 @@
 import { TurnOrder } from 'boardgame.io/core';
 import { calculateMood, calculateValues, getIncidentCard, hasYesNoAnswer, isIncidentCard, getAnswerCardField, } from './library';
 
-const { cards: CARD_DECKS, events: EVENT_CARDS } = require('./events.json');
+const { cards: CARD_DECKS, events: EVENT_CARDS, story: STORY_CARDS } = require('./events.json');
 
 export const Answers = {
   YES: true,
@@ -26,6 +26,12 @@ export default {
       neutral: ctx.random.Shuffle(CARD_DECKS.neutral),
       positive: ctx.random.Shuffle(CARD_DECKS.positive),
       negative: ctx.random.Shuffle(CARD_DECKS.negative),
+      story: [...STORY_CARDS].reverse()
+    }
+
+    // TODO: If yo want to skip for good, add localStorage.setItem to the end of newbie phase
+    if (localStorage.getItem('newbie')) {
+      ctx.events.endPhase();
     }
 
     return {
@@ -40,12 +46,11 @@ export default {
 
 
   phases: {
-    // newbie: {
-    //   start: true,
-    //   next: 'play',
-    // },
+    newbie: {
+      start: true,
+      next: 'play'
+    },
     play: {
-      start: true
     },
   },
 
@@ -55,6 +60,12 @@ export default {
     order: TurnOrder.CONTINUE,
     onBegin: (G, ctx) => {
       if (G.card) return; // for some reason is it called twioce fot the very first turn
+
+      if (ctx.phase === 'newbie') {
+        G.card = G.decks.story.pop();
+        if (!G.card) ctx.events.endPhase();
+        return;
+      }
 
       const incident = getIncidentCard(EVENT_CARDS, ctx.turn);
 
@@ -121,6 +132,11 @@ function MakeAnswer(G, ctx, answer) {
 
   if (answer === Answers.CONTINUE) {
     ctx.events.endTurn();
+    return;
+  }
+
+  if (answer === Answers.SKIP) {
+    ctx.events.endPhase();
     return;
   }
 

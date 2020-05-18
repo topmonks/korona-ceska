@@ -25,6 +25,10 @@ export function isIncidentCard(card) {
   if (!card) return false;
   return card.values && !hasYesNoAnswer(hasYesNoAnswer);
 }
+export function isStoryCard(card) {
+  if (!card) return false;
+  return card.text && card.name && !hasYesNoAnswer(hasYesNoAnswer) && !isIncidentCard(card);
+}
 
 export function calculateValues(values, card, answer) {
   const applicate = (value, index) => values[index] + value;

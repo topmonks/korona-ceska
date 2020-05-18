@@ -1,16 +1,20 @@
 import React, { useMemo } from "react";
-import { getAnswerCardField, isIncidentCard } from "./library";
+import { getAnswerCardField, isIncidentCard, isStoryCard } from "./library";
 import Illustration from "./Illustration";
+
+const css = (...classes) => classes.filter(Boolean).join(' ');
 
 export default function Card({ card, answer }) {
   const isIncident = useMemo(() => isIncidentCard(card), [card]);
+  const isStory = useMemo(() => isStoryCard(card), [card]);
+
 
   if (answer === null) {
     return (
-      <div className={`card ${isIncident ? 'card--incident' : ''}`}>
+      <div className={css('card', isIncident && 'card--incident', isStory && 'card--story')}>
         <h3 className="card__name">{card.name}</h3>
-        <p className="card__text">{card.text}</p>
-        {!isIncident && (
+        <p className={css('card__text', isStory && 'card__text--story')}>{card.text}</p>
+        {!isIncident && card.img && (
           <div className="card__img">
             <Illustration key={card.text} img={card.img} />
           </div>
