@@ -1,23 +1,20 @@
 import React, { useMemo, useEffect } from "react";
 import Card from "./Card";
-import { getAnswerCardField, calculateMood, isIncidentCard, hasYesNoAnswer } from "./library";
+import { getAnswerCardField, calculateMood, isIncidentCard, hasYesNoAnswer, changeBodyGameMood, preloadIllustrations } from "./library";
 import { Link } from "react-navi";
 import GameOver from "./GameOver";
 import { Answers } from "./GameKorona";
 import GameValues from "./GameValues";
 
 
+
+
 export default function GameBoard({ G, ctx, moves, events, reset, stage }) {
   const { values, card, answer, effect } = G;
   const mood = useMemo(() => calculateMood(values), [values]);
 
-  useEffect(() => {
-    document.body.classList.remove('game-mood-positive');
-    document.body.classList.remove('game-mood-neutral');
-    document.body.classList.remove('game-mood-negative');
-
-    document.body.classList.add(`game-mood-${mood}`);
-  }, [mood])
+  useEffect(changeBodyGameMood(mood), [mood])
+  useEffect(preloadIllustrations, [])
 
   const handleAnswer = (answer) => (event) => {
     event.preventDefault();

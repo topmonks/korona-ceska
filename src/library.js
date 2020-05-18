@@ -78,3 +78,44 @@ export function hasAnswerCardField(card, answer, field) {
   const value = getAnswerCardField(card, answer, field);
   return value && true;
 }
+
+export function changeBodyGameMood(mood) {
+  return () => {
+    document.body.classList.remove('game-mood-positive');
+    document.body.classList.remove('game-mood-neutral');
+    document.body.classList.remove('game-mood-negative');
+
+    document.body.classList.add(`game-mood-${mood}`);
+  };
+}
+
+export function preloadIllustrations() {
+  if (global.illustrationsPreloaded) return;
+  global.illustrationsPreloaded = true;
+
+  const illustrations = [
+    require('./illustrations/bures.png'),
+    require('./illustrations/cupranek.png'),
+    require('./illustrations/eman.png'),
+    require('./illustrations/intro.png'),
+    require('./illustrations/netahlo.png'),
+    require('./illustrations/nguyen.png'),
+    require('./illustrations/pohlova.png'),
+    require('./illustrations/rymula.png'),
+    require('./illustrations/skorene.png'),
+    require('./illustrations/tiskar.png'),
+    require('./illustrations/vojtik.png'),
+    require('./illustrations/zdrava.png'),
+  ];
+
+
+  for (const ill of illustrations) {
+    const img = document.createElement('img');
+    img.style.position = 'fixed';
+    img.style.top = '-200vh';
+    img.style.left = '-200vw';
+    img.src = ill;
+    document.body.append(img);
+  }
+}
+
