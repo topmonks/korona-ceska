@@ -38,9 +38,9 @@ export default function GameBoard({ G, ctx, moves, events, reset, stage }) {
         <GameValues turn={ctx.turn} values={values} />
       </div>
 
-      {ctx.gameover && (
+      {(ctx.gameover || !card) && (
         <div className="game-board__gameover">
-          <GameOver {...ctx.gameover} />
+          <GameOver draw={!card && !ctx.gameover} {...ctx.gameover} />
         </div>
       )}
 
