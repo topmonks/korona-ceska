@@ -541,7 +541,8 @@
                 "noanswer": "Nikdy.",
                 "yeseffect": "Něco ti našeptává, že až tak dočasné to nebude.",
                 "noeffect": "n-a",
-                "yesvalues": "-15,0,-25,-25"
+                "yesvalues": "-15,0,-25,-25",
+                "novalues": "5,0,15,15"
             },
             {
                 "name": "Andrej Bakšiš",
