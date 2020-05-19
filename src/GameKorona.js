@@ -14,7 +14,6 @@ export const Answers = {
 
 export default {
   name: 'korona-ceska',
-  // seed: Math.random().toString(), // TODO: Persist till game reset occur (not just page refresh like now)
 
   // Function that returns the initial value of G.
   // setupData is an optional custom object that is
@@ -27,9 +26,7 @@ export default {
       positive: ctx.random.Shuffle(CARD_DECKS.positive),
       negative: ctx.random.Shuffle(CARD_DECKS.negative),
       story: [...STORY_CARDS].reverse()
-    }
-
-    localStorage.removeItem('newbie'); // fixme
+    };
 
     return {
       // player,
@@ -50,8 +47,7 @@ export default {
         G.card = G.decks.story.pop();
       },
     },
-    play: {
-    },
+    play: {}
   },
 
   moves: { MakeAnswer },
@@ -69,7 +65,7 @@ export default {
         G.values = calculateValues(G.values, incident);
       } else {
         const mood = calculateMood(G.values);
-        G.card = G.decks[mood].pop();
+        G.card = G.decks[mood].pop() || G.decks.neutral.pop();
       }
     },
     onEnd: (G, ctx) => {
@@ -88,12 +84,17 @@ export default {
     if (!zdravi) return { loose: 2 };
     if (!ekonomika) return { loose: 3 };
     if (!duvera) return { loose: 4 };
+
+
+
+    const mood = calculateMood(G.values);
+    const deck = G.decks[mood].length > 1 ? G.decks[mood] : G.decks.neutral;
+    if (!deck.length) return { draw: true }
   },
 
   onEnd: (G, ctx) => {
-    G.card = null;
-    G.answer = null;
-    G.effect = null;
+    G.card = null; // FIXME, we wanna to show incidents and effects before engmane :(
+    // TODO: google anal
   },
 
   ai: {
@@ -119,6 +120,7 @@ export default {
   }
 }
 
+
 function MakeAnswer(G, ctx, answer) {
   G.answer = answer;
   G.effect = getAnswerCardField(G.card, answer, 'effect') || null;
@@ -143,8 +145,7 @@ function MakeAnswer(G, ctx, answer) {
 
   if (answer === Answers.OK) {
     const mood = calculateMood(G.values);
-    G.card = G.decks[mood].pop();
-    G.answer = null;
+    G.card = G.decks[mood].pop() || G.decks.neutral.pop();
     return;
   }
 
@@ -154,5 +155,3 @@ function MakeAnswer(G, ctx, answer) {
   }
 
 }
-
-
