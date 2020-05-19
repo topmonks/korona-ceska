@@ -7,10 +7,15 @@ const iconPathDs = {
   trust: "M20.8,18.1c-3.4-0.8-6.6-1.5-5.1-4.4C20.5,4.8,17,0,12,0C6.9,0,3.5,4.9,8.3,13.7c1.6,2.9-1.7,3.6-5.1,4.4C0.1,18.8,0,20.3,0,23l0,1h24l0-1C24,20.3,23.9,18.8,20.8,18.1z",
 }
 
-export default function ValueIcon({ value, type, large = false, small = false, className }) {
+const RED_COLOR = '#FF0000';
+const OUK_COLOR = '#FFFFFF';
+const FOK_COLOR = '#2C2A51';
+
+export default function ValueIcon({ value, type, large = false, small = false, loose = false, className }) {
   const pathD = useMemo(() => iconPathDs[type], [type]);
   const level = useMemo(() => (24 / 100 * (100 - value)), [value]);
-  const color = useMemo(() => type === 'virus' ? '#FF0000' : '#FFFFFF', [type]);
+  const color = useMemo(() => type === 'virus' ? RED_COLOR : OUK_COLOR, [type]);
+
   const size = useMemo(() => {
     if (!large && !small) return '64px';
     if (small) return '48px';
@@ -32,7 +37,7 @@ export default function ValueIcon({ value, type, large = false, small = false, c
           </clipPath>
         </defs>
         <path fill={color} d={pathD} />
-        <path clipPath={`url(#value-level-${type})`} fill="#2C2A51" d={pathD} />
+        <path clipPath={`url(#value-level-${type})`} fill={loose ? RED_COLOR : FOK_COLOR} d={pathD} />
       </g>
     </svg>
   )
