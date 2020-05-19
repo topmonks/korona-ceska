@@ -114,6 +114,17 @@
             {
                 "name": "Jan Tiskař",
                 "img": "tiskar",
+                "text": "Velká zpráva: umíme nyní dronové doručení hydroponických salátů za bitcoiny!",
+                "yesanswer": "Dro- co?",
+                "noanswer": "A půjde platit i přes lightning?",
+                "yeseffect": "Tiskařova metoda dronového doručování salátů za bitcoiny je velice populární mezi 10 lidmi v republice kteří chápou, co všechna ta slova znamenají.",
+                "noeffect": "Krásně sis s Tiskařem pokecal o nejlepších lightning peněženkách, hydroponii a dalších nerdovinách. Teď zpět do práce!",
+                "yesvalues": "-5,5,5,-5",
+                "novalues": "-5,5,5,5"
+            },
+            {
+                "name": "Jan Tiskař",
+                "img": "tiskar",
                 "text": "Vyrábíme ochranné štíty na 3D tiskárnách.",
                 "yesanswer": "Skvělé, odpustíme vám daně!",
                 "noanswer": "Máte na to certifikaci?",
@@ -141,8 +152,19 @@
                 "noanswer": "Ale ať nezanedbají studium!",
                 "yeseffect": "n-a",
                 "noeffect": "n-a",
-                "yesvalues": "-5,5,0,5",
+                "yesvalues": "-10,10,0,5",
                 "novalues": "-5,0,0,0"
+            },
+            {
+                "name": "Jana Zdravá",
+                "img": "zdrava",
+                "text": "Nemocnice omezily elektivní procedury. Nemají teď dostatek prostředků na proplácení přesčasů a odměn.",
+                "yesanswer": "Stát hospodařil v předchozích letech s přebytkem, pomůže.",
+                "noanswer": "To je mi líto.",
+                "yeseffect": "Bakšiš na tebe zuřivě mrká. Žádné přebytky přece nejsou!",
+                "noeffect": "n-a",
+                "yesvalues": "0,0,0,-15",
+                "novalues": "0,-15,0,0"
             },
             {
                 "name": "Jarda Netáhlo",
@@ -158,6 +180,17 @@
             {
                 "name": "Jarda Netáhlo",
                 "img": "netahlo",
+                "text": "Dochází nám potraviny, měl bych skočit do supermarketu pro další?",
+                "yesanswer": "Pošli ženu a pak ji zavři do sklepa na 14 dní. Jistota je jistota.",
+                "noanswer": "Nikam nechoď. Z lunchmeatu jsou ty řízky stejně nejlepší!",
+                "yeseffect": "n-a",
+                "noeffect": "n-a",
+                "yesvalues": "5,7,7,-15",
+                "novalues": "-5,-15,0,0"
+            },
+            {
+                "name": "Jarda Netáhlo",
+                "img": "netahlo",
                 "text": "Na trhu se objevily roušky s aktivním stříbrem! Není potřeba prát ani vyvařovat, stříbro to jistí!",
                 "yesanswer": "To zní dobře!",
                 "noanswer": "To bude podvod.",
@@ -165,6 +198,17 @@
                 "noeffect": "n-a",
                 "yesvalues": "10,-10,0,-10",
                 "novalues": "0,5,0,5"
+            },
+            {
+                "name": "Jarda Netáhlo",
+                "img": "netahlo",
+                "text": "V karanténě docela chlastám, cítím jak mi tvrdnou játra.",
+                "yesanswer": "Měl bys to mírnit.",
+                "noanswer": "To neřeš, musíš se nějak zabavit.",
+                "yeseffect": "S těžkým srdcem Jarda přešel do nouzového režimu a chlastá jen jednou týdně.",
+                "noeffect": "Jarda jásá; jenže jardovy játra jsou jen jedny!",
+                "yesvalues": "0,-5,0,10",
+                "novalues": "0,-25,0,10"
             },
             {
                 "name": "Jarda Netáhlo",
@@ -219,7 +263,7 @@
                 "yeseffect": "n-a",
                 "noeffect": "n-a",
                 "yesvalues": "-5,5,5,0",
-                "novalues": "10,0,-10,-15"
+                "novalues": "10,0,-15,-15"
             },
             {
                 "name": "Maruška Nguyenová",
@@ -330,17 +374,6 @@
                 "noeffect": "Věra Pohlová se mračí.",
                 "yesvalues": "20,0,-10,-20",
                 "novalues": "-20,0,5,10"
-            },
-            {
-                "name": "Jana Zdravá",
-                "img": "zdrava",
-                "text": "Nemocnice omezily elektivní procedury. Nemají teď dostatek prostředků na proplácení přesčasů a odměn.",
-                "yesanswer": "Stát hospodařil v předchozích letech s přebytkem, pomůže.",
-                "noanswer": "To je mi líto.",
-                "yeseffect": "Bakšiš na tebe zuřivě mrká. Žádné přebytky přece nejsou!",
-                "noeffect": "n-a",
-                "yesvalues": "0,0,0,-15",
-                "novalues": "0,-15,0,0"
             }
         ],
         "positive": [
@@ -481,6 +514,17 @@
             {
                 "name": "Alfons Vojtík",
                 "img": "vojtik",
+                "text": "Rýmula osobně porušil karanténní opatření, která sám prosadil. To může být skandál!",
+                "yesanswer": "Ať Rýmula rezignuje.",
+                "noanswer": "Zameteme to pod koberec.",
+                "yeseffect": "Bakšiš na tebe našel přes 1000 let starou špínu, Rýmula nemusí rezignovat.",
+                "noeffect": "Jarda Netáhlo se o tom dozvěděl u venkovního výčepu a roztroubil to. Skandál!",
+                "yesvalues": "0,0,0,-10",
+                "novalues": "10,0,0,-20"
+            },
+            {
+                "name": "Alfons Vojtík",
+                "img": "vojtik",
                 "text": "Situace je kritická, musím přednést motivační projev k národu.",
                 "yesanswer": "Chystejte kamery!",
                 "noanswer": "Ježiš jen to ne.",
@@ -536,24 +580,13 @@
             {
                 "name": "Jana Zdravá",
                 "img": "zdrava",
-                "text": "Nemocnice omezily elektivní procedury. Nemají teď dostatek prostředků na proplácení přesčasů a odměn.",
-                "yesanswer": "Stát hospodařil v předchozích letech s přebytkem, pomůže.",
-                "noanswer": "To je mi líto.",
-                "yeseffect": "Bakšiš na tebe zuřivě mrká. Žádné přebytky přece nejsou!",
-                "noeffect": "n-a",
-                "yesvalues": "0,0,0,-15",
-                "novalues": "0,-15,0,0"
-            },
-            {
-                "name": "Jarda Netáhlo",
-                "img": "netahlo",
-                "text": "Dochází nám potraviny, měl bych skočit do supermarketu pro další?",
-                "yesanswer": "Pošli ženu a pak ji zavři do sklepa na 14 dní. Jistota je jistota.",
-                "noanswer": "Nikam nechoď. Z lunchmeatu jsou ty řízky stejně nejlepší!",
-                "yeseffect": "n-a",
-                "noeffect": "n-a",
-                "yesvalues": "5,7,7,-15",
-                "novalues": "-5,-15,0,0"
+                "text": "Lidé mají málo pohybu a vitamínu D. Co s tím?",
+                "yesanswer": "Suplementy + cvičební program.",
+                "noanswer": "Otevřeme venkovní posilovny",
+                "yeseffect": "Rozjíždí se program \"Déčko do každé dědiny\" a v televizi běží program Cvičíme s Jaromírem Soukupem.",
+                "noeffect": "Věra Pohlová se zranila při pokusu zdolat osobní rekord ve shybech.",
+                "yesvalues": "-10,-10,0,-10",
+                "novalues": "10,10,0,10"
             },
             {
                 "name": "Josef Čupránek",
