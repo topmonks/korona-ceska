@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-navi";
+import ScreenButton from './ScreenButton';
 import logo from "./icons/tm-logo.svg";
 
 export default function ScreenCredits({ route }) {
@@ -41,10 +41,7 @@ export default function ScreenCredits({ route }) {
         <h3>Lea Petrášová</h3>
         <p>Projekt, texty</p>
       </div>
-
-      <Link className="navi__link screen--credits__button" href="/">
-        Zpět do menu
-      </Link>
+      <ScreenButton>Zpět na menu</ScreenButton>
     </div>
   );
 }

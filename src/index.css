@@ -81,44 +81,13 @@ body.game-mood-negative {
   align-items: center;
 }
 
-.main-menu {
+.screen--menu > div {
   display: flex;
   flex: 1;
   flex-direction: column;
-}
-
-.screen--menu {
   margin: auto;
 }
 
-.main-menu__link {
-  background-color: rgb(210, 1, 1);
-  flex: 1;
-  padding: 16px;
-  border-radius: 4px;
-  box-shadow: 0px 8px 16px -10px rgba(61, 61, 82, 1);
-  margin-bottom: 16px;
-  text-align: center;
-}
-
-.main-menu__link:hover {
-  background-color: #ff0000;
-  box-shadow: 0px 8px 16px -10px rgb(255, 0, 0);
-}
-
-.navi__link {
-  background-color: rgb(39, 30, 70);
-  flex: 1;
-  padding: 16px;
-  border-radius: 4px;
-  box-shadow: 0px 8px 16px -10px rgba(61, 61, 82, 1);
-  margin-bottom: 16px;
-}
-
-.navi__link:hover {
-  background-color: rgb(49, 34, 101);
-  box-shadow: 0px 8px 16px -10px rgb(66, 29, 150);
-}
 
 h1 {
   color: white;
@@ -166,7 +135,6 @@ a {
 }
 
 .game-board__header {
-  /* min-height: 14vh; */
 }
 
 .game-board__card {
@@ -179,21 +147,6 @@ a {
   flex-direction: column;
   margin-top: 16px;
   max-height: 20vh;
-}
-
-.button__default {
-  height: 44px;
-  margin-bottom: 16px;
-  background-color: rgba(255, 255, 255, 0.2);
-  border: none;
-  color: #fff;
-  font-size: 16px;
-  border-radius: 4px;
-}
-
-.button__default:hover {
-  background-color: rgba(255, 255, 255, 0.3);
-  color: #fff;
 }
 
 .game-over img {
@@ -280,12 +233,39 @@ a {
   flex-direction: row;
   max-height: 20vh;
 }
-.game-values__virus {
-}
 .game-values__rest {
   flex: 1;
   text-align: end;
 }
+
+/*
+ * src/ScreenButton.js
+ */
+
+.screen-button {
+  background-color: rgb(39, 30, 70);
+  flex: 1;
+  padding: 16px;
+  border-radius: 4px;
+  box-shadow: 0px 8px 16px -10px rgba(61, 61, 82, 1);
+  margin-bottom: 16px;
+  text-align: center;
+  display: block;
+}
+
+.screen-button:hover {
+  background-color: rgb(49, 34, 101);
+  box-shadow: 0px 8px 16px -10px rgb(66, 29, 150);
+}
+
+.screen-button--primary {
+  background-color: rgb(210, 1, 1);
+}
+.screen-button--primary:hover {
+  background-color: #ff0000;
+  box-shadow: 0px 8px 16px -10px rgb(255, 0, 0);
+}
+
 
 /*
  * src/GameButton.js

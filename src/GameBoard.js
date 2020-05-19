@@ -1,11 +1,11 @@
 import React, { useMemo, useEffect } from "react";
 import Card from "./Card";
 import { calculateMood, isIncidentCard, isPlayCard, changeBodyGameMood, preloadIllustrations, isPlayAnswer } from "./library";
-import { Link } from "react-navi";
 import GameOver from "./GameOver";
 import { Answers } from "./GameKorona";
 import GameValues from "./GameValues";
 import GameButton from "./GameButton";
+import ScreenButton from "./ScreenButton";
 
 
 export default function GameBoard({ G, ctx, moves, events, reset, stage }) {
@@ -74,7 +74,7 @@ export default function GameBoard({ G, ctx, moves, events, reset, stage }) {
       {ctx.gameover && (
         <div className="game-board__buttons">
           {gameButton({ onClick: handleNewGame, title: 'Nová hra' })}
-          <Link href="/">Zpět na menu</Link>
+          <ScreenButton>Zpět na menu</ScreenButton>
         </div>
       )}
     </div>
