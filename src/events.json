@@ -117,7 +117,7 @@
                 "text": "Velká zpráva: umíme nyní dronové doručení hydroponických salátů za bitcoiny!",
                 "yesanswer": "Dro- co?",
                 "noanswer": "A půjde platit i přes lightning?",
-                "yeseffect": "Tiskařova metoda dronového doručování salátů za bitcoiny je velice populární mezi 10 lidmi v republice kteří chápou, co všechna ta slova znamenají.",
+                "yeseffect": "Tiskařova metoda dronového doručování salátů za bitcoiny je velice populární mezi 10 lidmi v republice kteří rozumí, co všechna ta slova znamenají.",
                 "noeffect": "Krásně sis s Tiskařem pokecal o nejlepších lightning peněženkách, hydroponii a dalších nerdovinách. Teď zpět do práce!",
                 "yesvalues": "-5,5,5,-5",
                 "novalues": "-5,5,5,5"
