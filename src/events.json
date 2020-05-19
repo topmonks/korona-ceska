@@ -26,7 +26,7 @@
             {
                 "name": "Andrej Bakšiš",
                 "img": "bures",
-                "text": "Bývalý prezident burcuje lidi ke vzpouře.",
+                "text": "Bývalý prezident burcuje ľud ke vzpouře.",
                 "yesanswer": "Pozvěme ho do parlamentu.",
                 "noanswer": "Ignorovat!",
                 "yeseffect": "Bývalý prezident pozvání nepřijal s výmluvou na bolest zad.",
@@ -37,18 +37,29 @@
             {
                 "name": "Andrej Bakšiš",
                 "img": "bures",
-                "text": "Čínští přátelé nám mohou dodat milión roušek, bereme?",
+                "text": "Čínští priateľe nám mohou dodat milión roušek, bereme?",
                 "yesanswer": "Kupujte!",
                 "noanswer": "Nebrat!",
                 "yeseffect": "Polovina roušek se po rozbalení hned rozpadla.",
                 "noeffect": "n-a",
-                "yesvalues": "-5,0,-10,-15",
+                "yesvalues": "-5,0,-10,-10",
                 "novalues": "10,0,0,10"
             },
             {
                 "name": "Andrej Bakšiš",
                 "img": "bures",
-                "text": "Přes víkend jsem vyšlehal manželku dvoumetrovým klackem.",
+                "text": "Na vládě uvažujeme o pomoči OSVČ s programem Pětačtyřicítka.",
+                "yesanswer": "Jděte do toho.",
+                "noanswer": "Tisíc nebo ráže?",
+                "yeseffect": "OSVČ dostávají finanční podporu a kontrolu z berňáku k tomu.",
+                "noeffect": "\"Hehe... he.\" <br/><br/>Trošku tě to znervóznilo.",
+                "yesvalues": "0,0,-10,10",
+                "novalues": "0,-10,-5,5"
+            },
+            {
+                "name": "Andrej Bakšiš",
+                "img": "bures",
+                "text": "Přes víkend jsem vyšľahnúl manželku dvojmetrovým klackem.",
                 "yesanswer": "Bravo!",
                 "noanswer": "Co?",
                 "yeseffect": "n-a",
@@ -64,7 +75,7 @@
                 "noanswer": "Ne.",
                 "yeseffect": "Tvrďák jako jedno z prvních opatření zavedl pravidelnou linku Praha - Wuhan. Lid je v rozpacích, zda to myslí vážně.",
                 "noeffect": "ČSA koupil Ryanair. Lidé budou nově létat vestoje.",
-                "yesvalues": "0,0,-20,-20",
+                "yesvalues": "0,0,-20,-15",
                 "novalues": "0,0,10,5"
             },
             {
@@ -75,8 +86,19 @@
                 "noanswer": "Ne.",
                 "yeseffect": "Žranice byla fajnová, ale chytli se toho pisálci. Lid se bouří v komentářích na Novinkách.",
                 "noeffect": "n-a",
-                "yesvalues": "0,10,0,-20",
+                "yesvalues": "0,10,0,-15",
                 "novalues": "0,0,0,5"
+            },
+            {
+                "name": "Eman",
+                "img": "eman",
+                "text": "Karanténa je skvělá příležitost k tomu stavět další úseky dálnic. Pomůže to ekonomice.",
+                "yesanswer": "Ano.",
+                "noanswer": "Na to teď nejsou peníze.",
+                "yeseffect": "Ani v karanténě se nedaří postavit jediný kilometr dálnice, peníze na výstavbu mizí neznámo kam. Zlé jazyky tvrdí, že ministr Tik si je pere přes firmu Sganja.",
+                "noeffect": "n-a",
+                "yesvalues": "0,0,-15,0",
+                "novalues": "0,0,10,0"
             },
             {
                 "name": "Eman",
@@ -131,7 +153,7 @@
                 "yeseffect": "n-a",
                 "noeffect": "n-a",
                 "yesvalues": "-25,0,10,20",
-                "novalues": "-10,0,0,-20"
+                "novalues": "-10,0,0,-15"
             },
             {
                 "name": "Jan Tiskař",
@@ -163,7 +185,7 @@
                 "noanswer": "To je mi líto.",
                 "yeseffect": "Bakšiš na tebe zuřivě mrká. Žádné přebytky přece nejsou!",
                 "noeffect": "n-a",
-                "yesvalues": "0,0,0,-15",
+                "yesvalues": "0,0,0,-10",
                 "novalues": "0,-15,0,0"
             },
             {
@@ -174,8 +196,8 @@
                 "noanswer": "Se stim smiř. ",
                 "yeseffect": "Později vyšlo najevo, že vláda nic neodpustila, firmy musí zaplatit penále za pozdě placené odvody. Jardu vyhodili z práce a začal si vydělávat jako pouliční polykač ohně.",
                 "noeffect": "Jarda si našel novou práci jako zdravotní klaun.",
-                "yesvalues": "0,0,-15,-25",
-                "novalues": "0,0,5,-15"
+                "yesvalues": "0,0,-20,-15",
+                "novalues": "0,0,5,-10"
             },
             {
                 "name": "Jarda Netáhlo",
@@ -185,7 +207,7 @@
                 "noanswer": "Nikam nechoď. Z lunchmeatu jsou ty řízky stejně nejlepší!",
                 "yeseffect": "n-a",
                 "noeffect": "n-a",
-                "yesvalues": "5,7,7,-15",
+                "yesvalues": "5,7,7,-10",
                 "novalues": "-5,-15,0,0"
             },
             {
@@ -263,7 +285,7 @@
                 "yeseffect": "n-a",
                 "noeffect": "n-a",
                 "yesvalues": "-5,5,5,0",
-                "novalues": "10,0,-15,-15"
+                "novalues": "10,0,-15,-10"
             },
             {
                 "name": "Maruška Nguyenová",
@@ -284,7 +306,7 @@
                 "noanswer": "Já se promořuju jedině na Jadranu.",
                 "yeseffect": "Na Letné se koná velký koncert kapely Čechomor. Rýmula poté strávil týden na JIPce. Rychle nařídil opětovné zpřísnění opatření.",
                 "noeffect": "n-a",
-                "yesvalues": "30,10,10,-30",
+                "yesvalues": "30,10,10,-20",
                 "novalues": "-15,-10,-10,30"
             },
             {
@@ -372,7 +394,7 @@
                 "noanswer": "Ne.",
                 "yeseffect": "n-a",
                 "noeffect": "Věra Pohlová se mračí.",
-                "yesvalues": "20,0,-10,-20",
+                "yesvalues": "20,0,-10,-15",
                 "novalues": "-20,0,5,10"
             }
         ],
@@ -391,12 +413,12 @@
             {
                 "name": "Andrej Bakšiš",
                 "img": "bures",
-                "text": "Galanterie a hobby markety jsou zásadní pro fungování této země.",
+                "text": "Galanterie a hobby markety jsou zasadní pro fungovanie této země.",
                 "yesanswer": "Ano, otevřme je.",
                 "noanswer": "Otevřme knihovny a kadeřnictví.",
                 "yeseffect": "n-a",
                 "noeffect": "n-a",
-                "yesvalues": "15,5,10,-15",
+                "yesvalues": "15,5,10,-10",
                 "novalues": "10,5,5,5"
             },
             {
@@ -468,6 +490,17 @@
             {
                 "name": "MUDr. Rýmula",
                 "img": "rymula",
+                "text": "Soud uznal žalobu právníků, všechna naše opatření byla protiprávní.",
+                "yesanswer": "Najděte špínu na soudce.",
+                "noanswer": "Tvl co jste to za lemply?",
+                "yeseffect": "Bakšiš sáhnul do svých složek a našel důkazy, že soudce má fetiš na trpaslíky v latexu. Opravný rozsudek byl vydán den poté. Lidé přestávají věřit v právní stát.",
+                "noeffect": "n-a",
+                "yesvalues": "-25,-25,-25,-35",
+                "novalues": "10,25,25,-20"
+            },
+            {
+                "name": "MUDr. Rýmula",
+                "img": "rymula",
                 "text": "Zdá se, že počty nově nakažených klesají. Lidi už brblají, že je nebaví nosit hadr přes pusu. Zrušíme povinnost nosit roušky?",
                 "yesanswer": "Ano.",
                 "noanswer": "Ne.",
@@ -520,7 +553,7 @@
                 "yeseffect": "Bakšiš na tebe našel přes 1000 let starou špínu, Rýmula nemusí rezignovat.",
                 "noeffect": "Jarda Netáhlo se o tom dozvěděl u venkovního výčepu a roztroubil to. Skandál!",
                 "yesvalues": "0,0,0,-10",
-                "novalues": "10,0,0,-20"
+                "novalues": "10,0,0,-15"
             },
             {
                 "name": "Alfons Vojtík",
@@ -530,24 +563,24 @@
                 "noanswer": "Ježiš jen to ne.",
                 "yeseffect": "Do Vojtíkova projevu neustále vstupoval Bakšiš svými uštěpačnými poznámkami. Národ je zmatený, ale dobře se pobavil.",
                 "noeffect": "Novináři se ptají, kde jsou v těžkých dobách státníci.",
-                "yesvalues": "0,25,0,-25",
+                "yesvalues": "0,25,0,-20",
                 "novalues": "0,10,0,-10"
             },
             {
                 "name": "Andrej Bakšiš",
                 "img": "bures",
-                "text": "Epidemie přituhuje, musíme znárodnit strategická odvětví. Samozřejmě jen dočasně.",
+                "text": "Epidemie přituhuje, musíme znárodnit strategická odvetvie. Pochopitelně len dočasně.",
                 "yesanswer": "Znárodnit!",
                 "noanswer": "Nikdy.",
                 "yeseffect": "Něco ti našeptává, že až tak dočasné to nebude.",
                 "noeffect": "n-a",
-                "yesvalues": "-15,0,-25,-25",
+                "yesvalues": "-10,0,-25,-20",
                 "novalues": "5,0,15,15"
             },
             {
                 "name": "Andrej Bakšiš",
                 "img": "bures",
-                "text": "Parlament je v krizi k ničemu, musím mít více moci.",
+                "text": "Parlament je v krizi k ničemu, musím mít viacej moci.",
                 "yesanswer": "Jasná věc!",
                 "noanswer": "Ses pos*al.",
                 "yeseffect": "Bakšiš si jako první opatření přiklepl více dotací.",
@@ -558,7 +591,7 @@
             {
                 "name": "Andrej Bakšiš",
                 "img": "bures",
-                "text": "Státní rozpočet má hroznou sekeru. Asi zvýším DPH na 30 %.",
+                "text": "Štátny rozpočet má hroznou sekeru. Asi zvýším DPH na 30 %.",
                 "yesanswer": "OK.",
                 "noanswer": "Snižte výdaje na zbytečnosti!",
                 "yeseffect": "Lidé omezili nákupy, stát má ještě nižší příjmy a vyšší sekeru.",
@@ -597,7 +630,7 @@
                 "yeseffect": "n-a",
                 "noeffect": "n-a",
                 "yesvalues": "15,5,5,5",
-                "novalues": "-5,-15,-15,-15"
+                "novalues": "-5,-15,-15,-10"
             },
             {
                 "name": "Maruška Nguyenová",
@@ -620,17 +653,6 @@
                 "noeffect": "n-a",
                 "yesvalues": "-10,0,-20,-20",
                 "novalues": "10,0,15,15"
-            },
-            {
-                "name": "MUDr. Rýmula",
-                "img": "rymula",
-                "text": "Soud uznal žalobu právníků, všechna naše opatření byla protiprávní.",
-                "yesanswer": "Najděte špínu na soudce.",
-                "noanswer": "Tvl co jste to za lemply?",
-                "yeseffect": "Bakšiš sáhnul do svých složek a našel důkazy, že soudce má fetiš na trpaslíky v latexu. Opravný rozsudek byl vydán den poté. Lidé přestávají věřit v právní stát.",
-                "noeffect": "n-a",
-                "yesvalues": "-25,-25,-25,-50",
-                "novalues": "10,25,25,-20"
             },
             {
                 "name": "Věra Pohlová",
