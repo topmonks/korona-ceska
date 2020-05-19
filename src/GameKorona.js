@@ -93,6 +93,7 @@ export default {
   },
 
   onEnd: (G, ctx) => {
+    G.card = null; // FIXME, we wanna to show incidents and effects before engmane :(
     // TODO: google anal
   },
 
