@@ -1,12 +1,23 @@
 import React, { useMemo } from "react";
-import { getAnswerCardField, isIncidentCard, isStoryCard, makeClass as css } from "./library";
+import {
+  getAnswerCardField,
+  isIncidentCard,
+  isStoryCard,
+  makeClass as css,
+} from "./library";
 import Illustration from "./Illustration";
 
+const getIll = (img) => {
+  try {
+    return require(`./illustrations/${img}.png`);
+  } catch (error) {
+    console.warn("Unknown Illustration", { img });
+  }
+};
 
 export default function Card({ card, answer, effect, week }) {
   const isIncident = useMemo(() => isIncidentCard(card), [card]);
   const isStory = useMemo(() => isStoryCard(card), [card]);
-
 
   if (effect) {
     return (
@@ -25,14 +36,30 @@ export default function Card({ card, answer, effect, week }) {
   const turnNo = !isStory ? <span>{week}. týden</span> : null;
 
   return (
-    <div className={css('card', isIncident && 'card--incident', isStory && 'card--story')}>
-      <h3 className="card__name">{card.name} {turnNo}</h3>
-      <p className={css('card__text', isStory && 'card__text--story')} dangerouslySetInnerHTML={{ __html: card.text }} />
+    <div
+      className={css(
+        "card",
+        isIncident && "card--incident",
+        isStory && "card--story"
+      )}
+    >
       {!isIncident && card.img && (
-        <div className="card__img">
-          <Illustration key={card.text} img={card.img} />
+        <div
+          className={css("card__img", isStory && "card__img--story")}
+          style={{
+            backgroundImage: `url(${getIll(card.img)})`,
+          }}
+        >
+          {/* <Illustration key={card.text} img={card.img} /> */}
         </div>
       )}
+      <h3 className="card__name">
+        {card.name} {turnNo}
+      </h3>
+      <p
+        className={css("card__text", isStory && "card__text--story")}
+        dangerouslySetInnerHTML={{ __html: card.text }}
+      />
     </div>
   );
 }

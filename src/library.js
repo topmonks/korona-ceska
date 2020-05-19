@@ -1,4 +1,4 @@
-import { Answers } from './GameKorona';
+import { Answers } from "./GameKorona";
 
 export function calculateMood([epidemie]) {
   if (epidemie >= 75) {
@@ -15,9 +15,8 @@ export function getIncidentCard(cards = [], turn = 0) {
   const card = cards.find(
     (event) => event.turn === turn || (event.last && turn >= event.turn)
   );
-  return card
+  return card;
 }
-
 
 export function isPlayAnswer(answer) {
   return answer === Answers.YES || answer === Answers.NO;
@@ -78,7 +77,7 @@ export function calculateCardsCounts({
 
 export function getAnswerCardField(card, answer, field) {
   const value = (card || {})[(answer ? "yes" : "no") + field];
-  if (!value || value === 'n-a') return undefined;
+  if (!value || value === "n-a") return undefined;
   return value;
 }
 
@@ -89,9 +88,9 @@ export function hasAnswerCardField(card, answer, field) {
 
 export function changeBodyGameMood(mood) {
   return () => {
-    document.body.classList.remove('game-mood-positive');
-    document.body.classList.remove('game-mood-neutral');
-    document.body.classList.remove('game-mood-negative');
+    document.body.classList.remove("game-mood-positive");
+    document.body.classList.remove("game-mood-neutral");
+    document.body.classList.remove("game-mood-negative");
 
     document.body.classList.add(`game-mood-${mood}`);
   };
@@ -102,30 +101,33 @@ export function preloadIllustrations() {
   global.illustrationsPreloaded = true;
 
   const illustrations = [
-    require('./illustrations/bures.png'),
-    require('./illustrations/cupranek.png'),
-    require('./illustrations/eman.png'),
-    require('./illustrations/intro.png'),
-    require('./illustrations/netahlo.png'),
-    require('./illustrations/nguyen.png'),
-    require('./illustrations/pohlova.png'),
-    require('./illustrations/rymula.png'),
-    require('./illustrations/skorene.png'),
-    require('./illustrations/tiskar.png'),
-    require('./illustrations/vojtik.png'),
-    require('./illustrations/zdrava.png'),
+    require("./illustrations/bures.png"),
+    require("./illustrations/cupranek.png"),
+    require("./illustrations/eman.png"),
+    require("./illustrations/intro.png"),
+    require("./illustrations/netahlo.png"),
+    require("./illustrations/nguyen.png"),
+    require("./illustrations/pohlova.png"),
+    require("./illustrations/rymula.png"),
+    require("./illustrations/skorene.png"),
+    require("./illustrations/tiskar.png"),
+    require("./illustrations/vojtik.png"),
+    require("./illustrations/zdrava.png"),
+    require("./illustrations/victory.png"),
+    require("./illustrations/loss_epidemie.png"),
+    require("./illustrations/loss_health.png"),
+    require("./illustrations/loss_economy.png"),
+    require("./illustrations/loss_trust.png"),
   ];
 
-
   for (const ill of illustrations) {
-    const img = document.createElement('img');
-    img.style.position = 'fixed';
-    img.style.top = '-200vh';
-    img.style.left = '-200vw';
+    const img = document.createElement("img");
+    img.style.position = "fixed";
+    img.style.top = "-200vh";
+    img.style.left = "-200vw";
     img.src = ill;
     document.body.append(img);
   }
 }
 
-
-export const makeClass = (...classes) => classes.filter(Boolean).join(' ');
+export const makeClass = (...classes) => classes.filter(Boolean).join(" ");
