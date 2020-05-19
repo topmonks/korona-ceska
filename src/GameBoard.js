@@ -1,12 +1,11 @@
 import React, { useMemo, useEffect } from "react";
 import Card from "./Card";
-import { getAnswerCardField, calculateMood, isIncidentCard, isPlayCard, changeBodyGameMood, preloadIllustrations, isPlayAnswer } from "./library";
+import { calculateMood, isIncidentCard, isPlayCard, changeBodyGameMood, preloadIllustrations, isPlayAnswer } from "./library";
 import { Link } from "react-navi";
 import GameOver from "./GameOver";
 import { Answers } from "./GameKorona";
 import GameValues from "./GameValues";
-
-
+import GameButton from "./GameButton";
 
 
 export default function GameBoard({ G, ctx, moves, events, reset, stage }) {
@@ -16,8 +15,7 @@ export default function GameBoard({ G, ctx, moves, events, reset, stage }) {
   useEffect(changeBodyGameMood(mood), [mood])
   useEffect(preloadIllustrations, [])
 
-  const handleAnswer = (answer) => (event) => {
-    event.preventDefault();
+  const handleAnswer = (answer) => {
     moves.MakeAnswer(answer);
   };
 
@@ -26,16 +24,13 @@ export default function GameBoard({ G, ctx, moves, events, reset, stage }) {
     setImmediate(events.endPhase)
   };
 
-  const answerButton = (answer, title, secondary = false) => (
-    <button
+  const gameButton = ({ answer, title, ...pass }) => (
+    <GameButton
       key={`${ctx.turn}-${answer}`}
-      className={`button__answer ${secondary ? 'button__answer--secondary' : ''}`}
-      onClick={handleAnswer(answer)}
-    >
-      {answer === Answers.CONTINUE ? title : getAnswerCardField(card, answer, "answer") || title}
-    </button>
+      {...{ answer, card, title, ...pass }}
+      onAnswer={handleAnswer}
+    />
   );
-
 
   return (
     <div className={`game-board game-board--${mood}`}>
@@ -57,26 +52,28 @@ export default function GameBoard({ G, ctx, moves, events, reset, stage }) {
 
       {!ctx.gameover && (
         <div className="game-board__buttons">
-          {isIncidentCard(card) && answerButton(Answers.OK, "OK")}
-          {isPlayCard(card) && !isPlayAnswer(answer) && (
-            <>
-              {answerButton(Answers.YES, "Ano")}
-              {answerButton(Answers.NO, "Ne")}
-            </>
-          )}
-          {effect && answerButton(Answers.CONTINUE, 'Pokračovat')}
-          {ctx.phase === 'newbie' && (
-            <>
-              {answerButton(Answers.NEXT, "Pokračovat")}
-              {answerButton(Answers.SKIP, "Přeskočit příběh", true)}
-            </>
-          )}
+          {isIncidentCard(card) && [
+            gameButton({ answer: Answers.OK, title: 'OK' }),
+            gameButton({ placeholder: true }),
+          ]}
+          {isPlayCard(card) && !isPlayAnswer(answer) && [
+            gameButton({ answer: Answers.YES, title: 'Ano' }),
+            gameButton({ answer: Answers.NO, title: 'Ne' }),
+          ]}
+          {effect && [
+            gameButton({ answer: Answers.CONTINUE, title: 'Pokračovat' }),
+            gameButton({ placeholder: true }),
+          ]}
+          {ctx.phase === 'newbie' && [
+            gameButton({ answer: Answers.NEXT, title: 'Pokračovat' }),
+            gameButton({ answer: Answers.SKIP, title: 'Přeskočit příběh', secondary: true }),
+          ]}
         </div>
       )}
 
       {ctx.gameover && (
         <div className="game-board__buttons">
-          <button className="button__default" onClick={handleNewGame}>Nová hra</button>
+          {gameButton({ onClick: handleNewGame, title: 'Nová hra' })}
           <Link href="/">Zpět na menu</Link>
         </div>
       )}

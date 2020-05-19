@@ -127,3 +127,5 @@ export function preloadIllustrations() {
   }
 }
 
+
+export const makeClass = (...classes) => classes.filter(Boolean).join(' ');

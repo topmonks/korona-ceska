@@ -1,8 +1,7 @@
 import React, { useMemo } from "react";
-import { getAnswerCardField, isIncidentCard, isStoryCard } from "./library";
+import { getAnswerCardField, isIncidentCard, isStoryCard, makeClass as css } from "./library";
 import Illustration from "./Illustration";
 
-const css = (...classes) => classes.filter(Boolean).join(' ');
 
 export default function Card({ card, answer, effect, week }) {
   const isIncident = useMemo(() => isIncidentCard(card), [card]);

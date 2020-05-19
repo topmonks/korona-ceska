@@ -180,32 +180,6 @@ a {
   margin-top: 16px;
   max-height: 20vh;
 }
-.game-board__buttons button {
-  white-space: normal;
-}
-
-.button__answer {
-  min-height: 48px;
-  margin-bottom: 16px;
-  padding: 4px 16px;
-  background-color: rgba(0, 0, 0, 0.5);
-  border: none;
-  color: #fff;
-  line-height: 20px;
-  font-size: 16px;
-  border-radius: 4px;
-}
-
-.button__answer:hover {
-  background-color: rgba(0, 0, 0, 0.3);
-}
-.button__answer--secondary {
-  background-color: unset;
-}
-.button__answer--secondary:hover {
-  background-color: unset;
-  background-color: rgba(255, 0, 0, 0.2);
-}
 
 .button__default {
   height: 44px;
@@ -314,6 +288,40 @@ a {
 }
 
 /*
+ * src/GameButton.js
+ */
+
+.game-button {
+  white-space: normal;
+  min-height: 48px;
+  margin-bottom: 16px;
+  padding: 4px 16px;
+  background-color: rgba(0, 0, 0, 0.5);
+  border: none;
+  color: #fff;
+  line-height: 20px;
+  font-size: 16px;
+  border-radius: 4px;
+}
+
+.game-button:hover {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+.game-button--secondary {
+  background-color: unset;
+}
+.game-button--secondary:hover {
+  background-color: unset;
+  background-color: rgba(255, 0, 0, 0.2);
+}
+.game-button--placeholder {
+  background: transparent !important;
+  touch-action: none;
+  outline: none;
+}
+
+
+/*
  * src/ScreenHelp.js
  */
 @media screen and (max-width: 768px) {
@@ -365,9 +373,7 @@ a {
   color: #555;
   text-align: left;
 }
-/*
-.card__name {
-} */
+
 .card__name > span {
   color: #999;
   font-size: 14px;
