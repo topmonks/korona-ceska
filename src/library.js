@@ -26,7 +26,7 @@ export function isPlayAnswer(answer) {
 export function isPlayCard(card) {
   if (!card) return false;
   if (!card.name || !card.img || !card.text) return false;
-  return getAnswerCardField(card, true, 'effect') && getAnswerCardField(card, false, 'effect');
+  return card.yesvalues && card.novalues;
 }
 
 export function isIncidentCard(card) {
