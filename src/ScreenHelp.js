@@ -1,6 +1,6 @@
 import React from "react";
-import { Link } from "react-navi";
 import ValueIcon from "./ValueIcon";
+import ScreenButton from "./ScreenButton";
 
 export default function ScreenHelp({ route }) {
   return (
@@ -33,9 +33,7 @@ export default function ScreenHelp({ route }) {
         </div>
       </div>
 
-      <Link className="navi__link" href="/">
-        Zpět do menu
-      </Link>
+      <ScreenButton>Zpět na menu</ScreenButton>
     </div>
   );
 }

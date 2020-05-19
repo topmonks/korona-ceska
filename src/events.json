@@ -541,8 +541,7 @@
                 "noanswer": "Nikdy.",
                 "yeseffect": "Něco ti našeptává, že až tak dočasné to nebude.",
                 "noeffect": "n-a",
-                "yesvalues": "-15,0,-25,-25",
-                "novalues": "5,0,15,15"
+                "yesvalues": "-15,0,-25,-25"
             },
             {
                 "name": "Andrej Bakšiš",
@@ -645,50 +644,52 @@
             }
         ]
     },
-    "events": [
-        {
-            "name": "Jarda Netáhlo",
-            "img": "netahlo",
-            "text": "Uběhl měsíc. Šíření viru se zatím nepodařilo zastavit, lidé začínají být neklidní."
-        },
-        {
-            "turn": 9,
-            "values": "5,0,0,-5",
-            "name": "Tik ťak II",
-            "img": "netahlo",
-            "text": "Od začátku epidemie uběhly již dva měsíce. Tiskoví mluvčí uklidňují lid tím, že jinde je hůř."
-        },
-        {
-            "turn": 13,
-            "values": "5,-7,-7,-5",
-            "name": "Tik ťak III",
-            "img": "netahlo",
-            "text": "Tři měsíce od začátku epidemie! Lidé jsou již unavení a ztrácí disciplínu v protiepidemických opatřeních. Do Vltavy se vrátili delfíni."
-        },
-        {
-            "turn": 17,
-            "last": true,
-            "values": "5,-5,-5,-5",
-            "name": "Tik ťak IV",
-            "img": "netahlo",
-            "text": "Před čtyřmi měsíci začala epidemie. Lid si zvyká na nový normál, staré pořádky se převrací. Na Václaváku přestávají prodávat klobásy. Stropnický jásá, že nikdo nejel na letní dovolenou. Nad Prahou létá v noci UFO (anebo lidi jen moc chlastaj?)."
-        }
-    ],
-    "story": [
-        {
-            "name": "Korona česká (1 z 3)",
-            "img": "story1",
-            "text": "<i>V rozhodnou chvíli se Blaník otevře, rytíři v plné zbroji vyhrnou se z hory a svatý Václav, jeda na bílém koni, je povede na pomoc Čechům.</i><br/><br/>V českých zemích se šíří nový vir. Češi jsou schopný národ, ale vládnou mu nemehla. Je zapotřebí, aby zasáhla vyšší moc."
-        },
-        {
-            "name": "Korona česká (2 z 3)",
-            "img": "story2",
-            "text": "<i>Copak se to ozývá zpod Blaníka? Šramot, chrchlot, brblání.</i> <br/><br/>-Vstávejte chásko jedna, Češi nás potřebují! <br/><br/>-Ale dej zas pokoj Venco, dyť jsme se tak pěkně zlili medovinkou, teď si ještě pár set let zchrupnem."
-        },
-        {
-            "name": "Korona česká (3 z 3)",
-            "img": "story3",
-            "text": "Svatý Václav přijíždí národu na pomoc sám. Namísto věrných rytířů se musí spokojit s poradci z řad české vlády a lidu. Rozhodnutí mají často opačný dopad v různých sektorech."
-        }
-    ]
+  "events": [
+    {
+      "turn": 5,
+      "values": "5,0,0,-5",
+      "name": "Tik ťak",
+      "img": "netahlo",
+      "text": "Uběhl měsíc. Šíření viru se zatím nepodařilo zastavit, lidé začínají být neklidní."
+    },
+    {
+      "turn": 9,
+      "values": "5,0,0,-5",
+      "name": "Tik ťak II",
+      "img": "netahlo",
+      "text": "Od začátku epidemie uběhly již dva měsíce. Tiskoví mluvčí uklidňují lid tím, že jinde je hůř."
+    },
+    {
+      "turn": 13,
+      "values": "5,-7,-7,-5",
+      "name": "Tik ťak III",
+      "img": "netahlo",
+      "text": "Tři měsíce od začátku epidemie! Lidé jsou již unavení a ztrácí disciplínu v protiepidemických opatřeních. Do Vltavy se vrátili delfíni."
+    },
+    {
+      "turn": 17,
+      "last": true,
+      "values": "5,-5,-5,-5",
+      "name": "Tik ťak IV",
+      "img": "netahlo",
+      "text": "Před čtyřmi měsíci začala epidemie. Lid si zvyká na nový normál, staré pořádky se převrací. Na Václaváku přestávají prodávat klobásy. Stropnický jásá, že nikdo nejel na letní dovolenou. Nad Prahou létá v noci UFO (anebo lidi jen moc chlastaj?)."
+    }
+  ],
+  "story": [
+    {
+      "name": "Korona česká (1 z 3)",
+      "img": "story1",
+      "text": "<i>\"V rozhodnou chvíli se Blaník otevře, rytíři v plné zbroji vyhrnou se z hory a svatý Václav, jeda na bílém koni, je povede na pomoc Čechům.\"</i><br/><br/>V českých zemích se šíří nový vir. Češi jsou schopný národ, ale vládnou mu nemehla. Je zapotřebí, aby zasáhla vyšší moc."
+    },
+    {
+      "name": "Korona česká (2 z 3)",
+      "img": "story2",
+      "text": "<i>Copak se to ozývá zpod Blaníka? Šramot, chrchlot, brblání.</i> <br/><br/>-Vstávejte chásko jedna, Češi nás potřebují! <br/><br/>-Ale dej zas pokoj Venco, dyť jsme se tak pěkně zlili medovinkou, teď si ještě pár set let zchrupnem."
+    },
+    {
+      "name": "Korona česká (3 z 3)",
+      "img": "story3",
+      "text": "Svatý Václav přijíždí národu na pomoc sám. Namísto věrných rytířů se musí spokojit s poradci z řad české vlády a lidu.<br/><br/> Rozhodnutí mají často opačný dopad v různých sektorech."
+    }
+  ]
 }

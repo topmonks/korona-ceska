@@ -1,5 +1,5 @@
 import { TurnOrder } from 'boardgame.io/core';
-import { calculateMood, calculateValues, getIncidentCard, hasYesNoAnswer, isIncidentCard, getAnswerCardField, } from './library';
+import { calculateMood, calculateValues, getIncidentCard, isPlayCard, isIncidentCard, getAnswerCardField, isPlayAnswer, } from './library';
 
 const { cards: CARD_DECKS, events: EVENT_CARDS, story: STORY_CARDS } = require('./events.json');
 
@@ -67,11 +67,9 @@ export default {
       } else if (incident) {
         G.card = incident;
         G.values = calculateValues(G.values, incident);
-        G.answer = null;
       } else {
         const mood = calculateMood(G.values);
         G.card = G.decks[mood].pop();
-        G.answer = null;
       }
     },
     onEnd: (G, ctx) => {
@@ -105,7 +103,7 @@ export default {
       if (ctx.phase === 'newbie') {
         moves.push({ move: 'MakeAnswer', args: [Answers.NEXT] });
         moves.push({ move: 'MakeAnswer', args: [Answers.SKIP] });
-      } else if (G.answer === null && hasYesNoAnswer(G.card)) {
+      } else if (isPlayCard(G.card) && !isPlayAnswer(G.answer)) {
         moves.push({ move: 'MakeAnswer', args: [true] });
         moves.push({ move: 'MakeAnswer', args: [false] });
       } else if (G.effect) {
@@ -113,7 +111,7 @@ export default {
       } else if (isIncidentCard(G.card)) {
         moves.push({ move: 'MakeAnswer', args: [Answers.OK] });
       } else {
-        moves.push({ move: 'endTurn' });
+        // moves.push({ move: 'endTurn' });
       }
 
       return moves;
@@ -124,6 +122,10 @@ export default {
 function MakeAnswer(G, ctx, answer) {
   G.answer = answer;
   G.effect = getAnswerCardField(G.card, answer, 'effect') || null;
+
+  if (isPlayAnswer(answer)) {
+    G.values = calculateValues(G.values, G.card, answer);
+  }
 
   if (ctx.phase === 'newbie') {
     if (answer === Answers.NEXT) {
@@ -149,10 +151,6 @@ function MakeAnswer(G, ctx, answer) {
   if (answer === Answers.CONTINUE || !G.effect) {
     ctx.events.endTurn();
     return;
-  }
-
-  if (hasYesNoAnswer(G.card) || isIncidentCard(G.card)) {
-    G.values = calculateValues(G.values, G.card, answer);
   }
 
 }

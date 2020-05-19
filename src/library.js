@@ -1,3 +1,5 @@
+import { Answers } from "./GameKorona";
+
 export function calculateMood([epidemie]) {
   if (epidemie >= 75) {
     return "negative";
@@ -13,21 +15,26 @@ export function getIncidentCard(cards = [], turn = 0) {
   const card = cards.find(
     (event) => event.turn === turn || (event.last && turn >= event.turn)
   );
-  return card
+  return card;
 }
 
-export function hasYesNoAnswer(card) {
+export function isPlayAnswer(answer) {
+  return answer === Answers.YES || answer === Answers.NO;
+}
+
+export function isPlayCard(card) {
   if (!card) return false;
+  if (!card.name || !card.img || !card.text) return false;
   return card.yesvalues && card.novalues;
 }
 
 export function isIncidentCard(card) {
   if (!card) return false;
-  return card.values && !hasYesNoAnswer(card);
+  return card.values && !isPlayCard(card);
 }
 export function isStoryCard(card) {
   if (!card) return false;
-  return card.text && card.name && !hasYesNoAnswer(card) && !isIncidentCard(card);
+  return card.text && card.name && !isPlayCard(card) && !isIncidentCard(card);
 }
 
 export function calculateValues(values, card, answer) {
@@ -36,9 +43,9 @@ export function calculateValues(values, card, answer) {
 
   let results = [];
 
-  if (answer === true) {
+  if (answer === Answers.YES) {
     results = calculate(card.yesvalues);
-  } else if (answer === false) {
+  } else if (answer === Answers.NO) {
     results = calculate(card.novalues);
   } else if (card.values) {
     return (results = calculate(card.values));
@@ -70,7 +77,7 @@ export function calculateCardsCounts({
 
 export function getAnswerCardField(card, answer, field) {
   const value = (card || {})[(answer ? "yes" : "no") + field];
-  if (!value || value === 'n-a') return undefined;
+  if (!value || value === "n-a") return undefined;
   return value;
 }
 
@@ -81,9 +88,9 @@ export function hasAnswerCardField(card, answer, field) {
 
 export function changeBodyGameMood(mood) {
   return () => {
-    document.body.classList.remove('game-mood-positive');
-    document.body.classList.remove('game-mood-neutral');
-    document.body.classList.remove('game-mood-negative');
+    document.body.classList.remove("game-mood-positive");
+    document.body.classList.remove("game-mood-neutral");
+    document.body.classList.remove("game-mood-negative");
 
     document.body.classList.add(`game-mood-${mood}`);
   };
@@ -94,28 +101,33 @@ export function preloadIllustrations() {
   global.illustrationsPreloaded = true;
 
   const illustrations = [
-    require('./illustrations/bures.png'),
-    require('./illustrations/cupranek.png'),
-    require('./illustrations/eman.png'),
-    require('./illustrations/intro.png'),
-    require('./illustrations/netahlo.png'),
-    require('./illustrations/nguyen.png'),
-    require('./illustrations/pohlova.png'),
-    require('./illustrations/rymula.png'),
-    require('./illustrations/skorene.png'),
-    require('./illustrations/tiskar.png'),
-    require('./illustrations/vojtik.png'),
-    require('./illustrations/zdrava.png'),
+    require("./illustrations/bures.png"),
+    require("./illustrations/cupranek.png"),
+    require("./illustrations/eman.png"),
+    require("./illustrations/intro.png"),
+    require("./illustrations/netahlo.png"),
+    require("./illustrations/nguyen.png"),
+    require("./illustrations/pohlova.png"),
+    require("./illustrations/rymula.png"),
+    require("./illustrations/skorene.png"),
+    require("./illustrations/tiskar.png"),
+    require("./illustrations/vojtik.png"),
+    require("./illustrations/zdrava.png"),
+    require("./illustrations/victory.png"),
+    require("./illustrations/loss_epidemie.png"),
+    require("./illustrations/loss_health.png"),
+    require("./illustrations/loss_economy.png"),
+    require("./illustrations/loss_trust.png"),
   ];
 
-
   for (const ill of illustrations) {
-    const img = document.createElement('img');
-    img.style.position = 'fixed';
-    img.style.top = '-200vh';
-    img.style.left = '-200vw';
+    const img = document.createElement("img");
+    img.style.position = "fixed";
+    img.style.top = "-200vh";
+    img.style.left = "-200vw";
     img.src = ill;
     document.body.append(img);
   }
 }
 
+export const makeClass = (...classes) => classes.filter(Boolean).join(" ");
