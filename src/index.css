@@ -88,7 +88,6 @@ body.game-mood-negative {
   margin: auto;
 }
 
-
 h1 {
   color: white;
   font-size: 24px;
@@ -150,7 +149,7 @@ a {
 }
 
 .game-over img {
-  width: 100%;
+  width: 80%;
 }
 
 .screen--help {
@@ -266,7 +265,6 @@ a {
   box-shadow: 0px 8px 16px -10px rgb(255, 0, 0);
 }
 
-
 /*
  * src/GameButton.js
  */
@@ -299,7 +297,6 @@ a {
   touch-action: none;
   outline: none;
 }
-
 
 /*
  * src/ScreenHelp.js

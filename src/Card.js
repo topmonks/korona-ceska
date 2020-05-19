@@ -5,7 +5,6 @@ import {
   isStoryCard,
   makeClass as css,
 } from "./library";
-import Illustration from "./Illustration";
 
 const getIll = (img) => {
   try {
@@ -49,9 +48,7 @@ export default function Card({ card, answer, effect, week }) {
           style={{
             backgroundImage: `url(${getIll(card.img)})`,
           }}
-        >
-          {/* <Illustration key={card.text} img={card.img} /> */}
-        </div>
+        ></div>
       )}
       <h3 className="card__name">
         {card.name} {turnNo}
