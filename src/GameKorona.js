@@ -1,5 +1,5 @@
 import { TurnOrder } from 'boardgame.io/core';
-import { calculateMood, calculateValues, getIncidentCard, hasYesNoAnswer, isIncidentCard, getAnswerCardField, } from './library';
+import { calculateMood, calculateValues, getIncidentCard, isPlayCard, isIncidentCard, getAnswerCardField, isPlayAnswer, } from './library';
 
 const { cards: CARD_DECKS, events: EVENT_CARDS, story: STORY_CARDS } = require('./events.json');
 
@@ -105,7 +105,7 @@ export default {
       if (ctx.phase === 'newbie') {
         moves.push({ move: 'MakeAnswer', args: [Answers.NEXT] });
         moves.push({ move: 'MakeAnswer', args: [Answers.SKIP] });
-      } else if (G.answer === null && hasYesNoAnswer(G.card)) {
+      } else if (isPlayCard(G.card) && !isPlayAnswer(G.answer)) {
         moves.push({ move: 'MakeAnswer', args: [true] });
         moves.push({ move: 'MakeAnswer', args: [false] });
       } else if (G.effect) {
@@ -151,7 +151,7 @@ function MakeAnswer(G, ctx, answer) {
     return;
   }
 
-  if (hasYesNoAnswer(G.card) || isIncidentCard(G.card)) {
+  if (isPlayCard(G.card) || isIncidentCard(G.card)) {
     G.values = calculateValues(G.values, G.card, answer);
   }
 

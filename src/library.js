@@ -1,3 +1,5 @@
+import { Answers } from './GameKorona';
+
 export function calculateMood([epidemie]) {
   if (epidemie >= 75) {
     return "negative";
@@ -16,18 +18,24 @@ export function getIncidentCard(cards = [], turn = 0) {
   return card
 }
 
-export function hasYesNoAnswer(card) {
+
+export function isPlayAnswer(answer) {
+  return answer === Answers.YES || answer === Answers.NO;
+}
+
+export function isPlayCard(card) {
   if (!card) return false;
-  return card.yesvalues && card.novalues;
+  if (!card.name || !card.img || !card.text) return false;
+  return getAnswerCardField(card, true, 'effect') && getAnswerCardField(card, false, 'effect');
 }
 
 export function isIncidentCard(card) {
   if (!card) return false;
-  return card.values && !hasYesNoAnswer(card);
+  return card.values && !isPlayCard(card);
 }
 export function isStoryCard(card) {
   if (!card) return false;
-  return card.text && card.name && !hasYesNoAnswer(card) && !isIncidentCard(card);
+  return card.text && card.name && !isPlayCard(card) && !isIncidentCard(card);
 }
 
 export function calculateValues(values, card, answer) {
@@ -36,9 +44,9 @@ export function calculateValues(values, card, answer) {
 
   let results = [];
 
-  if (answer === true) {
+  if (answer === Answers.YES) {
     results = calculate(card.yesvalues);
-  } else if (answer === false) {
+  } else if (answer === Answers.NO) {
     results = calculate(card.novalues);
   } else if (card.values) {
     return (results = calculate(card.values));

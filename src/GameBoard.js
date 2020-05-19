@@ -1,6 +1,6 @@
 import React, { useMemo, useEffect } from "react";
 import Card from "./Card";
-import { getAnswerCardField, calculateMood, isIncidentCard, hasYesNoAnswer, changeBodyGameMood, preloadIllustrations } from "./library";
+import { getAnswerCardField, calculateMood, isIncidentCard, isPlayCard, changeBodyGameMood, preloadIllustrations, isPlayAnswer } from "./library";
 import { Link } from "react-navi";
 import GameOver from "./GameOver";
 import { Answers } from "./GameKorona";
@@ -58,7 +58,7 @@ export default function GameBoard({ G, ctx, moves, events, reset, stage }) {
       {!ctx.gameover && (
         <div className="game-board__buttons">
           {isIncidentCard(card) && answerButton(Answers.OK, "OK")}
-          {answer === null && hasYesNoAnswer(card) && (
+          {isPlayCard(card) && !isPlayAnswer(answer) && (
             <>
               {answerButton(Answers.YES, "Ano")}
               {answerButton(Answers.NO, "Ne")}
