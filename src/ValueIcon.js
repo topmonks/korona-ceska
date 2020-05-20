@@ -37,7 +37,13 @@ export default function ValueIcon({ value, type, large = false, small = false, l
           </clipPath>
         </defs>
         <path fill={color} d={pathD} />
-        <path clipPath={`url(#value-level-${type})`} fill={loose ? RED_COLOR : FOK_COLOR} d={pathD} />
+        <path
+          clipPath={`url(#value-level-${type})`}
+          fill={loose ? RED_COLOR : FOK_COLOR}
+          stroke={loose ? RED_COLOR : FOK_COLOR}
+          strokeWidth="0.1px"
+          d={pathD}
+        />
       </g>
     </svg>
   )
