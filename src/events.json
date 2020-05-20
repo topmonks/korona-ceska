@@ -52,7 +52,7 @@
                 "yesanswer": "Jděte do toho.",
                 "noanswer": "Tisíc nebo ráže?",
                 "yeseffect": "OSVČ dostávají finanční podporu a kontrolu z berňáku k tomu.",
-                "noeffect": "\"Hehe... he.\" <br/><br/> -Bakšišův smích tě znervózňuje.",
+                "noeffect": "\"Hehe... he.\" <br/><br/>Trošku tě to znervóznilo.",
                 "yesvalues": "0,0,-10,10",
                 "novalues": "0,-10,-5,5"
             },
@@ -66,6 +66,17 @@
                 "noeffect": "n-a",
                 "yesvalues": "0,0,10,0",
                 "novalues": "0,10,0,0"
+            },
+            {
+                "name": "Eman",
+                "img": "eman",
+                "text": "Brbly žbluňk bum milý pane redaktore.",
+                "yesanswer": "Máš pravdu, ale běž už si lehnout.",
+                "noanswer": "Ježiš cos to zase vypil!",
+                "yeseffect": "n-a",
+                "noeffect": "n-a",
+                "yesvalues": "0,0,5,0",
+                "novalues": "0,5,0,0"
             },
             {
                 "name": "Eman",
@@ -84,9 +95,9 @@
                 "text": "Kamarádovi hladoví prase, musíme udělat zabijačku. Pojď, bude žranice.",
                 "yesanswer": "Ano.",
                 "noanswer": "Ne.",
-                "yeseffect": "Žranice byla fajnová, ale chytli se toho pisálci. Lid se bouří v komentářích na Novinkách.",
+                "yeseffect": "Žranice byla fajnová, ale chytli se toho pisálci. Lid se bouří v komentářích na Novinkách a vytváří neuctivé memy.",
                 "noeffect": "n-a",
-                "yesvalues": "0,10,0,-15",
+                "yesvalues": "0,15,0,-15",
                 "novalues": "0,0,0,5"
             },
             {
@@ -120,7 +131,7 @@
                 "yeseffect": "n-a",
                 "noeffect": "n-a",
                 "yesvalues": "-5,0,0,10",
-                "novalues": "15,0,0,-15"
+                "novalues": "25,0,0,-15"
             },
             {
                 "name": "Jan Tiskař",
@@ -164,7 +175,7 @@
                 "yeseffect": "Testování se rozjelo ve velkém. Ukazuje se, že vir má mnohem více lidí, než jsme mysleli. Lidé se bojí vycházet z domu.",
                 "noeffect": "Věra Pohlová má jako jedna z mála radost. Potvrzených nákaz přibývá pomálu, lidé se nebojí a postávají s pivem u venkovních výčepů.",
                 "yesvalues": "-20,-10,-10,15",
-                "novalues": "20,10,10,-15"
+                "novalues": "25,10,10,-15"
             },
             {
                 "name": "Jana Zdravá",
@@ -207,7 +218,7 @@
                 "noanswer": "Nikam nechoď. Z lunchmeatu jsou ty řízky stejně nejlepší!",
                 "yeseffect": "n-a",
                 "noeffect": "n-a",
-                "yesvalues": "5,7,7,-10",
+                "yesvalues": "10,10,10,-10",
                 "novalues": "-5,-15,0,0"
             },
             {
@@ -218,7 +229,7 @@
                 "noanswer": "To bude podvod.",
                 "yeseffect": "Samozřejmě to byl podvod.",
                 "noeffect": "n-a",
-                "yesvalues": "10,-10,0,-10",
+                "yesvalues": "15,-10,0,-10",
                 "novalues": "0,5,0,5"
             },
             {
@@ -240,8 +251,8 @@
                 "noanswer": "Radši si doma něco upeč, ať si tu karanténu zpříjemníš. ",
                 "yeseffect": "Jarda nešel běhat, ale k venkovnímu výčepu. Pěkně pokecal s kamarády, vyměnili si tipy na seriály a přinesl si domů pěknou opičku s korunkou na hlavě. Příští tři týdny strávil v horečkách a s kašlem.",
                 "noeffect": "Jarda strávil dvě hodiny obcházením obchodů a hledáním droždí.",
-                "yesvalues": "5,15,0,0",
-                "novalues": "-3,-15,-10,0"
+                "yesvalues": "10,15,0,0",
+                "novalues": "-5,-15,-10,0"
             },
             {
                 "name": "Josef Čupránek",
@@ -274,7 +285,7 @@
                 "yeseffect": "n-a",
                 "noeffect": "Bakšiš: všecko jde zdanit, když se chce. A mně se chce.",
                 "yesvalues": "-5,5,5,5",
-                "novalues": "10,-15,-15,-15"
+                "novalues": "15,-15,-15,-15"
             },
             {
                 "name": "Maruška Nguyenová",
@@ -285,7 +296,7 @@
                 "yeseffect": "n-a",
                 "noeffect": "n-a",
                 "yesvalues": "-5,5,5,0",
-                "novalues": "10,0,-15,-10"
+                "novalues": "15,0,-15,-10"
             },
             {
                 "name": "Maruška Nguyenová",
@@ -340,7 +351,7 @@
                 "yeseffect": "Vzkvétá protiestablishmentový underground.",
                 "noeffect": "Vskutku, aplikace Chytrá karanténa byla během týdne hacknutá, nyní jen zobrazuje photoshopnutou Vojtíkovu hlavu na nahatém ženském těle.",
                 "yesvalues": "-5,0,0,-15",
-                "novalues": "5,0,0,-10"
+                "novalues": "10,0,0,-10"
             },
             {
                 "name": "Roman Skořene",
@@ -462,7 +473,7 @@
                 "noanswer": "Nakup si lahváče.",
                 "yeseffect": "n-a",
                 "noeffect": "n-a",
-                "yesvalues": "10,5,10,10",
+                "yesvalues": "15,5,10,10",
                 "novalues": "-5,-10,5,-10"
             },
             {
@@ -496,7 +507,7 @@
                 "yeseffect": "Bakšiš sáhnul do svých složek a našel důkazy, že soudce má fetiš na trpaslíky v latexu. Opravný rozsudek byl vydán den poté. Lidé přestávají věřit v právní stát.",
                 "noeffect": "n-a",
                 "yesvalues": "-25,-25,-25,-35",
-                "novalues": "10,25,25,-20"
+                "novalues": "15,25,25,-20"
             },
             {
                 "name": "MUDr. Rýmula",
@@ -506,7 +517,7 @@
                 "noanswer": "Ne.",
                 "yeseffect": "Radost byla předčasná, po týdnu opět začínají růst počty nakažených.",
                 "noeffect": "Lid brblá nadále, ale roušky nosí.",
-                "yesvalues": "40,20,0,10",
+                "yesvalues": "50,20,0,10",
                 "novalues": "-20,-20,0,-15"
             },
             {
@@ -517,7 +528,7 @@
                 "noanswer": "Nepovolit.",
                 "yeseffect": "n-a",
                 "noeffect": "Věra Pohlová jásá.",
-                "yesvalues": "10,10,10,10",
+                "yesvalues": "20,10,10,10",
                 "novalues": "-10,-15,-15,-15"
             },
             {
@@ -528,8 +539,8 @@
                 "noanswer": "Ne.",
                 "yeseffect": "Studenti humanitních oborů padají při česání jablek z žebříků, nemocnice se plní.",
                 "noeffect": "Věra Pohlová se mračí.",
-                "yesvalues": "10,-15,10,-15",
-                "novalues": "-10,0,-15,10"
+                "yesvalues": "5,-25,10,-15",
+                "novalues": "-10,0,-20,10"
             }
         ],
         "negative": [
@@ -553,7 +564,7 @@
                 "yeseffect": "Bakšiš na tebe našel přes 1000 let starou špínu, Rýmula nemusí rezignovat.",
                 "noeffect": "Jarda Netáhlo se o tom dozvěděl u venkovního výčepu a roztroubil to. Skandál!",
                 "yesvalues": "0,0,0,-10",
-                "novalues": "10,0,0,-15"
+                "novalues": "20,0,0,-15"
             },
             {
                 "name": "Alfons Vojtík",
@@ -600,17 +611,6 @@
                 "novalues": "0,0,-15,-15"
             },
             {
-                "name": "Eman",
-                "img": "eman",
-                "text": "Brbly žbluňk bum milý pane redaktore.",
-                "yesanswer": "Máš pravdu, ale běž už si lehnout.",
-                "noanswer": "Ježiš cos to zase vypil!",
-                "yeseffect": "n-a",
-                "noeffect": "n-a",
-                "yesvalues": "0,0,5,0",
-                "novalues": "0,5,0,0"
-            },
-            {
                 "name": "Jana Zdravá",
                 "img": "zdrava",
                 "text": "Lidé mají málo pohybu a vitamínu D. Co s tím?",
@@ -629,7 +629,7 @@
                 "noanswer": "Ne.",
                 "yeseffect": "n-a",
                 "noeffect": "n-a",
-                "yesvalues": "15,5,5,5",
+                "yesvalues": "20,5,5,5",
                 "novalues": "-5,-15,-15,-10"
             },
             {
