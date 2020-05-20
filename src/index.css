@@ -150,10 +150,6 @@ a {
   max-height: 20vh;
 }
 
-.game-over img {
-  width: 80%;
-}
-
 .screen--help {
   display: flex;
   flex-direction: column;
@@ -419,6 +415,8 @@ a {
    keeps size ratio from html attributes */
   width: auto;
   height: auto;
+  margin-top: 16px;
+  margin-bottom: 32px;
 }
 
 /*
