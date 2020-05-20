@@ -1,4 +1,23 @@
-This project was bootstrapped with [Create Korona Česká](https://github.com/facebook/create-react-app).
+# korona-ceska.cz
+
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+## Cloudinary upload
+
+This site have ability to upload images to Cloudinary and generate Cloudinary URLs.
+Cloudinary needs to be properly configured.
+Go to [Cloudinary console](https://cloudinary.com/console) (credentials are in TopMonks 1password vault)
+and copy the `Environment variable` with credentials. One time run this command:
+
+```
+pbpaste > .env.local
+```
+
+When configured you can re-upload images with:
+
+```bash
+npm run upload-images
+```
 
 ## Available Scripts
 

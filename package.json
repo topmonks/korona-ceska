@@ -28,8 +28,10 @@
     "babel-preset-react-app": "^9.1.2",
     "camelcase": "^5.3.1",
     "case-sensitive-paths-webpack-plugin": "2.3.0",
+    "cloudinary": "^1.21.0",
     "css-loader": "3.4.2",
     "dotenv": "8.2.0",
+    "dotenv-cli": "^3.1.0",
     "dotenv-expand": "5.1.0",
     "eslint": "^6.6.0",
     "eslint-config-react-app": "^5.2.1",
@@ -41,6 +43,10 @@
     "eslint-plugin-react-hooks": "^1.6.1",
     "file-loader": "4.3.0",
     "fs-extra": "^8.1.0",
+    "gulp": "^4.0.2",
+    "gulp-changed": "^4.0.2",
+    "gulp-cloudinary-upload": "https://github.com/topmonks/gulp-cloudinary-upload.git#50b82e73a9d9cd4b350647b8717e843c1acd201a",
+    "gulp-posthtml": "^3.0.4",
     "html-webpack-plugin": "4.0.0-beta.11",
     "identity-obj-proxy": "3.0.0",
     "jest": "24.9.0",
@@ -55,6 +61,7 @@
     "postcss-normalize": "8.0.1",
     "postcss-preset-env": "6.7.0",
     "postcss-safe-parser": "4.0.1",
+    "posthtml-inject": "^0.5.0",
     "react-app-polyfill": "^1.0.6",
     "react-dev-utils": "^10.2.1",
     "resolve": "1.15.0",
@@ -73,8 +80,9 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "postbuild": "node scripts/modifyServiceWorker.js",
-    "test": "node scripts/test.js"
+    "postbuild": "node scripts/modifyServiceWorker.js; gulp html",
+    "test": "node scripts/test.js",
+    "upload-images": "dotenv -e .env.local gulp"
   },
   "eslintConfig": {
     "extends": "react-app"

@@ -1,6 +1,10 @@
 import React from "react";
+import images from "./cloudinary.json";
 
-const imgUrl = (img, { height, dpr }) => `https://res.cloudinary.com/topmonks/image/upload/f_auto,dpr_${dpr},h_${height},q_auto/v1589954414/korona-ceska.cz/illustrations/${img}.png`;
+const imgUrl = (img, { height, dpr }) => {
+  const src = images[`illustrations/${img}.png`]["secure_url"];
+  return src.replace("upload", `upload/f_auto,dpr_${dpr},h_${height},q_auto`);
+};
 
 const imgSrcSet = (img, { height }) =>
   `${imgUrl(img, { height, dpr: 1 })} 1x,
