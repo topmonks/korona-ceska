@@ -7,14 +7,6 @@ import {
 } from "./library";
 import Illustration from "./Illustration";
 
-const getIll = (img) => {
-  try {
-    return require(`./illustrations/${img}.png`);
-  } catch (error) {
-    console.warn("Unknown Illustration", { img });
-  }
-};
-
 export default function Card({ card, answer, effect, week }) {
   const isIncident = useMemo(() => isIncidentCard(card), [card]);
   const isStory = useMemo(() => isStoryCard(card), [card]);
