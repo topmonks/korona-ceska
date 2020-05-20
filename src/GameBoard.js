@@ -1,6 +1,12 @@
 import React, { useMemo, useEffect } from "react";
 import Card from "./Card";
-import { calculateMood, isIncidentCard, isPlayCard, changeBodyGameMood, isPlayAnswer } from "./library";
+import {
+  calculateMood,
+  isIncidentCard,
+  isPlayCard,
+  changeBodyGameMood,
+  isPlayAnswer
+} from "./library";
 import GameOver from "./GameOver";
 import { Answers } from "./GameKorona";
 import GameValues from "./GameValues";

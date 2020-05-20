@@ -1,6 +1,8 @@
 import React from "react";
 import { mount, route, redirect } from "navi";
 import { Router, View, NotFoundBoundary, Link } from "react-navi";
+import { Helmet, HelmetProvider } from 'react-navi-helmet-async'
+import { getIllustrationsUrls } from "./Illustration";
 
 const screen = (name) => require(`./Screen${name}`).default;
 
@@ -31,14 +33,27 @@ const renderNotFound = () => (
   </div>
 );
 
-export default function Applicaiton() {
+const linkElement = (href, i) => (<link key={i} rel="prefetch" as="image" href={href} />);
+
+const prefetchUrls = () => {
+  const dpr = window.devicePixelRatio;
+  return Array.from(getIllustrationsUrls(dpr))
+}
+
+export default function Application() {
+  console.log(prefetchUrls())
   return (
-    <Router routes={routes}>
-      <NotFoundBoundary render={renderNotFound}>
-        <div className="app">
-          <View />
-        </div>
-      </NotFoundBoundary>
-    </Router>
+    <HelmetProvider>
+      <Router routes={routes}>
+        <NotFoundBoundary render={renderNotFound}>
+          <div className="app">
+            <Helmet>
+              {prefetchUrls().map(linkElement)}
+            </Helmet>
+            <View />
+          </div>
+        </NotFoundBoundary>
+      </Router>
+    </HelmetProvider>
   );
 }
