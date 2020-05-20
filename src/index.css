@@ -337,10 +337,6 @@ a {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 32px;
-  background-position: center;
-  background-size: contain;
-  background-repeat: no-repeat;
   /* Image loading in Card component */
 }
 

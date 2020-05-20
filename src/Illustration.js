@@ -7,7 +7,7 @@ const imgSrcSet = (img, { height }) =>
    ${imgUrl(img, { height, dpr: 1.5 })} 1.5x,
    ${imgUrl(img, { height, dpr: 2 })} 2x`;
 
-export default function Illustration({ img }) {
+export default function Illustration({ img, alt }) {
   return (
     <picture>
       <source
@@ -25,7 +25,8 @@ export default function Illustration({ img }) {
       <source
         media="(min-height: 1024px)"
         srcSet={imgSrcSet(img, { height: 420 })}/>
-      <img className="illustration" alt={img} src={imgUrl(img, { height: 162, dpr: "auto" })}
+      <img className="illustration" alt={alt || img}
+           src={imgUrl(img, { height: 162, dpr: "auto" })}
            width="480" height="640"/>
     </picture>
   );
