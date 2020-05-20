@@ -2,11 +2,11 @@ import React from "react";
 import images from "./cloudinary.json";
 
 const screenSizes = [
-  ["only screen and (max-height: 667px)", 162],
-  ["only screen and (min-height: 668px) and (max-height: 735px)", 222],
-  ["only screen and (min-height: 736px) and (max-height: 811px)", 262],
-  ["only screen and (min-height: 812px) and (max-height: 1023px)", 280],
-  ["only screen and (min-height: 1024px)", 420]
+  ["(max-height: 667px)", 162],
+  ["(min-height: 668px) and (max-height: 735px)", 202],
+  ["(min-height: 736px) and (max-height: 811px)", 242],
+  ["(min-height: 812px) and (max-height: 1023px)", 260],
+  ["(min-height: 1024px)", 400]
 ];
 
 function addTransformations(src, dpr, height) {
@@ -14,10 +14,9 @@ function addTransformations(src, dpr, height) {
 }
 
 export function* getIllustrationsUrls(dpr) {
-  for (let key in images) {
+  for (let {secure_url: src} of Object.values(images)) {
     for (let [media, height] of screenSizes) {
       if (window.matchMedia(media).matches) {
-        const src = images[key]["secure_url"];
         yield addTransformations(src, dpr, height);
       }
     }
@@ -29,8 +28,10 @@ const imgUrl = (img, { height, dpr }) => {
   return addTransformations(src, dpr, height);
 };
 
-const imgSrcSet = (img, { height }) =>
-  `${imgUrl(img, { height, dpr: window.devicePixelRatio })}`;
+const imgSrcSet = (img, { height, dpr = window.devicePixelRatio }) =>
+  `${imgUrl(img, { height, dpr: 1 })} 1x,
+   ${imgUrl(img, { height, dpr: 1.5 })} 1.5x,
+   ${imgUrl(img, { height, dpr })} ${dpr}x`;
 
 export default function Illustration({ img, alt }) {
   return (
@@ -41,7 +42,7 @@ export default function Illustration({ img, alt }) {
           srcSet={imgSrcSet(img, { height })}/>
       ))}
       <img className="illustration" alt={alt || img}
-           src={imgUrl(img, { height: 162, dpr: "auto" })}
+           src={imgUrl(img, { height: 640, dpr: "auto" })}
            width="480" height="640"/>
     </picture>
   );

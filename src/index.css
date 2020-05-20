@@ -79,6 +79,10 @@ body.game-mood-negative {
   align-items: center;
 }
 
+.screen:not(.screen--menu) {
+  width: 100%;
+}
+
 .screen--menu > div {
   display: flex;
   flex: 1;
@@ -115,19 +119,18 @@ a {
 
 /* boardgame.io game board container */
 .bgio-client {
-  height: 100vh;
+  min-height: 100vh;
 }
 
 .game-board {
   height: 100vh;
-  /*height: -webkit-fill-available;*/
-  width: 480px;
-  max-width: 94vw;
+  width: calc(100% - 32px);
+  max-width: 480px;
+  margin: 0 auto;
   box-sizing: border-box;
 
-  text-align: center;
-
   color: white;
+  text-align: center;
   display: flex;
   flex-direction: column;
 }
@@ -235,6 +238,22 @@ a {
   flex: 1;
   text-align: end;
 }
+@media screen and (max-width: 319px) {
+  .game-values__rest .value-icon {
+    width: 24px;
+  }
+  .game-values__virus .value-icon {
+    width: 32px;
+  }
+}
+@media screen and (max-width: 340px) {
+  .game-values__rest .value-icon {
+    width: 32px;
+  }
+  .game-values__virus .value-icon {
+    width: 40px;
+  }
+}
 
 /*
  * src/ScreenButton.js
@@ -332,7 +351,7 @@ a {
   justify-content: center;
 }
 
-.card__img {
+.card__img picture {
   flex: 1;
   display: flex;
   justify-content: center;
@@ -398,7 +417,7 @@ a {
 .illustration {
   /* size is determined by picture element,
    keeps size ratio from html attributes */
-  width: 100%;
+  width: auto;
   height: auto;
 }
 
