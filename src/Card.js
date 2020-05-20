@@ -5,6 +5,7 @@ import {
   isStoryCard,
   makeClass as css,
 } from "./library";
+import Illustration from "./Illustration";
 
 const getIll = (img) => {
   try {
@@ -45,10 +46,9 @@ export default function Card({ card, answer, effect, week }) {
       {!isIncident && card.img && (
         <div
           className={css("card__img", isStory && "card__img--story")}
-          style={{
-            backgroundImage: `url(${getIll(card.img)})`,
-          }}
-        ></div>
+        >
+          <Illustration img={card.img} />
+        </div>
       )}
       <h3 className="card__name">
         {card.name} {turnNo}

@@ -1,19 +1,17 @@
 import React, { useMemo, useEffect } from "react";
 import Card from "./Card";
-import { calculateMood, isIncidentCard, isPlayCard, changeBodyGameMood, preloadIllustrations, isPlayAnswer } from "./library";
+import { calculateMood, isIncidentCard, isPlayCard, changeBodyGameMood, isPlayAnswer } from "./library";
 import GameOver from "./GameOver";
 import { Answers } from "./GameKorona";
 import GameValues from "./GameValues";
 import GameButton from "./GameButton";
 import ScreenButton from "./ScreenButton";
 
-
 export default function GameBoard({ G, ctx, moves, events, reset, stage }) {
   const { values, card, answer, effect } = G;
   const mood = useMemo(() => calculateMood(values), [values]);
 
   useEffect(changeBodyGameMood(mood), [mood])
-  useEffect(preloadIllustrations, [])
 
   const handleAnswer = (answer) => {
     moves.MakeAnswer(answer);
