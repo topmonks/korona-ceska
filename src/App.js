@@ -8,19 +8,19 @@ const screen = (name) => require(`./Screen${name}`).default;
 
 const routes = mount({
   "/": route({
-    title: "Menu",
+    title: "Korona Česká",
     view: screen("Menu"),
   }),
   "/hra": route({
-    title: "Hra",
+    title: "Korona Česká",
     view: screen("Game"),
   }),
   "/help": route({
-    title: "Help",
+    title: "Korona Česká",
     view: screen("Help"),
   }),
   "/credits": route({
-    title: "Credits",
+    title: "Korona Česká",
     view: screen("Credits"),
   }),
   "index.html": redirect("/")
