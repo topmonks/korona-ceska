@@ -9,10 +9,10 @@ export default function ScreenMenu({ route }) {
         <ScreenButton primary path="/hra">
           <b>Nová hra</b>
         </ScreenButton>
-        <ScreenButton primary path="/help">
+        <ScreenButton path="/help">
           Nápověda
         </ScreenButton>
-        <ScreenButton primary path="/credits">
+        <ScreenButton path="/credits">
           O autorech
         </ScreenButton>
       </div>
