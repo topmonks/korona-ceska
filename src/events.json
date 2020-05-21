@@ -52,7 +52,7 @@
                 "yesanswer": "Jděte do toho.",
                 "noanswer": "Tisíc nebo ráže?",
                 "yeseffect": "OSVČ dostávají finanční podporu a kontrolu z berňáku k tomu.",
-                "noeffect": "\"Hehe... he.\" <br/><br/>Trošku tě to znervóznilo.",
+                "noeffect": "\"Hehe... he.\" -Trošku tě to znervóznilo.",
                 "yesvalues": "0,0,-10,10",
                 "novalues": "0,-10,-5,5"
             },
