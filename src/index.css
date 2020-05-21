@@ -83,7 +83,7 @@ body.game-mood-negative {
 }
 
 .screen:not(.screen--menu) {
-  width: 100%;
+  width: 100%
 }
 .screen.screen--menu {
   max-width: 180px;
@@ -91,6 +91,7 @@ body.game-mood-negative {
 }
 
 .screen--menu .bgio-client {
+  max-width: 180px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -130,8 +131,11 @@ a {
 
 /* boardgame.io game board container */
 .bgio-client {
+  position: fixed;
+  width: 100%;
+  height: 100%;
   display: flex;
-  min-height: 100vh;
+  overflow: auto;
 }
 
 .game-board {
