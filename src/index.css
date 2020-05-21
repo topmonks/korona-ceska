@@ -88,12 +88,14 @@ body.game-mood-negative {
   bottom: -24px;
 }
 
-.app {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
+@media screen and (min-height: 400px) {
+  .app {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+  }
 }
 
 .screen {
@@ -389,9 +391,7 @@ a {
 
 .game-over {
   width: 100%;
-  max-height: calc(100vh - 200px);
   box-sizing: border-box;
-  overflow: auto;
 }
 
 /*
@@ -405,7 +405,6 @@ a {
 
   border-radius: 4px;
   width: 100%;
-  max-height: calc(100vh - 200px);
   box-sizing: border-box;
   padding: 18px;
   text-align: center;
@@ -415,6 +414,17 @@ a {
 
   position: relative;
   /* because of absolutely positioned week no span */
+}
+
+@media screen and (min-height: 400px) {
+  .card {
+    max-height: calc(100vh - 200px);
+  }
+
+  .game-over {
+    max-height: calc(100vh - 200px);
+    overflow: auto;
+  }
 }
 
 .card--incident,
