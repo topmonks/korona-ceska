@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import ValueIcon from "./ValueIcon";
 import ScreenButton from "./ScreenButton";
+import { resetBodyGamePlay } from "./library";
 
 export default function ScreenHelp({ route }) {
+  useEffect(resetBodyGamePlay(), []);
   return (
     <div className="screen screen--help">
       <div className="screen--help__text">

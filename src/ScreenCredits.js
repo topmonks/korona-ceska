@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import ScreenButton from './ScreenButton';
 import logo from "./icons/tm-logo.svg";
+import { resetBodyGamePlay } from "./library";
 
 export default function ScreenCredits({ route }) {
+  useEffect(resetBodyGamePlay(), []);
+
   return (
     <div className="screen screen--credits">
       <h1>O autorech</h1>

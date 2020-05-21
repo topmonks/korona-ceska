@@ -96,4 +96,15 @@ export function changeBodyGameMood(mood) {
   };
 }
 
+export function setBodyGamePlay() {
+  return () => {
+    document.body.classList.add("game-play");
+  };
+}
+export function resetBodyGamePlay() {
+  return () => {
+    document.body.classList.remove("game-play");
+  };
+}
+
 export const makeClass = (...classes) => classes.filter(Boolean).join(" ");

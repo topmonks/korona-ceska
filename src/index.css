@@ -16,9 +16,6 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
-
-  min-height: -webkit-fill-available;
-  overflow: hidden;
 }
 
 /* https://twitter.com/AllThingsSmitty/status/1254151507412496384 */
@@ -88,8 +85,12 @@ body.game-mood-negative {
   bottom: -24px;
 }
 
-@media screen and (min-height: 400px) {
-  .app {
+@media screen and (min-height: 480px) {
+  body.game-play {
+    min-height: -webkit-fill-available;
+    overflow: hidden;
+  }
+  .game-play .app {
     position: fixed;
     top: 0;
     left: 0;
@@ -102,10 +103,20 @@ body.game-mood-negative {
   height: 100%;
 }
 
-.screen.screen--menu {
+.screen.screen--menu,
+.screen.screen--credits,
+.screen.screen--help {
   display: grid;
   text-align: center;
   margin: 16px;
+}
+
+@media screen and (min-width: 480px) {
+  .screen.screen--menu,
+  .screen.screen--credits,
+  .screen.screen--help {
+    margin: 16px auto;
+  }
 }
 
 .screen .game-board {
@@ -130,7 +141,9 @@ body.game-mood-negative {
   .screen--game .game-board {
     grid-template-rows: 84px auto 136px;
   }
-  .screen--menu {
+  .screen--menu,
+  .screen--help,
+  .screen--credits {
     margin: 16px auto;
     max-width: 480px;
   }
@@ -208,16 +221,15 @@ a {
 }
 
 .screen--help {
-  display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
 .screen--help__grid {
   display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 50% 50%;
   text-align: center;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
   padding-top: 32px;
   padding-bottom: 32px;
 }
@@ -268,14 +280,6 @@ a {
 .screen--credits__button {
   margin-top: 64px;
   display: block;
-}
-
-.screen--help__grid {
-  display: grid;
-  text-align: center;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  padding-top: 32px;
-  padding-bottom: 32px;
 }
 
 /*
@@ -381,13 +385,7 @@ a {
 /*
  * src/ScreenHelp.js
  */
-@media screen and (max-width: 768px) {
-  .screen--help__grid {
-    display: grid;
-    grid-template-columns: 2fr 2fr;
-    padding: 16px;
-  }
-}
+
 
 .game-over {
   width: 100%;
@@ -416,7 +414,7 @@ a {
   /* because of absolutely positioned week no span */
 }
 
-@media screen and (min-height: 320px) {
+@media screen and (orientation: portrait) and (min-height: 320px) {
   .card {
     max-height: calc(100vh - 264px);
   }

@@ -17,7 +17,7 @@ export default function GameBoard({ G, ctx, moves, events, reset, stage }) {
   const { values, card, answer, effect } = G;
   const mood = useMemo(() => calculateMood(values), [values]);
 
-  useEffect(changeBodyGameMood(mood), [mood])
+  useEffect(changeBodyGameMood(mood), [mood]);
 
   const handleAnswer = (answer) => {
     moves.MakeAnswer(answer);
@@ -25,7 +25,7 @@ export default function GameBoard({ G, ctx, moves, events, reset, stage }) {
 
   const handleNewGame = () => {
     reset();
-    setImmediate(events.endPhase)
+    setImmediate(events.endPhase);
   };
 
   const gameButton = ({ answer, title, ...pass }) => (
@@ -39,7 +39,7 @@ export default function GameBoard({ G, ctx, moves, events, reset, stage }) {
   return (
     <div className={`game-board game-board--${mood}`}>
       <div className="game-board__header">
-        <GameValues turn={ctx.turn} values={values} />
+        <GameValues turn={ctx.turn} values={values}/>
       </div>
 
       {(ctx.gameover || (!ctx.gameover && !card)) && (
@@ -50,7 +50,7 @@ export default function GameBoard({ G, ctx, moves, events, reset, stage }) {
 
       {card && (
         <div className="game-board__card">
-          <Card {...{ card, answer, effect }} week={ctx.turn - 1} />
+          <Card {...{ card, answer, effect }} week={ctx.turn - 1}/>
         </div>
       )}
 
