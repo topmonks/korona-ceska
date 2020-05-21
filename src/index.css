@@ -17,8 +17,8 @@ body {
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
 
-  height: 100vh;
   min-height: -webkit-fill-available;
+  overflow: hidden;
 }
 
 /* https://twitter.com/AllThingsSmitty/status/1254151507412496384 */
@@ -416,7 +416,18 @@ a {
   /* because of absolutely positioned week no span */
 }
 
-@media screen and (min-height: 400px) {
+@media screen and (min-height: 320px) {
+  .card {
+    max-height: calc(100vh - 264px);
+  }
+
+  .game-over {
+    max-height: calc(100vh - 264px);
+    overflow: auto;
+  }
+}
+
+@media screen and (min-height: 560px) {
   .card {
     max-height: calc(100vh - 200px);
   }
