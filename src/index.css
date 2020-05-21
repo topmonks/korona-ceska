@@ -1,18 +1,18 @@
+html {
+  width: 100%;
+  height: 100%;
+}
 body {
-  margin: 0;
   font-family: "Poppins", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  min-height: 100vh;
+  height: 100vh;
   min-height: -webkit-fill-available;
+  margin: 0;
+  padding: 0;
 }
 
 /* https://twitter.com/AllThingsSmitty/status/1254151507412496384 */
-
-#root,
-.app {
-  min-height: 100vh;
-}
 
 body {
   background-attachment: fixed;
@@ -74,20 +74,31 @@ body.game-mood-negative {
 }
 
 .app {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  overflow: auto;
 }
 
 .screen:not(.screen--menu) {
   width: 100%;
 }
-
-.screen--menu > div {
-  display: flex;
-  flex: 1;
-  flex-direction: column;
+.screen.screen--menu {
+  max-width: 180px;
   margin: auto;
+}
+
+.screen--menu .bgio-client {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.screen--menu .menu {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }
 
 h1 {
@@ -119,11 +130,11 @@ a {
 
 /* boardgame.io game board container */
 .bgio-client {
+  display: flex;
   min-height: 100vh;
 }
 
 .game-board {
-  height: 100vh;
   width: calc(100% - 32px);
   max-width: 480px;
   margin: 0 auto;
@@ -148,6 +159,7 @@ a {
   flex-direction: column;
   margin-top: 16px;
   max-height: 20vh;
+  padding-bottom: 16px;
 }
 
 .screen--help {
@@ -301,6 +313,7 @@ a {
 }
 .game-button--secondary {
   background-color: unset;
+  margin: 0;
 }
 .game-button--secondary:hover {
   background-color: unset;
@@ -357,6 +370,9 @@ a {
 
 .card__img--story {
   margin: 0px;
+}
+.card__img--story .illustration {
+  margin: 0;
 }
 
 .card__text {
