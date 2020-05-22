@@ -141,6 +141,8 @@ jobs:
       - run: npm test
   build_pwa:
     executor: nodejs
+    environment:
+      REACT_APP_ENVIRONMENT: production
     steps:
       - checkout
       - install_dependencies
