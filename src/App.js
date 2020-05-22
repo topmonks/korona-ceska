@@ -60,7 +60,7 @@ export default function Application() {
             alt="Korona Česká"
             src="/korona-fb-teaser.png"
             title="Již brzy vás tady něco čeká!"
-            style={{ width: "100%", height: "auto" }}
+            style={{ maxWidth: "800px", width: "100%", height: "auto" }}
             width="1200" height="628"/>
         </div>
       </>
