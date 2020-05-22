@@ -112,7 +112,7 @@ body.game-mood-negative {
 }
 
 .screen.screen--menu {
-  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-rows: 2fr 3fr;
 }
 
 @media screen and (min-width: 480px) {
