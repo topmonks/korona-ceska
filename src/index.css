@@ -134,8 +134,11 @@ body.game-mood-negative {
 
 .screen--game .game-board {
   grid-template-columns: auto;
-  grid-template-rows: 68px auto 136px;
-  grid-template-areas: "header" "main" "footer";
+  grid-template-rows: 68px 1fr 136px;
+  grid-template-areas:
+    "header"
+    "main"
+    "footer";
 }
 
 @media screen and (min-width: 480px) {
@@ -143,12 +146,12 @@ body.game-mood-negative {
     margin: 24px auto;
   }
   .screen--game .game-board {
-    grid-template-rows: 84px auto 136px;
+    grid-template-rows: 84px 1fr 136px;
   }
   .screen--menu,
   .screen--help,
   .screen--credits {
-    margin: 16px auto;
+    margin: 24px auto;
     max-width: 480px;
   }
 }
@@ -239,8 +242,13 @@ a {
 }
 
 .screen--help__grid div {
-  padding: 32px;
   color: white;
+}
+
+@media screen and (min-width: 480px) {
+  .screen--help__grid {
+    grid-gap: 16px;
+  }
 }
 
 .screen--help__text {
@@ -355,13 +363,13 @@ a {
 
 .game-button {
   white-space: normal;
-  max-height: 56px;
-  margin-bottom: 16px;
-  padding: 8px 16px;
+  max-height: 64px;
+  margin: 0;
+  padding: 4px 8px;
   background-color: rgba(0, 0, 0, 0.5);
   border: none;
   color: #fff;
-  line-height: 20px;
+  line-height: 24px;
   font-size: 16px;
   border-radius: 4px;
 }
@@ -370,9 +378,12 @@ a {
   background-color: rgba(0, 0, 0, 0.3);
 }
 
+.game-button+.game-button {
+  margin-top: 16px;
+}
+
 .game-button--secondary {
   background-color: unset;
-  margin: 0;
 }
 
 .game-button--secondary:hover {
