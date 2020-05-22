@@ -452,6 +452,12 @@ a {
   }
 }
 
+@media screen and (min-width: 840px) {
+  .card {
+    max-height: calc(100vh - 260px);
+  }
+}
+
 .card--incident,
 .card--effect {
   display: flex;
