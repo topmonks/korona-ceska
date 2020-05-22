@@ -6,14 +6,19 @@ import { Answers } from "./GameKorona";
 import GameValues from "./GameValues";
 import GameButton from "./GameButton";
 import ScreenButton from "./ScreenButton";
-
-
+import { useTransition, animated } from 'react-spring';
 
 export default function GameBoard({ G, ctx, moves, events, reset, onGameReset }) {
   const { values, card, lastAnswer, effect, week, stage } = G;
   const mood = useMemo(() => calculateMood(values), [values]);
 
   useEffect(changeBodyGameMood(mood), [mood]);
+
+  const transitions = useTransition(`${stage}-${week}-${effect}-${card?.img}`, p => p, {
+    from: { opacity: 0, transform: 'translate3d(100%,0,0)' },
+    enter: { opacity: 1, transform: 'translate3d(0%,0,0)' },
+    leave: { opacity: 0, transform: 'translate3d(-100%,0,0)' },
+  });
 
   const handleAnswer = (answer) => {
     if (ctx.phase === 'newbie') {
@@ -48,11 +53,11 @@ export default function GameBoard({ G, ctx, moves, events, reset, onGameReset })
         </div>
       )}
 
-      {card && (
-        <div className="game-board__card">
+      {card && transitions.map(({ props, key }) => (
+        <animated.div key={key} style={props} className="game-board__card">
           <Card {...{ card, effect, week }} answer={lastAnswer} />
-        </div>
-      )}
+        </animated.div>
+      ))}
 
       {!ctx.gameover && (
         <div className="game-board__buttons">
