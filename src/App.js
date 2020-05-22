@@ -33,7 +33,9 @@ const renderNotFound = () => (
   </div>
 );
 
-const linkElement = (href, i) => (<link key={i} rel="prefetch" as="image" href={href} />);
+const linkElement = (href, i) => {
+  return <link key={i} rel="preload" as="image" href={href} />;
+}
 
 const prefetchUrls = () => {
   const dpr = window.devicePixelRatio;
