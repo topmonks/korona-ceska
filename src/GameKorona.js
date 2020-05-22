@@ -1,7 +1,41 @@
 import { TurnOrder } from 'boardgame.io/core';
-import { calculateMood, calculateValues, getIncidentCard, isPlayCard, isIncidentCard, getAnswerCardField, isPlayAnswer, } from './library';
+import { calculateMood, calculateValues, getAnswerCardField, isPlayAnswer, } from './library';
 
 const { cards: CARD_DECKS, events: EVENT_CARDS, story: STORY_CARDS } = require('./events.json');
+
+
+export const getCardDecks = ({ random }) => ({
+  neutral: random.Shuffle(CARD_DECKS.neutral),
+  positive: random.Shuffle(CARD_DECKS.positive),
+  negative: random.Shuffle(CARD_DECKS.negative),
+  story: [...STORY_CARDS].reverse(),
+  events: EVENT_CARDS, //
+});
+
+export const isCardDeckEmpty = (G) => {
+  const mood = calculateMood(G.values);
+  return !G.decks[mood].length && !G.decks.neutral.length;
+}
+
+export const getNextCard = (G, ctx) => {
+  const { stage, decks } = G;
+
+  if (stage === 'event') return decks.events.pop();
+  if (ctx.phase === 'newbie') return decks.story.pop();
+
+  const { values } = G;
+  const mood = calculateMood(values);
+  return decks[mood].pop() || decks.neutral.pop();
+}
+
+export const getCurrentStage = ({ activePlayers, currentPlayer }) => {
+  return activePlayers?.[currentPlayer];
+}
+
+export function setStage(ctx, stage) {
+  // ctx.events.setStage(stage);
+  return stage;
+}
 
 export const Answers = {
   YES: true,
@@ -10,7 +44,8 @@ export const Answers = {
   CONTINUE: 'CONTINUE',
   NEXT: 'NEXT',
   SKIP: 'SKIP',
-}
+};
+
 
 export default {
   name: 'korona-ceska',
@@ -20,21 +55,11 @@ export default {
   // passed through the Game Creation API.
   setup: (ctx, setupData) => {
     const values = [50, 50, 50, 50]; // Initial values
-    // const player = { id: 0, name: 'Player' }
-    const decks = {
-      neutral: ctx.random.Shuffle(CARD_DECKS.neutral),
-      positive: ctx.random.Shuffle(CARD_DECKS.positive),
-      negative: ctx.random.Shuffle(CARD_DECKS.negative),
-      story: [...STORY_CARDS].reverse()
-    };
-
     return {
-      // player,
       values,
-      decks,
+      decks: getCardDecks(ctx),
       card: null,
-      answer: null,
-      effect: null,
+      finalEventCard: null,
     }
   },
 
@@ -42,78 +67,73 @@ export default {
   phases: {
     newbie: {
       start: true,
-      next: 'play',
-      onBegin: (G, ctx) => {
-        G.card = G.decks.story.pop();
-      },
+      next: 'player',
+      moves: { MakeNewbieAnswer },
     },
-    play: {}
+    player: {}
   },
 
   moves: { MakeAnswer },
 
   turn: {
-    order: TurnOrder.DEFAULT,
-    onBegin: (G, ctx) => {
-      if (ctx.phase === 'newbie') return; // handle in the MakeAnswer
+    order: TurnOrder.DEFAULT, // dont need this, it's not multiplayer game
+    // activePlayers: { all: 'play' },
+    // stages: {
+    //   play: { next: 'play' },
+    //   event: { next: 'play', }
+    // },
 
-      const incident = getIncidentCard(EVENT_CARDS, ctx.turn);
-      if (incident?.last && incident.turn < ctx.turn) {
-        G.values = calculateValues(G.values, incident)
-      } else if (incident) {
-        G.card = incident;
-        G.values = calculateValues(G.values, incident);
-      } else {
-        const mood = calculateMood(G.values);
-        G.card = G.decks[mood].pop() || G.decks.neutral.pop();
-      }
+    onBegin: (G, ctx) => {
+      G.week = ctx.turn - 1;
+      G.stage = 'play'; // getCurrentStage(ctx);
+      G.card = getNextCard(G, ctx);
     },
     onEnd: (G, ctx) => {
+      if (G.lastAnswer) G.values = calculateValues(G.values, G.card, G.lastAnswer);
+      if (G.finalEventCard) G.values = calculateValues(G.values, G.card, G.finalEventCard);
       G.card = null;
-      G.answer = null;
       G.effect = null;
+      G.lastAnswer = null;
     },
   },
 
   endIf: (G, ctx) => {
     const [epidemie, zdravi, ekonomika, duvera] = G.values;
-
-    if (!epidemie) return { win: true };
-
     if (epidemie === 100) return { loose: 1 };
+
     if (!zdravi) return { loose: 2 };
     if (!ekonomika) return { loose: 3 };
     if (!duvera) return { loose: 4 };
 
+    if (!epidemie) return { win: true };
 
-
-    const mood = calculateMood(G.values);
-    const deck = G.decks[mood].length > 1 ? G.decks[mood] : G.decks.neutral;
-    if (!deck.length) return { draw: true }
+    if (!G.card && isCardDeckEmpty(G)) {
+      return { draw: true }
+    }
   },
 
-  onEnd: (G, ctx) => {
-    G.card = null; // FIXME, we wanna to show incidents and effects before engmane :(
-    // TODO: google anal
+  // End of the Game
+  onEnd: (G, ctx, ) => {
+
   },
 
   ai: {
     enumerate: (G, ctx) => {
       const moves = [];
 
-      if (ctx.phase === 'newbie') {
-        moves.push({ move: 'MakeAnswer', args: [Answers.NEXT] });
-        moves.push({ move: 'MakeAnswer', args: [Answers.SKIP] });
-      } else if (isPlayCard(G.card) && !isPlayAnswer(G.answer)) {
-        moves.push({ move: 'MakeAnswer', args: [true] });
-        moves.push({ move: 'MakeAnswer', args: [false] });
-      } else if (G.effect) {
-        moves.push({ move: 'MakeAnswer', args: [Answers.CONTINUE] });
-      } else if (isIncidentCard(G.card)) {
-        moves.push({ move: 'MakeAnswer', args: [Answers.OK] });
-      } else {
-        // moves.push({ move: 'endTurn' });
-      }
+      // if (ctx.phase === 'newbie') {
+      //   moves.push({ move: 'MakeAnswer', args: [Answers.NEXT] });
+      //   moves.push({ move: 'MakeAnswer', args: [Answers.SKIP] });
+      // } else if (isPlayCard(G.card) && !isPlayAnswer(G.answer)) {
+      //   moves.push({ move: 'MakeAnswer', args: [true] });
+      //   moves.push({ move: 'MakeAnswer', args: [false] });
+      // } else if (G.effect) {
+      //   moves.push({ move: 'MakeAnswer', args: [Answers.CONTINUE] });
+      // } else if (isEventCard(G.card)) {
+      //   moves.push({ move: 'MakeAnswer', args: [Answers.OK] });
+      // } else {
+      //   // moves.push({ move: 'endTurn' });
+      // }
 
       return moves;
     }
@@ -121,37 +141,42 @@ export default {
 }
 
 
-function MakeAnswer(G, ctx, answer) {
-  G.answer = answer;
-  G.effect = getAnswerCardField(G.card, answer, 'effect') || null;
-
-  if (isPlayAnswer(answer)) {
-    G.values = calculateValues(G.values, G.card, answer);
-  }
-
-  if (ctx.phase === 'newbie') {
-    if (answer === Answers.NEXT) {
-      if (!G.decks.story.length) {
-        ctx.events.endPhase();
-      } else {
-        G.card = G.decks.story.pop();
-      }
-    }
-    if (answer === Answers.SKIP) {
+function MakeNewbieAnswer(G, ctx, answer) {
+  if (answer === Answers.NEXT) {
+    if (!G.decks.story.length) {
       ctx.events.endPhase();
+    } else {
+      G.card = G.decks.story.pop();
     }
-    return;
+  }
+  if (answer === Answers.SKIP) {
+    ctx.events.endPhase();
+  }
+}
+
+
+function MakeAnswer(G, ctx, answer) {
+
+  const turnNextToEffect = () => {
+    if (G.week > 0 && G.week % 4 === 0) {
+      G.stage = setStage(ctx, 'event');
+      G.card = getNextCard(G, ctx);
+      G.effect = null;
+    } else {
+      ctx.events.endTurn();
+    }
   }
 
-  if (answer === Answers.OK) {
-    const mood = calculateMood(G.values);
-    G.card = G.decks[mood].pop() || G.decks.neutral.pop();
-    return;
-  }
-
-  if (answer === Answers.CONTINUE || !G.effect) {
+  if (answer === Answers.CONTINUE) {
+    turnNextToEffect()
+  } else if (isPlayAnswer(answer)) { // YES/NO answers
+    G.lastAnswer = answer;
+    G.effect = getAnswerCardField(G.card, answer, 'effect');
+    if (!G.effect) turnNextToEffect();
+  } else if (answer === Answers.OK) {
+    G.lastAnswer = answer;
+    if (G.week === 16) G.finalEventCard = G.card;
     ctx.events.endTurn();
-    return;
   }
 
 }

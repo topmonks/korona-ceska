@@ -1,14 +1,14 @@
 import React, { useMemo } from "react";
 import {
   getAnswerCardField,
-  isIncidentCard,
+  isEventCard,
   isStoryCard,
   makeClass as css,
 } from "./library";
 import Illustration from "./Illustration";
 
 export default function Card({ card, answer, effect, week }) {
-  const isIncident = useMemo(() => isIncidentCard(card), [card]);
+  const isIncident = useMemo(() => isEventCard(card), [card]);
   const isStory = useMemo(() => isStoryCard(card), [card]);
 
   if (effect) {

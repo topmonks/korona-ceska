@@ -2,27 +2,13 @@ import React from "react";
 import Illustration from "./Illustration";
 
 export default function GameOver({ win, loose, draw }) {
-  return (
-    <div className="game-over">
-      {win && (
+
+  if (loose === 1) {
+    return (
+      <div className="game-over">
         <div>
           <div className="card__img">
-            <Illustration img="victory" alt="Vítězství!"/>
-          </div>
-          <h1>Epidemie je pod kontrolou</h1>
-          <p>
-            Občas se objeví pár nových případů, ale informovaný lid, funkční
-            zdravotnictví a akceschopnost firem a dobrovolníků zajistily, že se
-            nákaza již dále nešíří. Česká cesta se stává příkladem pro ostatní
-            země. Svatý Václav je jmenován do čela Světové zdravotnické
-            organizace.
-          </p>
-        </div>
-      )}
-      {loose === 1 && (
-        <div>
-          <div className="card__img">
-            <Illustration img="loss_epidemie" alt="Prohra z neschopnosti"/>
+            <Illustration img="loss_epidemie" alt="Prohra z neschopnosti" />
           </div>
           <h1>Epidemie se vymkla z rukou</h1>
           <p>
@@ -34,11 +20,16 @@ export default function GameOver({ win, loose, draw }) {
             éra jak z filmu Dvanáct opic. Jisté je pouze to, že jsi selhal.{" "}
           </p>
         </div>
-      )}
-      {loose === 2 && (
+      </div>
+    );
+  }
+
+  if (loose === 2) {
+    return (
+      <div className="game-over">
         <div>
           <div className="card__img">
-            <Illustration img="loss_health" alt="Prohra ze zdravotních důvodů"/>
+            <Illustration img="loss_health" alt="Prohra ze zdravotních důvodů" />
           </div>
           <h1>Zdravotní stav obyvatelstva je kritický</h1>
           <p>
@@ -50,11 +41,16 @@ export default function GameOver({ win, loose, draw }) {
             lepšího zítřka, nastávají temné časy.
           </p>
         </div>
-      )}
-      {loose === 3 && (
+      </div>
+    );
+  }
+
+  if (loose === 3) {
+    return (
+      <div className="game-over">
         <div>
           <div className="card__img">
-            <Illustration img="loss_economy" alt="Prohra z ekonomických důvodů"/>
+            <Illustration img="loss_economy" alt="Prohra z ekonomických důvodů" />
           </div>
           <h1>Ekonomika zkolabovala</h1>
           <p>
@@ -66,11 +62,16 @@ export default function GameOver({ win, loose, draw }) {
             hranic se vine až po Prachatice.
           </p>
         </div>
-      )}
-      {loose === 4 && (
+      </div>
+    );
+  }
+
+  if (loose === 4) {
+    return (
+      <div className="game-over">
         <div>
           <div className="card__img">
-            <Illustration img="loss_trust" alt="Prohra z nedůvěry"/>
+            <Illustration img="loss_trust" alt="Prohra z nedůvěry" />
           </div>
           <h1>Konec demokracie</h1>
           <p>
@@ -82,14 +83,23 @@ export default function GameOver({ win, loose, draw }) {
             Blaníka ale není umožněno vstoupit...
           </p>
         </div>
-      )}
-      {draw && (
-        <h1>
-          Stokrát nic umořilo osla a tvé neproaktivní jednání jenom dopomohlo
-          dalšímu šíření epidemie. Vládě došly síly, občané jsou v letargii nebo
-          na lůžku.
-        </h1>
-      )}
-    </div>
-  );
+      </div>
+    );
+  }
+
+  if (draw) {
+    return (
+      <div className="game-over">
+        <div>
+          <h1>
+            Stokrát nic umořilo osla a tvé neproaktivní jednání jenom dopomohlo
+            dalšímu šíření epidemie. Vládě došly síly, občané jsou v letargii nebo
+            na lůžku.
+          </h1>
+        </div>
+      </div>
+    );
+  }
+
+  return null
 }

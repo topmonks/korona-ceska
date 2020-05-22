@@ -1,33 +1,28 @@
 import React, { useMemo, useEffect } from "react";
 import Card from "./Card";
-import {
-  calculateMood,
-  isIncidentCard,
-  isPlayCard,
-  changeBodyGameMood,
-  isPlayAnswer
-} from "./library";
+import { calculateMood, isEventCard, isPlayCard, changeBodyGameMood, } from "./library";
 import GameOver from "./GameOver";
 import { Answers } from "./GameKorona";
 import GameValues from "./GameValues";
 import GameButton from "./GameButton";
 import ScreenButton from "./ScreenButton";
 
-const storyCards = new Set(["story1", "story2", "story3"]);
-
 export default function GameBoard({ G, ctx, moves, events, reset, stage }) {
-  const { values, card, answer, effect } = G;
+  const { values, card, lastAnswer, effect, week } = G;
   const mood = useMemo(() => calculateMood(values), [values]);
 
   useEffect(changeBodyGameMood(mood), [mood]);
 
   const handleAnswer = (answer) => {
-    moves.MakeAnswer(answer);
+    if (ctx.phase === 'newbie') {
+      moves.MakeNewbieAnswer(answer);
+    } else {
+      moves.MakeAnswer(answer);
+    }
   };
 
   const handleNewGame = () => {
     reset();
-    setImmediate(events.endPhase);
   };
 
   const gameButton = ({ answer, title, ...pass }) => (
@@ -38,19 +33,20 @@ export default function GameBoard({ G, ctx, moves, events, reset, stage }) {
     />
   );
 
-  const isStory = storyCards.has(card?.img);
-
-  useEffect(() => console.log(card), [card]);
+  // log(ctx.phase, ctx.turn)
+  console.log(
+    ctx.phase + "\n",
+    stage,
+    card
+  )
 
   return (
-    <div className={`game-board game-board--${mood}${isStory ? " game-board--story" : ""}`}>
-      {(!isStory) && (
-        <div className="game-board__header">
-          <GameValues turn={ctx.turn} values={values}/>
-        </div>
-      )}
+    <div className={`game-board game-board--${mood}`}>
+      <div className="game-board__header">
+        <GameValues turn={ctx.turn} values={values} />
+      </div>
 
-      {(ctx.gameover || (!ctx.gameover && !card)) && (
+      {ctx.gameover && (
         <div className="game-board__gameover">
           <GameOver draw={!card && !ctx.gameover} {...ctx.gameover} />
         </div>
@@ -58,21 +54,21 @@ export default function GameBoard({ G, ctx, moves, events, reset, stage }) {
 
       {card && (
         <div className="game-board__card">
-          <Card {...{ card, answer, effect }} week={ctx.turn - 1}/>
+          <Card {...{ card, effect, week }} answer={lastAnswer} />
         </div>
       )}
 
       {!ctx.gameover && (
         <div className="game-board__buttons">
-          {isIncidentCard(card) && [
+          {isEventCard(card) && [
             gameButton({ answer: Answers.OK, title: 'OK' }),
             gameButton({ placeholder: true }),
           ]}
-          {isPlayCard(card) && !isPlayAnswer(answer) && [
+          {isPlayCard(card) && !effect && [
             gameButton({ answer: Answers.YES, title: 'Ano' }),
             gameButton({ answer: Answers.NO, title: 'Ne' }),
           ]}
-          {effect && [
+          {stage === 'play' && effect && [
             gameButton({ answer: Answers.CONTINUE, title: 'Pokračovat' }),
             gameButton({ placeholder: true }),
           ]}
@@ -83,7 +79,7 @@ export default function GameBoard({ G, ctx, moves, events, reset, stage }) {
         </div>
       )}
 
-      {(ctx.gameover || (!card && !ctx.gameover)) && (
+      {ctx.gameover && (
         <div className="game-board__buttons">
           {gameButton({ onClick: handleNewGame, title: 'Hrát znovu' })}
           <ScreenButton>Zpět na menu</ScreenButton>

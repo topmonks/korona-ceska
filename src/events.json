@@ -669,29 +669,24 @@
     },
   "events": [
     {
-      "turn": 6,
       "values": "10,-10,-10,-10",
       "name": "Tik ťak",
       "img": "netahlo",
       "text": "Uběhl měsíc. Šíření viru se zatím nepodařilo zastavit, lidé začínají být neklidní."
     },
     {
-      "turn": 10,
       "values": "10,-10,-10,-10",
       "name": "Tik ťak II",
       "img": "netahlo",
       "text": "Od začátku epidemie uběhly již dva měsíce. Tiskoví mluvčí uklidňují lid tím, že jinde je hůř."
     },
     {
-      "turn": 14,
       "values": "10,-10,-10,-10",
       "name": "Tik ťak III",
       "img": "netahlo",
       "text": "Tři měsíce od začátku epidemie! Lidé jsou již unavení a ztrácí disciplínu v protiepidemických opatřeních. Do Vltavy se vrátili delfíni."
     },
     {
-      "turn": 18,
-      "last": true,
       "values": "10,-10,-10,-10",
       "name": "Tik ťak IV",
       "img": "netahlo",
