@@ -85,3 +85,14 @@ export function resetBodyGamePlay() {
 }
 
 export const makeClass = (...classes) => classes.filter(Boolean).join(" ");
+
+export const VALUE_TITLES = {
+  virus: "Epidemie",
+  health: "Zdraví",
+  economy: "Ekonomika",
+  trust: "Důvěra"
+}
+
+export const getValueTitle = ({ type, value }) => {
+  return `${VALUE_TITLES[type]}: ${value.toFixed(0)}%`;
+}
