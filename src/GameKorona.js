@@ -1,5 +1,5 @@
 import { TurnOrder } from 'boardgame.io/core';
-import { calculateMood, calculateValues, getAnswerCardField, isPlayAnswer, } from './library';
+import { calculateMood, calculateValues, getAnswerCardField, isPlayAnswer, isPlayCard, isEventCard, } from './library';
 
 const { cards: CARD_DECKS, events: EVENT_CARDS, story: STORY_CARDS } = require('./events.json');
 
@@ -121,19 +121,19 @@ export default {
     enumerate: (G, ctx) => {
       const moves = [];
 
-      // if (ctx.phase === 'newbie') {
-      //   moves.push({ move: 'MakeAnswer', args: [Answers.NEXT] });
-      //   moves.push({ move: 'MakeAnswer', args: [Answers.SKIP] });
-      // } else if (isPlayCard(G.card) && !isPlayAnswer(G.answer)) {
-      //   moves.push({ move: 'MakeAnswer', args: [true] });
-      //   moves.push({ move: 'MakeAnswer', args: [false] });
-      // } else if (G.effect) {
-      //   moves.push({ move: 'MakeAnswer', args: [Answers.CONTINUE] });
-      // } else if (isEventCard(G.card)) {
-      //   moves.push({ move: 'MakeAnswer', args: [Answers.OK] });
-      // } else {
-      //   // moves.push({ move: 'endTurn' });
-      // }
+      if (ctx.phase === 'newbie') {
+        moves.push({ move: 'MakeNewbieAnswer', args: [Answers.NEXT] });
+        moves.push({ move: 'MakeNewbieAnswer', args: [Answers.SKIP] });
+      } else if (isPlayCard(G.card) && !G.lastAnswer) {
+        moves.push({ move: 'MakeAnswer', args: [true] });
+        moves.push({ move: 'MakeAnswer', args: [false] });
+      } else if (G.effect) {
+        moves.push({ move: 'MakeAnswer', args: [Answers.CONTINUE] });
+      } else if (isEventCard(G.card)) {
+        moves.push({ move: 'MakeAnswer', args: [Answers.OK] });
+      } else {
+        // moves.push({ move: 'endTurn' });
+      }
 
       return moves;
     }
