@@ -30,6 +30,7 @@ export default function ValueIcon({ value, type, large = false, small = false, l
       x="0px" y="0px" viewBox="0 0 24 24"
       width={size} height={size}
       className={`value-icon ${className}`}
+      role="img"
     >
       <title>{getValueTitle({ type, value })}</title>
       <g>
