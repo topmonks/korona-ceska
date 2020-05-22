@@ -6,7 +6,7 @@ import { Answers } from "./GameKorona";
 import GameValues from "./GameValues";
 import GameButton from "./GameButton";
 import ScreenButton from "./ScreenButton";
-import { useTransition, animated } from 'react-spring';
+import { useTransition, animated, config } from 'react-spring';
 
 export default function GameBoard({ G, ctx, moves, events, reset, onGameReset }) {
   const { values, card, lastAnswer, effect, week, stage } = G;
@@ -18,6 +18,7 @@ export default function GameBoard({ G, ctx, moves, events, reset, onGameReset })
     from: { opacity: 0, transform: 'translate3d(100%,0,0)' },
     enter: { opacity: 1, transform: 'translate3d(0%,0,0)' },
     leave: { opacity: 0, transform: 'translate3d(-100%,0,0)' },
+    config: config.stiff
   });
 
   const handleAnswer = (answer) => {
