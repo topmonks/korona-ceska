@@ -45,7 +45,7 @@ export default function GameBoard({ G, ctx, moves, events, reset, onGameReset })
   return (
     <div className={`game-board game-board--${mood}${ctx.phase === 'newbie' ? ' game-board--story' : ''}`}>
       <div className="game-board__header">
-        <GameValues turn={ctx.turn} values={values} />
+        {ctx.phase !== 'newbie' && <GameValues turn={ctx.turn} values={values} />}
       </div>
 
       {ctx.gameover && (
