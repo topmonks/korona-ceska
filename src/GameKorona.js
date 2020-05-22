@@ -46,6 +46,13 @@ export const Answers = {
   SKIP: 'SKIP',
 };
 
+export const setShowKoronaStoryNewbie = (show) => {
+  global._koronaDoNotShowStoryAgain = show;
+}
+export const showKoronaStoryNewbie = () => {
+  return global._koronaDoNotShowStoryAgain !== false;
+}
+
 
 export default {
   name: 'korona-ceska',
@@ -55,6 +62,11 @@ export default {
   // passed through the Game Creation API.
   setup: (ctx, setupData) => {
     const values = [50, 50, 50, 50]; // Initial values
+
+    if (!showKoronaStoryNewbie()) {
+      ctx.events.setPhase('player');
+    }
+
     return {
       values,
       decks: getCardDecks(ctx),
@@ -113,8 +125,8 @@ export default {
   },
 
   // End of the Game
-  onEnd: (G, ctx, ) => {
-
+  onEnd: (G, ctx) => {
+    setShowKoronaStoryNewbie(false);
   },
 
   ai: {

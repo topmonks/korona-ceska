@@ -1,6 +1,6 @@
-import React, { useMemo, useEffect } from "react";
+import React, { useMemo, useEffect, useCallback } from "react";
 import Card from "./Card";
-import { calculateMood, isEventCard, isPlayCard, changeBodyGameMood, } from "./library";
+import { calculateMood, isEventCard, isPlayCard, changeBodyGameMood, makeShareHadler, } from "./library";
 import GameOver from "./GameOver";
 import { Answers } from "./GameKorona";
 import GameValues from "./GameValues";
@@ -8,9 +8,10 @@ import GameButton from "./GameButton";
 import ScreenButton from "./ScreenButton";
 import { useTransition, animated, config } from 'react-spring';
 
-export default function GameBoard({ G, ctx, moves, events, reset, onGameReset }) {
+export default function GameBoard({ G, ctx, moves, events, reset }) {
   const { values, card, lastAnswer, effect, week, stage } = G;
   const mood = useMemo(() => calculateMood(values), [values]);
+  const share = useCallback(makeShareHadler(), [ctx.gameover])
 
   useEffect(changeBodyGameMood(mood), [mood]);
 
@@ -29,10 +30,6 @@ export default function GameBoard({ G, ctx, moves, events, reset, onGameReset })
     }
   };
 
-  const handleNewGame = () => {
-    onGameReset()
-  };
-
   const gameButton = ({ answer, title, ...pass }) => (
     <GameButton
       key={`${ctx.turn}-${answer}`}
@@ -40,6 +37,7 @@ export default function GameBoard({ G, ctx, moves, events, reset, onGameReset })
       onAnswer={handleAnswer}
     />
   );
+
 
 
   return (
@@ -83,8 +81,8 @@ export default function GameBoard({ G, ctx, moves, events, reset, onGameReset })
 
       {ctx.gameover && (
         <div className="game-board__buttons">
-          {gameButton({ onClick: handleNewGame, title: 'Hrát znovu' })}
-          <ScreenButton>Zpět na menu</ScreenButton>
+          <ScreenButton>Hlavní Menu</ScreenButton>
+          {share ? <ScreenButton onClick={share(ctx.gameover)}>Sdílet výsledek</ScreenButton> : gameButton({ placeholder: true })}
         </div>
       )}
     </div>

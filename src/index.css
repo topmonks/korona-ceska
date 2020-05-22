@@ -366,10 +366,11 @@ a {
   background-color: rgba(0, 0, 0, 0.3);
 }
 
-.game-button+.game-button {
+.game-button + .game-button {
   margin-top: 16px;
 }
-.game-button+.screen-button {
+.game-board__buttons .game-button--placeholder,
+.game-board__buttons .screen-button {
   margin: 16px 0 0;
   padding: 4px 8px;
   line-height: 28px;

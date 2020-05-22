@@ -86,6 +86,7 @@ export function resetBodyGamePlay() {
 
 export const makeClass = (...classes) => classes.filter(Boolean).join(" ");
 
+
 export const VALUE_TITLES = {
   virus: "Epidemie",
   health: "Zdraví",
@@ -95,4 +96,30 @@ export const VALUE_TITLES = {
 
 export const getValueTitle = ({ type, value }) => {
   return `${VALUE_TITLES[type]}: ${value.toFixed(0)}%`;
+}
+
+export const getShareText = (outcome) => {
+  if (!outcome) return 'TopMonks';
+  return outcome.win ? "Vyhrál jsem! A prej že to nejde.." : "Prohrál jsem, je to vážně těžké!";
+}
+
+export function makeShareHadler() {
+  if (!navigator.share) return null;
+  console.log('ready to shar3')
+  return async (outcome) => {
+    console.log('share')
+    try {
+      navigator.share({
+        title: 'Korona česká',
+        text: getShareText(outcome),
+        url: 'https://korona-ceska.cz/',
+      })
+    } catch (error) {
+
+    }
+  };
+}
+
+export function scrollToTop() {
+  setImmediate(document.body.scrollTop);
 }

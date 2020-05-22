@@ -33,7 +33,7 @@ const renderNotFound = () => (
   </div>
 );
 
-const linkElement = (href, i) => (<link key={i} rel="preload" as="image" href={href}/>);
+const linkElement = (href, i) => (<link key={i} rel="preload" as="image" href={href} />);
 
 const preloadUrls = () => {
   const dpr = window.devicePixelRatio;
@@ -59,11 +59,14 @@ export default function Application() {
             src="/korona-fb-teaser.png"
             title="Již brzy vás tady něco čeká!"
             style={{ maxWidth: "800px", width: "100%", height: "auto" }}
-            width="1200" height="628"/>
+            width="1200" height="628" />
         </div>
       </>
     )
   }
+
+
+
   return (
     <HelmetProvider>
       <Router routes={routes}>
@@ -72,7 +75,7 @@ export default function Application() {
             <Helmet>
               {preloadUrls().map(linkElement)}
             </Helmet>
-            <View/>
+            <View />
           </div>
         </NotFoundBoundary>
       </Router>
