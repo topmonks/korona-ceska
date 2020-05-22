@@ -162,6 +162,10 @@ body.game-mood-negative {
   }
 }
 
+.screen--game .game-board.game-board--story {
+  grid-template-rows: 16px auto 140px;
+}
+
 .game-board__header {
   grid-area: header;
 }
@@ -414,7 +418,7 @@ a {
   width: 100%;
   min-height: 260px;
   box-sizing: border-box;
-  padding: 18px;
+  padding: 9px;
   text-align: center;
 
   display: flex;
@@ -422,6 +426,10 @@ a {
 
   position: relative;
   /* because of absolutely positioned week no span */
+}
+
+.card p:last-of-type {
+  padding-bottom: 0;
 }
 
 @media screen and (orientation: portrait) and (min-height: 320px) {
@@ -433,11 +441,20 @@ a {
     max-height: calc(100vh - 264px);
     overflow: auto;
   }
+
+  .game-board--story .card {
+    max-height: calc(100vh - 216px);
+  }
 }
 
 @media screen and (min-height: 553px) {
   .card {
     min-height: 364px;
+    padding: 18px;
+  }
+
+  .game-board--story .card {
+    max-height: 400px;
   }
 }
 
@@ -450,11 +467,18 @@ a {
     max-height: calc(100vh - 200px);
     overflow: auto;
   }
+
+  .game-board--story .card {
+    max-height: calc(100vh - 156px);
+  }
 }
 
 @media screen and (min-width: 840px) {
   .card {
     max-height: calc(100vh - 260px);
+  }
+  .game-board--story .card {
+    max-height: calc(100vh - 216px);
   }
 }
 

@@ -2,7 +2,7 @@ import React from "react";
 import images from "./cloudinary.json";
 
 const screenSizes = [
-  ["only screen and (max-height: 455px)", 32],
+  ["only screen and (max-height: 455px)", 100],
   ["only screen and (min-height: 456px) and (max-height: 555px)", 126],
   ["only screen and (min-height: 556px) and (max-height: 667px)", 162],
   ["only screen and (min-height: 668px) and (max-height: 735px)", 202],

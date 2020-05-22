@@ -13,6 +13,8 @@ import GameValues from "./GameValues";
 import GameButton from "./GameButton";
 import ScreenButton from "./ScreenButton";
 
+const storyCards = new Set(["story1", "story2", "story3"]);
+
 export default function GameBoard({ G, ctx, moves, events, reset, stage }) {
   const { values, card, answer, effect } = G;
   const mood = useMemo(() => calculateMood(values), [values]);
@@ -36,11 +38,17 @@ export default function GameBoard({ G, ctx, moves, events, reset, stage }) {
     />
   );
 
+  const isStory = storyCards.has(card?.img);
+
+  useEffect(() => console.log(card), [card]);
+
   return (
-    <div className={`game-board game-board--${mood}`}>
-      <div className="game-board__header">
-        <GameValues turn={ctx.turn} values={values}/>
-      </div>
+    <div className={`game-board game-board--${mood}${isStory ? " game-board--story" : ""}`}>
+      {(!isStory) && (
+        <div className="game-board__header">
+          <GameValues turn={ctx.turn} values={values}/>
+        </div>
+      )}
 
       {(ctx.gameover || (!ctx.gameover && !card)) && (
         <div className="game-board__gameover">
