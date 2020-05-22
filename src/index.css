@@ -134,7 +134,7 @@ body.game-mood-negative {
 
 .screen--game .game-board {
   grid-template-columns: auto;
-  grid-template-rows: 68px 1fr 136px;
+  grid-template-rows: 68px auto 180px;
   grid-template-areas:
     "header"
     "main"
@@ -146,7 +146,7 @@ body.game-mood-negative {
     margin: 24px auto;
   }
   .screen--game .game-board {
-    grid-template-rows: 84px 1fr 136px;
+    grid-template-rows: 84px 1fr 180px;
   }
   .screen--menu,
   .screen--help,
@@ -223,7 +223,6 @@ a {
   display: flex;
   flex-direction: column;
   margin-top: 16px;
-  max-height: 20vh;
   padding-bottom: 16px;
 }
 
@@ -363,13 +362,12 @@ a {
 
 .game-button {
   white-space: normal;
-  max-height: 64px;
   margin: 0;
   padding: 4px 8px;
   background-color: rgba(0, 0, 0, 0.5);
   border: none;
   color: #fff;
-  line-height: 24px;
+  line-height: 28px;
   font-size: 16px;
   border-radius: 4px;
 }
@@ -380,6 +378,12 @@ a {
 
 .game-button+.game-button {
   margin-top: 16px;
+}
+.game-button+.screen-button {
+  margin: 16px 0 0;
+  padding: 4px 8px;
+  line-height: 28px;
+  flex: none;
 }
 
 .game-button--secondary {
@@ -405,6 +409,10 @@ a {
 .game-over {
   width: 100%;
   box-sizing: border-box;
+}
+
+.game-over .illustration {
+  margin-bottom: 8px;
 }
 
 /*
