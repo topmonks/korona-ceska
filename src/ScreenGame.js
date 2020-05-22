@@ -1,14 +1,25 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import GameClient from "./GameClient";
 import { setBodyGamePlay } from "./library";
-// import { Link } from "react-navi";
+
 
 export default function ScreenGame() {
   useEffect(setBodyGamePlay(), []);
+  const [key, setKey] = useState(null)
+  const gameRef = useRef(null)
+
   return (
     <div className="screen screen--game">
-      {/* <Link href="/"> Menu</Link> */}
-      <GameClient />
+      <GameClient
+        ref={gameRef} key={key}
+        onGameReset={() => {
+          setKey((Math.random() * 1000).toString())
+          setImmediate(() => {
+            gameRef.current.client.reset();
+            gameRef.current.client.events.setPhase('player');
+          })
+        }}
+      />
     </div>
   );
 }

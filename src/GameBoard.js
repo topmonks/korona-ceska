@@ -7,8 +7,8 @@ import GameValues from "./GameValues";
 import GameButton from "./GameButton";
 import ScreenButton from "./ScreenButton";
 
-export default function GameBoard({ G, ctx, moves, events, reset, stage }) {
-  const { values, card, lastAnswer, effect, week } = G;
+export default function GameBoard({ G, ctx, moves, events, reset, onGameReset }) {
+  const { values, card, lastAnswer, effect, week, stage } = G;
   const mood = useMemo(() => calculateMood(values), [values]);
 
   useEffect(changeBodyGameMood(mood), [mood]);
@@ -22,7 +22,7 @@ export default function GameBoard({ G, ctx, moves, events, reset, stage }) {
   };
 
   const handleNewGame = () => {
-    reset();
+    onGameReset()
   };
 
   const gameButton = ({ answer, title, ...pass }) => (
