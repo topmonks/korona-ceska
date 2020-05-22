@@ -7,6 +7,8 @@ import GameValues from "./GameValues";
 import GameButton from "./GameButton";
 import ScreenButton from "./ScreenButton";
 
+
+
 export default function GameBoard({ G, ctx, moves, events, reset, onGameReset }) {
   const { values, card, lastAnswer, effect, week, stage } = G;
   const mood = useMemo(() => calculateMood(values), [values]);
@@ -33,15 +35,9 @@ export default function GameBoard({ G, ctx, moves, events, reset, onGameReset })
     />
   );
 
-  // log(ctx.phase, ctx.turn)
-  console.log(
-    ctx.phase + "\n",
-    stage,
-    card
-  )
 
   return (
-    <div className={`game-board game-board--${mood}`}>
+    <div className={`game-board game-board--${mood}${ctx.phase === 'newbie' ? ' game-board--story' : ''}`}>
       <div className="game-board__header">
         <GameValues turn={ctx.turn} values={values} />
       </div>
