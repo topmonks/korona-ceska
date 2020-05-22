@@ -32,7 +32,7 @@ export default function ScreenMenu({ route }) {
           O autorech
         </ScreenButton>
         {share && (
-          <ScreenButton onClick={share}>
+          <ScreenButton onClick={() => share()}>
             <b>Sdílet</b>
           </ScreenButton>
         )}
