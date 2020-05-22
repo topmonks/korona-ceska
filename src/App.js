@@ -33,11 +33,9 @@ const renderNotFound = () => (
   </div>
 );
 
-const linkElement = (href, i) => {
-  return <link key={i} rel="preload" as="image" href={href} />;
-}
+const linkElement = (href, i) => (<link key={i} rel="preload" as="image" href={href}/>);
 
-const prefetchUrls = () => {
+const preloadUrls = () => {
   const dpr = window.devicePixelRatio;
   return Array.from(getIllustrationsUrls(dpr))
 }
@@ -72,9 +70,9 @@ export default function Application() {
         <NotFoundBoundary render={renderNotFound}>
           <div className="app">
             <Helmet>
-              {prefetchUrls().map(linkElement)}
+              {preloadUrls().map(linkElement)}
             </Helmet>
-            <View />
+            <View/>
           </div>
         </NotFoundBoundary>
       </Router>
