@@ -16,10 +16,10 @@ export default function GameBoard({ G, ctx, moves, events, reset }) {
   useEffect(changeBodyGameMood(mood), [mood]);
 
   const transitions = useTransition(`${stage}-${week}-${effect}-${card?.img}`, p => p, {
-    from: { opacity: 0, transform: 'translate3d(100%,0,0)' },
-    enter: { opacity: 1, transform: 'translate3d(0%,0,0)' },
-    leave: { opacity: 0, transform: 'translate3d(-100%,0,0)' },
-    config: config.slow
+    from: { opacity: 1, transform: 'scale(0.8)' },
+    enter: { opacity: 1, transform: 'scale(1)' },
+    leave: { opacity: 0, transform: 'scale(0.9)', },
+    config: { ...config.wobbly, friction: 22 }
   });
 
   const handleAnswer = (answer) => {
