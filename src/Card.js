@@ -16,20 +16,20 @@ export default function Card({ card, answer, effect, week }) {
     `text-${week}-${effect}-${card?.img}`,
     (p) => p,
     {
-      from: { opacity: 0, transform: "scale(1)" },
+      from: { opacity: 0, transform: "scale(0.95)" },
       enter: { opacity: 1, transform: "scale(1)" },
-      leave: { opacity: 0, transform: "scale(1)", display: "none" },
-      config: { ...config.wobbly, friction: 22 },
+      leave: { opacity: 0, transform: "scale(0)", display: "none" },
+      config: { ...config.melasses },
     }
   );
   const transitionsForTextContents = useTransition(
     `${week}-${effect}-${card?.img}`,
     (p) => p,
     {
-      from: { opacity: 0, transform: "scale(0.95)" },
+      from: { opacity: 0, transform: "scale(1)" },
       enter: { opacity: 1, transform: "scale(1)" },
       leave: { opacity: 0, transform: "scale(1)", display: "none" },
-      config: { ...config.wobbly, friction: 22 },
+      config: { ...config.wobbly, friction: 22, duration: 250 },
     }
   );
 
@@ -42,7 +42,11 @@ export default function Card({ card, answer, effect, week }) {
       <div className="card card--effect">
         {cardWeekNumber}
         {transitionsForTextContents.map(({ props, key }) => (
-          <animated.div key={key} style={props} className="card__animated card__animated--text">
+          <animated.div
+            key={key}
+            style={props}
+            className="card__animated card__animated--text"
+          >
             <p className="card__text card__text--effect">
               "{getAnswerCardField(card, answer, "effect")}"
             </p>
@@ -66,16 +70,26 @@ export default function Card({ card, answer, effect, week }) {
     >
       {cardWeekNumber}
 
-      {!isIncident && card.img && transitionsForIllustrations.map(({ props, key }) => (
-        <animated.div key={key} style={props} className="card__animated card__animated--image">
-          <div className={css("card__img", isStory && "card__img--story")}>
-            <Illustration img={card.img} />
-          </div>
-        </animated.div>
-      ))}
+      {!isIncident &&
+        card.img &&
+        transitionsForIllustrations.map(({ props, key }) => (
+          <animated.div
+            key={key}
+            style={props}
+            className="card__animated card__animated--image"
+          >
+            <div className={css("card__img", isStory && "card__img--story")}>
+              <Illustration img={card.img} />
+            </div>
+          </animated.div>
+        ))}
 
-      {transitionsForIllustrations.map(({ props, key }) => (
-        <animated.div key={key} style={props} className="card__animated card__animated--text">
+      {transitionsForTextContents.map(({ props, key }) => (
+        <animated.div
+          key={key}
+          style={props}
+          className="card__animated card__animated--text"
+        >
           <h3 className="card__name">{card.name}</h3>
           <p
             className={css("card__text", isStory && "card__text--story")}
