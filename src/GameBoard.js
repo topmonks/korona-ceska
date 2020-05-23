@@ -1,4 +1,4 @@
-import React, { useMemo, useEffect, useCallback } from "react";
+import React, { useMemo, useEffect, } from "react";
 import Card from "./Card";
 import { calculateMood, isEventCard, isPlayCard, changeBodyGameMood, makeShareHadler, } from "./library";
 import GameOver from "./GameOver";
@@ -11,7 +11,7 @@ import { useTransition, animated, config } from 'react-spring';
 export default function GameBoard({ G, ctx, moves, events, reset }) {
   const { values, card, lastAnswer, effect, week, stage } = G;
   const mood = useMemo(() => calculateMood(values), [values]);
-  const share = useCallback(makeShareHadler(), [ctx.gameover])
+  const share = useMemo(makeShareHadler, [])
 
   useEffect(changeBodyGameMood(mood), [mood]);
 
