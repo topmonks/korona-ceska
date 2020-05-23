@@ -12,7 +12,7 @@ export default function Card({ card, answer, effect, week }) {
   const isIncident = useMemo(() => isEventCard(card), [card]);
   const isStory = useMemo(() => isStoryCard(card), [card]);
 
-  const transitionsForTextCards = useTransition(
+  const transitionsForIllustrations = useTransition(
     `text-${week}-${effect}-${card?.img}`,
     (p) => p,
     {
@@ -22,9 +22,7 @@ export default function Card({ card, answer, effect, week }) {
       config: { ...config.wobbly, friction: 22 },
     }
   );
-
-
-  const transitionsForRegularCards = useTransition(
+  const transitionsForTextContents = useTransition(
     `${week}-${effect}-${card?.img}`,
     (p) => p,
     {
@@ -35,8 +33,6 @@ export default function Card({ card, answer, effect, week }) {
     }
   );
 
-
-
   const cardWeekNumber = !isStory ? (
     <div className="card__week">{week}. týden</div>
   ) : null;
@@ -45,8 +41,8 @@ export default function Card({ card, answer, effect, week }) {
     return (
       <div className="card card--effect">
         {cardWeekNumber}
-        {transitionsForTextCards.map(({ props, key }) => (
-          <animated.div key={key} style={props} className="card__content">
+        {transitionsForTextContents.map(({ props, key }) => (
+          <animated.div key={key} style={props} className="card__animated card__animated--text">
             <p className="card__text card__text--effect">
               "{getAnswerCardField(card, answer, "effect")}"
             </p>
@@ -69,13 +65,17 @@ export default function Card({ card, answer, effect, week }) {
       )}
     >
       {cardWeekNumber}
-      {(isIncident ? transitionsForTextCards : transitionsForRegularCards).map(({ props, key }) => (
-        <animated.div key={key} style={props} className="card__content">
-          {!isIncident && card.img && (
-            <div className={css("card__img", isStory && "card__img--story")}>
-              <Illustration img={card.img} />
-            </div>
-          )}
+
+      {!isIncident && card.img && transitionsForIllustrations.map(({ props, key }) => (
+        <animated.div key={key} style={props} className="card__animated card__animated--image">
+          <div className={css("card__img", isStory && "card__img--story")}>
+            <Illustration img={card.img} />
+          </div>
+        </animated.div>
+      ))}
+
+      {transitionsForIllustrations.map(({ props, key }) => (
+        <animated.div key={key} style={props} className="card__animated card__animated--text">
           <h3 className="card__name">{card.name}</h3>
           <p
             className={css("card__text", isStory && "card__text--story")}
