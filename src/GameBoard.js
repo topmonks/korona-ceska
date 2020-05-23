@@ -70,7 +70,7 @@ export default function GameBoard({ G, ctx, moves, events, reset }) {
       {ctx.gameover && (
         <div className="game-board__buttons">
           <ScreenButton>Hlavní Menu</ScreenButton>
-          {share ? <ScreenButton onClick={share(ctx.gameover)}>Sdílet výsledek</ScreenButton> : gameButton({ placeholder: true })}
+          {share ? <ScreenButton onClick={() => share(ctx.gameover)}>Sdílet výsledek</ScreenButton> : gameButton({ placeholder: true })}
         </div>
       )}
     </div>
