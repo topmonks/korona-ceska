@@ -519,7 +519,7 @@ a {
   overflow: auto;
 }
 
-.card__name > span {
+.card__week {
   color: #999;
   font-size: 14px;
   font-weight: normal;

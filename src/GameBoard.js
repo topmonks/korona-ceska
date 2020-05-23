@@ -6,7 +6,6 @@ import { Answers } from "./GameKorona";
 import GameValues from "./GameValues";
 import GameButton from "./GameButton";
 import ScreenButton from "./ScreenButton";
-import { useTransition, animated, config } from 'react-spring';
 
 export default function GameBoard({ G, ctx, moves, events, reset }) {
   const { values, card, lastAnswer, effect, week, stage } = G;
@@ -14,13 +13,6 @@ export default function GameBoard({ G, ctx, moves, events, reset }) {
   const share = useMemo(makeShareHadler, [])
 
   useEffect(changeBodyGameMood(mood), [mood]);
-
-  const transitions = useTransition(`${stage}-${week}-${effect}-${card?.img}`, p => p, {
-    from: { opacity: 1, transform: 'scale(0.8)' },
-    enter: { opacity: 1, transform: 'scale(1)' },
-    leave: { opacity: 0, transform: 'scale(0.9)', },
-    config: { ...config.wobbly, friction: 22 }
-  });
 
   const handleAnswer = (answer) => {
     if (ctx.phase === 'newbie') {
@@ -38,8 +30,6 @@ export default function GameBoard({ G, ctx, moves, events, reset }) {
     />
   );
 
-
-
   return (
     <div className={`game-board game-board--${mood}${ctx.phase === 'newbie' ? ' game-board--story' : ''}`}>
       <div className="game-board__header">
@@ -52,11 +42,9 @@ export default function GameBoard({ G, ctx, moves, events, reset }) {
         </div>
       )}
 
-      {card && transitions.map(({ props, key }) => (
-        <animated.div key={key} style={props} className="game-board__card">
-          <Card {...{ card, effect, week }} answer={lastAnswer} />
-        </animated.div>
-      ))}
+      {card && (
+        <Card {...{ card, effect, week }} answer={lastAnswer} />
+      )}
 
       {!ctx.gameover && (
         <div className="game-board__buttons">
