@@ -9,7 +9,7 @@ export const getCardDecks = ({ random }) => ({
   positive: random.Shuffle(CARD_DECKS.positive),
   negative: random.Shuffle(CARD_DECKS.negative),
   story: [...STORY_CARDS].reverse(),
-  events: EVENT_CARDS, //
+  events: [...EVENT_CARDS].reverse()
 });
 
 export const isCardDeckEmpty = (G) => {
