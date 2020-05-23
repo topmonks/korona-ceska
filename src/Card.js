@@ -12,7 +12,19 @@ export default function Card({ card, answer, effect, week }) {
   const isIncident = useMemo(() => isEventCard(card), [card]);
   const isStory = useMemo(() => isStoryCard(card), [card]);
 
-  const transitions = useTransition(
+  const transitionsForTextCards = useTransition(
+    `text-${week}-${effect}-${card?.img}`,
+    (p) => p,
+    {
+      from: { opacity: 0, transform: "scale(1)" },
+      enter: { opacity: 1, transform: "scale(1)" },
+      leave: { opacity: 0, transform: "scale(1)", display: "none" },
+      config: { ...config.wobbly, friction: 22 },
+    }
+  );
+
+
+  const transitionsForRegularCards = useTransition(
     `${week}-${effect}-${card?.img}`,
     (p) => p,
     {
@@ -23,6 +35,8 @@ export default function Card({ card, answer, effect, week }) {
     }
   );
 
+
+
   const cardWeekNumber = !isStory ? (
     <div className="card__week">{week}. týden</div>
   ) : null;
@@ -31,7 +45,7 @@ export default function Card({ card, answer, effect, week }) {
     return (
       <div className="card card--effect">
         {cardWeekNumber}
-        {transitions.map(({ props, key }) => (
+        {transitionsForTextCards.map(({ props, key }) => (
           <animated.div key={key} style={props} className="card__content">
             <p className="card__text card__text--effect">
               "{getAnswerCardField(card, answer, "effect")}"
@@ -55,7 +69,7 @@ export default function Card({ card, answer, effect, week }) {
       )}
     >
       {cardWeekNumber}
-      {transitions.map(({ props, key }) => (
+      {(isIncident ? transitionsForTextCards : transitionsForRegularCards).map(({ props, key }) => (
         <animated.div key={key} style={props} className="card__content">
           {!isIncident && card.img && (
             <div className={css("card__img", isStory && "card__img--story")}>
