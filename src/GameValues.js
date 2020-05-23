@@ -2,7 +2,7 @@ import React from 'react';
 import ValueIcon from './ValueIcon';
 
 
-export default function GameValues({ turn, values }) {
+export default function GameValues({ values }) {
   const [virus, health, economy, trust] = values;
 
   return (

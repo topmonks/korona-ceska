@@ -23,6 +23,7 @@ export default function ValueIcon({ value, type, large = false, small = false, l
     if (large) return '80px';
   }, [large, small]);
 
+  const highlightValue = value < 25;
 
   return (
     <svg
@@ -39,7 +40,7 @@ export default function ValueIcon({ value, type, large = false, small = false, l
             <rect x="0" y="0" width="24" height={level} />
           </clipPath>
         </defs>
-        <path fill={color} d={pathD} />
+        <path fill={highlightValue ? RED_COLOR : color} d={pathD} />
         <path
           clipPath={`url(#value-level-${type})`}
           fill={loose ? RED_COLOR : FOK_COLOR}
