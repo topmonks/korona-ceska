@@ -16,7 +16,7 @@ export default function Card({ card, answer, effect, week }) {
     `text-${week}-${effect}-${card?.img}`,
     (p) => p,
     {
-      from: { opacity: 0, transform: "scale(0.95)" },
+      from: { opacity: 0, transform: "scale(0.98)" },
       enter: { opacity: 1, transform: "scale(1)" },
       leave: { opacity: 0, transform: "scale(0)", display: "none" },
       config: { ...config.melasses },
