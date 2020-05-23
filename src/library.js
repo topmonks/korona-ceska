@@ -105,9 +105,7 @@ export const getShareText = (outcome) => {
 
 export function makeShareHadler() {
   if (!navigator.share) return null;
-  console.log('ready to shar3')
   return async (outcome) => {
-    console.log('share')
     try {
       navigator.share({
         title: 'Korona česká',
