@@ -87,6 +87,26 @@ export default function GameOver({ win, loose, draw }) {
     );
   }
 
+  if (win) {
+    return (
+      <div className="game-over">
+        <div>
+          <div className="card__img">
+            <Illustration img="victory" alt="Vítězství!" />
+          </div>
+          <h1>Epidemie je pod kontrolou</h1>
+          <p>
+            Občas se objeví pár nových případů, ale informovaný lid, funkční
+            zdravotnictví a akceschopnost firem a dobrovolníků zajistily, že se
+            nákaza již dále nešíří. Česká cesta se stává příkladem pro ostatní
+            země. Svatý Václav je jmenován do čela Světové zdravotnické
+            organizace.
+          </p>
+        </div>
+      </div>
+    );
+  }
+
   if (draw) {
     return (
       <div className="game-over">
@@ -101,5 +121,5 @@ export default function GameOver({ win, loose, draw }) {
     );
   }
 
-  return null
+  return null;
 }
