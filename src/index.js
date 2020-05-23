@@ -25,5 +25,5 @@ try {
     registration.waiting.postMessage("skipWaiting");
   });
 } catch (errror) {
-  console.warn('This has t be your fault.')
+  console.warn('This has to be your fault.', errror)
 }
