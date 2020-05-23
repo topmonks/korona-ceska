@@ -31,6 +31,9 @@ export const getNextCard = (G, ctx) => {
 export const getCurrentStage = ({ activePlayers, currentPlayer }) => {
   return activePlayers?.[currentPlayer];
 }
+export const getGameSeed = (ctx) => {
+  return ctx.random._obj.state.seed;
+}
 
 export function setStage(ctx, stage) {
   // ctx.events.setStage(stage);
@@ -65,6 +68,11 @@ export default {
 
     if (!showKoronaStoryNewbie()) {
       ctx.events.setPhase('player');
+    }
+
+
+    if (global.gtag) {
+      global.gtag('event', 'game_start', { seed: getGameSeed(ctx) });
     }
 
     return {
@@ -127,6 +135,7 @@ export default {
   // End of the Game
   onEnd: (G, ctx) => {
     setShowKoronaStoryNewbie(false);
+    if (global.gtag) global.gtag('event', 'game_over', ctx.gameover);
   },
 
   ai: {
@@ -154,6 +163,10 @@ export default {
 
 
 function MakeNewbieAnswer(G, ctx, answer) {
+  if (global.gtag) {
+    global.gtag('event', 'story_move', { answer, seed: getGameSeed(ctx) });
+  }
+
   if (answer === Answers.NEXT) {
     if (!G.decks.story.length) {
       ctx.events.endPhase();
@@ -168,6 +181,9 @@ function MakeNewbieAnswer(G, ctx, answer) {
 
 
 function MakeAnswer(G, ctx, answer) {
+  if (global.gtag) {
+    global.gtag('event', 'play_move', { answer, seed: getGameSeed(ctx) });
+  }
 
   const turnNextToEffect = () => {
     if (G.week > 0 && G.week % 4 === 0) {
