@@ -117,7 +117,7 @@ export function gameLogToUrlComponent(logs) {
 export function makeShareHandler() {
   if (!navigator.share) return null;
 
-  return async ({ week, outcome, seed, log }) => {
+  return async ({ week, outcome, seed, log } = {}) => {
     try {
       navigator.share({
         title: 'Korona česká',
@@ -130,11 +130,16 @@ export function makeShareHandler() {
   };
 }
 
-export function makeShareLink({ week, outcome, seed, log }) {
-  const record = gameLogToUrlComponent(log);
+export function makeShareLink({ week, outcome, seed, log } = {}) {
+  let link = `https://korona-ceska.cz/`;
+
   // TODO: instead of home use URL of static Game Over Screen, It'll use suitable Illustration of the Outcome
-  const shareUrl = `https://korona-ceska.cz/#${week}!${seed}!${record}`;
-  return shareUrl;
+  if (week && outcome && log && seed) {
+    const record = gameLogToUrlComponent(log);
+    link += `#${week}!${seed}!${record}`
+  }
+
+  return link;
 }
 
 export function scrollToTop() {
