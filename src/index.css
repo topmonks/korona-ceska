@@ -405,10 +405,15 @@ a {
 .game-over {
   width: 100%;
   box-sizing: border-box;
+  position: relative;
 }
 
 .game-over .illustration {
   margin-bottom: 0;
+}
+
+.game-over.game-over--overflow {
+  /* TODO: Radek nastaví efekt přetékání */
 }
 
 /*

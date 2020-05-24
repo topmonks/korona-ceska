@@ -145,3 +145,8 @@ export function makeShareLink({ week, outcome, seed, log } = {}) {
 export function scrollToTop() {
   setImmediate(document.body.scrollTop);
 }
+
+export function hasOverflow(el) {
+  const delta = el.scrollHeight - el.clientHeight;
+  return delta > 0;
+}
