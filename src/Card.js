@@ -71,15 +71,14 @@ export default function Card({ card, answer, effect, week }) {
       {cardWeekNumber}
 
       {!isIncident &&
-      card.img &&
-      transitionsForIllustrations.map(({ props, key }) => (
-        <animated.div
-          key={key}
-          style={Object.assign({}, props, illustrationStyles(card.img))}
-          className="card__animated card__animated--image"
-        >
-        </animated.div>
-      ))}
+        card.img &&
+        transitionsForIllustrations.map(({ props, key }) => (
+          <animated.div
+            key={key}
+            style={Object.assign({}, props, illustrationStyles(card.img))}
+            className="card__animated card__animated--image"
+          ></animated.div>
+        ))}
 
       {transitionsForTextContents.map(({ props, key }) => (
         <animated.div
@@ -87,7 +86,9 @@ export default function Card({ card, answer, effect, week }) {
           style={props}
           className="card__animated card__animated--text"
         >
-          <h3 className="card__name">{card.name}</h3>
+          <h3 className={css("card__name", isStory && "card__name--story")}>
+            {card.name}
+          </h3>
           <p
             className={css("card__text", isStory && "card__text--story")}
             dangerouslySetInnerHTML={{ __html: card.text }}

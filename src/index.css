@@ -383,7 +383,6 @@ a {
   flex: none;
 }
 
-
 .game-button--secondary {
   background-color: unset;
 }
@@ -536,8 +535,12 @@ a {
 }
 
 .card__name {
-  margin: 0 0 8px 0;
+  margin: 8px 0px 0px 0px;
   font-size: 16px;
+}
+
+.card__name--story {
+  text-align: left;
 }
 
 .card__text {
@@ -557,7 +560,7 @@ a {
 
 @media screen and (min-height: 812px) and (min-width: 360px) {
   .card__name {
-    margin: 8px 0 16px;
+    margin: 16px 0 8px;
     font-size: 22px;
   }
 
