@@ -25,11 +25,14 @@ export function* getIllustrationsUrls(dpr) {
   }
 }
 
-const imgUrl = (img, { dpr }) => {
+const imgStyles = (img, { dpr }) => {
   const src = images[`illustrations/${img}.png`]["secure_url"];
   for (let [media, height] of screenSizes) {
     if (window.matchMedia(media).matches) {
-      return addTransformations(src, dpr, height);
+      return {
+        backgroundImage: `url(${addTransformations(src, dpr, height)})`,
+        height
+      };
     }
   }
 };
@@ -37,9 +40,9 @@ const imgUrl = (img, { dpr }) => {
 export default function Illustration({ img, alt }) {
   const dpr = window.devicePixelRatio;
   return (
-    <img className="illustration" alt={alt || img}
-         srcSet={`${imgUrl(img, { dpr })} ${dpr}x`}
-         width="480" height="640" />
+    <div
+      className="illustration"
+      style={imgStyles(img, { dpr })}></div>
   );
 }
 

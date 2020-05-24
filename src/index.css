@@ -409,7 +409,7 @@ a {
 }
 
 .game-over .illustration {
-  margin-bottom: 8px;
+  margin-bottom: 0;
 }
 
 /*
@@ -499,7 +499,7 @@ a {
   display: flex;
   justify-content: center;
   align-items: center;
-  /* Image loading in Card component */
+  /* this is container for .illustration where the image is */
 }
 
 .card__img--story {
@@ -569,13 +569,11 @@ a {
  * src/Illustration.js
  */
 .illustration {
-  /* size is determined by picture element,
-   keeps size ratio from html attributes */
-  width: auto;
-  height: auto;
-  margin-top: 16px;
-  margin-bottom: 32px;
-  object-fit: contain;
+  width: 100%;
+  margin-bottom: 16px;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 /*
