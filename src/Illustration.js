@@ -25,7 +25,7 @@ export function* getIllustrationsUrls(dpr) {
   }
 }
 
-const imgStyles = (img, { dpr }) => {
+export const illustrationStyles = (img, { dpr } = { dpr: window.devicePixelRatio }) => {
   const src = images[`illustrations/${img}.png`]["secure_url"];
   for (let [media, height] of screenSizes) {
     if (window.matchMedia(media).matches) {
@@ -38,11 +38,11 @@ const imgStyles = (img, { dpr }) => {
 };
 
 export default function Illustration({ img, alt }) {
-  const dpr = window.devicePixelRatio;
   return (
     <div
       className="illustration"
-      style={imgStyles(img, { dpr })}></div>
+      aria-label={alt} title={alt}
+      style={illustrationStyles(img)}></div>
   );
 }
 

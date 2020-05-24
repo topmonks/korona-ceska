@@ -5,7 +5,7 @@ import {
   isStoryCard,
   makeClass as css,
 } from "./library";
-import Illustration from "./Illustration";
+import Illustration, { illustrationStyles } from "./Illustration";
 import { useTransition, animated, config } from "react-spring";
 
 export default function Card({ card, answer, effect, week }) {
@@ -71,18 +71,15 @@ export default function Card({ card, answer, effect, week }) {
       {cardWeekNumber}
 
       {!isIncident &&
-        card.img &&
-        transitionsForIllustrations.map(({ props, key }) => (
-          <animated.div
-            key={key}
-            style={props}
-            className="card__animated card__animated--image"
-          >
-            <div className={css("card__img", isStory && "card__img--story")}>
-              <Illustration img={card.img} />
-            </div>
-          </animated.div>
-        ))}
+      card.img &&
+      transitionsForIllustrations.map(({ props, key }) => (
+        <animated.div
+          key={key}
+          style={Object.assign({}, props, illustrationStyles(card.img))}
+          className="card__animated card__animated--image"
+        >
+        </animated.div>
+      ))}
 
       {transitionsForTextContents.map(({ props, key }) => (
         <animated.div
