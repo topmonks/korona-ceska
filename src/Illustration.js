@@ -31,7 +31,7 @@ const imgStyles = (img, { dpr }) => {
     if (window.matchMedia(media).matches) {
       return {
         backgroundImage: `url(${addTransformations(src, dpr, height)})`,
-        height
+        minHeight: height
       };
     }
   }

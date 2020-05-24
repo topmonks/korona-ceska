@@ -499,6 +499,7 @@ a {
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 100%;
   /* this is container for .illustration where the image is */
 }
 
@@ -565,11 +566,16 @@ a {
   }
 }
 
+.card__animated--image {
+  flex-grow: 1;
+}
+
 /*
  * src/Illustration.js
  */
 .illustration {
   width: 100%;
+  height: 100%;
   margin-bottom: 16px;
   background-position: center;
   background-size: contain;
