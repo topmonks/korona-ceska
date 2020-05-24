@@ -5,7 +5,7 @@ import {
   isStoryCard,
   makeClass as css,
 } from "./library";
-import Illustration, { illustrationStyles } from "./Illustration";
+import { illustrationStyles } from "./Illustration";
 import { useTransition, animated, config } from "react-spring";
 
 export default function Card({ card, answer, effect, week }) {
