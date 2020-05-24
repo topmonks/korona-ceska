@@ -99,23 +99,42 @@ export const getValueTitle = ({ type, value }) => {
 }
 
 export const getShareText = (outcome) => {
-  if (!outcome) return 'TopMonks';
+  if (!outcome) return "Narazil jsem na zajímavou hru.";
   return outcome.win ? "Vyhrál jsem! A prej že to nejde.." : "Prohrál jsem, je to vážně těžké!";
 }
 
-export function makeShareHadler() {
+export function gameLogToUrlComponent(logs) {
+  const answers = logs.filter(log => {
+    const { type } = log.action.payload;
+    return type.startsWith('Make') && type.endsWith('Answer')
+  }).map(log => {
+    const { args: [answer] } = log.action.payload;
+    return answer
+  });
+  return answers.join(':');
+}
+
+export function makeShareHandler() {
   if (!navigator.share) return null;
-  return async (outcome) => {
+
+  return async ({ week, outcome, seed, log }) => {
     try {
       navigator.share({
         title: 'Korona česká',
         text: getShareText(outcome),
-        url: 'https://korona-ceska.cz/',
+        url: makeShareLink({ week, outcome, seed, log }),
       })
     } catch (error) {
 
     }
   };
+}
+
+export function makeShareLink({ week, outcome, seed, log }) {
+  const record = gameLogToUrlComponent(log);
+  // TODO: instead of home use URL of static Game Over Screen, It'll use suitable Illustration of the Outcome
+  const shareUrl = `https://korona-ceska.cz/#${week}!${seed}!${record}`;
+  return shareUrl;
 }
 
 export function scrollToTop() {

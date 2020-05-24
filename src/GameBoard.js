@@ -1,18 +1,32 @@
 import React, { useMemo, useEffect, } from "react";
 import Card from "./Card";
-import { calculateMood, isEventCard, isPlayCard, changeBodyGameMood, makeShareHadler, } from "./library";
+import { makeClass, calculateMood, isEventCard, isPlayCard, changeBodyGameMood, makeShareHandler, makeShareLink, } from "./library";
 import GameOver from "./GameOver";
 import { Answers } from "./GameKorona";
 import GameValues from "./GameValues";
 import GameButton from "./GameButton";
 import ScreenButton from "./ScreenButton";
 
-export default function GameBoard({ G, ctx, moves, events, reset }) {
-  const { values, card, lastAnswer, effect, week, stage } = G;
+export default function GameBoard({ G, ctx, moves, events, reset, log }) {
+  const { values, card, lastAnswer, effect, week, stage, seed } = G;
   const mood = useMemo(() => calculateMood(values), [values]);
-  const share = useMemo(makeShareHadler, [])
 
   useEffect(changeBodyGameMood(mood), [mood]);
+
+
+  const shareHandler = useMemo(makeShareHandler, [])
+  const shareLink = useMemo(() => ctx.gameover && (
+    makeShareLink({ week, outcome: ctx.gameover, seed, log })
+  ), [ctx.gameover]) // eslint-disable-line
+
+  const handleShareClick = event => {
+    if (shareHandler) {
+      event.preventDefault();
+      const outcome = ctx.gameover;
+      shareHandler({ week, outcome, seed, log });
+    }
+  };
+
 
   const handleAnswer = (answer) => {
     if (ctx.phase === 'newbie') {
@@ -30,13 +44,13 @@ export default function GameBoard({ G, ctx, moves, events, reset }) {
     />
   );
 
-  const handleShareClick = event => {
-    event.preventDefault();
-    share(ctx.gameover);
-  };
-
   return (
-    <div className={`game-board game-board--${mood}${ctx.phase === 'newbie' ? ' game-board--story' : ''}`}>
+    <div className={makeClass(
+      'game-board',
+      `game-board--${mood}`,
+      ctx.phase === 'newbie' && 'game-board--story',
+      ctx.gameover && 'game-board--outcome'
+    )}>
       <div className="game-board__header">
         {ctx.phase !== 'newbie' && <GameValues values={values} />}
       </div>
@@ -75,7 +89,9 @@ export default function GameBoard({ G, ctx, moves, events, reset }) {
       {ctx.gameover && (
         <div className="game-board__buttons">
           <ScreenButton>Hlavní Menu</ScreenButton>
-          {share ? <ScreenButton onClick={handleShareClick}>Sdílet výsledek</ScreenButton> : gameButton({ placeholder: true })}
+          <ScreenButton href={shareLink} onClick={handleShareClick}>
+            Sdílet výsledek
+          </ScreenButton>
         </div>
       )}
     </div>

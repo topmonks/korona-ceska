@@ -1,13 +1,13 @@
 import React, { useEffect, useMemo, } from "react";
 import ScreenButton from "./ScreenButton";
-import { resetBodyGamePlay, makeShareHadler, scrollToTop } from "./library";
+import { resetBodyGamePlay, makeShareHandler, scrollToTop } from "./library";
 import { setShowKoronaStoryNewbie, showKoronaStoryNewbie, } from "./GameKorona";
 
 
 export default function ScreenMenu({ route }) {
   useEffect(resetBodyGamePlay(), []);
   useEffect(scrollToTop, [])
-  const share = useMemo(makeShareHadler, [])
+  const share = useMemo(makeShareHandler, [])
 
 
   return (

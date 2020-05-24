@@ -70,9 +70,10 @@ export default {
       ctx.events.setPhase('player');
     }
 
+    const seed = getGameSeed(ctx);
 
     if (global.gtag) {
-      global.gtag('event', 'game_start', { seed: getGameSeed(ctx) });
+      global.gtag('event', 'game_start', { seed });
     }
 
     return {
@@ -80,6 +81,7 @@ export default {
       decks: getCardDecks(ctx),
       card: null,
       finalEventCard: null,
+      seed,
     }
   },
 
@@ -164,7 +166,7 @@ export default {
 
 function MakeNewbieAnswer(G, ctx, answer) {
   if (global.gtag) {
-    global.gtag('event', 'story_move', { answer, seed: getGameSeed(ctx) });
+    global.gtag('event', 'story_move', { answer, seed: G.seed });
   }
 
   if (answer === Answers.NEXT) {
@@ -182,7 +184,7 @@ function MakeNewbieAnswer(G, ctx, answer) {
 
 function MakeAnswer(G, ctx, answer) {
   if (global.gtag) {
-    global.gtag('event', 'play_move', { answer, seed: getGameSeed(ctx) });
+    global.gtag('event', 'play_move', { answer, seed: G.seed });
   }
 
   const turnNextToEffect = () => {
