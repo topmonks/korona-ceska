@@ -43,7 +43,7 @@ export default function ScreenCredits({ route }) {
         </div>
         <div className="screen--credits__row">
           <h3>Aleš Roubíček</h3>
-          <p>Programování</p>
+          <p>Webové optimalizace</p>
         </div>
         <div className="screen--credits__row">
           <h3>Lea Petrášová</h3>
