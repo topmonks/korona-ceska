@@ -113,7 +113,18 @@ body.game-mood-negative {
 }
 
 .screen.screen--menu {
-  grid-template-rows: 2fr 3fr;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 1px;
+  grid-template-rows: 2fr 3fr 64px;
+}
+
+@media screen and (max-height: 455px) {
+  .screen.screen--menu {
+    grid-template-rows: 4fr 7fr 64px;
+  }
 }
 
 .logo--menu {
@@ -121,10 +132,9 @@ body.game-mood-negative {
   margin: auto;
 }
 
-@media screen and (max-height: 455px) {
-  .screen.screen--menu {
-    grid-template-rows: 1fr 3fr;
-  }
+.tm-logo {
+  height: 48px;
+  vertical-align: bottom;
 }
 
 @media screen and (min-width: 480px) {
