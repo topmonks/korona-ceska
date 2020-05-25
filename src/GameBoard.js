@@ -25,10 +25,9 @@ export default function GameBoard({ G, ctx, moves, events, reset, log }) {
 
   const shareHandler = useMemo(makeShareHandler, []);
   const shareLink = useMemo(
-    () =>
-      ctx.gameover && makeShareLink({ week, outcome: ctx.gameover, seed, log }),
-    [ctx.gameover]
-  ); // eslint-disable-line
+    () => ctx.gameover && makeShareLink({ week, outcome: ctx.gameover, seed, log }),
+    [ctx.gameover] // eslint-disable-line
+  );
 
   const handleShareClick = (event) => {
     if (shareHandler) {
