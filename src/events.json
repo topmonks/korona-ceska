@@ -708,7 +708,7 @@
       "values": "10,-10,-10,-10",
       "name": "Vleklá epidemie",
       "img": "tiktak4",
-      "text": "Před čtyřmi měsíci začala epidemie. Lid si zvyká na nový normál, staré pořádky se převrací. Na Václaváku přestávají prodávat klobásy. Stropnický jásá, že nikdo nejel na letní dovolenou. Nad Prahou létá v noci UFO (anebo lidi jen moc chlastaj?). <br/><br/><i>Epidemie +10 %, Zdraví -10 %, Ekonomika -10 %, Důvěra -10 %</i>"
+      "text": "Před čtyřmi měsíci začala epidemie. Lid si zvyká na nový normál, staré pořádky se převrací. Na Václaváku přestávají prodávat klobásy. Stropnický jásá, že nikdo nejel na letní dovolenou. Nad Prahou létá v noci UFO (anebo lidi jen moc chlastaj?). <br/><br/><i>Každé následující kolo: Epidemie +10 %, Zdraví -10 %, Ekonomika -10 %, Důvěra -10 %</i>"
     }
   ],
   "story": [
