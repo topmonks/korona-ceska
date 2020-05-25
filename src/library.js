@@ -49,6 +49,7 @@ export function calculateValues(values, card, answer) {
   } else {
     results = values;
   }
+
   return results.map((value) => {
     if (value > 100) return 100;
     if (value < 0) return 0;

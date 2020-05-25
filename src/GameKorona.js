@@ -41,8 +41,8 @@ export function setStage(ctx, stage) {
 }
 
 export const Answers = {
-  YES: true,
-  NO: false,
+  YES: 'YES',
+  NO: 'NO',
   OK: 'OK',
   CONTINUE: 'CONTINUE',
   NEXT: 'NEXT',
@@ -111,8 +111,6 @@ export default {
       G.card = getNextCard(G, ctx);
     },
     onEnd: (G, ctx) => {
-      if (G.lastAnswer) G.values = calculateValues(G.values, G.card, G.lastAnswer);
-      if (G.finalEventCard) G.values = calculateValues(G.values, G.card, G.finalEventCard);
       G.card = null;
       G.effect = null;
       G.lastAnswer = null;
@@ -192,7 +190,11 @@ function MakeAnswer(G, ctx, answer) {
       G.stage = setStage(ctx, 'event');
       G.card = getNextCard(G, ctx);
       G.effect = null;
+      G.values = calculateValues(G.values, G.card);
     } else {
+      if (G.finalEventCard && G.week > 16) {
+        G.values = calculateValues(G.values, G.card);
+      }
       ctx.events.endTurn();
     }
   }
@@ -202,6 +204,7 @@ function MakeAnswer(G, ctx, answer) {
   } else if (isPlayAnswer(answer)) { // YES/NO answers
     G.lastAnswer = answer;
     G.effect = getAnswerCardField(G.card, answer, 'effect');
+    G.values = calculateValues(G.values, G.card, answer);
     if (!G.effect) turnNextToEffect();
   } else if (answer === Answers.OK) {
     G.lastAnswer = answer;
