@@ -8,6 +8,7 @@ import {
 import { illustrationStyles } from "./Illustration";
 import { useTransition, animated, config } from "react-spring";
 import TutorialValues from "./TutorialValues";
+import FadeIn from "react-fade-in";
 
 export default function Card({ card, effect, week }) {
   const isIncident = useMemo(() => isEventCard(card), [card]);
@@ -36,12 +37,12 @@ export default function Card({ card, effect, week }) {
 
   if (isTutorialCard(card)) {
     return (
-      <div className="card card--tutorial">
+      <FadeIn delay={200} className="card card--tutorial">
         <div><p className="card__text">{card.text1}</p></div>
         <TutorialValues virus />
         <div><p className="card__text">{card.text2}</p></div>
         <TutorialValues health economy trust />
-      </div>
+      </FadeIn>
     );
   }
 
@@ -82,14 +83,13 @@ export default function Card({ card, effect, week }) {
     >
       {cardWeekNumber}
 
-      {card.img &&
-        transitionsForIllustrations.map(({ props, key }) => (
-          <animated.div
-            key={key}
-            className="card__animated card__animated--image"
-            style={Object.assign({}, props, illustrationStyles(card.img))}
-          /> // ^ it's background image
-        ))}
+      {card.img && transitionsForIllustrations.map(({ props, key }) => (
+        <animated.div
+          key={key}
+          className="card__animated card__animated--image"
+          style={Object.assign({}, props, illustrationStyles(card.img))}
+        /> // ^ it's background image
+      ))}
 
       {transitionsForTextContents.map(({ props, key }) => (
         <animated.div

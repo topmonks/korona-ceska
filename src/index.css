@@ -574,7 +574,8 @@ a {
   justify-content: center;
 }
 
-.card--tutorial > div {
+.card--tutorial > div, /* FafeIn wraper, ugly selector ik but the effect is sexy */
+.card--tutorial > div > div {
   flex: 1;
   display: flex;
   align-items: center;
@@ -739,6 +740,7 @@ svg.value-icon {
   padding: 0 !important;
   color:#555;
   font-size: 13px;
+  text-transform: uppercase;
 }
 .tutorial-values__item > img {
   width: 32px;
