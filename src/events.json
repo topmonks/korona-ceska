@@ -147,17 +147,6 @@
             {
                 "name": "Jan Tiskař",
                 "img": "tiskar",
-                "text": "Velká zpráva: umíme nyní dronové doručení hydroponických salátů za bitcoiny!",
-                "yesanswer": "Dro- co?",
-                "noanswer": "A půjde platit i přes lightning?",
-                "yeseffect": "Tiskařova metoda dronového doručování salátů za bitcoiny je velice populární mezi 10 lidmi v republice kteří rozumí, co všechna ta slova znamenají.",
-                "noeffect": "Krásně sis s Tiskařem pokecal o nejlepších lightning peněženkách, hydroponii a dalších nerdovinách. Teď zpět do práce!",
-                "yesvalues": "-5,5,5,-5",
-                "novalues": "-5,5,5,5"
-            },
-            {
-                "name": "Jan Tiskař",
-                "img": "tiskar",
                 "text": "Vyrábíme ochranné štíty na 3D tiskárnách.",
                 "yesanswer": "Skvělé, odpustíme vám daně!",
                 "noanswer": "Máte na to certifikaci?",
@@ -554,6 +543,17 @@
                 "noeffect": "n-a",
                 "yesvalues": "-5,0,0,0",
                 "novalues": "0,0,0,5"
+            },
+            {
+                "name": "Jan Tiskař",
+                "img": "tiskar",
+                "text": "Velká zpráva: umíme nyní dronové doručení hydroponických salátů za bitcoiny!",
+                "yesanswer": "Dro- co?",
+                "noanswer": "A půjde platit i přes lightning?",
+                "yeseffect": "Tiskařova metoda dronového doručování salátů za bitcoiny je velice populární mezi 10 lidmi v republice kteří rozumí, co všechna ta slova znamenají.",
+                "noeffect": "Krásně sis s Tiskařem pokecal o nejlepších lightning peněženkách, hydroponii a dalších nerdovinách. Teď zpět do práce!",
+                "yesvalues": "-5,5,5,-5",
+                "novalues": "-5,5,5,5"
             },
             {
                 "name": "Alfons Vojtík",
