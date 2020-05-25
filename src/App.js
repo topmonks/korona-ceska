@@ -41,32 +41,6 @@ const preloadUrls = () => {
 }
 
 export default function Application() {
-  const env = document.querySelector("meta[name=environment]").getAttribute("content");
-  const openBeta = window.location.search === "?beta";
-  if (env === "production" && !openBeta) {
-    return (
-      <>
-        <h1 style={{ textAlign: "center" }}>Korona Česká</h1>
-        <div style={{
-          height: "66vh",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          margin: "0 16px"
-        }}>
-          <img
-            alt="Korona Česká"
-            src="/korona-fb-teaser.png"
-            title="Již brzy vás tady něco čeká!"
-            style={{ maxWidth: "800px", width: "100%", height: "auto" }}
-            width="1200" height="628" />
-        </div>
-      </>
-    )
-  }
-
-
-
   return (
     <HelmetProvider>
       <Router routes={routes}>
