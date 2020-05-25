@@ -111,7 +111,7 @@ export default function GameBoard({ G, ctx, moves, events, reset, log }) {
 
       {ctx.gameover && (
         <div className="game-board__buttons">
-          <ScreenButton>Hrát znovu</ScreenButton>
+          <ScreenButton path="/">Hlavní Menu</ScreenButton>
           <ScreenButton href={shareLink} onClick={handleShareClick}>
             Sdílet výsledek
           </ScreenButton>

@@ -75,7 +75,7 @@ export default {
     const values = [50, 50, 50, 50]; // Initial values
 
     if (!showKoronaStoryNewbie()) {
-      ctx.events.setPhase('player');
+      ctx.events.setPhase('game');
     }
 
     const seed = getGameSeed(ctx);
