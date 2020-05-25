@@ -38,6 +38,16 @@ export default function GameBoard({ G, ctx, moves, events, reset, log }) {
     }
   };
 
+  const handleGameLeave = (event) => {
+    if (true
+      && ctx.phase === 'game'
+      && !ctx.gameover
+      && !window.confirm('Ukončit rozehranou hru?')
+    ) {
+      event.preventDefault();
+    }
+  }
+
   const gameButton = ({ answer, title, ...pass }) => (
     <GameButton
       key={`${ctx.turn}-${answer}`}
@@ -59,7 +69,7 @@ export default function GameBoard({ G, ctx, moves, events, reset, log }) {
       {shouldBeBoardHeaderVisible && (
         <FadeIn className="game-board__header">
           <GameValues values={values} />
-          <MenuButton />
+          <MenuButton onGameLeave={handleGameLeave} />
         </FadeIn>
       )}
       {/* mock container for grid layout */}
