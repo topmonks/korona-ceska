@@ -31,7 +31,7 @@ export default function GameBoard({ G, ctx, moves, events, reset, log }) {
 
 
   const handleAnswer = (answer) => {
-    if (ctx.phase === 'newbie') {
+    if (ctx.phase === 'story') {
       moves.MakeNewbieAnswer(answer);
     } else {
       moves.MakeAnswer(answer);
@@ -46,13 +46,13 @@ export default function GameBoard({ G, ctx, moves, events, reset, log }) {
     />
   );
 
-  const shouldBeBoardHeaderVisible = ctx.phase !== 'newbie';
+  const shouldBeBoardHeaderVisible = ctx.phase !== 'story';
 
   return (
     <div className={makeClass(
       'game-board',
       `game-board--${mood}`,
-      ctx.phase === 'newbie' && 'game-board--story',
+      ctx.phase === 'story' && 'game-board--story',
       ctx.gameover && 'game-board--outcome'
     )}>
 
@@ -89,9 +89,12 @@ export default function GameBoard({ G, ctx, moves, events, reset, log }) {
             gameButton({ answer: Answers.CONTINUE, title: 'Pokračovat' }),
             gameButton({ placeholder: true }),
           ]}
-          {ctx.phase === 'newbie' && [
+          {ctx.phase === 'story' && [
             gameButton({ answer: Answers.NEXT, title: 'Pokračovat' }),
             gameButton({ answer: Answers.SKIP, title: 'Přeskočit příběh', secondary: true }),
+          ]}
+          {ctx.phase === 'tutorial' && !isPlayCard(card) && [
+            gameButton({ answer: Answers.FINISH, title: 'Rozumím' }),
           ]}
         </div>
       )}

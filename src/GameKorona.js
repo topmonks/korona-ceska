@@ -1,15 +1,21 @@
 import { TurnOrder } from 'boardgame.io/core';
 import { calculateMood, calculateValues, getAnswerCardField, isPlayAnswer, isPlayCard, isEventCard, } from './library';
 
-const { cards: CARD_DECKS, events: EVENT_CARDS, story: STORY_CARDS } = require('./events.json');
+const {
+  story: STORY_CARDS,
+  tutorial: TUTORIAL_CARDS,
+  cards: CARD_DECKS,
+  events: EVENT_CARDS,
+} = require('./events.json');
 
 
 export const getCardDecks = ({ random }) => ({
+  story: [...STORY_CARDS].reverse(),
+  tutorial: [...TUTORIAL_CARDS].reverse(),
   neutral: random.Shuffle(CARD_DECKS.neutral),
   positive: random.Shuffle(CARD_DECKS.positive),
   negative: random.Shuffle(CARD_DECKS.negative),
-  story: [...STORY_CARDS].reverse(),
-  events: [...EVENT_CARDS].reverse()
+  events: [...EVENT_CARDS].reverse(),
 });
 
 export const isCardDeckEmpty = (G) => {
@@ -21,7 +27,8 @@ export const getNextCard = (G, ctx) => {
   const { stage, decks } = G;
 
   if (stage === 'event') return decks.events.pop();
-  if (ctx.phase === 'newbie') return decks.story.pop();
+  if (ctx.phase === 'story') return decks.story.pop();
+  if (ctx.phase === 'tutorial') return decks.tutorial.pop();
 
   const { values } = G;
   const mood = calculateMood(values);
@@ -47,6 +54,7 @@ export const Answers = {
   CONTINUE: 'CONTINUE',
   NEXT: 'NEXT',
   SKIP: 'SKIP',
+  FINISH: 'FINISH',
 };
 
 export const setShowKoronaStoryNewbie = (show) => {
@@ -87,12 +95,16 @@ export default {
 
 
   phases: {
-    newbie: {
+    story: {
       start: true,
-      next: 'player',
+      next: 'tutorial',
       moves: { MakeNewbieAnswer },
     },
-    player: {}
+    tutorial: {
+      next: 'game',
+      moves: { MakeAnswer },
+    },
+    game: {}
   },
 
   moves: { MakeAnswer },
@@ -145,14 +157,16 @@ export default {
     enumerate: (G, ctx) => {
       const moves = [];
 
-      if (ctx.phase === 'newbie') {
+      if (ctx.phase === 'story') {
         moves.push({ move: 'MakeNewbieAnswer', args: [Answers.NEXT] });
         moves.push({ move: 'MakeNewbieAnswer', args: [Answers.SKIP] });
       } else if (isPlayCard(G.card)) {
-        moves.push({ move: 'MakeAnswer', args: [true] });
-        moves.push({ move: 'MakeAnswer', args: [false] });
+        moves.push({ move: 'MakeAnswer', args: [Answers.YES] });
+        moves.push({ move: 'MakeAnswer', args: [Answers.NO] });
       } else if (G.effect) {
         moves.push({ move: 'MakeAnswer', args: [Answers.CONTINUE] });
+      } else if (ctx.phase === 'tutorial') {
+        moves.push({ move: 'MakeNewbie', args: [Answers.CONTINUE] });
       } else if (isEventCard(G.card)) {
         moves.push({ move: 'MakeAnswer', args: [Answers.OK] });
       } else {
@@ -209,6 +223,14 @@ function MakeAnswer(G, ctx, answer) {
   } else if (answer === Answers.OK) { // special event card
     G.values = calculateValues(G.values, G.card);
     ctx.events.endTurn();
+  }
+
+  if (ctx.phase === 'tutorial') { // tutorial
+    if (!G.decks.tutorial.length) {
+      ctx.events.endPhase();
+    } else {
+      G.card = G.decks.tutorial.pop();
+    }
   }
 
 }
