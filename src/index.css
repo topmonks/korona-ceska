@@ -118,7 +118,7 @@ body.game-mood-negative {
 
 .logo--menu {
   max-width: 240px;
-  margin: 64px auto;
+  margin: auto;
 }
 
 @media screen and (max-height: 455px) {
