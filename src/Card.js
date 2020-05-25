@@ -74,9 +74,9 @@ export default function Card({ card, effect, week }) {
         transitionsForIllustrations.map(({ props, key }) => (
           <animated.div
             key={key}
-            style={Object.assign({}, props, illustrationStyles(card.img))}
             className="card__animated card__animated--image"
-          ></animated.div>
+            style={Object.assign({}, props, illustrationStyles(card.img))}
+          /> // ^ it's background image
         ))}
 
       {transitionsForTextContents.map(({ props, key }) => (
