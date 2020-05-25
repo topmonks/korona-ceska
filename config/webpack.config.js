@@ -298,11 +298,13 @@ module.exports = function(webpackEnv) {
           'scheduler/tracing': 'scheduler/tracing-profiling',
         }),
         ...(modules.webpackAliases || {}),
-        // Use Preact in production
-        // https://preactjs.com/guide/v10/getting-started#aliasing-in-webpack
-        "react": "preact/compat",
-        "react-dom/test-utils": "preact/test-utils",
-        "react-dom": "preact/compat",
+        ...(isEnvProduction && {
+          // Use Preact in production
+          // https://preactjs.com/guide/v10/getting-started#aliasing-in-webpack
+          "react": "preact/compat",
+          "react-dom/test-utils": "preact/test-utils",
+          "react-dom": "preact/compat",
+        }),
       },
       plugins: [
         // Adds support for installing with Plug'n'Play, leading to faster installs and adding
