@@ -26,7 +26,9 @@ export function* getIllustrationsUrls(dpr) {
 }
 
 export const illustrationStyles = (img, { dpr } = { dpr: window.devicePixelRatio }) => {
-  const src = images[`illustrations/${img}.png`]["secure_url"];
+  const src = images[`illustrations/${img}.png`]?.["secure_url"];
+  if (!src) return { display: 'none' };
+
   for (let [media, height] of screenSizes) {
     if (window.matchMedia(media).matches) {
       return {

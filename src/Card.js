@@ -82,8 +82,7 @@ export default function Card({ card, effect, week }) {
     >
       {cardWeekNumber}
 
-      {!isIncident &&
-        card.img &&
+      {card.img &&
         transitionsForIllustrations.map(({ props, key }) => (
           <animated.div
             key={key}
