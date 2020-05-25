@@ -206,6 +206,11 @@ body.game-mood-negative {
   }
 }
 
+.screen--credits__main {
+  border-bottom: solid 1px rgb(119, 142, 186);
+  margin-bottom: 32px;
+}
+
 .screen--game .game-board.game-board--story {
   grid-template-rows: 16px auto 140px;
 }
@@ -759,11 +764,13 @@ svg.value-icon {
   display: flex;
   justify-content: center;
 }
-.tutorial-values > div { flex: 1; }
+.tutorial-values > div {
+  flex: 1;
+}
 .tutorial-values__label {
   margin: 0;
   padding: 0 !important;
-  color:#555;
+  color: #555;
   font-size: 13px;
   text-transform: uppercase;
 }
