@@ -1,6 +1,5 @@
 import React, { useMemo } from "react";
 import {
-  getAnswerCardField,
   isEventCard,
   isStoryCard,
   makeClass as css,
@@ -8,7 +7,7 @@ import {
 import { illustrationStyles } from "./Illustration";
 import { useTransition, animated, config } from "react-spring";
 
-export default function Card({ card, answer, effect, week }) {
+export default function Card({ card, effect, week }) {
   const isIncident = useMemo(() => isEventCard(card), [card]);
   const isStory = useMemo(() => isStoryCard(card), [card]);
 
@@ -48,7 +47,7 @@ export default function Card({ card, answer, effect, week }) {
             className="card__animated card__animated--text"
           >
             <p className="card__text card__text--effect">
-              "{getAnswerCardField(card, answer, "effect")}"
+              "{effect}"
             </p>
           </animated.div>
         ))}

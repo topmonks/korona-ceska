@@ -10,7 +10,7 @@ import MenuButton from "./MenuButton";
 import FadeIn from "react-fade-in";
 
 export default function GameBoard({ G, ctx, moves, events, reset, log }) {
-  const { values, card, lastAnswer, effect, week, stage, seed } = G;
+  const { values, card, effect, week, stage, seed } = G;
   const mood = useMemo(() => calculateMood(values), [values]);
 
   useEffect(changeBodyGameMood(mood), [mood]);
@@ -37,7 +37,7 @@ export default function GameBoard({ G, ctx, moves, events, reset, log }) {
       moves.MakeAnswer(answer);
     }
   };
-  console.log({ card })
+
   const gameButton = ({ answer, title, ...pass }) => (
     <GameButton
       key={`${ctx.turn}-${answer}`}
@@ -72,7 +72,7 @@ export default function GameBoard({ G, ctx, moves, events, reset, log }) {
       )}
 
       {card && (
-        <Card {...{ card, effect, week }} answer={lastAnswer} />
+        <Card {...{ card, effect, week }} />
       )}
 
       {!ctx.gameover && (
@@ -98,7 +98,7 @@ export default function GameBoard({ G, ctx, moves, events, reset, log }) {
 
       {ctx.gameover && (
         <div className="game-board__buttons">
-          <ScreenButton>Hlavní Menu</ScreenButton>
+          <ScreenButton path="/hra" state={{ key: Math.random() }}>Hrát znovu</ScreenButton>
           <ScreenButton href={shareLink} onClick={handleShareClick}>
             Sdílet výsledek
           </ScreenButton>
