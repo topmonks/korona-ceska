@@ -518,7 +518,8 @@ a {
 }
 
 .game-over.game-over--overflow {
-  /* TODO: Radek nastaví efekt přetékání */
+  background: radial-gradient(54% 72.5% at 49.16% 72.5%, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0) 100%) repeat-x bottom -2px center;
+  background-size: 100% 16px;
 }
 
 /*
