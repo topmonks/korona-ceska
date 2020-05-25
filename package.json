@@ -9,6 +9,7 @@
     "boardgame.io": "^0.39.10",
     "classnames": "^2.2.6",
     "navi": "^0.14.0",
+    "preact": "^10.4.4",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-fade-in": "^1.0.0",
@@ -71,6 +72,7 @@
     "resolve-url-loader": "3.1.1",
     "sass-loader": "8.0.2",
     "semver": "6.3.0",
+    "source-map-explorer": "^2.4.2",
     "style-loader": "0.23.1",
     "terser-webpack-plugin": "2.3.5",
     "ts-pnp": "1.1.6",
@@ -85,7 +87,8 @@
     "build": "node scripts/build.js",
     "postbuild": "node scripts/modifyServiceWorker.js",
     "test": "node scripts/test.js",
-    "upload-images": "dotenv -e .env.local gulp"
+    "upload-images": "dotenv -e .env.local gulp",
+    "analyze": "source-map-explorer 'build/static/js/*.js'"
   },
   "eslintConfig": {
     "extends": "react-app"
