@@ -574,8 +574,7 @@ a {
   justify-content: center;
 }
 
-.card--tutorial > div, /* FafeIn wraper, ugly selector ik but the effect is sexy */
-.card--tutorial > div > div {
+.card--tutorial > div {
   flex: 1;
   display: flex;
   align-items: center;
