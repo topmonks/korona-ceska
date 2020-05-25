@@ -5,7 +5,7 @@ import ValueIcon from './ValueIcon';
 export default function GameValues({ values, }) {
   const [virus, health, economy, trust] = values;
 
-  const valuePercent = value => <span>{value.toFixed(0)}%</span>
+  const valuePercent = value => <span aria-hidden>{value.toFixed(0)}%</span>
 
   return (
     <div className="game-values">
