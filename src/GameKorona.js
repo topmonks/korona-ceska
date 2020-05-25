@@ -113,7 +113,10 @@ export default {
     onEnd: (G, ctx) => {
       G.card = null;
       G.effect = null;
-      G.lastAnswer = null;
+
+      if (G.finalEventCard) {
+        G.values = calculateValues(G.values, G.finalEventCard);
+      }
     },
   },
 
@@ -145,7 +148,7 @@ export default {
       if (ctx.phase === 'newbie') {
         moves.push({ move: 'MakeNewbieAnswer', args: [Answers.NEXT] });
         moves.push({ move: 'MakeNewbieAnswer', args: [Answers.SKIP] });
-      } else if (isPlayCard(G.card) && !G.lastAnswer) {
+      } else if (isPlayCard(G.card)) {
         moves.push({ move: 'MakeAnswer', args: [true] });
         moves.push({ move: 'MakeAnswer', args: [false] });
       } else if (G.effect) {
@@ -186,15 +189,13 @@ function MakeAnswer(G, ctx, answer) {
   }
 
   const turnNextToEffect = () => {
-    if (G.week > 0 && G.week % 4 === 0) {
+    if (G.week > 0 && G.week % 4 === 0 && G.week <= 16) {
       G.stage = setStage(ctx, 'event');
       G.card = getNextCard(G, ctx);
       G.effect = null;
-      G.values = calculateValues(G.values, G.card);
+
+      if (G.week === 16) G.finalEventCard = G.card; // using every 16+ week
     } else {
-      if (G.finalEventCard && G.week > 16) {
-        G.values = calculateValues(G.values, G.card);
-      }
       ctx.events.endTurn();
     }
   }
@@ -202,13 +203,11 @@ function MakeAnswer(G, ctx, answer) {
   if (answer === Answers.CONTINUE) {
     turnNextToEffect()
   } else if (isPlayAnswer(answer)) { // YES/NO answers
-    G.lastAnswer = answer;
     G.effect = getAnswerCardField(G.card, answer, 'effect');
     G.values = calculateValues(G.values, G.card, answer);
     if (!G.effect) turnNextToEffect();
-  } else if (answer === Answers.OK) {
-    G.lastAnswer = answer;
-    if (G.week === 16) G.finalEventCard = G.card;
+  } else if (answer === Answers.OK) { // special event card
+    G.values = calculateValues(G.values, G.card);
     ctx.events.endTurn();
   }
 
