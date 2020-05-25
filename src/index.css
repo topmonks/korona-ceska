@@ -116,6 +116,11 @@ body.game-mood-negative {
   grid-template-rows: 2fr 3fr;
 }
 
+.logo--menu {
+  max-width: 240px;
+  margin: 64px auto;
+}
+
 @media screen and (max-height: 455px) {
   .screen.screen--menu {
     grid-template-rows: 1fr 3fr;
@@ -198,7 +203,6 @@ body.game-mood-negative {
   flex: 1;
 }
 
-
 .game-board__card,
 .game-board__gameover {
   grid-area: main;
@@ -249,7 +253,6 @@ a {
   color: white;
   text-align: center;
 }
-
 
 .game-board__card {
   flex: 1;
@@ -340,10 +343,9 @@ a {
   align-items: center;
   flex-direction: row;
 
-  background: #2C2A51;
+  background: #2c2a51;
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.25);
   border-radius: 4px;
-
 }
 
 .game-values__value {
@@ -354,16 +356,17 @@ a {
   padding: 6px;
 }
 @media screen and (min-height: 668px) {
- .game-values__value { padding: 8px; }
+  .game-values__value {
+    padding: 8px;
+  }
 }
 
-.game-values__value > span {  /* like 40% */
+.game-values__value > span {
+  /* like 40% */
   font-size: 12px;
   line-height: 1.2;
   font-weight: 600;
 }
-
-
 
 /*
  * src/MenuButton.js
@@ -376,17 +379,19 @@ a {
   /* magic, by default makes burge cendered*/
   display: flex;
 }
-.menu-button > img { transform: scale(0.6); }
-
+.menu-button > img {
+  transform: scale(0.6);
+}
 
 @media screen and (min-width: 340px) {
   .menu-button {
     margin-left: 16px;
     padding-left: 16px;
   }
-  .menu-button > img { transform: scale(0.8); }
+  .menu-button > img {
+    transform: scale(0.8);
+  }
 }
-
 
 /*
  * src/ScreenButton.js
@@ -437,7 +442,9 @@ a {
   background-color: rgba(0, 0, 0, 0.3);
 }
 @media screen and (min-height: 668px) {
-  .game-button { font-size: 16px; }
+  .game-button {
+    font-size: 16px;
+  }
 }
 
 .game-button + .game-button {
@@ -694,7 +701,6 @@ svg.value-icon {
   .game-values__value svg.value-icon {
     --size: 24px;
   }
-
 }
 @media screen and (min-height: 668px) {
   .game-values__value svg.value-icon {
