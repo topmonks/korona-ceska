@@ -52,7 +52,7 @@ body.game-mood-negative {
 }
 
 .virus-bg {
-  background: url(/virus-bg.png) no-repeat;
+  background: url("/virus-bg.png") no-repeat;
   background-size: cover;
   position: fixed;
   z-index: -1;
@@ -313,7 +313,7 @@ a {
 .screen--help__text {
   color: white;
   line-height: 24px;
-  margin: 0px 32px;
+  margin: 0 32px;
   flex: 1;
   max-width: 768px;
 }
@@ -339,12 +339,12 @@ a {
 }
 
 .screen--credits__row h3 {
-  margin: 0px;
+  margin: 0;
   font-size: 18px;
 }
 
 .screen--credits__row p {
-  margin: 0px;
+  margin: 0;
   font-size: 14px;
 }
 
@@ -364,7 +364,7 @@ a {
   flex-direction: row;
 
   background: #2c2a51;
-  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
   border-radius: 4px;
 }
 
@@ -422,7 +422,7 @@ a {
   flex: 1;
   padding: 16px;
   border-radius: 4px;
-  box-shadow: 0px 8px 16px -10px rgba(61, 61, 82, 1);
+  box-shadow: 0 8px 16px -10px rgba(61, 61, 82, 1);
   margin-bottom: 16px;
   text-align: center;
   display: block;
@@ -430,7 +430,7 @@ a {
 
 .screen-button:hover {
   background-color: rgb(49, 34, 101);
-  box-shadow: 0px 8px 16px -10px rgb(66, 29, 150);
+  box-shadow: 0 8px 16px -10px rgb(66, 29, 150);
 }
 
 .screen-button--primary {
@@ -439,7 +439,7 @@ a {
 
 .screen-button--primary:hover {
   background-color: #f00;
-  box-shadow: 0px 8px 16px -10px rgb(255, 0, 0);
+  box-shadow: 0 8px 16px -10px rgb(255, 0, 0);
 }
 
 /*
@@ -482,7 +482,6 @@ a {
 }
 
 .game-button--secondary:hover {
-  background-color: unset;
   background-color: rgba(255, 0, 0, 0.2);
 }
 
@@ -619,6 +618,7 @@ a {
   height: 100%;
 }
 
+.card__img--story,
 .card__img--story .illustration {
   margin: 0;
 }
@@ -648,7 +648,7 @@ a {
 }
 
 .card__name {
-  margin: 8px 0px 0px 0px;
+  margin: 8px 0 0 0;
   font-size: 16px;
 }
 
@@ -678,6 +678,7 @@ a {
   }
 
   .card__text {
+    font-size: 18px;
     font-size: 18px;
   }
 }
@@ -709,21 +710,7 @@ svg.value-icon {
   width: var(--size);
   height: var(--size);
   margin: 4px;
-  /* transform: scale(0.8); */
 }
-
-/* @media screen and (min-width: 480px) {
-  svg.value-icon {
-    margin: 16px 16px;
-    transform: unset;
-  }
-} */
-
-/* @media screen and (min-width: 840px) {
-  svg.value-icon {
-    margin: 24px 24px;
-  }
-} */
 
 @media screen and (max-width: 319px) {
   .game-values__value svg.value-icon {
