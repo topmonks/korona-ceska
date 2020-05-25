@@ -8,9 +8,9 @@ const iconPathDs = {
   trust: "M20.8,18.1c-3.4-0.8-6.6-1.5-5.1-4.4C20.5,4.8,17,0,12,0C6.9,0,3.5,4.9,8.3,13.7c1.6,2.9-1.7,3.6-5.1,4.4C0.1,18.8,0,20.3,0,23l0,1h24l0-1C24,20.3,23.9,18.8,20.8,18.1z",
 }
 
-const RED_COLOR = '#FF0000';
+const RED_COLOR = '#CD2500';
 const OUK_COLOR = '#FFFFFF';
-const FOK_COLOR = '#2C2A51';
+const FOK_COLOR = '#4A4B7E';
 
 export default function ValueIcon({ value, type, large = false, small = false, loose = false, className }) {
   const pathD = useMemo(() => iconPathDs[type], [type]);
@@ -45,7 +45,7 @@ export default function ValueIcon({ value, type, large = false, small = false, l
           clipPath={`url(#value-level-${type})`}
           fill={loose ? RED_COLOR : FOK_COLOR}
           stroke={loose ? RED_COLOR : FOK_COLOR}
-          strokeWidth="0.1px"
+          // strokeWidth="1px"
           d={pathD}
         />
       </g>

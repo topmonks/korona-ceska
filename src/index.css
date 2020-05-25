@@ -141,7 +141,7 @@ body.game-mood-negative {
 
 .screen--game .game-board {
   grid-template-columns: auto;
-  grid-template-rows: 68px auto 180px;
+  grid-template-rows: 74px auto 180px;
   grid-template-areas:
     "header"
     "main"
@@ -175,7 +175,29 @@ body.game-mood-negative {
 
 .game-board__header {
   grid-area: header;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
+
+  /* push header to screen top*/
+@media screen and (min-width: 321px) {
+  .game-board__header {
+    padding-bottom: 16px;
+  }
+}
+@media screen and (min-width: 340px) {
+  .game-board__header {
+    padding-bottom: 24px;
+  }
+}
+
+/* Using FadeIn that generates two containers, the first one is for GameValues */
+.game-board__header > div:first-child {
+  flex: 1;
+}
+
 
 .game-board__card,
 .game-board__gameover {
@@ -228,8 +250,6 @@ a {
   text-align: center;
 }
 
-.game-board__header {
-}
 
 .game-board__card {
   flex: 1;
@@ -314,15 +334,56 @@ a {
  * src/GameValues.js
  */
 .game-values {
+  flex: 1; /* does not work with FadeIn */
+
   display: flex;
   align-items: center;
   flex-direction: row;
+
+  background: #2C2A51;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.25);
+  border-radius: 4px;
+
 }
 
-.game-values__rest {
+.game-values__value {
   flex: 1;
-  text-align: end;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 8px;
 }
+
+.game-values__value > span {  /* like 40% */
+  font-size: 12px;
+  line-height: 1.2;
+  font-weight: 600;
+}
+
+
+
+/*
+ * src/MenuButton.js
+ */
+.menu-button {
+  margin-left: 8px;
+  padding-left: 8px;
+  height: 100%;
+
+  /* magic, by default makes burge cendered*/
+  display: flex;
+}
+.menu-button > img { transform: scale(0.8); }
+
+
+@media screen and (min-width: 340px) {
+  .menu-button {
+    margin-left: 16px;
+    padding-left: 16px;
+  }
+  .menu-button > img { transform: unset; }
+}
+
 
 /*
  * src/ScreenButton.js
@@ -600,48 +661,37 @@ svg.value-icon {
   --size: 32px;
   width: var(--size);
   height: var(--size);
-  margin: 8px;
-  transform: scale(0.8);
+  margin: 4px;
+  /* transform: scale(0.8); */
 }
 
-@media screen and (min-width: 480px) {
+/* @media screen and (min-width: 480px) {
   svg.value-icon {
     margin: 16px 16px;
     transform: unset;
   }
-}
+} */
 
-@media screen and (min-width: 840px) {
+/* @media screen and (min-width: 840px) {
   svg.value-icon {
     margin: 24px 24px;
   }
-}
+} */
 
 @media screen and (max-width: 319px) {
-  .game-values__rest svg.value-icon {
-    --size: 24px;
-  }
-
-  .game-values__virus svg.value-icon {
-    --size: 32px;
+  .game-values__value svg.value-icon {
+    --size: 20px;
   }
 }
 
 @media screen and (min-width: 320px) {
-  .game-values__rest svg.value-icon {
-    --size: 32px;
+  .game-values__value svg.value-icon {
+    --size: 24px;
   }
 
-  .game-values__virus svg.value-icon {
-    --size: 40px;
-  }
 }
 @media screen and (min-width: 340px) {
-  .game-values__rest svg.value-icon {
+  .game-values__value svg.value-icon {
     --size: 38px;
-  }
-
-  .game-values__virus svg.value-icon {
-    --size: 52px;
   }
 }

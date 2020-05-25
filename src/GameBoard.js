@@ -6,6 +6,8 @@ import { Answers } from "./GameKorona";
 import GameValues from "./GameValues";
 import GameButton from "./GameButton";
 import ScreenButton from "./ScreenButton";
+import MenuButton from "./MenuButton";
+import FadeIn from "react-fade-in";
 
 export default function GameBoard({ G, ctx, moves, events, reset, log }) {
   const { values, card, lastAnswer, effect, week, stage, seed } = G;
@@ -44,6 +46,8 @@ export default function GameBoard({ G, ctx, moves, events, reset, log }) {
     />
   );
 
+  const shouldBeBoardHeaderVisible = ctx.phase !== 'newbie';
+
   return (
     <div className={makeClass(
       'game-board',
@@ -51,9 +55,15 @@ export default function GameBoard({ G, ctx, moves, events, reset, log }) {
       ctx.phase === 'newbie' && 'game-board--story',
       ctx.gameover && 'game-board--outcome'
     )}>
-      <div className="game-board__header">
-        {ctx.phase !== 'newbie' && <GameValues values={values} />}
-      </div>
+
+      {shouldBeBoardHeaderVisible && (
+        <FadeIn className="game-board__header">
+          <GameValues values={values} />
+          <MenuButton />
+        </FadeIn>
+      )}
+      {/* mock container for grid layout */}
+      {!shouldBeBoardHeaderVisible && <div className="game-board__header" />}
 
       {ctx.gameover && (
         <div className="game-board__gameover">
