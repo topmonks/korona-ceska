@@ -12,7 +12,7 @@ export default function ScreenCredits({ route }) {
       <div className="screen--credits__logo">
         Hru vytvořila společnost{" "}
         <a
-          href="https://www.topmonks.com"
+          href="https://www.topmonks.cz"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -20,7 +20,7 @@ export default function ScreenCredits({ route }) {
         </a>
         <div>
           <a
-            href="https://www.topmonks.com"
+            href="https://www.topmonks.cz"
             target="_blank"
             rel="noopener noreferrer"
           >
