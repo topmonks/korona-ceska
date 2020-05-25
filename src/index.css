@@ -701,3 +701,7 @@ svg.value-icon {
     --size: 32px;
   }
 }
+
+.tooltip-overlay .rmc-tooltip-inner {
+  min-height: auto;
+}
