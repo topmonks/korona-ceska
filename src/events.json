@@ -53,7 +53,7 @@
                 "noanswer": "Tisíc nebo ráže?",
                 "yeseffect": "OSVČ dostávají finanční podporu a kontrolu z berňáku k tomu.",
                 "noeffect": "\"Hehe... he.\" -Trošku tě to znervóznilo.",
-                "yesvalues": "0,0,-10,10",
+                "yesvalues": "0,0,10,-10",
                 "novalues": "0,-10,-5,5"
             },
             {
@@ -204,7 +204,7 @@
                 "img": "netahlo",
                 "text": "Dochází nám potraviny, měl bych skočit do supermarketu pro další?",
                 "yesanswer": "Pošli ženu a pak ji zavři do sklepa na 14 dní.",
-                "noanswer": "Nikam nechoď. Nejlepší řízky jsou ty z lunchmeatu!",
+                "noanswer": "Nikam nechoď, dej si lunchmeat.",
                 "yeseffect": "n-a",
                 "noeffect": "n-a",
                 "yesvalues": "10,10,10,-10",
@@ -357,9 +357,9 @@
                 "name": "Roman Skořene",
                 "img": "skorene",
                 "text": "Vzkvétá nový trh s designovými rouškami",
-                "yesanswer": "To si Vojtík určitě nějakou fešnou roušku pořídí.",
+                "yesanswer": "To jsem rád!",
                 "noanswer": "Vy hyeny! Roušky by měly být pro každého zadarmo!",
-                "yeseffect": "Jana Zdravá má radost - nemocnice dostaly roušky zdarma.",
+                "yeseffect": "Trh s rouškami prosperuje a část prodejců věnovala roušky nemocnicím zdarma.",
                 "noeffect": "Vzkvétá rouškový underground.",
                 "yesvalues": "-10,10,10,0",
                 "novalues": "10,-15,-15,10"
@@ -389,7 +389,7 @@
             {
                 "name": "Věra Pohlová",
                 "img": "pohlova",
-                "text": "Lidé si vyrábějí vlastní ochranné pomůcky. Jaký je to pořádek? To se musí zakázat!",
+                "text": "Lidé si vyrábějí vlastní ochranné pomůcky. Jaký je to pořádek, to se musí zakázat.",
                 "yesanswer": "Ano.",
                 "noanswer": "Ne.",
                 "yeseffect": "n-a",
@@ -545,17 +545,6 @@
                 "novalues": "0,0,0,5"
             },
             {
-                "name": "Jan Tiskař",
-                "img": "tiskar",
-                "text": "Velká zpráva: umíme nyní dronové doručení hydroponických salátů za bitcoiny!",
-                "yesanswer": "Dro- co?",
-                "noanswer": "A půjde platit i přes lightning?",
-                "yeseffect": "Tiskařova metoda dronového doručování salátů za bitcoiny je velice populární mezi 10 lidmi v republice kteří rozumí, co všechna ta slova znamenají.",
-                "noeffect": "Krásně sis s Tiskařem pokecal o nejlepších lightning peněženkách, hydroponii a dalších nerdovinách. Teď zpět do práce!",
-                "yesvalues": "-5,5,5,-5",
-                "novalues": "-5,5,5,5"
-            },
-            {
                 "name": "Alfons Vojtík",
                 "img": "vojtik",
                 "text": "Rýmula osobně porušil karanténní opatření, která sám prosadil. To může být skandál!",
@@ -609,6 +598,17 @@
                 "noeffect": "Bakšiš snížil důchody. Dotace velkým holdingům zůstaly netknuty.",
                 "yesvalues": "0,0,-20,-20",
                 "novalues": "0,0,-15,-15"
+            },
+            {
+                "name": "Jan Tiskař",
+                "img": "tiskar",
+                "text": "Velká zpráva: umíme nyní dronové doručení hydroponických salátů za bitcoiny!",
+                "yesanswer": "Nerozumím, dronové co?",
+                "noanswer": "A půjde platit i přes lightning?",
+                "yeseffect": "Tiskařova metoda dronového doručování salátů za bitcoiny je velice populární mezi 10 lidmi v republice kteří rozumí, co všechna ta slova znamenají.",
+                "noeffect": "Krásně sis s Tiskařem pokecal o nejlepších lightning peněženkách, hydroponii a dalších nerdovinách. Teď zpět do práce!",
+                "yesvalues": "-5,5,5,-5",
+                "novalues": "-5,5,5,5"
             },
             {
                 "name": "Jana Zdravá",
@@ -665,32 +665,50 @@
                 "yesvalues": "0,0,0,-15",
                 "novalues": "0,0,0,10"
             }
+        ],
+        "tutorial": [
+            {
+                "img": "tutorial",
+                "text1": "Tvým cílem je snížit pomocí správně volených odpovědí hodnotu epidemie na nulu.",
+                "text2": "Není to však tak jednoduché. Zároveň se snaž udržet nad nulou zbylé hodnoty."
+            },
+            {
+                "name": "Tak tě tu vítám!",
+                "img": "bures",
+                "text": "Epidemie začíná. Měli bychom usporiadať tiskovku.",
+                "yesanswer": "Ano.",
+                "noanswer": "Raději pojďme plánovat.",
+                "yeseffect": "Tiskovka dodala lidu důvěru. <i> Důvěra +5 %</i>",
+                "noeffect": "Díky plánování máte náskok před epidemií! <i> Epidemie -5 %</i>",
+                "yesvalues": "0,0,0,5",
+                "novalues": "-5,0,0,0"
+            }
         ]
     },
   "events": [
     {
       "values": "10,-10,-10,-10",
-      "name": "Tik ťak",
-      "img": "netahlo",
-      "text": "Uběhl měsíc. Šíření viru se zatím nepodařilo zastavit, lidé začínají být neklidní."
+      "name": "To to letí!",
+      "img": "tiktak1",
+      "text": "Uběhl měsíc. Šíření viru se zatím nepodařilo zastavit, lidé začínají být neklidní. <br/><br/><i>Epidemie +10 %, Zdraví -10 %, Ekonomika -10 %, Důvěra -10 %</i>"
     },
     {
       "values": "10,-10,-10,-10",
-      "name": "Tik ťak II",
-      "img": "netahlo",
-      "text": "Od začátku epidemie uběhly již dva měsíce. Tiskoví mluvčí uklidňují lid tím, že jinde je hůř."
+      "name": "Tak jde čas...",
+      "img": "tiktak2",
+      "text": "Od začátku epidemie uběhly již dva měsíce. Tiskoví mluvčí uklidňují lid tím, že jinde je hůř. <br/><br/><i>Epidemie +10 %, Zdraví -10 %, Ekonomika -10 %, Důvěra -10 %</i>"
     },
     {
       "values": "10,-10,-10,-10",
-      "name": "Tik ťak III",
-      "img": "netahlo",
-      "text": "Tři měsíce od začátku epidemie! Lidé jsou již unavení a ztrácí disciplínu v protiepidemických opatřeních. Do Vltavy se vrátili delfíni."
+      "name": "Čas je neúprosný soudce",
+      "img": "tiktak3",
+      "text": "Tři měsíce od začátku epidemie! Lidé jsou již unavení a ztrácí disciplínu v protiepidemických opatřeních. Do Vltavy se vrátili delfíni. <br/><br/><i>Epidemie +10 %, Zdraví -10 %, Ekonomika -10 %, Důvěra -10 %</i>"
     },
     {
       "values": "10,-10,-10,-10",
-      "name": "Tik ťak IV",
-      "img": "netahlo",
-      "text": "Před čtyřmi měsíci začala epidemie. Lid si zvyká na nový normál, staré pořádky se převrací. Na Václaváku přestávají prodávat klobásy. Stropnický jásá, že nikdo nejel na letní dovolenou. Nad Prahou létá v noci UFO (anebo lidi jen moc chlastaj?)."
+      "name": "Vleklá epidemie",
+      "img": "tiktak4",
+      "text": "Před čtyřmi měsíci začala epidemie. Lid si zvyká na nový normál, staré pořádky se převrací. Na Václaváku přestávají prodávat klobásy. Stropnický jásá, že nikdo nejel na letní dovolenou. Nad Prahou létá v noci UFO (anebo lidi jen moc chlastaj?). <br/><br/><i>Epidemie +10 %, Zdraví -10 %, Ekonomika -10 %, Důvěra -10 %</i>"
     }
   ],
   "story": [
