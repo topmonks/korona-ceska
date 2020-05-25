@@ -1,4 +1,39 @@
 ﻿{
+    "story": [
+        {
+            "name": "Korona česká (1 z 3)",
+            "img": "story1",
+            "text": "<i>\"V rozhodnou chvíli se Blaník otevře, rytíři v plné zbroji vyhrnou se z hory a svatý Václav, jeda na bílém koni, je povede na pomoc Čechům.\"</i><br/><br/>V českých zemích se šíří nový vir. Češi jsou schopný národ, ale vládnou mu nemehla. Je zapotřebí, aby zasáhla vyšší moc."
+        },
+        {
+            "name": "Korona česká (2 z 3)",
+            "img": "story2",
+            "text": "<i>Copak se to ozývá zpod Blaníka? Šramot, chrchlot, brblání.</i> <br/><br/>-Vstávejte chásko jedna, Češi nás potřebují! <br/><br/>-Ale dej zas pokoj Venco, dyť jsme se tak pěkně zlili medovinkou, teď si ještě pár set let zchrupnem."
+        },
+        {
+            "name": "Korona česká (3 z 3)",
+            "img": "story3",
+            "text": "Svatý Václav přijíždí národu na pomoc sám. Namísto věrných rytířů se musí spokojit s poradci z řad české vlády a lidu.<br/><br/> Rozhodnutí mají často opačný dopad v různých sektorech."
+        }
+    ],
+    "tutorial": [
+        {
+            "img": "tutorial",
+            "text1": "Tvým cílem je snížit pomocí správně volených odpovědí hodnotu epidemie na nulu.",
+            "text2": "Není to však tak jednoduché. Zároveň se snaž udržet nad nulou zbylé hodnoty."
+        },
+        {
+            "name": "Tak tě tu vítám!",
+            "img": "bures",
+            "text": "Epidemie začíná. Měli bychom usporiadať tiskovku.",
+            "yesanswer": "Ano.",
+            "noanswer": "Raději pojďme plánovat.",
+            "yeseffect": "Tiskovka dodala lidu důvěru. <i> Důvěra +5 %</i>",
+            "noeffect": "Díky plánování máte náskok před epidemií! <i> Epidemie -5 %</i>",
+            "yesvalues": "0,0,0,5",
+            "novalues": "-5,0,0,0"
+        }
+    ],
     "cards": {
         "neutral": [
             {
@@ -665,67 +700,32 @@
                 "yesvalues": "0,0,0,-15",
                 "novalues": "0,0,0,10"
             }
-        ],
-        "tutorial": [
-            {
-                "img": "tutorial",
-                "text1": "Tvým cílem je snížit pomocí správně volených odpovědí hodnotu epidemie na nulu.",
-                "text2": "Není to však tak jednoduché. Zároveň se snaž udržet nad nulou zbylé hodnoty."
-            },
-            {
-                "name": "Tak tě tu vítám!",
-                "img": "bures",
-                "text": "Epidemie začíná. Měli bychom usporiadať tiskovku.",
-                "yesanswer": "Ano.",
-                "noanswer": "Raději pojďme plánovat.",
-                "yeseffect": "Tiskovka dodala lidu důvěru. <i> Důvěra +5 %</i>",
-                "noeffect": "Díky plánování máte náskok před epidemií! <i> Epidemie -5 %</i>",
-                "yesvalues": "0,0,0,5",
-                "novalues": "-5,0,0,0"
-            }
         ]
     },
-  "events": [
-    {
-      "values": "10,-10,-10,-10",
-      "name": "To to letí!",
-      "img": "tiktak1",
-      "text": "Uběhl měsíc. Šíření viru se zatím nepodařilo zastavit, lidé začínají být neklidní. <br/><br/><i>Epidemie +10 %, Zdraví -10 %, Ekonomika -10 %, Důvěra -10 %</i>"
-    },
-    {
-      "values": "10,-10,-10,-10",
-      "name": "Tak jde čas...",
-      "img": "tiktak2",
-      "text": "Od začátku epidemie uběhly již dva měsíce. Tiskoví mluvčí uklidňují lid tím, že jinde je hůř. <br/><br/><i>Epidemie +10 %, Zdraví -10 %, Ekonomika -10 %, Důvěra -10 %</i>"
-    },
-    {
-      "values": "10,-10,-10,-10",
-      "name": "Čas je neúprosný soudce",
-      "img": "tiktak3",
-      "text": "Tři měsíce od začátku epidemie! Lidé jsou již unavení a ztrácí disciplínu v protiepidemických opatřeních. Do Vltavy se vrátili delfíni. <br/><br/><i>Epidemie +10 %, Zdraví -10 %, Ekonomika -10 %, Důvěra -10 %</i>"
-    },
-    {
-      "values": "10,-10,-10,-10",
-      "name": "Vleklá epidemie",
-      "img": "tiktak4",
-      "text": "Před čtyřmi měsíci začala epidemie. Lid si zvyká na nový normál, staré pořádky se převrací. Na Václaváku přestávají prodávat klobásy. Stropnický jásá, že nikdo nejel na letní dovolenou. Nad Prahou létá v noci UFO (anebo lidi jen moc chlastaj?). <br/><br/><i>Každé následující kolo: Epidemie +10 %, Zdraví -10 %, Ekonomika -10 %, Důvěra -10 %</i>"
-    }
-  ],
-  "story": [
-    {
-      "name": "Korona česká (1 z 3)",
-      "img": "story1",
-      "text": "<i>\"V rozhodnou chvíli se Blaník otevře, rytíři v plné zbroji vyhrnou se z hory a svatý Václav, jeda na bílém koni, je povede na pomoc Čechům.\"</i><br/><br/>V českých zemích se šíří nový vir. Češi jsou schopný národ, ale vládnou mu nemehla. Je zapotřebí, aby zasáhla vyšší moc."
-    },
-    {
-      "name": "Korona česká (2 z 3)",
-      "img": "story2",
-      "text": "<i>Copak se to ozývá zpod Blaníka? Šramot, chrchlot, brblání.</i> <br/><br/>-Vstávejte chásko jedna, Češi nás potřebují! <br/><br/>-Ale dej zas pokoj Venco, dyť jsme se tak pěkně zlili medovinkou, teď si ještě pár set let zchrupnem."
-    },
-    {
-      "name": "Korona česká (3 z 3)",
-      "img": "story3",
-      "text": "Svatý Václav přijíždí národu na pomoc sám. Namísto věrných rytířů se musí spokojit s poradci z řad české vlády a lidu.<br/><br/> Rozhodnutí mají často opačný dopad v různých sektorech."
-    }
-  ]
+    "events": [
+        {
+            "values": "10,-10,-10,-10",
+            "name": "To to letí!",
+            "img": "tiktak1",
+            "text": "Uběhl měsíc. Šíření viru se zatím nepodařilo zastavit, lidé začínají být neklidní. <br/><br/><i>Epidemie +10 %, Zdraví -10 %, Ekonomika -10 %, Důvěra -10 %</i>"
+        },
+        {
+            "values": "10,-10,-10,-10",
+            "name": "Tak jde čas...",
+            "img": "tiktak2",
+            "text": "Od začátku epidemie uběhly již dva měsíce. Tiskoví mluvčí uklidňují lid tím, že jinde je hůř. <br/><br/><i>Epidemie +10 %, Zdraví -10 %, Ekonomika -10 %, Důvěra -10 %</i>"
+        },
+        {
+            "values": "10,-10,-10,-10",
+            "name": "Čas je neúprosný soudce",
+            "img": "tiktak3",
+            "text": "Tři měsíce od začátku epidemie! Lidé jsou již unavení a ztrácí disciplínu v protiepidemických opatřeních. Do Vltavy se vrátili delfíni. <br/><br/><i>Epidemie +10 %, Zdraví -10 %, Ekonomika -10 %, Důvěra -10 %</i>"
+        },
+        {
+            "values": "10,-10,-10,-10",
+            "name": "Vleklá epidemie",
+            "img": "tiktak4",
+            "text": "Před čtyřmi měsíci začala epidemie. Lid si zvyká na nový normál, staré pořádky se převrací. Na Václaváku přestávají prodávat klobásy. Stropnický jásá, že nikdo nejel na letní dovolenou. Nad Prahou létá v noci UFO (anebo lidi jen moc chlastaj?). <br/><br/><i>Každé následující kolo: Epidemie +10 %, Zdraví -10 %, Ekonomika -10 %, Důvěra -10 %</i>"
+        }
+    ]
 }
