@@ -12,7 +12,7 @@ const RED_COLOR = '#CD2500';
 const OUK_COLOR = '#FFFFFF';
 const FOK_COLOR = '#4A4B7E';
 
-export default function ValueIcon({ value, type, large = false, small = false, loose = false, className }) {
+export default function ValueIcon({ value, type, large = false, small = false, loose = false, className, prefix = 'game' }) {
   const pathD = useMemo(() => iconPathDs[type], [type]);
   const level = useMemo(() => (24 / 100 * (100 - value)), [value]);
   const color = useMemo(() => type === 'virus' ? RED_COLOR : OUK_COLOR, [type]);
@@ -30,19 +30,19 @@ export default function ValueIcon({ value, type, large = false, small = false, l
       version="1.1"
       x="0px" y="0px" viewBox="0 0 24 24"
       width={size} height={size}
-      className={`value-icon ${className}`}
+      className={`value-icon ${className || ''}`}
       role="img"
     >
       <title>{getValueTitle({ type, value })}</title>
       <g>
         <defs>
-          <clipPath id={`value-level-${type}`}>
+          <clipPath id={`${prefix}-value-level-${type}`}>
             <rect x="0" y="0" width="24" height={level} />
           </clipPath>
         </defs>
         <path fill={highlightValue ? RED_COLOR : color} d={pathD} />
         <path
-          clipPath={`url(#value-level-${type})`}
+          clipPath={`url(#${prefix}-value-level-${type})`}
           fill={loose ? RED_COLOR : FOK_COLOR}
           stroke={loose ? RED_COLOR : FOK_COLOR}
           // strokeWidth="1px"

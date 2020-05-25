@@ -3,9 +3,11 @@ import {
   isEventCard,
   isStoryCard,
   makeClass as css,
+  isTutorialCard,
 } from "./library";
 import { illustrationStyles } from "./Illustration";
 import { useTransition, animated, config } from "react-spring";
+import TutorialValues from "./TutorialValues";
 
 export default function Card({ card, effect, week }) {
   const isIncident = useMemo(() => isEventCard(card), [card]);
@@ -31,6 +33,17 @@ export default function Card({ card, effect, week }) {
       config: { ...config.wobbly, friction: 22, duration: 250 },
     }
   );
+
+  if (isTutorialCard(card)) {
+    return (
+      <div className="card card--tutorial">
+        <div><p className="card__text">{card.text1}</p></div>
+        <TutorialValues virus />
+        <div><p className="card__text">{card.text2}</p></div>
+        <TutorialValues health economy trust />
+      </div>
+    );
+  }
 
   const cardWeekNumber = !isStory ? (
     <div className="card__week">{week}. týden</div>

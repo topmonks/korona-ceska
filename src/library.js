@@ -30,6 +30,10 @@ export function isStoryCard(card) {
   if (!card) return false;
   return card.text && card.name && !isPlayCard(card) && !isEventCard(card);
 }
+export function isTutorialCard(card) {
+  if (!card) return false;
+  return card.text1 && card.text2;
+}
 
 /**
  * Returns updated values array based on Yes / No answer and/or the card value
