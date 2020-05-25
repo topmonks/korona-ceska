@@ -1,6 +1,14 @@
-import React, { useMemo, useEffect, } from "react";
+import React, { useMemo, useEffect } from "react";
 import Card from "./Card";
-import { makeClass, calculateMood, isEventCard, isPlayCard, changeBodyGameMood, makeShareHandler, makeShareLink, } from "./library";
+import {
+  makeClass,
+  calculateMood,
+  isEventCard,
+  isPlayCard,
+  changeBodyGameMood,
+  makeShareHandler,
+  makeShareLink,
+} from "./library";
 import GameOver from "./GameOver";
 import { Answers } from "./GameKorona";
 import GameValues from "./GameValues";
@@ -15,13 +23,14 @@ export default function GameBoard({ G, ctx, moves, events, reset, log }) {
 
   useEffect(changeBodyGameMood(mood), [mood]);
 
+  const shareHandler = useMemo(makeShareHandler, []);
+  const shareLink = useMemo(
+    () =>
+      ctx.gameover && makeShareLink({ week, outcome: ctx.gameover, seed, log }),
+    [ctx.gameover]
+  ); // eslint-disable-line
 
-  const shareHandler = useMemo(makeShareHandler, [])
-  const shareLink = useMemo(() => ctx.gameover && (
-    makeShareLink({ week, outcome: ctx.gameover, seed, log })
-  ), [ctx.gameover]) // eslint-disable-line
-
-  const handleShareClick = event => {
+  const handleShareClick = (event) => {
     if (shareHandler) {
       event.preventDefault();
       const outcome = ctx.gameover;
@@ -29,9 +38,8 @@ export default function GameBoard({ G, ctx, moves, events, reset, log }) {
     }
   };
 
-
   const handleAnswer = (answer) => {
-    if (ctx.phase === 'story') {
+    if (ctx.phase === "story") {
       moves.MakeNewbieAnswer(answer);
     } else {
       moves.MakeAnswer(answer);
@@ -39,14 +47,17 @@ export default function GameBoard({ G, ctx, moves, events, reset, log }) {
   };
 
   const handleGameLeave = (event) => {
-    if (true
-      && ctx.phase === 'game'
-      && !ctx.gameover
-      && !window.confirm('Ukončit rozehranou hru?')
+    if (
+      true &&
+      ctx.phase === "game" &&
+      !ctx.gameover &&
+      !window.confirm(
+        "Ukončit rozehranou hru? Ztratí se tím dosavadní postup ve hře."
+      )
     ) {
       event.preventDefault();
     }
-  }
+  };
 
   const gameButton = ({ answer, title, ...pass }) => (
     <GameButton
@@ -56,16 +67,17 @@ export default function GameBoard({ G, ctx, moves, events, reset, log }) {
     />
   );
 
-  const shouldBeBoardHeaderVisible = ctx.phase !== 'story';
+  const shouldBeBoardHeaderVisible = ctx.phase !== "story";
 
   return (
-    <div className={makeClass(
-      'game-board',
-      `game-board--${mood}`,
-      ctx.phase === 'story' && 'game-board--story',
-      ctx.gameover && 'game-board--outcome'
-    )}>
-
+    <div
+      className={makeClass(
+        "game-board",
+        `game-board--${mood}`,
+        ctx.phase === "story" && "game-board--story",
+        ctx.gameover && "game-board--outcome"
+      )}
+    >
       {shouldBeBoardHeaderVisible && (
         <FadeIn className="game-board__header">
           <GameValues values={values} />
@@ -81,31 +93,36 @@ export default function GameBoard({ G, ctx, moves, events, reset, log }) {
         </div>
       )}
 
-      {card && (
-        <Card {...{ card, effect, week }} />
-      )}
+      {card && <Card {...{ card, effect, week }} />}
 
       {!ctx.gameover && (
         <div className="game-board__buttons">
           {isEventCard(card) && [
-            gameButton({ answer: Answers.OK, title: 'OK' }),
+            gameButton({ answer: Answers.OK, title: "OK" }),
             gameButton({ placeholder: true }),
           ]}
-          {isPlayCard(card) && !effect && [
-            gameButton({ answer: Answers.YES, title: 'Ano' }),
-            gameButton({ answer: Answers.NO, title: 'Ne' }),
+          {isPlayCard(card) &&
+            !effect && [
+              gameButton({ answer: Answers.YES, title: "Ano" }),
+              gameButton({ answer: Answers.NO, title: "Ne" }),
+            ]}
+          {stage === "play" &&
+            effect && [
+              gameButton({ answer: Answers.CONTINUE, title: "Pokračovat" }),
+              gameButton({ placeholder: true }),
+            ]}
+          {ctx.phase === "story" && [
+            gameButton({ answer: Answers.NEXT, title: "Pokračovat" }),
+            gameButton({
+              answer: Answers.SKIP,
+              title: "Přeskočit příběh",
+              secondary: true,
+            }),
           ]}
-          {stage === 'play' && effect && [
-            gameButton({ answer: Answers.CONTINUE, title: 'Pokračovat' }),
-            gameButton({ placeholder: true }),
-          ]}
-          {ctx.phase === 'story' && [
-            gameButton({ answer: Answers.NEXT, title: 'Pokračovat' }),
-            gameButton({ answer: Answers.SKIP, title: 'Přeskočit příběh', secondary: true }),
-          ]}
-          {ctx.phase === 'tutorial' && !isPlayCard(card) && [
-            gameButton({ answer: Answers.FINISH, title: 'Rozumím' }),
-          ]}
+          {ctx.phase === "tutorial" &&
+            !isPlayCard(card) && [
+              gameButton({ answer: Answers.FINISH, title: "Rozumím" }),
+            ]}
         </div>
       )}
 
