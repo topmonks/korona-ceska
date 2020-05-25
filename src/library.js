@@ -104,8 +104,8 @@ export const getValueTitle = ({ type, value }) => {
 }
 
 export const getShareText = (outcome) => {
-  if (!outcome) return "Narazil jsem na zajímavou hru.";
-  return outcome.win ? "Vyhrál jsem! A prej že to nejde.." : "Prohrál jsem, je to vážně těžké!";
+  if (!outcome) return "Narazil jsem na zajímavou hru. #koronaceska";
+  return outcome.win ? "Vyhrál jsem! A prej že to nejde... #koronaceska" : "Prohrál jsem, je to vážně těžké! #koronaceska";
 }
 
 export function gameLogToUrlComponent(logs) {
