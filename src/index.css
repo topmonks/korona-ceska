@@ -703,6 +703,12 @@ a {
   background-repeat: no-repeat;
 }
 
+@media screen and (min-width: 480px) {
+  .card__animated--image {
+    margin: 0 32px;
+  }
+}
+
 /*
  * src/Illustration.js
  */
