@@ -136,17 +136,17 @@ export function makeShareHandler() {
 }
 
 const outcomes = new Map([
-  ["{\"win\":true}", "victory"],
-  ["{\"draw\":true}", "draw"], // TODO: add share target for draw
-  ["{\"loose\":1}", "epidemie"],
-  ["{\"loose\":2}", "health"],
-  ["{\"loose\":3}", "economy"],
-  ["{\"loose\":4}", "trust"],
+  ["{\"win\":true}", "share/victory/index.html"],
+  ["{\"draw\":true}", ""], // TODO: add share target for draw
+  ["{\"loose\":1}", "share/epidemie/index.html"],
+  ["{\"loose\":2}", "share/health/index.html"],
+  ["{\"loose\":3}", "share/economy/index.html"],
+  ["{\"loose\":4}", "share/trust/index.html"],
 ]);
-const getOutcomeSlug = outcome => outcomes.get(JSON.stringify(outcome));
+const getOutcomeUrl = outcome => outcomes.get(JSON.stringify(outcome)) ?? "";
 
 export function makeShareLink({ outcome } = {}) {
-  return `https://korona-ceska.cz/share/${getOutcomeSlug(outcome)}/index.html`;
+  return `https://korona-ceska.cz/${getOutcomeUrl(outcome)}`;
 }
 
 export function scrollToTop() {
