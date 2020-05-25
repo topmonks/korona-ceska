@@ -263,6 +263,20 @@ module.exports = function(webpackEnv) {
       splitChunks: {
         chunks: 'all',
         name: false,
+        cacheGroups: {
+          default: false,
+          vendors: false,
+          commons: {
+            name: 'commons',
+            chunks: 'all',
+            minChunks: 2,
+          },
+          react: {
+            name: 'commons',
+            chunks: 'all',
+            test: /[\\/]node_modules[\\/](preact|react|react-dom|scheduler|use-subscription)[\\/]/,
+          },
+        },
       },
       // Keep the runtime chunk separated to enable long term caching
       // https://twitter.com/wSokra/status/969679223278505985
