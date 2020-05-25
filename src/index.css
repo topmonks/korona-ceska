@@ -617,11 +617,6 @@ a {
   justify-content: center;
   align-items: center;
   height: 100%;
-  /* this is container for .illustration where the image is */
-}
-
-.card__img--story {
-  margin: 0px;
 }
 
 .card__img--story .illustration {
