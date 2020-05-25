@@ -151,6 +151,8 @@ export default {
   onEnd: (G, ctx) => {
     setShowKoronaStoryNewbie(false);
     if (global.gtag) global.gtag('event', 'game_over', ctx.gameover);
+
+    G.effect = null; // Hotfix last effect, TODO/FIXME show last effect before the End Game
   },
 
   ai: {
