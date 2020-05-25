@@ -558,6 +558,11 @@ a {
     padding: 18px;
   }
 
+  .game-over {
+    max-height: calc(100vh - 272px);
+    overflow: auto;
+  }
+
   .game-board--story .card {
     max-height: 400px;
   }
@@ -569,7 +574,7 @@ a {
   }
 
   .game-over {
-    max-height: calc(100vh - 200px);
+    max-height: calc(100vh - 256px);
     overflow: auto;
   }
 
