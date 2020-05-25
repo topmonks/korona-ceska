@@ -376,7 +376,7 @@ a {
   /* magic, by default makes burge cendered*/
   display: flex;
 }
-.menu-button > img { transform: scale(0.8); }
+.menu-button > img { transform: scale(0.6); }
 
 
 @media screen and (min-width: 340px) {
@@ -384,7 +384,7 @@ a {
     margin-left: 16px;
     padding-left: 16px;
   }
-  .menu-button > img { transform: unset; }
+  .menu-button > img { transform: scale(0.8); }
 }
 
 
