@@ -135,16 +135,18 @@ export function makeShareHandler() {
   };
 }
 
-export function makeShareLink({ week, outcome, seed, log } = {}) {
-  let link = `https://korona-ceska.cz/`;
+const outcomes = new Map([
+  ["{\"win\":true}", "victory"],
+  ["{\"draw\":true}", "draw"], // TODO: add share target for draw
+  ["{\"loose\":1}", "epidemie"],
+  ["{\"loose\":2}", "health"],
+  ["{\"loose\":3}", "economy"],
+  ["{\"loose\":4}", "trust"],
+]);
+const getOutcomeSlug = outcome => outcomes.get(JSON.stringify(outcome));
 
-  // TODO: instead of home use URL of static Game Over Screen, It'll use suitable Illustration of the Outcome
-  if (week && outcome && log && seed) {
-    const record = gameLogToUrlComponent(log);
-    link += `#${week}!${seed}!${record}`
-  }
-
-  return link;
+export function makeShareLink({ outcome } = {}) {
+  return `https://korona-ceska.cz/share/${getOutcomeSlug(outcome)}/index.html`;
 }
 
 export function scrollToTop() {
