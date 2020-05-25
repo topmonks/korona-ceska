@@ -27,7 +27,7 @@ export default function ScreenMenu({ route }) {
             Začít s příběhem
           </ScreenButton>
         )}
-        <ScreenButton path="/help">Nápověda</ScreenButton>
+        {/* <ScreenButton path="/help">Nápověda</ScreenButton> */}
         <ScreenButton path="/credits">O autorech</ScreenButton>
         {share && (
           <ScreenButton onClick={() => share()}>
@@ -35,7 +35,7 @@ export default function ScreenMenu({ route }) {
           </ScreenButton>
         )}
       </div>
-      <footer style={{color: "#fff", lineHeight: "48px"}}>
+      <footer style={{ color: "#fff", lineHeight: "48px" }}>
         © 2020
         <a href="https://www.topmonks.cz/"><img className="tm-logo" src={logoTm} alt="TOPMONKS" /></a>
       </footer>
