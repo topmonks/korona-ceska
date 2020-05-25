@@ -133,7 +133,8 @@ export default {
   },
 
   endIf: (G, ctx) => {
-    if (!G.effect) return; // Do not end before user confirm the effect
+    if (G.effect) return; // Do not end before user confirm the effect
+
     const [epidemie, zdravi, ekonomika, duvera] = G.values;
     if (epidemie === 100) return { loose: 1 };
 
