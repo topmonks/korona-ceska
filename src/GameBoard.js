@@ -37,7 +37,7 @@ export default function GameBoard({ G, ctx, moves, events, reset, log }) {
       moves.MakeAnswer(answer);
     }
   };
-
+  console.log({ card })
   const gameButton = ({ answer, title, ...pass }) => (
     <GameButton
       key={`${ctx.turn}-${answer}`}

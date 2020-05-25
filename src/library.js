@@ -58,7 +58,7 @@ export function calculateValues(values, card, answer) {
 }
 
 export function getAnswerCardField(card, answer, field) {
-  const value = (card || {})[(answer ? "yes" : "no") + field];
+  const value = (card || {})[answer.toLowerCase() + field]; // yesvalues / novalues
   if (!value || value === "n-a") return undefined;
   return value;
 }
