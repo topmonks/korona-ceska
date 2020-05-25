@@ -137,6 +137,18 @@ body.game-mood-negative {
   margin: auto;
 }
 
+@media screen and (max-width: 240px) {
+  .logo--menu {
+    max-width: 160px;
+    margin: auto;
+  }
+  .screen.screen--menu,
+  .screen.screen--credits,
+  .screen.screen--help {
+    margin: 8px;
+  }
+}
+
 .tm-logo {
   height: 48px;
   vertical-align: bottom;
