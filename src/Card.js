@@ -59,9 +59,10 @@ export default function Card({ card, effect, week }) {
             style={props}
             className="card__animated card__animated--text"
           >
-            <p className="card__text card__text--effect">
-              "{effect}"
-            </p>
+            <p
+              className="card__text card__text--effect"
+              dangerouslySetInnerHTML={{ __html: effect }}
+            />
           </animated.div>
         ))}
       </div>

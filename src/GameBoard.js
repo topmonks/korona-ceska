@@ -18,7 +18,7 @@ import MenuButton from "./MenuButton";
 import FadeIn from "react-fade-in";
 
 export default function GameBoard({ G, ctx, moves, events, reset, log }) {
-  const { values, card, effect, week, stage, seed } = G;
+  const { values, card, effect, week, seed } = G;
   const mood = useMemo(() => calculateMood(values), [values]);
 
   useEffect(changeBodyGameMood(mood), [mood]);
@@ -101,16 +101,14 @@ export default function GameBoard({ G, ctx, moves, events, reset, log }) {
             gameButton({ answer: Answers.OK, title: "OK" }),
             gameButton({ placeholder: true }),
           ]}
-          {isPlayCard(card) &&
-            !effect && [
-              gameButton({ answer: Answers.YES, title: "Ano" }),
-              gameButton({ answer: Answers.NO, title: "Ne" }),
-            ]}
-          {stage === "play" &&
-            effect && [
-              gameButton({ answer: Answers.CONTINUE, title: "Pokračovat" }),
-              gameButton({ placeholder: true }),
-            ]}
+          {isPlayCard(card) && !effect && [
+            gameButton({ answer: Answers.YES, title: "Ano" }),
+            gameButton({ answer: Answers.NO, title: "Ne" }),
+          ]}
+          {effect && [
+            gameButton({ answer: Answers.CONTINUE, title: "Pokračovat" }),
+            gameButton({ placeholder: true }),
+          ]}
           {ctx.phase === "story" && [
             gameButton({ answer: Answers.NEXT, title: "Pokračovat" }),
             gameButton({

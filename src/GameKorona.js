@@ -133,6 +133,7 @@ export default {
   },
 
   endIf: (G, ctx) => {
+    if (!G.effect) return; // Do not end before user confirm the effect
     const [epidemie, zdravi, ekonomika, duvera] = G.values;
     if (epidemie === 100) return { loose: 1 };
 
@@ -205,10 +206,11 @@ function MakeAnswer(G, ctx, answer) {
   }
 
   const turnNextToEffect = () => {
+    G.effect = null;
+
     if (G.week > 0 && G.week % 4 === 0 && G.week <= 16) {
       G.stage = setStage(ctx, 'event');
       G.card = getNextCard(G, ctx);
-      G.effect = null;
 
       if (G.week === 16) G.finalEventCard = G.card; // using every 16+ week
     } else {
@@ -227,9 +229,9 @@ function MakeAnswer(G, ctx, answer) {
     ctx.events.endTurn();
   }
 
-  if (ctx.phase === 'tutorial') { // tutorial
+  if (ctx.phase === 'tutorial') {
     if (!G.decks.tutorial.length) {
-      ctx.events.endPhase();
+      if (!G.effect) ctx.events.endPhase();
     } else {
       G.card = G.decks.tutorial.pop();
     }
