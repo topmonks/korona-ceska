@@ -552,6 +552,7 @@ a {
   flex-direction: column;
 
   position: relative;
+  overflow-y: auto;
   /* because of absolutely positioned week no span */
 }
 
@@ -658,7 +659,6 @@ a {
 .card__text--story {
   color: #555;
   text-align: left;
-  overflow: auto;
 }
 
 .card__week {
@@ -701,7 +701,6 @@ a {
   }
 
   .card__text {
-    font-size: 18px;
     font-size: 18px;
   }
 }
