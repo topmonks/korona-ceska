@@ -215,7 +215,11 @@ function MakeAnswer(G, ctx, answer) {
 
       if (G.week === 16) G.finalEventCard = G.card; // using every 16+ week
     } else {
-      ctx.events.endTurn();
+      if (ctx.phase === 'tutorial') {
+        ctx.events.endPhase();
+      } else {
+        ctx.events.endTurn();
+      }
     }
   }
 
