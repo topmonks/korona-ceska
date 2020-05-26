@@ -77,7 +77,7 @@
                 "noanswer": "Nebrat!",
                 "yeseffect": "Polovina roušek se po rozbalení hned rozpadla.",
                 "noeffect": "n-a",
-                "yesvalues": "-5,0,-10,-10",
+                "yesvalues": "-5,0,-13,-11",
                 "novalues": "10,0,0,10"
             },
             {
@@ -99,8 +99,8 @@
                 "noanswer": "Co?",
                 "yeseffect": "n-a",
                 "noeffect": "n-a",
-                "yesvalues": "0,0,10,0",
-                "novalues": "0,10,0,0"
+                "yesvalues": "0,0,11,0",
+                "novalues": "0,11,0,0"
             },
             {
                 "name": "Eman",
@@ -154,8 +154,8 @@
                 "noanswer": "Přimhouříme oči.",
                 "yeseffect": "Věra Pohlová pěje chvalozpěvy.",
                 "noeffect": "Věra Pohlová je velmi nespokojená.",
-                "yesvalues": "-10,-10,-10,-15",
-                "novalues": "10,10,10,10"
+                "yesvalues": "-9,-10,-10,-16",
+                "novalues": "9,10,10,11"
             },
             {
                 "name": "Jan Tiskař",
@@ -238,7 +238,7 @@
                 "name": "Jarda Netáhlo",
                 "img": "netahlo",
                 "text": "Dochází nám potraviny, měl bych skočit do supermarketu pro další?",
-                "yesanswer": "Pošli ženu a pak ji zavři do sklepa na 14 dní.",
+                "yesanswer": "Pošli ženu a pak ji zavři do sklepa na 14 dní. ",
                 "noanswer": "Nikam nechoď, dej si lunchmeat.",
                 "yeseffect": "n-a",
                 "noeffect": "n-a",
@@ -253,8 +253,8 @@
                 "noanswer": "To bude podvod.",
                 "yeseffect": "Samozřejmě to byl podvod.",
                 "noeffect": "n-a",
-                "yesvalues": "15,-10,0,-10",
-                "novalues": "0,5,0,5"
+                "yesvalues": "14,-10,0,-9",
+                "novalues": "0,4,0,6"
             },
             {
                 "name": "Jarda Netáhlo",
@@ -264,7 +264,7 @@
                 "noanswer": "To neřeš, musíš se nějak zabavit.",
                 "yeseffect": "S těžkým srdcem Jarda přešel do nouzového režimu a chlastá jen jednou týdně.",
                 "noeffect": "Jarda jásá; jenže jardovy játra jsou jen jedny!",
-                "yesvalues": "0,-5,0,10",
+                "yesvalues": "0,-4,0,10",
                 "novalues": "0,-25,0,10"
             },
             {
@@ -308,8 +308,8 @@
                 "noanswer": "Bakšiši, jde to zdanit?",
                 "yeseffect": "n-a",
                 "noeffect": "Bakšiš: všecko jde zdanit, když se chce. A mně se chce.",
-                "yesvalues": "-5,5,5,5",
-                "novalues": "15,-15,-15,-15"
+                "yesvalues": "-5,6,5,4",
+                "novalues": "16,-16,-13,-13"
             },
             {
                 "name": "Maruška Nguyenová",
@@ -341,8 +341,8 @@
                 "noanswer": "Já se promořuju jedině na Jadranu.",
                 "yeseffect": "Na Letné se koná velký koncert kapely Čechomor. Rýmula poté strávil týden na JIPce. Rychle nařídil opětovné zpřísnění opatření.",
                 "noeffect": "n-a",
-                "yesvalues": "30,10,10,-20",
-                "novalues": "-15,-10,-10,30"
+                "yesvalues": "30,10,10,-19",
+                "novalues": "-15,-10,-8,30"
             },
             {
                 "name": "Roman Skořene",
@@ -352,8 +352,8 @@
                 "noanswer": "Ať streamují.",
                 "yeseffect": "Lidi nadávají na neférovost takové podpory.",
                 "noeffect": "Divadelníci streamují novou politickou satiru Jistě, pane agente. ",
-                "yesvalues": "0,0,-10,-10",
-                "novalues": "0,10,10,0"
+                "yesvalues": "0,0,-12,-9",
+                "novalues": "0,11,9,0"
             },
             {
                 "name": "Roman Skořene",
@@ -407,8 +407,8 @@
                 "noanswer": "Ne.",
                 "yeseffect": "n-a",
                 "noeffect": "Věra Pohlová se mračí. Duopetrol ale přijal přísná opatření a cizinci nijak nezvýšili riziko nákazy.",
-                "yesvalues": "-3,0,-15,0",
-                "novalues": "-5,0,15,0"
+                "yesvalues": "-3,0,-14,0",
+                "novalues": "-6,0,16,0"
             },
             {
                 "name": "Věra Pohlová",
@@ -442,8 +442,8 @@
                 "noanswer": "Všichni dohola!",
                 "yeseffect": "n-a",
                 "noeffect": "n-a",
-                "yesvalues": "15,10,10,-15",
-                "novalues": "-10,-10,-15,10"
+                "yesvalues": "15,9,11,-15",
+                "novalues": "-11,-10,-15,9"
             },
             {
                 "name": "Andrej Bakšiš",
@@ -453,8 +453,8 @@
                 "noanswer": "Otevřme knihovny a kadeřnictví.",
                 "yeseffect": "n-a",
                 "noeffect": "n-a",
-                "yesvalues": "15,5,10,-10",
-                "novalues": "10,5,5,5"
+                "yesvalues": "15,7,10,-10",
+                "novalues": "10,5,7,5"
             },
             {
                 "name": "Eman",
@@ -508,7 +508,7 @@
                 "noanswer": "Ne, to je hrozná blbost.",
                 "yeseffect": "Týden se stýkáš jen s Vojtíkem a Rýmulou. Rychle měníš názor.",
                 "noeffect": "n-a",
-                "yesvalues": "-5,-20,0,-20",
+                "yesvalues": "-6,-20,0,-20",
                 "novalues": "0,0,0,20"
             },
             {
@@ -530,8 +530,8 @@
                 "noanswer": "Tvl co jste to za lemply?",
                 "yeseffect": "Bakšiš sáhnul do svých složek a našel důkazy, že soudce má fetiš na trpaslíky v latexu. Opravný rozsudek byl vydán den poté. Lidé přestávají věřit v právní stát.",
                 "noeffect": "n-a",
-                "yesvalues": "-25,-25,-25,-35",
-                "novalues": "15,25,25,-20"
+                "yesvalues": "-24,-23,-24,-35",
+                "novalues": "16,25,25,-20"
             },
             {
                 "name": "MUDr. Rýmula",
@@ -541,8 +541,8 @@
                 "noanswer": "Ne.",
                 "yeseffect": "Radost byla předčasná, po týdnu opět začínají růst počty nakažených.",
                 "noeffect": "Lid brblá nadále, ale roušky nosí.",
-                "yesvalues": "50,20,0,10",
-                "novalues": "-20,-20,0,-15"
+                "yesvalues": "49,21,0,9",
+                "novalues": "-20,-19,0,-15"
             },
             {
                 "name": "Roman Skořene",
@@ -553,7 +553,7 @@
                 "yeseffect": "n-a",
                 "noeffect": "Věra Pohlová jásá.",
                 "yesvalues": "20,10,10,10",
-                "novalues": "-10,-15,-15,-15"
+                "novalues": "-11,-14,-16,-13"
             },
             {
                 "name": "Věra Pohlová",
@@ -563,8 +563,8 @@
                 "noanswer": "Ne.",
                 "yeseffect": "Studenti humanitních oborů padají při česání jablek z žebříků, nemocnice se plní.",
                 "noeffect": "Věra Pohlová se mračí.",
-                "yesvalues": "5,-25,10,-15",
-                "novalues": "-10,0,-20,10"
+                "yesvalues": "6,-23,12,-14",
+                "novalues": "-9,0,-19,11"
             }
         ],
         "negative": [
@@ -599,7 +599,7 @@
                 "yeseffect": "Do Vojtíkova projevu neustále vstupoval Bakšiš svými uštěpačnými poznámkami. Národ je zmatený, ale dobře se pobavil.",
                 "noeffect": "Novináři se ptají, kde jsou v těžkých dobách státníci.",
                 "yesvalues": "0,25,0,-20",
-                "novalues": "0,10,0,-10"
+                "novalues": "0,11,0,-10"
             },
             {
                 "name": "Andrej Bakšiš",
@@ -631,8 +631,8 @@
                 "noanswer": "Snižte výdaje na zbytečnosti!",
                 "yeseffect": "Lidé omezili nákupy, stát má ještě nižší příjmy a vyšší sekeru.",
                 "noeffect": "Bakšiš snížil důchody. Dotace velkým holdingům zůstaly netknuty.",
-                "yesvalues": "0,0,-20,-20",
-                "novalues": "0,0,-15,-15"
+                "yesvalues": "0,0,-19,-21",
+                "novalues": "0,0,-14,-13"
             },
             {
                 "name": "Jan Tiskař",
@@ -653,8 +653,8 @@
                 "noanswer": "Otevřeme venkovní posilovny",
                 "yeseffect": "Rozjíždí se program \"Déčko do každé dědiny\" a v televizi běží program Cvičíme s Jaromírem Soukupem.",
                 "noeffect": "Věra Pohlová se zranila při pokusu zdolat osobní rekord ve shybech.",
-                "yesvalues": "-10,-10,0,-10",
-                "novalues": "10,10,0,10"
+                "yesvalues": "-9,-10,0,-10",
+                "novalues": "10,9,0,9"
             },
             {
                 "name": "Josef Čupránek",
@@ -664,8 +664,8 @@
                 "noanswer": "Ne.",
                 "yeseffect": "n-a",
                 "noeffect": "n-a",
-                "yesvalues": "20,5,5,5",
-                "novalues": "-5,-15,-15,-10"
+                "yesvalues": "20,4,6,7",
+                "novalues": "-6,-14,-16,-11"
             },
             {
                 "name": "Maruška Nguyenová",
