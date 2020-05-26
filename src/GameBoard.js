@@ -93,7 +93,7 @@ export default function GameBoard({ G, ctx, moves, events, reset, log }) {
         </div>
       )}
 
-      {card && <Card {...{ card, effect, week }} />}
+      {card && !ctx.gameover && <Card {...{ card, effect, week }} />}
 
       {!ctx.gameover && (
         <div className="game-board__buttons">
