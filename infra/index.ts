@@ -9,6 +9,8 @@ const korona = WebSite.create('korona-ceska.cz', { isPwa: true });
 //   error: Duplicate resource URN 'urn:pulumi:korona-ceska-prod::korona-ceska::aws:acm/certificate:Certificate::certificate'; try giving it a unique name
 
 WebSite.createRedirect('koronaceska.cz', { target: 'korona-ceska.cz' });
+WebSite.createRedirect('www.koronaceska.cz', { target: 'korona-ceska.cz' });
+WebSite.createRedirect('www.korona-ceska.cz', { target: 'korona-ceska.cz' });
 
 export const websiteUrl = korona.url;
 export const cloudFrontId = korona.cloudFrontId;
