@@ -167,7 +167,7 @@ function createCloudFront(
         },
       },
       viewerCertificate: {
-        acmCertificateArn: acmCertificate,
+        acmCertificateArn: acmCertificate.apply(x => x.arn),
         sslSupportMethod: "sni-only",
         minimumProtocolVersion: "TLSv1.2_2018",
       },
@@ -282,7 +282,7 @@ export function createCertificate(domain: string) {
  */
 function getCertificate(domain: string) {
   const parentDomain = getParentDomain(domain);
-  const usEast1 = new aws.Provider(`${domain}/provider/us-east-1`, {
+  const usEast1 = new aws.Provider(`${domain}/get-provider/us-east-1`, {
     profile: aws.config.profile,
     region: aws.USEast1Region
   });
