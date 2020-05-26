@@ -1,6 +1,6 @@
 import React from 'react';
 import ValueIcon from './ValueIcon';
-import Tooltip from "rmc-tooltip/es";
+import Tooltip from 'rmc-tooltip/es';
 import 'rmc-tooltip/assets/bootstrap.css';
 
 
@@ -17,7 +17,7 @@ export default function GameValues({ values, }) {
         destroyTooltipOnHide={true}
         overlay={<span aria-hidden="true">Epidemie</span>}>
         <div className="game-values__value">
-          <ValueIcon type="virus" value={virus} loose={virus === 100}/>
+          <ValueIcon type="virus" value={virus} loose={virus === 100} />
           {valuePercent(virus)}
         </div>
       </Tooltip>
@@ -27,7 +27,7 @@ export default function GameValues({ values, }) {
         destroyTooltipOnHide={true}
         overlay={<span aria-hidden="true">Zdraví</span>}>
         <div className="game-values__value">
-          <ValueIcon small type="health" value={health} loose={!health}/>
+          <ValueIcon small type="health" value={health} loose={!health} />
           {valuePercent(health)}
         </div>
       </Tooltip>
@@ -37,7 +37,7 @@ export default function GameValues({ values, }) {
         destroyTooltipOnHide={true}
         overlay={<span aria-hidden="true">Ekonomika</span>}>
         <div className="game-values__value">
-          <ValueIcon small type="economy" value={economy} loose={!economy}/>
+          <ValueIcon small type="economy" value={economy} loose={!economy} />
           {valuePercent(economy)}
         </div>
       </Tooltip>
@@ -47,7 +47,7 @@ export default function GameValues({ values, }) {
         destroyTooltipOnHide={true}
         overlay={<span aria-hidden="true">Důvěra</span>}>
         <div className="game-values__value">
-          <ValueIcon small type="trust" value={trust} loose={!trust}/>
+          <ValueIcon small type="trust" value={trust} loose={!trust} />
           {valuePercent(trust)}
         </div>
       </Tooltip>
