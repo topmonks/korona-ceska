@@ -125,7 +125,7 @@ export function makeShareHandler() {
   return async ({ week, outcome, seed, log } = {}) => {
     try {
       navigator.share({
-        title: 'Korona česká',
+        title: 'Korona Česká',
         text: getShareText(outcome),
         url: makeShareLink({ week, outcome, seed, log }),
       })
