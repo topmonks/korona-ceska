@@ -527,6 +527,11 @@ a {
   background-size: 100% 16px;
 }
 
+.game-over__week {
+  color: #aaa;
+  font-size: 14px;
+}
+
 /*
  * src/Card.js
  */

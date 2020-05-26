@@ -136,11 +136,11 @@ export default {
     if (G.effect) return; // Do not end before user confirm the effect
 
     const [epidemie, zdravi, ekonomika, duvera] = G.values;
-    if (epidemie === 100) return { loose: 1 };
+    if (epidemie === 100) return { loose: 'epidemie' };
 
-    if (!zdravi) return { loose: 2 };
-    if (!ekonomika) return { loose: 3 };
-    if (!duvera) return { loose: 4 };
+    if (!zdravi) return { loose: 'health' };
+    if (!ekonomika) return { loose: 'economy' };
+    if (!duvera) return { loose: 'trust' };
 
     if (!epidemie) return { win: true };
 

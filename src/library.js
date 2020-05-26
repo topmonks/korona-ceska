@@ -138,10 +138,10 @@ export function makeShareHandler() {
 const outcomes = new Map([
   ["{\"win\":true}", "share/victory/index.html"],
   ["{\"draw\":true}", ""], // TODO: add share target for draw
-  ["{\"loose\":1}", "share/epidemie/index.html"],
-  ["{\"loose\":2}", "share/health/index.html"],
-  ["{\"loose\":3}", "share/economy/index.html"],
-  ["{\"loose\":4}", "share/trust/index.html"],
+  ["{\"loose\":\"epidemie\"}", "share/epidemie/index.html"],
+  ["{\"loose\":\"health\"}", "share/health/index.html"],
+  ["{\"loose\":\"economy\"}", "share/economy/index.html"],
+  ["{\"loose\":\"trust\"}", "share/trust/index.html"],
 ]);
 const getOutcomeUrl = outcome => outcomes.get(JSON.stringify(outcome)) ?? "";
 
