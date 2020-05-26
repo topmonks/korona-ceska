@@ -605,14 +605,6 @@ a {
   }
 }
 
-/* iPhone XS */
-@media screen and (min-height: 635px) and (width: 375px) {
-  .game-over {
-    max-height: calc(100vh - 308px);
-    overflow: auto;
-  }
-}
-
 @media screen and (min-width: 840px) {
   .card {
     max-height: calc(100vh - 260px);
