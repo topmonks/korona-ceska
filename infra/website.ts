@@ -225,11 +225,11 @@ export function getHostedZone(domain: string) {
 }
 
 /**
- * Gets Widlcard certificate for top domain
+ * Creates Widlcard certificate for top domain
  * @param domain {string} website domain name
  * @returns {pulumi.Output<pulumi.Unwrap<aws.acm.GetCertificateResult>>}
  */
-export function getCertificate(domain: string) {
+export function createCertificate(domain: string) {
   const parentDomain = getParentDomain(domain);
   const usEast1 = new aws.Provider(`${domain}/provider/us-east-1`, {
     profile: aws.config.profile,
@@ -273,6 +273,24 @@ export function getCertificate(domain: string) {
     { provider: usEast1 }
   );
   return certificateValidation.certificateArn;
+}
+
+/**
+ * Gets Widlcard certificate for top domain
+ * @param domain {string} website domain name
+ * @returns {pulumi.Output<pulumi.Unwrap<aws.acm.GetCertificateResult>>}
+ */
+function getCertificate(domain: string) {
+  const parentDomain = getParentDomain(domain);
+  const usEast1 = new aws.Provider(`${domain}/provider/us-east-1`, {
+    profile: aws.config.profile,
+    region: aws.USEast1Region
+  });
+  const certificate = aws.acm.getCertificate(
+    { domain: `*.${parentDomain}`, mostRecent: true, statuses: ["ISSUED"] },
+    { provider: usEast1, async: true }
+  );
+  return pulumi.output(certificate);
 }
 
 function getParentDomain(domain: string) {
