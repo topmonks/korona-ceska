@@ -31,7 +31,7 @@ export default function GameOver({ win, loose, draw, week }) {
     >
       <div>
         <div className="card__img">
-          <Illustration img={outcome.illustration[0]} alt={outcome.illustration[1]} />
+          <Illustration img={outcome.illustration.img} alt={outcome.illustration.alt} />
         </div>
         <h1>{outcome.title}</h1>
         <span className="game-over__week">Po {week} týdnech</span>
