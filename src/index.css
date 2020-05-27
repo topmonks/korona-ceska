@@ -819,7 +819,7 @@ svg.value-icon {
   padding: 0 16px;
 
   position: fixed;
-  top: 0; left: 0; right: 0; bottom: 0;
+  top: 0; left: 0; right: 0; bottom: 1px;
 
   grid-template-columns: auto;
   grid-template-rows: 20vh 1fr auto;
