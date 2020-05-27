@@ -27,6 +27,11 @@ export default function ScreenMenu({ route }) {
             Začít s příběhem
           </ScreenButton>
         )}
+        {(global.location.hostname === 'localhost') && (
+          <ScreenButton path="/feedback">
+            Co si myslíte?
+          </ScreenButton>
+        )}
         {/* <ScreenButton path="/help">Nápověda</ScreenButton> */}
         <ScreenButton path="/credits">O autorech</ScreenButton>
         {share && (

@@ -15,9 +15,13 @@ const routes = mount({
     title: "Korona Česká",
     view: screen("Game"),
   }),
-  "/help": route({
+  // "/help": route({
+  //   title: "Korona Česká",
+  //   view: screen("Help"),
+  // }),
+  "/feedback": route({
     title: "Korona Česká",
-    view: screen("Help"),
+    view: screen("Feedback"),
   }),
   "/credits": route({
     title: "Korona Česká",

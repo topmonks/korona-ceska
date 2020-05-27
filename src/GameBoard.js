@@ -14,7 +14,7 @@ import { Answers } from "./GameKorona";
 import GameValues from "./GameValues";
 import GameButton from "./GameButton";
 import ScreenButton from "./ScreenButton";
-import MenuButton from "./MenuButton";
+import GameMenuButton from "./GameMenuButton";
 import FadeIn from "react-fade-in";
 
 export default function GameBoard({ G, ctx, moves, events, reset, log }) {
@@ -81,7 +81,7 @@ export default function GameBoard({ G, ctx, moves, events, reset, log }) {
       {shouldBeBoardHeaderVisible && (
         <FadeIn className="game-board__header">
           <GameValues values={values} />
-          <MenuButton onGameLeave={handleGameLeave} />
+          <GameMenuButton onGameLeave={handleGameLeave} />
         </FadeIn>
       )}
       {/* mock container for grid layout */}

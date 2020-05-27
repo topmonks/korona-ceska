@@ -258,6 +258,7 @@ body,
 p {
   font-size: 16px;
   line-height: 1.5;
+  color: white;
 }
 
 @media screen and (min-height: 736px) {
@@ -276,6 +277,19 @@ p {
 a {
   color: white;
   text-decoration: none;
+}
+
+p {
+  margin: 0;
+  padding: 8px 0;
+}
+
+p:last-of-type {
+  padding-bottom: 0;
+}
+
+@media screen and (min-width: 480px) {
+  p { padding: 16px 0; }
 }
 
 /* boardgame.io game board container */
@@ -453,11 +467,20 @@ a {
 .screen-button--primary {
   background-color: rgb(210, 1, 1);
 }
-
 .screen-button--primary:hover {
   background-color: #f00;
   box-shadow: 0 8px 16px -10px rgb(255, 0, 0);
 }
+
+.screen-button--small {
+  padding: 8px;
+  margin-bottom: 8px;
+}
+.screen-button--small:hover {
+  background-color: #f00;
+  box-shadow: 0 8px 16px -10px rgb(255, 0, 0);
+}
+
 
 /*
  * src/GameButton.js
@@ -552,7 +575,6 @@ a {
   flex-direction: column;
 
   position: relative;
-  overflow-y: auto;
   /* because of absolutely positioned week no span */
 }
 
@@ -659,6 +681,7 @@ a {
 .card__text--story {
   color: #555;
   text-align: left;
+  overflow: auto;
 }
 
 .card__week {
@@ -782,3 +805,58 @@ svg.value-icon {
   width: 32px;
   height: 32px;
 }
+
+
+
+.feedback-grid {
+  display: grid;
+
+  max-width: 480px;
+  margin: 0 auto;
+  text-align: center;
+
+  box-sizing: border-box;
+  justify-items: stretch;
+  padding: 0 16px;
+
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+
+  grid-template-columns: auto;
+  grid-template-rows: 20vh 1fr auto;
+}
+
+.feedback-grid__header,
+.feedback-grid__content,
+.feedback-grid__footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  padding: 16px 0;
+  box-sizing: border-box;
+}
+
+.feedback-grid__content textarea {
+  flex: 1;
+}
+.feedback-grid__content p {
+  font-size: 80%;
+  padding: 8px 0;
+}
+
+.feedback-grid__footer {
+  justify-content: flex-end;
+}
+
+.screen--feedback textarea {
+  background-color: #fff;
+  box-shadow: 0 8px 16px -10px rgba(61, 61, 82, 1);
+  border-radius: 4px;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #78799A;
+  padding: 16px;
+  box-sizing: border-box;
+}
+
