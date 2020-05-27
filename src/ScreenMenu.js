@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo } from "react";
 import ScreenButton from "./ScreenButton";
-import { resetBodyGamePlay, makeShareHandler, scrollToTop } from "./library";
+import { resetBodyGamePlay, makeShareHandler, scrollToTop, isLocalhost } from "./library";
 import { setShowKoronaStoryNewbie, showKoronaStoryNewbie } from "./GameKorona";
 
 export default function ScreenMenu({ route }) {
@@ -33,7 +33,7 @@ export default function ScreenMenu({ route }) {
             Začít s příběhem
           </ScreenButton>
         )}
-        {(global.location.hostname === 'localhost') && (
+        {(isLocalhost()) && (
           <ScreenButton path="/feedback">
             Co si myslíte?
           </ScreenButton>

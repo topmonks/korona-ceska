@@ -1,5 +1,13 @@
 import { TurnOrder } from 'boardgame.io/core';
-import { calculateMood, calculateValues, getAnswerCardField, isPlayAnswer, isPlayCard, isEventCard, } from './library';
+import {
+  calculateMood,
+  calculateValues,
+  getAnswerCardField,
+  isPlayAnswer,
+  isPlayCard,
+  isEventCard,
+  gameLogToUrlComponent,
+} from './library';
 
 const {
   story: STORY_CARDS,
@@ -64,6 +72,7 @@ export const showKoronaStoryNewbie = () => {
   return global._koronaDoNotShowStoryAgain !== false;
 }
 
+export const LAST_GAME_RECORD_STORAGE_KEY = 'last-game';
 
 export default {
   name: 'korona-ceska',
@@ -153,6 +162,10 @@ export default {
   onEnd: (G, ctx) => {
     setShowKoronaStoryNewbie(false);
     if (global.gtag) global.gtag('event', 'game_over', ctx.gameover);
+    localStorage.setItem(
+      LAST_GAME_RECORD_STORAGE_KEY,
+      gameLogToUrlComponent(ctx.log)
+    );
   },
 
   ai: {

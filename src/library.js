@@ -1,5 +1,10 @@
 import { Answers } from "./GameKorona";
 
+export const isLocalhost = () => global.location.hostname === 'localhost';
+export const getGameScreenLink = (uri = '/') => {
+  const home = isLocalhost() ? `http://${global.location.host}` : 'https://korona-ceska.cz';
+  return home + uri;
+};
 
 export function calculateMood([epidemie]) {
   if (epidemie >= 75) {
