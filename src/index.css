@@ -562,8 +562,6 @@ p:last-of-type {
   background-color: #fff;
   box-shadow: 0 8px 16px -10px rgba(61, 61, 82, 1);
 
-  color: #333;
-
   border-radius: 4px;
   width: 100%;
   min-height: 260px;
@@ -578,6 +576,7 @@ p:last-of-type {
   /* because of absolutely positioned week no span */
 }
 
+.card__name, .card__text { color: #333; }
 .card p:last-of-type {
   padding-bottom: 0;
 }
