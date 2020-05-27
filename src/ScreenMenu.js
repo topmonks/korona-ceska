@@ -42,7 +42,7 @@ export default function ScreenMenu({ route }) {
             }}
             path="/hra"
           >
-            Hra s příběhem
+            {story === 'off' ? 'Hra s příběhem' : 'Hra bez příběhu'}
           </ScreenButton>
         )}
         {(isLocalhost()) && (
