@@ -2,9 +2,10 @@ import React, { useEffect, useRef } from "react";
 import GameClient from "./GameClient";
 import { setBodyGamePlay } from "./library";
 
-export default function ScreenGame() {
+export default function ScreenGame({ route }) {
   useEffect(setBodyGamePlay(), []);
   const gameRef = useRef(null)
+
 
   return (
     <div className="screen screen--game">

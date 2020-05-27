@@ -65,14 +65,43 @@ export const Answers = {
   FINISH: 'FINISH',
 };
 
-export const setShowKoronaStoryNewbie = (show) => {
-  global._koronaDoNotShowStoryAgain = show;
-}
-export const showKoronaStoryNewbie = () => {
-  return global._koronaDoNotShowStoryAgain !== false;
+export const LAST_GAME_RECORD_STORAGE_KEY = 'last-game';
+export const STORY_GAME_ENABLE_STORAGE_KEY = 'game-story';
+export const BONUS_GAME_MODE_STORAGE_KEY = 'game-bonus';
+
+export const enableBonusMode = (enable) => {
+  if (typeof enable === 'boolean') {
+    localStorage.setItem(BONUS_GAME_MODE_STORAGE_KEY, enable ? 'on' : 'off');
+  }
+
+  if (global.location.hash === '#bonus') {
+    localStorage.setItem(BONUS_GAME_MODE_STORAGE_KEY, 'on');
+    global.location.hash = 'bonus-aktivovan-diky-za-feedback!';
+  }
+
+  const value = localStorage.getItem(BONUS_GAME_MODE_STORAGE_KEY);
+  return value && value;
 }
 
-export const LAST_GAME_RECORD_STORAGE_KEY = 'last-game';
+
+export const enableKoronaStoryNewbie = (enable) => {
+  if (enable !== undefined) {
+    localStorage.setItem(STORY_GAME_ENABLE_STORAGE_KEY, enable ? 'on' : 'off');
+  }
+
+  const value = localStorage.getItem(STORY_GAME_ENABLE_STORAGE_KEY);
+  return value && value;
+}
+
+
+export const storeLastGameRecord = ({ week, seed, log }) => {
+  if (log?.length) {
+    localStorage.setItem(
+      LAST_GAME_RECORD_STORAGE_KEY,
+      `${week}:${seed}:${gameLogToUrlComponent(log)}`
+    );
+  }
+}
 
 export default {
   name: 'korona-ceska',
@@ -81,9 +110,14 @@ export default {
   // setupData is an optional custom object that is
   // passed through the Game Creation API.
   setup: (ctx, setupData) => {
-    const values = [50, 50, 50, 50]; // Initial values
+    let values = [50, 50, 50, 50]; // Initial values
 
-    if (!showKoronaStoryNewbie()) {
+    const bonus = enableBonusMode();
+    if (bonus === 'on') {
+      values = [50, 100, 100, 100];
+    }
+
+    if (enableKoronaStoryNewbie() === 'off') {
       ctx.events.setPhase('game');
     }
 
@@ -92,6 +126,7 @@ export default {
     if (global.gtag) {
       global.gtag('event', 'game_start', { seed });
     }
+
 
     return {
       values,
@@ -107,11 +142,14 @@ export default {
     story: {
       start: true,
       next: 'tutorial',
-      moves: { MakeNewbieAnswer },
+      moves: { MakeNewbieAnswer }
     },
     tutorial: {
       next: 'game',
       moves: { MakeAnswer },
+      onEnd: () => {
+        enableKoronaStoryNewbie(false);
+      }
     },
     game: {}
   },
@@ -160,12 +198,7 @@ export default {
 
   // End of the Game
   onEnd: (G, ctx) => {
-    setShowKoronaStoryNewbie(false);
     if (global.gtag) global.gtag('event', 'game_over', ctx.gameover);
-    localStorage.setItem(
-      LAST_GAME_RECORD_STORAGE_KEY,
-      gameLogToUrlComponent(ctx.log)
-    );
   },
 
   ai: {

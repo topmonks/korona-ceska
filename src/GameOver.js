@@ -1,7 +1,8 @@
-import React, { useLayoutEffect, useRef, useState, useMemo } from "react";
+import React, { useLayoutEffect, useRef, useState, useMemo, useEffect } from "react";
 import css from "classnames";
 import Illustration from "./Illustration";
 import { hasOverflow } from "./library";
+import { storeLastGameRecord } from "./GameKorona";
 
 const GAME_OUTCOMES = require('./outcomes.json');
 
@@ -13,7 +14,7 @@ const getOutcomeDetail = (outcome) => {
   return null;
 }
 
-export default function GameOver({ win, loose, draw, week }) {
+export default function GameOver({ win, loose, draw, week, log, seed }) {
   const gameOverEl = useRef(null);
   const [isOverFlow, setIsOverflow] = useState(false);
   const outcome = useMemo(() => getOutcomeDetail({ win, loose, draw }), [win, loose, draw]);
@@ -21,6 +22,10 @@ export default function GameOver({ win, loose, draw, week }) {
   useLayoutEffect(() => {
     setIsOverflow(hasOverflow(gameOverEl.current));
   }, [gameOverEl]);
+
+  useEffect(() => {
+    storeLastGameRecord({ week, seed, log });
+  }, [log])
 
   if (!outcome) return null; // Should not happen
 
