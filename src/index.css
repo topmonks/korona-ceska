@@ -51,41 +51,6 @@ body.game-mood-negative {
   );
 }
 
-.virus-bg {
-  background: url("/virus-bg.png") no-repeat;
-  background-size: cover;
-  position: fixed;
-  z-index: -1;
-}
-
-.virus-bg--middle-left {
-  width: 78px;
-  height: 78px;
-  left: -24px;
-  top: 40vh;
-}
-
-.virus-bg--middle-right {
-  width: 78px;
-  height: 78px;
-  right: -24px;
-  top: 43vh;
-}
-
-.virus-bg--bottom-left {
-  width: 78px;
-  height: 78px;
-  left: -24px;
-  bottom: 10vh;
-}
-
-.virus-bg--bottom-right {
-  width: 148px;
-  height: 148px;
-  right: -32px;
-  bottom: -24px;
-}
-
 @media screen and (min-height: 480px) {
   body.game-play {
     min-height: -webkit-fill-available;
