@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo } from "react";
 import ScreenButton from "./ScreenButton";
-import { resetBodyGamePlay, makeShareHandler, scrollToTop, isLocalhost } from "./library";
+import { resetBodyGamePlay, makeShareHandler, scrollToTop } from "./library";
 import { enableKoronaStoryNewbie, enableBonusMode } from "./GameKorona";
 
 export default function ScreenMenu({ route }) {
@@ -45,11 +45,11 @@ export default function ScreenMenu({ route }) {
             {story === 'off' ? 'Hra s příběhem' : 'Hra bez příběhu'}
           </ScreenButton>
         )}
-        {(isLocalhost()) && (
-          <ScreenButton path="/feedback">
-            Co si myslíte?
-          </ScreenButton>
-        )}
+
+        <ScreenButton path="/feedback">
+          Co si myslíte?
+        </ScreenButton>
+
         {/* <ScreenButton path="/help">Nápověda</ScreenButton> */}
         <ScreenButton path="/credits">O autorech</ScreenButton>
         {share && (
