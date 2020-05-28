@@ -128,12 +128,16 @@ export function makeShareHandler() {
   if (!navigator.share) return null;
 
   return async ({ week, outcome, seed, log } = {}) => {
+
     try {
       navigator.share({
         title: 'Korona Česká',
         text: getShareText(outcome),
         url: makeShareLink({ week, outcome, seed, log }),
-      })
+      });
+      if (global.gtag) {
+        global.gtag('event', `share_${week ? 'game' : 'menu'}`);
+      }
     } catch (error) {
 
     }
