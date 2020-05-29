@@ -137,7 +137,6 @@ jobs:
       - provision_stack:
           stack_name: korona-ceska-prod
           path: infra
-
   test_pwa:
     executor: nodejs
     steps:
@@ -156,6 +155,10 @@ jobs:
           root: ~/project
           paths: build
   deploy_pwa:
+    parameters:
+      after_s3_sync:
+        type: steps
+        default: []
     executor: aws-cli/default
     steps:
       - checkout
@@ -166,6 +169,7 @@ jobs:
           working_directory: infra
       - deploy_website:
           site_dist: build
+          after_s3_sync: << parameters.after_s3_sync >>
 workflows:
   version: 2
   build_and_test_and_deploy:
