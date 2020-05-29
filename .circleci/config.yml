@@ -110,10 +110,15 @@ commands:
       paths:
         type: string
         default: "/*"
+      after_s3_sync:
+        description: Steps that will be execute after S3 sync, but before Cloudfront distribution invalidation
+        type: steps
+        default: []
     steps:
       - aws-s3/sync:
           from: << parameters.site_dist >>
           to: << parameters.bucket_uri >>
+      - steps: << parameters.after_s3_sync >>
       - invalidate_cloudfront:
           distribution_id: << parameters.distribution_id >>
           paths: << parameters.paths >>
