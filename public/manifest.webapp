@@ -1,0 +1,26 @@
+{
+  "version": "1.0.0",
+  "name": "Korona Česká",
+  "description": "Poražte epidemii, nerozložte zem.",
+  "type": "web",
+  "fullscreen": "true",
+  "launch_path": "/index.html",
+  "icons": {
+    "128": "/kaios-128x128.png"
+  },
+  "developer": {
+    "name": "TopMonks",
+    "url": "https://topmonks.com"
+  },
+  "categories": [
+    "games"
+  ],
+  "locales": {
+    "en-US": {
+      "name": "Korona Česká",
+      "subtitle": "Short description for the user",
+      "description": "Poražte epidemii, nerozložte zem."
+    }
+  },
+  "default_locale": "en-US"
+}

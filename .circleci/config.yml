@@ -179,6 +179,13 @@ workflows:
       - test_pwa
       - build_pwa
       - deploy_pwa:
+          after_s3_sync:
+            - run:
+                name: Update MIME types
+                command: |
+                  aws s3 cp --exclude "*" --include "manifest.webapp" \
+                    --metadata-directive="REPLACE" --content-type="application/x-web-app-manifest+json; charset=utf-8" \
+                    --recursive s3://korona-ceska.cz/ s3://korona-ceska.cz/
           context: org-global
           requires:
             - provisioning
