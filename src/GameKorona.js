@@ -173,7 +173,7 @@ export default {
       G.card = null;
       G.effect = null;
 
-      if (G.finalEventCard) {
+      if (G.finalEventCard && ctx.turn > 16) {
         G.values = calculateValues(G.values, G.finalEventCard);
       }
     },
