@@ -34,7 +34,12 @@
     }
 
     gtag('js', new Date());
-    if (location.host === 'korona-ceska.cz') gtag('config', 'UA-51368639-10');
+    if (location.host === 'korona-ceska.cz') {
+      gtag('config', 'UA-51368639-10');
+
+      gtag('config', 'AW-627478663'); // pro Konverze
+      gtag('event', 'conversion', {'send_to': 'AW-627478663/MW6fCL_BpNIBEIehmqsC'});
+    }
   </script>
   <meta property="og:type" content="website"/>
   <meta property="og:title" content="Korona Česká"/>
