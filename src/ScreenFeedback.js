@@ -2,6 +2,7 @@ import React, { useMemo, useRef, } from "react";
 import ScreenButton from "./ScreenButton";
 import { LAST_GAME_RECORD_STORAGE_KEY } from "./GameKorona";
 import { getGameScreenLink } from "./library";
+import "./styles/feedback.css";
 
 export default function ScreenFeedback({ lastGameLog }) {
   const lastGameLogLine = useMemo(() => localStorage.getItem(LAST_GAME_RECORD_STORAGE_KEY) || "Ešťe nehrál.", []);
@@ -23,7 +24,7 @@ export default function ScreenFeedback({ lastGameLog }) {
         ref={formRef}
       >
         <input type="hidden" name="formbot__redirect_uri" value={feedbackBackLink} />
-        <div className="feedback-grid">
+        <div className="feedback-grid layout-wrapper full-screen">
           <div className="feedback-grid__header">
             <p>Pobavili jsme vás? Něco se nepovedlo? Máte dotaz? Nápad? Dejte nám vědět.</p>
           </div>

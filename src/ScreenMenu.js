@@ -2,6 +2,7 @@ import React, { useEffect, useMemo } from "react";
 import ScreenButton from "./ScreenButton";
 import { resetBodyGamePlay, makeShareHandler, scrollToTop } from "./library";
 import { enableKoronaStoryNewbie, enableBonusMode } from "./GameKorona";
+import "./styles/menu.css";
 
 export default function ScreenMenu({ route }) {
   useEffect(resetBodyGamePlay(), []);
@@ -11,7 +12,7 @@ export default function ScreenMenu({ route }) {
   const story = enableKoronaStoryNewbie();
 
   return (
-    <div className="screen screen--menu">
+    <div className="screen screen--menu layout-wrapper full-screen">
       <svg className="logo--menu" viewBox="0 0 444 156" width="240" height="84" fill="none" xmlns="http://www.w3.org/2000/svg">
         <title>Korona Česká</title>
         <path

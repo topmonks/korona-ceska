@@ -2,12 +2,13 @@ import React, { useEffect } from "react";
 import ScreenButton from "./ScreenButton";
 import logo from "./icons/tm-logo.svg";
 import { resetBodyGamePlay } from "./library";
+import "./styles/credits.css";
 
 export default function ScreenCredits({ route }) {
   useEffect(resetBodyGamePlay(), []);
 
   return (
-    <div className="screen screen--credits">
+    <div className="screen screen--credits layout-wrapper">
       <h1>O autorech</h1>
       <div className="screen--credits__logo">
         Hru vytvořila společnost{" "}

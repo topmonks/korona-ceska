@@ -34,14 +34,12 @@ export default function GameOver({ win, loose, draw, week, log, seed }) {
       ref={gameOverEl}
       className={css("game-over", { "game-over--overflow": isOverFlow })}
     >
-      <div>
-        <div className="card__img">
-          <Illustration img={outcome.illustration.img} alt={outcome.illustration.alt} />
-        </div>
-        <h1>{outcome.title}</h1>
-        <span className="game-over__week">Po {week} týdnech</span>
-        <p dangerouslySetInnerHTML={{ __html: outcome.text }} />
+      <div className="card__img">
+        <Illustration img={outcome.illustration.img} alt={outcome.illustration.alt} />
       </div>
+      <h1>{outcome.title}</h1>
+      <span className="game-over__week">Po {week} týdnech</span>
+      <p dangerouslySetInnerHTML={{ __html: outcome.text }} />
     </div>
   );
 }

@@ -16,6 +16,7 @@ import GameButton from "./GameButton";
 import ScreenButton from "./ScreenButton";
 import GameMenuButton from "./GameMenuButton";
 import FadeIn from "react-fade-in";
+import "./styles/game.css";
 
 export default function GameBoard({ G, ctx, moves, events, reset, log }) {
   const { values, card, effect, week, seed } = G;
@@ -73,6 +74,8 @@ export default function GameBoard({ G, ctx, moves, events, reset, log }) {
     <div
       className={makeClass(
         "game-board",
+        "layout-wrapper",
+        "full-screen",
         `game-board--${mood}`,
         ctx.phase === "story" && "game-board--story",
         ctx.gameover && "game-board--outcome"

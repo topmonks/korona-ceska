@@ -1,0 +1,35 @@
+.screen-button {
+  color: #fff;
+  background-color: rgb(39, 30, 70);
+  flex: 1;
+  padding: 16px;
+  border-radius: 4px;
+  box-shadow: 0 8px 16px -10px rgba(61, 61, 82, 1);
+  margin-bottom: 16px;
+  text-align: center;
+  display: block;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.screen-button:hover {
+  background-color: rgb(49, 34, 101);
+  box-shadow: 0 8px 16px -10px rgb(66, 29, 150);
+}
+
+.screen-button--primary {
+  background-color: rgb(210, 1, 1);
+}
+.screen-button--primary:hover {
+  background-color: #f00;
+  box-shadow: 0 8px 16px -10px rgb(255, 0, 0);
+}
+
+.screen-button--small {
+  padding: 8px;
+  margin-bottom: 8px;
+}
+.screen-button--small:hover {
+  background-color: #f00;
+  box-shadow: 0 8px 16px -10px rgb(255, 0, 0);
+}

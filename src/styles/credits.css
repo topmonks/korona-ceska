@@ -1,0 +1,40 @@
+
+.screen--credits {
+  text-align: center;
+}
+
+.screen--credits__logo {
+  margin-bottom: 64px;
+  margin-top: 32px;
+  color: white;
+}
+
+.screen--credits__logo a {
+  text-decoration: underline;
+}
+
+.screen--credits__row {
+  color: white;
+  margin-bottom: 24px;
+  font-size: 14px;
+}
+
+.screen--credits__row h3 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.screen--credits__row p {
+  margin: 0;
+  font-size: 14px;
+}
+
+.screen--credits__button {
+  margin-top: 64px;
+  display: block;
+}
+
+.screen--credits__main {
+  border-bottom: solid 1px rgb(119, 142, 186);
+  margin-bottom: 32px;
+}

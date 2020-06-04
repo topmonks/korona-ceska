@@ -1,0 +1,349 @@
+
+.game-mood-neutral {
+  background-image: linear-gradient(
+    -180deg,
+    rgba(73, 71, 124, 1) 0%,
+    rgba(77, 100, 138, 1) 100%
+  );
+}
+
+.game-mood-positive {
+  background-image: linear-gradient(
+    -180deg,
+    rgba(73, 71, 124, 1) 0%,
+    #adcee1 100%
+  );
+}
+
+.game-mood-negative {
+  background-image: linear-gradient(
+    -180deg,
+    rgba(73, 71, 124, 1) 0%,
+    #cd2500 100%
+  );
+}
+
+.game-board {
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: 74px auto 180px;
+  grid-template-areas:
+    "header"
+    "main"
+    "footer";
+}
+
+@media screen and (max-height: 320px) {
+  .game-board {
+    padding: 0 8px;
+  }
+}
+
+@media screen and (max-height: 455px) {
+  .game-board {
+    grid-template-rows: 56px 1fr 180px;
+  }
+}
+
+@media screen and (min-width: 480px) {
+  .game-board {
+    grid-template-rows: 84px 1fr 180px;
+  }
+}
+
+.game-board.game-board--story {
+  grid-template-rows: 16px auto 140px;
+}
+
+.game-board__header {
+  grid-area: header;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+/* push header to screen top */
+@media screen and (min-height: 569px) {
+  .game-board__header {
+    padding-bottom: 8px;
+  }
+}
+@media screen and (min-height: 668px) {
+  .game-board__header {
+    padding-bottom: 16px;
+  }
+}
+
+/* Using FadeIn that generates two containers, the first one is for GameValues */
+.game-board__header > div:first-child {
+  flex: 1;
+}
+
+.game-board__card,
+.game-board__gameover {
+  grid-area: main;
+}
+
+.game-board__buttons {
+  grid-area: footer;
+}
+
+.game-board {
+  box-sizing: border-box;
+
+  color: white;
+  text-align: center;
+}
+
+.game-board__card {
+  flex: 1;
+  display: flex;
+}
+
+.game-board__buttons {
+  display: flex;
+  flex-direction: column;
+  margin-top: 16px;
+  padding-bottom: 16px;
+}
+
+.game-values {
+  flex: 1; /* does not work with FadeIn */
+
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+
+  background: #2c2a51;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  border-radius: 4px;
+}
+
+.game-values__value {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 6px;
+}
+@media screen and (min-height: 668px) {
+  .game-values__value {
+    padding: 8px;
+  }
+}
+
+.game-values__value > span {
+  /* like 40% */
+  font-size: 12px;
+  line-height: 1.2;
+  font-weight: 600;
+}
+
+/*
+ * src/MenuButton.js
+ */
+.menu-button {
+  margin-left: 8px;
+  padding-left: 8px;
+  height: 100%;
+
+  /* magic, by default makes burge cendered*/
+  display: flex;
+}
+.menu-button > img {
+  transform: scale(0.6);
+}
+
+@media screen and (min-width: 340px) {
+  .menu-button {
+    margin-left: 16px;
+    padding-left: 16px;
+  }
+  .menu-button > img {
+    transform: scale(0.8);
+  }
+}
+
+.game-over {
+  overflow-y: auto;
+}
+
+.game-over .illustration {
+  margin-bottom: 0;
+}
+
+.game-over.game-over--overflow {
+  background: radial-gradient(54% 72.5% at 49.16% 72.5%, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0) 100%) repeat-x bottom -2px center;
+  background-size: 100% 16px;
+}
+
+.game-over__week {
+  color: #fff;
+  font-size: 14px;
+}
+
+.card {
+  background-color: #fff;
+  box-shadow: 0 8px 16px -10px rgba(61, 61, 82, 1);
+
+  border-radius: 4px;
+  width: 100%;
+  min-height: 260px;
+  box-sizing: border-box;
+  padding: 9px;
+  text-align: center;
+
+  display: flex;
+  flex-direction: column;
+
+  position: relative;
+  /* because of absolutely positioned week no span */
+}
+
+.card__name, .card__text { color: #333; }
+.card p:last-of-type {
+  padding-bottom: 0;
+}
+
+
+.card--incident,
+.card--effect,
+.card--tutorial {
+  display: flex;
+  justify-content: center;
+}
+
+.card--tutorial > div {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.card--incident p,
+.card--effect p,
+.card--tutorial p {
+  margin: 0;
+  padding: 8px 0;
+}
+
+.card__img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.card__img--story,
+.card__img--story .illustration {
+  margin: 0;
+}
+
+.card__text {
+  padding: 4px 0 16px;
+}
+
+.card__text--effect {
+  font-style: italic;
+  color: #555;
+}
+
+.card__text--story {
+  color: #555;
+  text-align: left;
+  overflow: auto;
+}
+
+.card__week {
+  color: #999;
+  font-size: 14px;
+  font-weight: normal;
+  position: absolute;
+  top: 16px;
+  right: 16px;
+}
+
+.card__name {
+  margin: 8px 0 0 0;
+  font-size: 16px;
+}
+
+.card__name--story {
+  text-align: left;
+}
+
+.card__text {
+  margin: 0;
+  font-size: 14px;
+}
+
+@media screen and (min-height: 667px) and (min-width: 360px) {
+  .card__name {
+    font-size: 18px;
+  }
+
+  .card__text {
+    font-size: 16px;
+  }
+}
+
+@media screen and (min-height: 812px) and (min-width: 360px) {
+  .card__name {
+    margin: 16px 0 8px;
+    font-size: 22px;
+  }
+
+  .card__text {
+    font-size: 18px;
+  }
+}
+
+.card__animated--image {
+  flex-grow: 1;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+@media screen and (min-width: 480px) {
+  .card__animated--image {
+    margin: 0 32px;
+  }
+}
+
+.illustration {
+  width: 100%;
+  height: 100%;
+  margin-bottom: 16px;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.value-icon {
+  --size: 32px;
+  width: var(--size);
+  height: var(--size);
+  margin: 4px;
+}
+
+@media screen and (max-width: 319px) {
+  .value-icon {
+    --size: 20px;
+  }
+}
+
+@media screen and (min-width: 320px) {
+  .value-icon {
+    --size: 24px;
+  }
+}
+@media screen and (min-height: 668px) {
+  .value-icon {
+    --size: 32px;
+  }
+}
+
+.tooltip-overlay .rmc-tooltip-inner {
+  min-height: auto;
+}

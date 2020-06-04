@@ -1,4 +1,5 @@
 import React from "react";
+import  "./styles/tutorial.css"
 
 const valueLables = {
   virus: 'Epidemie',

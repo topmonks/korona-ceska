@@ -1,0 +1,29 @@
+
+
+.screen.screen--menu {
+  display: grid;
+  text-align: center;
+  grid-template-rows: 4fr 7fr 64px;
+}
+
+@media screen and (min-height: 456px) {
+  .screen.screen--menu {
+    grid-template-rows: 2fr 3fr 64px;
+  }
+}
+
+.logo--menu {
+  max-width: 240px;
+  margin: auto;
+}
+
+@media screen and (max-width: 240px) {
+  .logo--menu {
+    max-width: 160px;
+  }
+}
+
+.tm-logo {
+  height: 48px;
+  vertical-align: bottom;
+}

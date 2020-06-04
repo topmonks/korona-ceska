@@ -1,7 +1,7 @@
-
 import React from "react";
 import { getAnswerCardField, makeClass as css } from "./library";
 import { Answers } from "./GameKorona";
+import "./styles/game-button.css";
 
 export default function GameButton({
   answer, card, title, onAnswer,

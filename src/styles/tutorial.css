@@ -1,0 +1,18 @@
+.tutorial-values {
+  display: flex;
+  justify-content: center;
+}
+.tutorial-values > div {
+  flex: 1;
+}
+.tutorial-values__label {
+  margin: 0;
+  padding: 0 !important;
+  color: #555;
+  font-size: 13px;
+  text-transform: uppercase;
+}
+.tutorial-values__item > img {
+  width: 32px;
+  height: 32px;
+}

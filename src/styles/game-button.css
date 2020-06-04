@@ -1,0 +1,45 @@
+.game-button {
+  white-space: normal;
+  margin: 0;
+  padding: 4px 8px;
+  background-color: rgba(0, 0, 0, 0.5);
+  border: none;
+  color: #fff;
+  line-height: 1.6;
+  font-size: 14px;
+  border-radius: 4px;
+}
+
+.game-button:hover {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+@media screen and (min-height: 668px) {
+  .game-button {
+    font-size: 16px;
+  }
+}
+
+.game-button + .game-button {
+  margin-top: 16px;
+}
+
+.game-button--secondary {
+  background-color: unset;
+}
+
+.game-button--secondary:hover {
+  background-color: rgba(255, 0, 0, 0.2);
+}
+
+.game-button--placeholder {
+  background: transparent !important;
+  touch-action: none;
+  outline: none;
+}
+
+.game-board__buttons .game-button--placeholder,
+.game-board__buttons .screen-button {
+  padding: 4px 8px;
+  line-height: 28px;
+  flex: none;
+}
