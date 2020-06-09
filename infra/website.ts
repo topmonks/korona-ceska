@@ -190,30 +190,42 @@ function createCloudFront(
  * @param cname {pulumi.Output<string>} aliased domain name
  * @returns {Promise<aws.route53.Record>}
  */
-function createAliasRecord(
-  parent: pulumi.ComponentResource,
+function createAliasRecords(
+  parent: WebSite,
   domain: string,
-  cdn: aws.cloudfront.Distribution | null,
   cname: pulumi.Output<string>
-): aws.route53.Record {
+): aws.route53.Record[] {
   const hostedZone = getHostedZone(domain);
-  const args: aws.route53.RecordArgs = {
+  const cdn = parent.cdn;
+  if (!cdn) {
+    const args: aws.route53.RecordArgs = {
+      name: domain,
+      zoneId: hostedZone.apply((x) => x.zoneId),
+      ttl: 300,
+      type: "CNAME",
+      records: [cname],
+    };
+    return [
+      new aws.route53.Record(`${domain}/dns-record`, args, { parent })
+    ]
+  }
+
+  const args = (type: string) => ({
     name: domain,
     zoneId: hostedZone.apply((x) => x.zoneId),
-    ttl: cdn ? undefined : 300,
-    type: cdn ? "A" : "CNAME",
-    records: cdn ? undefined : [cname],
-    aliases: cdn
-      ? [
+    type,
+    aliases: [
         {
           evaluateTargetHealth: true,
           name: cdn.domainName,
           zoneId: cdn.hostedZoneId,
         },
-      ]
-      : undefined,
-  };
-  return new aws.route53.Record(`${domain}/dns-record`, args, { parent });
+      ],
+  });
+  return [
+    new aws.route53.Record(`${domain}/dns-record`, args("A"), { parent }),
+    new aws.route53.Record(`${domain}/dns-record-ipv6`, args("AAAA"), { parent })
+  ];
 }
 
 export function getHostedZone(domain: string) {
@@ -329,7 +341,7 @@ export class WebSite extends pulumi.ComponentResource {
   contentBucket: aws.s3.Bucket;
   contentBucketPolicy: aws.s3.BucketPolicy;
   cdn?: aws.cloudfront.Distribution;
-  dnsRecord: aws.route53.Record;
+  dnsRecords: aws.route53.Record[];
   public domain: pulumi.Output<string>;
   public url: pulumi.Output<string>;
   get s3BucketUri(): pulumi.Output<string> {
@@ -378,16 +390,13 @@ export class WebSite extends pulumi.ComponentResource {
       domain,
       contentBucket
     );
-    let cdn: aws.cloudfront.Distribution | null = null;
-    if (!(settings.cdn && settings.cdn.disabled)) {
-      cdn = createCloudFront(website, domain, contentBucket, settings.isPwa);
-      website.cdn = cdn;
+    if (!(settings.cdn?.disabled)) {
+      website.cdn = createCloudFront(website, domain, contentBucket, settings.isPwa);
     }
-    if (!(settings.dns && settings.dns.disabled)) {
-      website.dnsRecord = createAliasRecord(
+    if (!(settings.dns?.disabled)) {
+      website.dnsRecords = createAliasRecords(
         website,
         domain,
-        cdn,
         contentBucket.bucketDomainName
       );
     }
@@ -420,11 +429,10 @@ export class WebSite extends pulumi.ComponentResource {
       bucketSettings
     ));
     website.contentBucketPolicy = createBucketPolicy(website, domain, bucket);
-    const cdn = website.cdn = createCloudFront(website, domain, bucket, false);
-    website.dnsRecord = createAliasRecord(
+    website.cdn = createCloudFront(website, domain, bucket, false);
+    website.dnsRecords = createAliasRecords(
       website,
       domain,
-      cdn,
       bucket.bucketDomainName
     );
     return website;
