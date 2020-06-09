@@ -1,6 +1,6 @@
 
 :root {
-  --padding: 16px;
+  --padding: 8px;
   --background-color-primary: #49477c;
   --text-color-primary: #fff;
 }
@@ -91,7 +91,8 @@ p:last-of-type {
 .layout-wrapper {
   max-width: 480px;
   margin: 0 auto;
-  padding: 0 var(--padding);
+  padding: var(--padding);
+  box-sizing: border-box;
 }
 
 /* All small screens are scrollable without fixed height,

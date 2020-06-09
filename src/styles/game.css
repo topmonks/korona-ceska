@@ -1,32 +1,9 @@
 
-.game-mood-neutral {
-  background-image: linear-gradient(
-    -180deg,
-    rgba(73, 71, 124, 1) 0%,
-    rgba(77, 100, 138, 1) 100%
-  );
-}
-
-.game-mood-positive {
-  background-image: linear-gradient(
-    -180deg,
-    rgba(73, 71, 124, 1) 0%,
-    #adcee1 100%
-  );
-}
-
-.game-mood-negative {
-  background-image: linear-gradient(
-    -180deg,
-    rgba(73, 71, 124, 1) 0%,
-    #cd2500 100%
-  );
-}
 
 .game-board {
   display: grid;
   grid-template-columns: auto;
-  grid-template-rows: 74px auto 180px;
+  grid-template-rows: 74px 1fr 130px;
   grid-template-areas:
     "header"
     "main"
@@ -41,18 +18,18 @@
 
 @media screen and (max-height: 455px) {
   .game-board {
-    grid-template-rows: 56px 1fr 180px;
+    grid-template-rows: 56px 1fr 140px;
   }
 }
 
 @media screen and (min-width: 480px) {
   .game-board {
-    grid-template-rows: 84px 1fr 180px;
+    grid-template-rows: 84px 1fr 140px;
   }
 }
 
 .game-board.game-board--story {
-  grid-template-rows: 16px auto 140px;
+  grid-template-rows: 16px auto 130px;
 }
 
 .game-board__header {
@@ -60,7 +37,6 @@
 
   display: flex;
   flex-direction: row;
-  align-items: center;
 }
 
 /* push header to screen top */
@@ -80,9 +56,10 @@
   flex: 1;
 }
 
-.game-board__card,
-.game-board__gameover {
+
+.game-board__content {
   grid-area: main;
+  overflow-y: auto;
 }
 
 .game-board__buttons {
@@ -96,16 +73,11 @@
   text-align: center;
 }
 
-.game-board__card {
-  flex: 1;
-  display: flex;
-}
-
 .game-board__buttons {
   display: flex;
   flex-direction: column;
   margin-top: 16px;
-  padding-bottom: 16px;
+  justify-content: flex-end;
 }
 
 .game-values {
@@ -150,6 +122,7 @@
 
   /* magic, by default makes burge cendered*/
   display: flex;
+  align-items: center;
 }
 .menu-button > img {
   transform: scale(0.6);
@@ -166,7 +139,6 @@
 }
 
 .game-over {
-  overflow-y: auto;
 }
 
 .game-over .illustration {
@@ -189,15 +161,16 @@
 
   border-radius: 4px;
   width: 100%;
-  min-height: 260px;
   box-sizing: border-box;
-  padding: 9px;
+  padding: 12px;
   text-align: center;
 
   display: flex;
   flex-direction: column;
+  height: 100%;
 
   position: relative;
+  overflow-y: auto;
   /* because of absolutely positioned week no span */
 }
 
@@ -346,4 +319,28 @@
 
 .tooltip-overlay .rmc-tooltip-inner {
   min-height: auto;
+}
+
+.game-mood-neutral {
+  background-image: linear-gradient(
+    -180deg,
+    rgba(73, 71, 124, 1) 0%,
+    rgba(77, 100, 138, 1) 100%
+  );
+}
+
+.game-mood-positive {
+  background-image: linear-gradient(
+    -180deg,
+    rgba(73, 71, 124, 1) 0%,
+    #adcee1 100%
+  );
+}
+
+.game-mood-negative {
+  background-image: linear-gradient(
+    -180deg,
+    rgba(73, 71, 124, 1) 0%,
+    #cd2500 100%
+  );
 }

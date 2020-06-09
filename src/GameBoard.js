@@ -90,17 +90,17 @@ export default function GameBoard({ G, ctx, moves, events, reset, log }) {
       {/* mock container for grid layout */}
       {!shouldBeBoardHeaderVisible && <div className="game-board__header" />}
 
-      {ctx.gameover && (
-        <div className="game-board__gameover">
+      <div className="game-board__content">
+        {ctx.gameover && (
           <GameOver
             draw={!card && !ctx.gameover}
             {...ctx.gameover}
             {...{ log, week, seed }}
           />
-        </div>
-      )}
+        )}
 
-      {card && !ctx.gameover && <Card {...{ card, effect, week }} />}
+        {card && !ctx.gameover && <Card {...{ card, effect, week }} />}
+      </div>
 
       {!ctx.gameover && (
         <div className="game-board__buttons">
@@ -127,6 +127,7 @@ export default function GameBoard({ G, ctx, moves, events, reset, log }) {
           {ctx.phase === "tutorial" &&
             !isPlayCard(card) && [
               gameButton({ answer: Answers.FINISH, title: "Rozumím" }),
+              gameButton({ placeholder: true }),
             ]}
         </div>
       )}
