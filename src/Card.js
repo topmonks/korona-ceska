@@ -9,7 +9,7 @@ import { illustrationStyles } from "./Illustration";
 import { useTransition, animated, config } from "react-spring";
 import TutorialValues from "./TutorialValues";
 
-export default function Card({ card, effect, week, className }) {
+export default function Card({ card, effect, week }) {
   const isIncident = useMemo(() => isEventCard(card), [card]);
   const isStory = useMemo(() => isStoryCard(card), [card]);
 

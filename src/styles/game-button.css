@@ -1,5 +1,4 @@
 .game-button {
-  flex: 1;
   white-space: normal;
   margin: 0;
   padding: 4px 8px;
@@ -42,5 +41,5 @@
 .game-board__buttons .screen-button {
   padding: 4px 8px;
   line-height: 28px;
-  flex: 1;
+  flex: none;
 }

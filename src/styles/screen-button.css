@@ -7,9 +7,7 @@
   box-shadow: 0 8px 16px -10px rgba(61, 61, 82, 1);
   margin-bottom: 16px;
   text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: block;
   text-decoration: none;
   font-weight: 600;
 }

@@ -5,18 +5,15 @@ import { makeClass as css } from "./library";
 export default function GameMenuButton({ onGameLeave, ...pass }) {
 
   return (
-    <div
+    <Link
       className={css(
         'menu-button',
       )}
+      href="/"
+      onClick={onGameLeave}
+      {...pass}
     >
-      <Link
-        href="/"
-        onClick={onGameLeave}
-        {...pass}
-      >
-        MENU
-      </Link>
-    </div>
+      MENU
+    </Link>
   )
 }
